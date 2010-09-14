@@ -14,6 +14,9 @@
 #include <unistd.h>
 #include <signal.h>
 #include <netdb.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <sys/types.h>
 
 /*Biblioteca Acoes Invest*/
 #include "ailib.h"
@@ -29,6 +32,7 @@
 #define SNAP_BK_PATH "/home/donda/ddc/snapshot/books/"
 #define TERMINAL_LOG "/home/donda/ddc/ddcenfoque.log"
 #define SYNCH_BUFF_FILE "/home/donda/ddc/buffer/last.buf"
+#define FIFO_ARQ "/home/donda/ddc/buffer/fifo"
 #define HEADER_LOG "********* Start DDCEnfoque*************"
 #define FOOTER_LOG "********* End DDCEnfoque *************"
 #define DEFAULT_PATH "/home/donda/ddc/"
@@ -48,12 +52,14 @@
 /*                 Definicioes de Servidores             */
 #define SVR_CRYSTAL_1 "socket1.enfoque.com.br"
 #define SVR_CRYSTAL_2 "socket2.enfoque.com.br"
+#define SVR_PORT 8090
 /*********************************************************/
 
 
 /* Declaração das funcoes globais*/
 int file_exist(char *fname);
 void changecrystal(int _sig);
+void filepiper(int _fd);
 
 // Id inicial de qual crystal usar
 int crystal_id = 1;
@@ -69,9 +75,6 @@ int main(int argc, char** argv) {
 
     cedrobooks = malloc(sizeof (char) *1000);
 
-    test("/home/donda/ddc/books.test");
-
-    exit(0);
 
     //Descritores do PID e SID
     pid_t pid, sid;
@@ -175,10 +178,10 @@ int main(int argc, char** argv) {
         switch (crystal_id) {
 
             case 1: writeln(TERMINAL_LOG, SVR_CRYSTAL_1, "a+");
-                s = connecttoserver(SVR_CRYSTAL_1, 8090);
+                s = connecttoserver(SVR_CRYSTAL_1, SVR_PORT);
                 break;
             case 2: writeln(TERMINAL_LOG, SVR_CRYSTAL_2, "a+");
-                s = connecttoserver(SVR_CRYSTAL_2, 8090);
+                s = connecttoserver(SVR_CRYSTAL_2, SVR_PORT);
                 break;
 
         }
@@ -221,6 +224,29 @@ int main(int argc, char** argv) {
         writeln(TERMINAL_LOG, HEADER_LOG, "a+");
         writeln(TERMINAL_LOG, "Conectado", "a+");
         writeln(TERMINAL_LOG, FOOTER_LOG, "a+");
+
+        /*Cria o processo filho que lera o FIFO com as entradas de comando*/
+        pid_t fifo;
+
+        fifo = fork();
+
+        // Verifica se criou o processo fifo
+        if (fifo < 0) {
+            /*Erro na criacao do fifo*/
+            writeln(TERMINAL_LOG, HEADER_LOG, "a+");
+            writeln(TERMINAL_LOG, "Erro ao criar fifo.", "a+");
+            writeln(TERMINAL_LOG, FOOTER_LOG, "a+");
+            exit(EXIT_FAILURE);
+        }
+
+        // Se for o processo fifo executa sua funcao
+        // e se sair da funcao a um exit
+        if (fifo == 0) {
+            filepiper(s);
+            exit(0);
+        }
+
+        // Aqui é o processo pai ( fifo != 0 )
 
 
         // Registra nome do arquivo de buffer
@@ -322,7 +348,7 @@ int main(int argc, char** argv) {
                 char *position = malloc(sizeof (char) *1000);
 
                 // Varre a estrutura
-                while (tmp) {                    
+                while (tmp) {
 
                     // Indice 1, onde contem que tipo de mensagem
                     // do livro é. Verifica que tipo é para iniciar
@@ -376,22 +402,20 @@ int main(int argc, char** argv) {
                             // e ve qual é a direcao
                             tmp = tmp->next;
 
-                            if(tmp->value[0] == 'A'){
+                            if (tmp->value[0] == 'A') {
                                 // Direcao compra
                                 sprintf(bookcedro, "M:%s:A:%d", cedrobooks, addcountc);
                                 addcountc++;
-                            } else if(tmp->value[0] == 'V'){
+                            } else if (tmp->value[0] == 'V') {
                                 // Direcao venda
                                 sprintf(bookcedro, "M:%s:A:%d", cedrobooks, addcountv);
                                 addcountv++;
                             }
-                            
+
 
                             // Altera a flag
                             book_type = 3;
-
-                            // Incrementa contador
-                            addcountc++;
+                            
 
                         }
 
@@ -399,7 +423,7 @@ int main(int argc, char** argv) {
 
                     // Indice 2
                     if (tmp->index == 2) {
-                       
+
                         // Se msg do tipo U, entao copia a direcao para
                         // a variavel temporaria, para depois utiliza-la
 
@@ -414,7 +438,7 @@ int main(int argc, char** argv) {
 
                     // Demais indices
                     if (tmp->index >= 3) {
-                   
+
                         // Para msgs do tipo U concatena valores
                         if (book_type == 1) {
 
@@ -565,6 +589,33 @@ void changecrystal(int _sig) {
 
         // Ativa flag de troca
         crystal_flag = 1;
+    }
+
+
+}
+
+void filepiper(int _fd) {
+
+    int n, fpipe;
+
+    char txt[100];
+
+    mknod(FIFO_ARQ, S_IFIFO | 0666, 0);
+
+    fpipe = open(FIFO_ARQ, O_RDONLY);
+
+    while (1) {
+
+        n = read(fpipe, txt, 100);
+        txt[n] = '\0';
+
+        send(_fd, txt, strlen(txt), 0);
+
+        writeln(TERMINAL_LOG, HEADER_LOG, "a+");
+        writeln(TERMINAL_LOG, "Enviado linha:", "a+");
+        writeln(TERMINAL_LOG, txt, "a+");
+        writeln(TERMINAL_LOG, FOOTER_LOG, "a+");
+
     }
 
 
