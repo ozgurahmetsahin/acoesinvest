@@ -54,7 +54,6 @@
 /* Declaração das funcoes globais*/
 int file_exist(char *fname);
 void changecrystal(int _sig);
-void filepiper();
 
 // Id inicial de qual crystal usar
 int crystal_id = 1;
@@ -569,8 +568,4 @@ void changecrystal(int _sig) {
     }
 
 
-}
-
-void filepiper(){
-    //
 }
