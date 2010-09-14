@@ -19,6 +19,7 @@
 #include <time.h>
 #include <ctype.h>
 #include <sys/wait.h>
+#include <fcntl.h>
 
 /*Biblioteca Acoes Invest*/
 #include "ailib.h"
@@ -42,6 +43,7 @@
 #define SQT_TEMP "/home/donda/ddc/tmp/"
 #define GPN_BOVESPA "/home/donda/ddc/gpn_bovespa.dat"
 #define GPN_BMF "/home/donda/ddc/gpn_bmf.dat"
+#define FIFO_ARQ "/home/donda/ddc/buffer/fifo"
 #define MBQ_BUYER 1
 #define MBQ_SELLER 2
 #define TERMINAL_LOG "/home/donda/ddc/ddcserver.log"
@@ -75,7 +77,6 @@ void grandsonps(int __fd);
 char *id_cli();
 char *mntsnapshot(char *symbol);
 void *mntsnapshotbk(char *symbol, int __fd);
-void removechars(char *__b, char *_r);
 void gpn_bmf(int __fd);
 void gpn_bovespa(int __fd);
 void blast(char *_blast);
@@ -84,7 +85,7 @@ void sonexit(int _sig);
 void getsymbol(char *_b, char *_s);
 void mounttrade(char *symbol, char *__t);
 void sqt(int _fd, char *_symbol);
-void mbq(int _fd, char *_symbol);
+void mbq(int _fd, char *_symbol, int _fifo);
 int checkuser(int _fd, char *_user, char *_pass);
 void version_app(int _fd, char *_app);
 int get_client(struct sockaddr *clientInformation, char *_add);
@@ -344,14 +345,18 @@ int main() {
             } else {
                 // Processo neto
 
-                grandchart = fork();
+                /*
+                                grandchart = fork();
 
-                if (grandchart > 0) {
-                    // Executa funcao do neto
-                    grandsonps(sockcli);
-                } else {
-                    readchart(sockcli);
-                }
+                                if (grandchart > 0) {
+                                    // Executa funcao do neto
+                 */
+                grandsonps(sockcli);
+                /*
+                                } else {
+                                    readchart(sockcli);
+                                }
+                 */
 
             }
         } else {
@@ -488,6 +493,15 @@ void sonps(int _fd, pid_t _gson) {
         login = 0;
     }
 
+    // Cria descritor para arquivo fifo
+    int fpipe;
+    mknod(FIFO_ARQ, S_IFIFO | 0666, 0);
+
+    // Abre o arquivo de fifo
+    // ATENCAO: O processo pode ficar travado aqui caso DDCEnfoque nao esteja
+    // em execucao.
+    fpipe = open(FIFO_ARQ, O_WRONLY);
+
     // Inicia loop de escuta do filho
     while (sonrun) {
 
@@ -554,7 +568,7 @@ void sonps(int _fd, pid_t _gson) {
 
                 // Se esta logado autoriza comando
                 if (login == 1) {
-                    mbq(_fd, aux2);
+                    mbq(_fd, aux2, fpipe);
                 } else {
                     send(_fd, MSG_SVR_NOTLOG, strlen(MSG_SVR_NOTLOG), 0);
                 }
@@ -1358,29 +1372,6 @@ void *mntsnapshotbk(char *symbol, int __fd) {
 
 }
 
-void removechars(char *__b, char *_r) {
-
-    char *_m;
-    _m = malloc(MAX_BUF_SIZE);
-
-    int s = 0;
-    int p = 0;
-
-    for (s = 0; s <= strlen(__b); s++) {
-
-        if ((unsigned int) __b[s] != 10 && (unsigned int) __b[s] != 13) {
-            _m[p] = __b[s];
-            p++;
-        }
-
-    }
-
-    strcpy(_r, _m);
-
-    free(_m);
-
-}
-
 int blog(char *text, char *_modes) {
 
     char *logpath;
@@ -1764,7 +1755,7 @@ void sqt(int _fd, char *_symbol) {
     free(f_name);
 }
 
-void mbq(int _fd, char *_symbol) {
+void mbq(int _fd, char *_symbol, int _fifo) {
     // Cliente solicitou book
 
     // Cria nome do arquivo de solicitacao
@@ -1795,7 +1786,7 @@ void mbq(int _fd, char *_symbol) {
         fclose(fmnt);
 
         // Envia snapshot
-        mbq_snapshoot(_fd, _symbol);
+        //mbq_snapshoot(_fd, _symbol);
 
     } else {
 
@@ -1804,6 +1795,14 @@ void mbq(int _fd, char *_symbol) {
         // Emite mensagem de erro
         perror("Error on add mnt file");
     }
+
+    bzero(f_name,40);
+
+    // Cria comando
+    sprintf(f_name, "D:%s\r\n", _symbol);
+
+    // Envia para o fifo
+    write(_fifo, f_name, strlen(f_name));
 
     // Libera da memoria a variavel do nome
     free(f_name);
