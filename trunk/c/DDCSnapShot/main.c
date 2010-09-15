@@ -25,7 +25,6 @@
 #define BESTBID 8
 #define BESTASK 9
 
-void removechars(char *__b, char *_r);
 void blast(char *_blast);
 void updatesnapshot(char *_s, int col, char *_v);
 
@@ -64,16 +63,18 @@ int main(int argc, char** argv) {
     // Lista temporaria para varredura de dados
     struct TDDCData *t = NULL;
 
+
     // Loop de leitura de arquivo
     while (1) {
 
         // obtem o arquivo atual
-        blast(fbuffer);
+        //blast(fbuffer);
+        strcpy(fbuffer, "/home/donda/Documents/data_book.txt");
 
         // blast pode retornar NULL quando ao acessar
         // o arquivo de buffer e ele esta sendo modificado.
         // Verifica se isso ocorreu
-        if(fbuffer == NULL || strlen(fbuffer) <= 5 ){
+        if (fbuffer == NULL || strlen(fbuffer) <= 5) {
             // É NULL ou não tem dados suficiente
             // Aguarda 100 milisegundos e enta novamente
             usleep(100);
@@ -86,7 +87,18 @@ int main(int argc, char** argv) {
             // É o mesmo arquivo, lê os dados
             if (fgets(dataline, MAX_BUF_SIZE, fbf) != NULL) {
 
-                removechars(dataline, dataline);
+                printf("%s\r\n", dataline);
+
+                //removechars(dataline, dataline);
+
+                // Destroi a lista
+                if (data != NULL) {
+                    destroylist(data);
+                    data = NULL;
+                }
+                if (t != NULL) {
+                    t = NULL;
+                }
 
                 // Cria uma nova lista
                 data = createlist();
@@ -191,13 +203,187 @@ int main(int argc, char** argv) {
                         t = t->next;
                     }
 
-                    // Destroi a lista
-                    destroylist(data);
-                    data = NULL;
-                    t = NULL;
+
+                } else if (data->value[0] == 'B') {
+
+                    // Snapshot do book de ofertas
+
+                    // Seta lista temporaria
+                    t = data;
+
+                    // Tipo de mensagem
+                    int book_type = 0;
+
+                    // Direcao da mensagem
+                    int direction = 0;
+
+                    // Posicao antiga
+                    int old_position = 0;
+
+                    // Posicao nova
+                    int new_position = 0;
+
+                    // Dados para snap
+                    char *snap;
+                    snap = malloc(sizeof (char) * 100);
+
+                    // Pega o ativo
+                    t = t->next;
+                    strcpy(symbol, t->value);
+
+                    //printf("Ativo:%s\r\n",symbol);
+
+                    // Pega o tipo
+                    t = t->next;
+                    if (t->value[0] == 'A') {
+                        book_type = 1;
+
+                        // Pega posicao
+                        t = t->next;
+                        new_position = atoi(t->value);
+
+                        // Pega a direcao
+                        t = t->next;
+                        if (t->value[0] == 'A') {
+                            direction = 1;
+                        } else if (t->value[0] == 'V') {
+                            direction = 2;
+                        } else {
+                            direction = 0;
+                        }
+
+                        // Monta msg
+
+                        // Preco
+                        t = t->next;
+                        strcpy(snap, t->value);
+
+                        // Qtde
+                        t = t->next;
+                        sprintf(snap, "%s:%s", snap, t->value);
+
+                        // Corretora
+                        t = t->next;
+                        sprintf(snap, "%s:%s", snap, t->value);
+
+                        // Data
+                        t = t->next;
+                        sprintf(snap, "%s:%s", snap, t->value);
+
+                        //printf("Snap Add:%s\r\n",snap);
+
+
+                    } else if (t->value[0] == 'U') {
+                        book_type = 2;
+
+                        // Pega posicao nova
+                        t = t->next;
+                        new_position = atoi(t->value);
+
+                        // Pega posicao antiga
+                        t = t->next;
+                        old_position = atoi(t->value);
+
+                        // Pega a direcao
+                        t = t->next;
+                        if (t->value[0] == 'A') {
+                            direction = 1;
+                        } else if (t->value[0] == 'V') {
+                            direction = 2;
+                        } else {
+                            direction = 0;
+                        }
+
+                        // Monta msg
+
+                        // Preco
+                        t = t->next;
+                        strcpy(snap, t->value);
+
+                        // Qtde
+                        t = t->next;
+                        sprintf(snap, "%s:%s", snap, t->value);
+
+                        // Corretora
+                        t = t->next;
+                        sprintf(snap, "%s:%s", snap, t->value);
+
+                        // Data
+                        t = t->next;
+                        sprintf(snap, "%s:%s", snap, t->value);
+
+                        //printf("Snap Update:%s\r\n",snap);
+                    } else if (t->value[0] == 'D') {
+                        book_type = 3;
+
+                        // Pega tipo
+                        t = t->next;
+                        // Retorna carro do processo para dado tipo 3.
+                        old_position = atoi(t->value);
+                        if (old_position == 3) {
+                            continue;
+                        }
+                        //new_position = atoi(t->value);
+
+                        //printf("Pre Delete:\r\n");
+
+                        // Pega a direcao
+                        t = t->next;
+                        if (t->value[0] == 'A') {
+                            direction = 1;
+                        } else if (t->value[0] == 'V') {
+                            direction = 2;
+                        } else {
+                            direction = 0;
+                        }
+
+                        //printf("Almost Delete:\r\n");
+
+                        // Pega posicao
+                        t = t->next;
+                        new_position = atoi(t->value);
+
+                        // Monta msg
+                        sprintf(snap, "%s:%s:%s:%s", "--", "--", "--", "--");
+
+                        //printf("Snap Delete:%s\r\n",snap);
+
+                    } else {
+                        book_type = 0;
+                    }
+
+                    // Se tipo de msg e direcao direfente de 0 entao significa
+                    // que analisou a msg direito.
+                    if (book_type != 0 && direction != 0) {
+
+                        char snapfile[200];
+
+                        if (direction == 1) {
+                            sprintf(snapfile, "%s/%s.%c.%d", "/home/donda/ddc/snapshot/books", symbol, 'A', new_position);
+                        } else {
+                            sprintf(snapfile, "%s/%s.%c.%d", "/home/donda/ddc/snapshot/books", symbol, 'V', new_position);
+                        }
+
+                        FILE *fs;
+                        fs = fopen(snapfile, "w+");
+                        if (fs != NULL) {
+                            fprintf(fs, "%s", snap);
+                            fclose(fs);
+                        }
+
+
+
+                    }
+
+
+                    if (snap != NULL) {
+                        free(snap);
+                    }
+
 
                 } else {
                     destroylist(data);
+                    data = NULL;
                 }
             } else {
                 // Não consegui ler dados, talves esteja no final
@@ -223,7 +409,7 @@ int main(int argc, char** argv) {
             if (fbf != NULL) {
                 // Atualiza o ultimo arquivo usado
                 strcpy(lastbuffer, fbuffer);
-            } else {               
+            } else {
 
                 // Não abriu, aguarda 100 milisegundos
                 usleep(100);
@@ -238,29 +424,6 @@ int main(int argc, char** argv) {
 
 
     return (EXIT_SUCCESS);
-}
-
-void removechars(char *__b, char *_r) {
-
-    char *_m;
-    _m = malloc(MAX_BUF_SIZE);
-
-    int s = 0;
-    int p = 0;
-
-    for (s = 0; s <= strlen(__b); s++) {
-
-        if ((unsigned int) __b[s] != 10 && (unsigned int) __b[s] != 13) {
-            _m[p] = __b[s];
-            p++;
-        }
-
-    }
-
-    strcpy(_r, _m);
-
-    free(_m);
-
 }
 
 void blast(char *_blast) {
