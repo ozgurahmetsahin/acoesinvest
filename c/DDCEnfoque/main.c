@@ -60,6 +60,7 @@
 int file_exist(char *fname);
 void changecrystal(int _sig);
 void filepiper(int _fd);
+void temp_book(char *__s, char *_b);
 
 // Id inicial de qual crystal usar
 int crystal_id = 1;
@@ -226,6 +227,7 @@ int main(int argc, char** argv) {
         writeln(TERMINAL_LOG, FOOTER_LOG, "a+");
 
         /*Cria o processo filho que lera o FIFO com as entradas de comando*/
+/*
         pid_t fifo;
 
         fifo = fork();
@@ -233,6 +235,7 @@ int main(int argc, char** argv) {
         // Verifica se criou o processo fifo
         if (fifo < 0) {
             /*Erro na criacao do fifo*/
+/*
             writeln(TERMINAL_LOG, HEADER_LOG, "a+");
             writeln(TERMINAL_LOG, "Erro ao criar fifo.", "a+");
             writeln(TERMINAL_LOG, FOOTER_LOG, "a+");
@@ -245,6 +248,7 @@ int main(int argc, char** argv) {
             filepiper(s);
             exit(0);
         }
+*/
 
         // Aqui é o processo pai ( fifo != 0 )
 
@@ -391,7 +395,7 @@ int main(int argc, char** argv) {
                             // Mensagem de delecao, montamos
                             // o cabecao da mensagem com o ativo
                             // que esta na variavel global.
-                            sprintf(bookcedro, "M:%s:D", cedrobooks);
+                            sprintf(bookcedro, "B:%s:D", cedrobooks);
 
                             // Altera a flag que identifica que tipo de mensagem é
                             book_type = 2;
@@ -404,18 +408,18 @@ int main(int argc, char** argv) {
 
                             if (tmp->value[0] == 'A') {
                                 // Direcao compra
-                                sprintf(bookcedro, "M:%s:A:%d", cedrobooks, addcountc);
+                                sprintf(bookcedro, "B:%s:A:%d", cedrobooks, addcountc);
                                 addcountc++;
                             } else if (tmp->value[0] == 'V') {
                                 // Direcao venda
-                                sprintf(bookcedro, "M:%s:A:%d", cedrobooks, addcountv);
+                                sprintf(bookcedro, "B:%s:A:%d", cedrobooks, addcountv);
                                 addcountv++;
                             }
 
 
                             // Altera a flag
                             book_type = 3;
-                            
+
 
                         }
 
@@ -479,6 +483,8 @@ int main(int argc, char** argv) {
                 destroylist(dbook);
 
                 tmp = NULL;
+
+                //temp_book(bfile,cedrobooks);
 
 
             }
@@ -607,16 +613,89 @@ void filepiper(int _fd) {
     while (1) {
 
         n = read(fpipe, txt, 100);
-        txt[n] = '\0';
 
-        send(_fd, txt, strlen(txt), 0);
+        if (n > 5) {
+            txt[n] = '\0';
 
-        writeln(TERMINAL_LOG, HEADER_LOG, "a+");
-        writeln(TERMINAL_LOG, "Enviado linha:", "a+");
-        writeln(TERMINAL_LOG, txt, "a+");
-        writeln(TERMINAL_LOG, FOOTER_LOG, "a+");
+            send(_fd, txt, strlen(txt), 0);
+
+            writeln(TERMINAL_LOG, HEADER_LOG, "a+");
+            writeln(TERMINAL_LOG, "Enviado linha:", "a+");
+            writeln(TERMINAL_LOG, txt, "a+");
+            writeln(TERMINAL_LOG, FOOTER_LOG, "a+");
+        }
 
     }
 
 
+}
+
+void temp_book(char *__s, char *_b){
+    char *__fpmbq;
+    __fpmbq = malloc(strlen(SNAP_BK_PATH) + 50);
+
+    char *__data;
+    __data = malloc(80);
+
+    char *__line;
+    __line = malloc(80);
+
+    FILE *__fmbq;
+
+    int pos = 0;
+    int cont = 0;
+
+    do {
+
+        bzero(__data, 80);
+        bzero(__line, 80);
+        bzero(__fpmbq, strlen(SNAP_BK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.A.%d", SNAP_BK_PATH, __s, pos);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            if (__data[0] != '-') {
+                sprintf(__line, "M:%s:U:%d:%d:A:%s\r\n", __s, cont, cont, __data);
+                writeln(_b,__line,"a+");
+                cont++;
+                pos++;
+            } else {
+                pos++;
+            }
+            fclose(__fmbq);
+        } else {
+            pos++;
+            cont++;
+        }
+
+    } while (cont <= 4);
+
+
+    pos = 0;
+    cont = 0;
+
+    do {
+
+        bzero(__data, 80);
+        bzero(__line, 80);
+        bzero(__fpmbq, strlen(SNAP_BK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.V.%d", SNAP_BK_PATH, __s, pos);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            if (__data[0] != '-') {
+                sprintf(__line, "M:%s:U:%d:%d:V:%s\r\n", __s, cont, cont, __data);
+                writeln(_b,__line,"a+");
+                cont++;
+                pos++;
+            } else {
+                pos++;
+            }
+            fclose(__fmbq);
+        } else {
+            pos++;
+            cont++;
+        }
+
+    } while (cont <= 4);
 }
