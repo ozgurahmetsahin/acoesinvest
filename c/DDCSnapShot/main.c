@@ -68,8 +68,8 @@ int main(int argc, char** argv) {
     while (1) {
 
         // obtem o arquivo atual
-        //blast(fbuffer);
-        strcpy(fbuffer, "/home/donda/Documents/data_book.txt");
+        blast(fbuffer);
+        //strcpy(fbuffer, "/home/donda/ddc/data_book.txt");
 
         // blast pode retornar NULL quando ao acessar
         // o arquivo de buffer e ele esta sendo modificado.
