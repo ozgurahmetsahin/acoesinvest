@@ -86,10 +86,12 @@ void getsymbol(char *_b, char *_s);
 void mounttrade(char *symbol, char *__t);
 void sqt(int _fd, char *_symbol);
 void mbq(int _fd, char *_symbol, int _fifo);
+void bqt(int _fd, char *_symbol, int _fifo);
 int checkuser(int _fd, char *_user, char *_pass);
 void version_app(int _fd, char *_app);
 int get_client(struct sockaddr *clientInformation, char *_add);
 void mbq_snapshoot(int __f, char *__s);
+void bqt_snapshoot(int __f, char *__s);
 void chart(int _fd, char *cmd);
 void readchart(int __fd);
 
@@ -500,7 +502,7 @@ void sonps(int _fd, pid_t _gson) {
     // Abre o arquivo de fifo
     // ATENCAO: O processo pode ficar travado aqui caso DDCEnfoque nao esteja
     // em execucao.
-    fpipe = open(FIFO_ARQ, O_WRONLY);
+    //fpipe = open(FIFO_ARQ, O_WRONLY);
 
     // Inicia loop de escuta do filho
     while (sonrun) {
@@ -569,6 +571,17 @@ void sonps(int _fd, pid_t _gson) {
                 // Se esta logado autoriza comando
                 if (login == 1) {
                     mbq(_fd, aux2, fpipe);
+                } else {
+                    send(_fd, MSG_SVR_NOTLOG, strlen(MSG_SVR_NOTLOG), 0);
+                }
+            } else if (!strcmp(aux1, "BQT")) {
+                // Cliente solicitou book
+                // Converte ativo para maiuscula
+                uppercase(aux2);
+
+                // Se esta logado autoriza comando
+                if (login == 1) {
+                    bqt(_fd, aux2, fpipe);
                 } else {
                     send(_fd, MSG_SVR_NOTLOG, strlen(MSG_SVR_NOTLOG), 0);
                 }
@@ -892,6 +905,45 @@ void grandsonps(int __fd) {
                         strcpy(bfline_aux1, bfline_aux2);
                         sprintf(bfline_aux2, "%s%s", dir, bfline_aux1);
                         strcat(bfline_aux2, ".mbq");
+
+                        // Verifica existencia de arquivo de solicitacao
+                        aux_file = fopen(bfline_aux2, "r");
+
+                        // Verifica se conseguiu abrir o arquivo
+                        if (aux_file != NULL) {
+
+                            // Arquivo aberto, então existe e foi solicitado
+
+                            // Concatena \r\n e \0
+                            //sprintf(bfline, "%s\n\r", bfline);
+
+                            // Envia ao cliente a linha
+                            char *_mnt_b;
+                            _mnt_b = malloc(MAX_BUF_SIZE);
+                            bzero(_mnt_b, MAX_BUF_SIZE);
+                            // Envia ao cliente a linha
+                            int ka = 0;
+                            for (ka = 0; ka <= strlen(bfline); ka++) {
+                                //send(__fd, &bfline[ka], sizeof (char), 0);
+                                _mnt_b[ka] = bfline[ka];
+                            }
+                            sprintf(_mnt_b, "%s\r\n", _mnt_b);
+                            send(__fd, _mnt_b, strlen(_mnt_b), 0);
+                            free(_mnt_b);
+                            // Fecha o descritor
+                            fclose(aux_file);
+
+                        }
+
+                    } else if (bfline[0] == 'B' && bfline[strlen(bfline) - 1] == '5') {
+                        // Analise para Book ( B: )
+
+                        getsymbol(bfline, bfline_aux2);
+
+                        // Concatena a extensao .mbq
+                        strcpy(bfline_aux1, bfline_aux2);
+                        sprintf(bfline_aux2, "%s%s", dir, bfline_aux1);
+                        strcat(bfline_aux2, ".bqt");
 
                         // Verifica existencia de arquivo de solicitacao
                         aux_file = fopen(bfline_aux2, "r");
@@ -1786,7 +1838,7 @@ void mbq(int _fd, char *_symbol, int _fifo) {
         fclose(fmnt);
 
         // Envia snapshot
-        //mbq_snapshoot(_fd, _symbol);
+        mbq_snapshoot(_fd, _symbol);
 
     } else {
 
@@ -1796,13 +1848,66 @@ void mbq(int _fd, char *_symbol, int _fifo) {
         perror("Error on add mnt file");
     }
 
-    bzero(f_name,40);
+    bzero(f_name, 40);
 
     // Cria comando
-    sprintf(f_name, "D:%s\r\n", _symbol);
+    //sprintf(f_name, "D:%s\r\n", _symbol);
 
     // Envia para o fifo
-    write(_fifo, f_name, strlen(f_name));
+    //write(_fifo, f_name, strlen(f_name));
+
+    // Libera da memoria a variavel do nome
+    free(f_name);
+}
+
+void bqt(int _fd, char *_symbol, int _fifo) {
+    // Cliente solicitou book
+
+    // Cria nome do arquivo de solicitacao
+    char *f_name;
+    f_name = malloc(40);
+
+    // Copia o nome do ativo para a string do nome
+    // do arquivo
+    strcpy(f_name, dir);
+    strcat(f_name, _symbol);
+
+    // Concatena a extensao
+    strcat(f_name, ".bqt");
+
+    // Cria arquivo de solicitação
+    FILE *fmnt;
+    fmnt = fopen(f_name, "w+");
+
+    // Verifica se foi possivel criar arquivo
+    if (fmnt != NULL) {
+
+        // Foi possivel
+
+        // Escreve algo apenas por seguranca
+        fprintf(fmnt, "%s\n", "called");
+
+        // Fecha arquivo
+        fclose(fmnt);
+
+        // Envia snapshot
+        bqt_snapshoot(_fd, _symbol);
+
+    } else {
+
+        // Não foi possivel
+
+        // Emite mensagem de erro
+        perror("Error on add bqt file");
+    }
+
+    bzero(f_name, 40);
+
+    // Cria comando
+    //sprintf(f_name, "D:%s\r\n", _symbol);
+
+    // Envia para o fifo
+    //write(_fifo, f_name, strlen(f_name));
 
     // Libera da memoria a variavel do nome
     free(f_name);
@@ -1859,8 +1964,69 @@ void mbq_snapshoot(int __f, char *__s) {
     char *__data;
     __data = malloc(80);
 
+    char *__line;
+    __line = malloc(80);
+
     FILE *__fmbq;
 
+    int pos = 0;
+    int cont = 0;
+
+    do {
+
+        bzero(__data, 80);
+        bzero(__line, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.A.%d", SNAPBK_PATH, __s, pos);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            if (__data[0] != '-') {
+                sprintf(__line, "M:%s:U:%d:%d:A:%s\r\n", __s, cont, cont, __data);
+                send(__f, __line, strlen(__line), 0);
+                cont++;
+                pos++;
+            } else {
+                pos++;
+            }
+            fclose(__fmbq);
+        } else {
+            pos++;
+            cont++;
+        }
+
+    } while (cont <= 4);
+
+
+    pos = 0;
+    cont = 0;
+
+    do {
+
+        bzero(__data, 80);
+        bzero(__line, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.V.%d", SNAPBK_PATH, __s, pos);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            if (__data[0] != '-') {
+                sprintf(__line, "M:%s:U:%d:%d:V:%s\r\n", __s, cont, cont, __data);
+                send(__f, __line, strlen(__line), 0);
+                cont++;
+                pos++;
+            } else {
+                pos++;
+            }
+            fclose(__fmbq);
+        } else {
+            pos++;
+            cont++;
+        }
+
+    } while (cont <= 4);
+
+/*
     bzero(__data, 80);
     bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
     sprintf(__fpmbq, "%s%s.A.0", SNAPBK_PATH, __s);
@@ -1970,6 +2136,195 @@ void mbq_snapshoot(int __f, char *__s) {
         send(__f, __data, strlen(__data), 0);
         fclose(__fmbq);
     }
+*/
+
+
+    free(__data);
+    free(__fpmbq);
+
+}
+
+void bqt_snapshoot(int __f, char *__s) {
+
+    mbq_snapshoot(__f, __s);
+
+    char *__fpmbq;
+    __fpmbq = malloc(strlen(SNAPBK_PATH) + 50);
+
+    char *__data;
+    __data = malloc(80);
+
+    char *__line;
+    __line = malloc(80);
+
+    FILE *__fmbq;
+
+    int pos = 0;
+    int cont = 0;
+
+    do {
+
+        bzero(__data, 80);
+        bzero(__line, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.A.%d", SNAPBK_PATH, __s, pos);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            if (__data[0] != '-') {
+                sprintf(__line, "B:%s:U:%d:%d:A:%s\r\n", __s, cont, cont, __data);
+                send(__f, __line, strlen(__line), 0);
+                cont++;
+                pos++;
+            } else {
+                pos++;
+            }
+            fclose(__fmbq);
+        } else {
+            cont = -1;
+        }
+
+    } while (cont != -1);
+
+
+    pos = 0;
+    cont = 0;
+
+    do {
+
+        bzero(__data, 80);
+        bzero(__line, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.V.%d", SNAPBK_PATH, __s, pos);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            if (__data[0] != '-') {
+                sprintf(__line, "B:%s:U:%d:%d:V:%s\r\n", __s, cont, cont, __data);
+                send(__f, __line, strlen(__line), 0);
+                cont++;
+                pos++;
+            } else {
+                pos++;
+            }
+            fclose(__fmbq);
+        } else {
+            cont = -1;
+        }
+
+    } while (cont != -1);
+
+/*
+    bzero(__data, 80);
+    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+    sprintf(__fpmbq, "%s%s.A.0", SNAPBK_PATH, __s);
+    __fmbq = fopen(__fpmbq, "r");
+    if (__fmbq != NULL) {
+        fgets(__data, 80, __fmbq);
+        sprintf(__data, "%s\r\n", __data);
+        send(__f, __data, strlen(__data), 0);
+        fclose(__fmbq);
+    }
+
+    bzero(__data, 80);
+    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+    sprintf(__fpmbq, "%s%s.A.1", SNAPBK_PATH, __s);
+    __fmbq = fopen(__fpmbq, "r");
+    if (__fmbq != NULL) {
+        fgets(__data, 80, __fmbq);
+        sprintf(__data, "%s\r\n", __data);
+        send(__f, __data, strlen(__data), 0);
+        fclose(__fmbq);
+    }
+
+    bzero(__data, 80);
+    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+    sprintf(__fpmbq, "%s%s.A.2", SNAPBK_PATH, __s);
+    __fmbq = fopen(__fpmbq, "r");
+    if (__fmbq != NULL) {
+        fgets(__data, 80, __fmbq);
+        sprintf(__data, "%s\r\n", __data);
+        send(__f, __data, strlen(__data), 0);
+        fclose(__fmbq);
+    }
+
+    bzero(__data, 80);
+    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+    sprintf(__fpmbq, "%s%s.A.3", SNAPBK_PATH, __s);
+    __fmbq = fopen(__fpmbq, "r");
+    if (__fmbq != NULL) {
+        fgets(__data, 80, __fmbq);
+        sprintf(__data, "%s\r\n", __data);
+        send(__f, __data, strlen(__data), 0);
+        fclose(__fmbq);
+    }
+
+    bzero(__data, 80);
+    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+    sprintf(__fpmbq, "%s%s.A.4", SNAPBK_PATH, __s);
+    __fmbq = fopen(__fpmbq, "r");
+    if (__fmbq != NULL) {
+        fgets(__data, 80, __fmbq);
+        sprintf(__data, "%s\r\n", __data);
+        send(__f, __data, strlen(__data), 0);
+        fclose(__fmbq);
+    }
+
+    bzero(__data, 80);
+    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+    sprintf(__fpmbq, "%s%s.V.0", SNAPBK_PATH, __s);
+    __fmbq = fopen(__fpmbq, "r");
+    if (__fmbq != NULL) {
+        fgets(__data, 80, __fmbq);
+        sprintf(__data, "%s\r\n", __data);
+        send(__f, __data, strlen(__data), 0);
+        fclose(__fmbq);
+    }
+
+    bzero(__data, 80);
+    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+    sprintf(__fpmbq, "%s%s.V.1", SNAPBK_PATH, __s);
+    __fmbq = fopen(__fpmbq, "r");
+    if (__fmbq != NULL) {
+        fgets(__data, 80, __fmbq);
+        sprintf(__data, "%s\r\n", __data);
+        send(__f, __data, strlen(__data), 0);
+        fclose(__fmbq);
+    }
+
+    bzero(__data, 80);
+    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+    sprintf(__fpmbq, "%s%s.V.2", SNAPBK_PATH, __s);
+    __fmbq = fopen(__fpmbq, "r");
+    if (__fmbq != NULL) {
+        fgets(__data, 80, __fmbq);
+        sprintf(__data, "%s\r\n", __data);
+        send(__f, __data, strlen(__data), 0);
+        fclose(__fmbq);
+    }
+
+    bzero(__data, 80);
+    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+    sprintf(__fpmbq, "%s%s.V.3", SNAPBK_PATH, __s);
+    __fmbq = fopen(__fpmbq, "r");
+    if (__fmbq != NULL) {
+        fgets(__data, 80, __fmbq);
+        sprintf(__data, "%s\r\n", __data);
+        send(__f, __data, strlen(__data), 0);
+        fclose(__fmbq);
+    }
+
+    bzero(__data, 80);
+    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+    sprintf(__fpmbq, "%s%s.V.4", SNAPBK_PATH, __s);
+    __fmbq = fopen(__fpmbq, "r");
+    if (__fmbq != NULL) {
+        fgets(__data, 80, __fmbq);
+        sprintf(__data, "%s\r\n", __data);
+        send(__f, __data, strlen(__data), 0);
+        fclose(__fmbq);
+    }
+*/
 
 
     free(__data);
