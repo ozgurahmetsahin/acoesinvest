@@ -33,7 +33,6 @@ char *timecmp(char *_t, int _p);
 void makedirs(char *_dd);
 void readdata(char *dm);
 void blast(char *_blast);
-void removechars(char *__b, char *_r);
 void updatesnapshot(char *_s, int col, char *_v);
 
 /*Declaracao da Estrutura de Dados para informacao da linha de Trade*/
@@ -117,7 +116,7 @@ void readalldata(char *dt) {
     while (1) {
 
         // Montamos o nome do arquivo
-        sprintf(f, "/home/donda/ddc/buffer/%s%s.tbf", dt, t);
+        sprintf(f, "/home/donda/ddc/backups/mes_09/%s%s.tbf", dt, t);
 
         printf("%s\r\n", f);
 
@@ -151,9 +150,13 @@ void readalldata(char *dt) {
 
                 if (strlen(rline) > 10) {
                     int k = 1;
-                    for (k = 1; k <= 30; k++) {
-                        tradedata(rline, k, dt, NULL);
-                    }
+                    
+                    tradedata(rline, 1, dt, NULL);
+                    tradedata(rline, 5, dt, NULL);
+                    tradedata(rline, 10, dt, NULL);
+                    tradedata(rline, 15, dt, NULL);
+                    tradedata(rline, 30, dt, NULL);
+                    
                 }
 
                 // Limpamos o dado lido para não ter má leitura
@@ -934,9 +937,16 @@ void readdata(char *_dm) {
                 if (bfline[0] == 'T' && bfline[strlen(bfline) - 1] == '!') {
 
                     // Analisa dados
+/*
                     for (charts = 1; charts <= 30; charts++) {
                         tradedata(bfline, charts, _dm, "/home/donda/ddc/buffer/ddcchart.data");
                     }
+*/
+                    tradedata(bfline, 1, _dm, "/home/donda/ddc/buffer/ddcchart.data");
+                    tradedata(bfline, 5, _dm, "/home/donda/ddc/buffer/ddcchart.data");
+                    tradedata(bfline, 10, _dm, "/home/donda/ddc/buffer/ddcchart.data");
+                    tradedata(bfline, 15, _dm, "/home/donda/ddc/buffer/ddcchart.data");
+                    tradedata(bfline, 30, _dm, "/home/donda/ddc/buffer/ddcchart.data");
                     // Volta contador ao inicio
                     charts = 1;
                 }
@@ -1000,34 +1010,7 @@ void readdata(char *_dm) {
 
 }
 
-/**
- * Função removechars é responsavel por retirar da string
- * os caracteres não imprimiveis \r e \n.
- * @param __b
- * @param _r
- */
-void removechars(char *__b, char *_r) {
 
-    char *_m;
-    _m = malloc(MAX_BUF_SIZE);
-
-    int s = 0;
-    int p = 0;
-
-    for (s = 0; s <= strlen(__b); s++) {
-
-        if ((unsigned int) __b[s] != 10 && (unsigned int) __b[s] != 13) {
-            _m[p] = __b[s];
-            p++;
-        }
-
-    }
-
-    strcpy(_r, _m);
-
-    free(_m);
-
-}
 
 /**
  * Função responsável por retornar o proximo arquivo de leitura
