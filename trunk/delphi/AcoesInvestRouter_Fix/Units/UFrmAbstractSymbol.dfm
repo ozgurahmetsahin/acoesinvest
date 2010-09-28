@@ -1,0 +1,79 @@
+object FrmAbstractSymbol: TFrmAbstractSymbol
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsDialog
+  Caption = 'Resumo'
+  ClientHeight = 131
+  ClientWidth = 280
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = [fsBold]
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object StringGrid1: TStringGrid
+    Left = 0
+    Top = 18
+    Width = 280
+    Height = 113
+    Align = alClient
+    BorderStyle = bsNone
+    Color = 4194304
+    ColCount = 4
+    Ctl3D = False
+    DefaultColWidth = 69
+    DefaultRowHeight = 18
+    FixedCols = 0
+    RowCount = 6
+    FixedRows = 0
+    Options = [goRangeSelect]
+    ParentCtl3D = False
+    TabOrder = 0
+    OnDrawCell = StringGrid1DrawCell
+    OnKeyPress = StringGrid1KeyPress
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 280
+    Height = 18
+    Align = alTop
+    BevelOuter = bvNone
+    Color = 4194304
+    Ctl3D = False
+    ParentBackground = False
+    ParentCtl3D = False
+    TabOrder = 1
+    object Edit1: TEdit
+      Left = 1
+      Top = 0
+      Width = 58
+      Height = 19
+      CharCase = ecUpperCase
+      TabOrder = 0
+    end
+    object Button1: TButton
+      Left = 61
+      Top = -1
+      Width = 37
+      Height = 20
+      Caption = 'OK'
+      Default = True
+      TabOrder = 1
+      OnClick = Button1Click
+    end
+  end
+  object TimerUpdate: TTimer
+    Enabled = False
+    Interval = 2000
+    OnTimer = TimerUpdateTimer
+    Left = 136
+    Top = 56
+  end
+end
