@@ -1,0 +1,4580 @@
+<grafix.principal.HistoricoPapeis>
+  <papeis>
+    <entry>
+      <string>mult3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mult3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>MULTIPLAN ON      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>teka4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>teka4</codigo>
+        <liquidez>93.0</liquidez>
+        <nome>TEKA PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>whrl4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>whrl4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>WHIRLPOOL PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cple6</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cple6</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>COPEL PNB     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bema3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bema3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BEMATECH ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>abcb4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>abcb4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ABC BRASIL PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>fiip11b</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>fiip11b</codigo>
+        <liquidez>26.0</liquidez>
+        <nome>FII RB CAP I CI      MB</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>inet3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>inet3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>INEPAR TEL ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cesp3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cesp3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CESP ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mari3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mari3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>MARISA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cesp6</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cesp6</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CESP PNB     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>imbi4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>imbi4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>DOC IMBITUBA PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ccrod42</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ccrod42</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>CCRO ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>usime55</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>usime55</codigo>
+        <liquidez>2.0</liquidez>
+        <nome>USIM PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cple3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cple3</codigo>
+        <liquidez>97.0</liquidez>
+        <nome>COPEL ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pmamd9</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pmamd9</codigo>
+        <liquidez>15.0</liquidez>
+        <nome>PMAM ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pmamd7</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pmamd7</codigo>
+        <liquidez>7.0</liquidez>
+        <nome>PMAM ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pmamd8</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pmamd8</codigo>
+        <liquidez>18.0</liquidez>
+        <nome>PMAM ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbas3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbas3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BRASIL ON  ED  NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pqdp11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pqdp11</codigo>
+        <liquidez>47.0</liquidez>
+        <nome>FII D PEDRO CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>csan3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>csan3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>COSAN ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>igta3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>igta3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>IGUATEMI ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cepe5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cepe5</codigo>
+        <liquidez>39.0</liquidez>
+        <nome>CELPE PNA</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rpad3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rpad3</codigo>
+        <liquidez>39.0</liquidez>
+        <nome>ALFA HOLDING ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ccrod34</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ccrod34</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>CCRO ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valep46</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valep46</codigo>
+        <liquidez>10.0</liquidez>
+        <nome>VALEE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>faed11b</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>faed11b</codigo>
+        <liquidez>11.0</liquidez>
+        <nome>FII ANH EDUC CI  ER  MB</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>eztc3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>eztc3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>EZTEC ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bnca3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bnca3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>NOSSA CAIXA ON  ED</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valep42</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valep42</codigo>
+        <liquidez>10.0</liquidez>
+        <nome>VALEE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petre32</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petre32</codigo>
+        <liquidez>32.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petre34</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petre34</codigo>
+        <liquidez>26.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bhgr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bhgr3</codigo>
+        <liquidez>39.0</liquidez>
+        <nome>BHG ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petre36</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petre36</codigo>
+        <liquidez>28.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrc30</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrc30</codigo>
+        <liquidez>46.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>smto3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>smto3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>SAO MARTINHO ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petre38</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petre38</codigo>
+        <liquidez>26.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrc32</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrc32</codigo>
+        <liquidez>47.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bmto4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bmto4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BRASMOTOR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>enma3b</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>enma3b</codigo>
+        <liquidez>87.0</liquidez>
+        <nome>CEMAR ON      MB</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bobr4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bobr4</codigo>
+        <liquidez>97.0</liquidez>
+        <nome>BOMBRIL PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bvmf3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bvmf3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BMFBOVESPA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pnor5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pnor5</codigo>
+        <liquidez>91.0</liquidez>
+        <nome>PRONOR PNA</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>jbdu3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>jbdu3</codigo>
+        <liquidez>96.0</liquidez>
+        <nome>J B DUARTE ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>jbdu4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>jbdu4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>J B DUARTE PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>dohl4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>dohl4</codigo>
+        <liquidez>55.0</liquidez>
+        <nome>DOHLER PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>engi11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>engi11</codigo>
+        <liquidez>82.0</liquidez>
+        <nome>ENERGISA UNT ED</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>enbr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>enbr3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ENERGIAS BR ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cchi3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cchi3</codigo>
+        <liquidez>96.0</liquidez>
+        <nome>CHIARELLI ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrc34</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrc34</codigo>
+        <liquidez>58.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cchi4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cchi4</codigo>
+        <liquidez>70.0</liquidez>
+        <nome>CHIARELLI PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>czlt11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>czlt11</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>COSAN LTD DR3</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrc36</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrc36</codigo>
+        <liquidez>59.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ciel3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ciel3</codigo>
+        <liquidez>55.0</liquidez>
+        <nome>CIELO ON  EDJ NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrc38</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrc38</codigo>
+        <liquidez>65.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petre30</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petre30</codigo>
+        <liquidez>20.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>netc4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>netc4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>NET PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>szpq4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>szpq4</codigo>
+        <liquidez>78.0</liquidez>
+        <nome>QUATTOR PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rsid3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rsid3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ROSSI RESID ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tnlpd28</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tnlpd28</codigo>
+        <liquidez>11.0</liquidez>
+        <nome>TNLP PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tnlpd24</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tnlpd24</codigo>
+        <liquidez>15.0</liquidez>
+        <nome>TNLP PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sult4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sult4</codigo>
+        <liquidez>86.0</liquidez>
+        <nome>SULTEPA PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>usimd51</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>usimd51</codigo>
+        <liquidez>2.0</liquidez>
+        <nome>USIM PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sult3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sult3</codigo>
+        <liquidez>17.0</liquidez>
+        <nome>SULTEPA ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>fibrd38</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>fibrd38</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>FIBR ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mgel4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mgel4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>MANGELS INDL PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>prvi3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>prvi3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>PROVIDENCIA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrc28</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrc28</codigo>
+        <liquidez>31.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ieng5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ieng5</codigo>
+        <liquidez>99.0</liquidez>
+        <nome>IENERGIA PNA</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ctka4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ctka4</codigo>
+        <liquidez>82.0</liquidez>
+        <nome>KARSTEN PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>usimd60</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>usimd60</codigo>
+        <liquidez>4.0</liquidez>
+        <nome>USIM PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tarp11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tarp11</codigo>
+        <liquidez>75.0</liquidez>
+        <nome>TIG LTD DR3</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tnlpd30</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tnlpd30</codigo>
+        <liquidez>13.0</liquidez>
+        <nome>TNLP PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tnlpc36</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tnlpc36</codigo>
+        <liquidez>37.0</liquidez>
+        <nome>TNLP PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tnlpd32</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tnlpd32</codigo>
+        <liquidez>13.0</liquidez>
+        <nome>TNLP PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tnlpd34</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tnlpd34</codigo>
+        <liquidez>22.0</liquidez>
+        <nome>TNLP PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tnlpc32</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tnlpc32</codigo>
+        <liquidez>40.0</liquidez>
+        <nome>TNLP PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>suzb5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>suzb5</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>SUZANO PAPEL PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tnlpd36</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tnlpd36</codigo>
+        <liquidez>16.0</liquidez>
+        <nome>TNLP PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tnlpc34</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tnlpc34</codigo>
+        <liquidez>38.0</liquidez>
+        <nome>TNLP PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tnlpd38</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tnlpd38</codigo>
+        <liquidez>13.0</liquidez>
+        <nome>TNLP PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>guar3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>guar3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>GUARARAPES ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>dxtg4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>dxtg4</codigo>
+        <liquidez>96.0</liquidez>
+        <nome>DIXIE TOGA PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sled4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sled4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>SARAIVA LIVR PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petre54</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petre54</codigo>
+        <liquidez>6.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petre50</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petre50</codigo>
+        <liquidez>22.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ohlb3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ohlb3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>OHL BRASIL ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petre52</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petre52</codigo>
+        <liquidez>7.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>usimd58</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>usimd58</codigo>
+        <liquidez>6.0</liquidez>
+        <nome>USIM PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>beef11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>beef11</codigo>
+        <liquidez>61.0</liquidez>
+        <nome>MINERVA BNS ORD NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>euro11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>euro11</codigo>
+        <liquidez>95.0</liquidez>
+        <nome>FII EUROPAR CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd50</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd50</codigo>
+        <liquidez>23.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rhds3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rhds3</codigo>
+        <liquidez>98.0</liquidez>
+        <nome>M G POLIEST ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>usimd56</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>usimd56</codigo>
+        <liquidez>9.0</liquidez>
+        <nome>USIM PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>embr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>embr3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>EMBRAER ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>snsy5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>snsy5</codigo>
+        <liquidez>97.0</liquidez>
+        <nome>SANSUY PNA</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valec36</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valec36</codigo>
+        <liquidez>46.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd46</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd46</codigo>
+        <liquidez>38.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mnpr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mnpr3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>MINUPAR ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valec34</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valec34</codigo>
+        <liquidez>37.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd44</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd44</codigo>
+        <liquidez>38.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valec38</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valec38</codigo>
+        <liquidez>46.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd48</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd48</codigo>
+        <liquidez>33.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petre48</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petre48</codigo>
+        <liquidez>17.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>gazo4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>gazo4</codigo>
+        <liquidez>96.0</liquidez>
+        <nome>GAZOLA PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>magg3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>magg3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>MAGNESITA SA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petre46</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petre46</codigo>
+        <liquidez>17.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>dtex3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>dtex3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>DURATEX ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petre44</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petre44</codigo>
+        <liquidez>22.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petre42</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petre42</codigo>
+        <liquidez>21.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>trna11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>trna11</codigo>
+        <liquidez>97.0</liquidez>
+        <nome>TERNA PART UNT     N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>fpab11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>fpab11</codigo>
+        <liquidez>82.0</liquidez>
+        <nome>FII A BRANCA CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petre40</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petre40</codigo>
+        <liquidez>25.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>balm4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>balm4</codigo>
+        <liquidez>12.0</liquidez>
+        <nome>BAUMER PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>clsc6</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>clsc6</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CELESC PNB     N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tamm4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tamm4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TAM S/A PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valec40</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valec40</codigo>
+        <liquidez>54.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd42</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd42</codigo>
+        <liquidez>41.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>gepa4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>gepa4</codigo>
+        <liquidez>21.0</liquidez>
+        <nome>GER PARANAP PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valec44</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valec44</codigo>
+        <liquidez>68.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>usim3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>usim3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>USIMINAS ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd40</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd40</codigo>
+        <liquidez>50.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valec42</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valec42</codigo>
+        <liquidez>55.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>usim5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>usim5</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>USIMINAS PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd36</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd36</codigo>
+        <liquidez>42.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd37</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd37</codigo>
+        <liquidez>8.0</liquidez>
+        <nome>PETRE PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rede4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rede4</codigo>
+        <liquidez>90.0</liquidez>
+        <nome>REDE ENERGIA PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd38</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd38</codigo>
+        <liquidez>46.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valec46</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valec46</codigo>
+        <liquidez>57.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd32</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd32</codigo>
+        <liquidez>41.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>dayc4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>dayc4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>DAYCOVAL PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mmxm3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mmxm3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>MMX MINER ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sebb11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sebb11</codigo>
+        <liquidez>82.0</liquidez>
+        <nome>SEB UNT     N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valec48</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valec48</codigo>
+        <liquidez>54.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd34</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd34</codigo>
+        <liquidez>37.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>eeel4b</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>eeel4b</codigo>
+        <liquidez>25.0</liquidez>
+        <nome>CEEE-GT PN      MB</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed44</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed44</codigo>
+        <liquidez>50.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed46</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed46</codigo>
+        <liquidez>38.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed48</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed48</codigo>
+        <liquidez>38.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>crde3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>crde3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CR2 ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ccro3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ccro3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CCR RODOVIAS ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cgas3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cgas3</codigo>
+        <liquidez>54.0</liquidez>
+        <nome>COMGAS ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>hgbs11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>hgbs11</codigo>
+        <liquidez>70.0</liquidez>
+        <nome>FII CSHGSHOP CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>netcp1</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>netcp1</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>NETCE PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>goau4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>goau4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>GERDAU MET PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cgas5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cgas5</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>COMGAS PNA</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed50</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed50</codigo>
+        <liquidez>38.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed52</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed52</codigo>
+        <liquidez>37.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed54</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed54</codigo>
+        <liquidez>32.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>even3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>even3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>EVEN ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd30</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd30</codigo>
+        <liquidez>35.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>goau3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>goau3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>GERDAU MET ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>eter3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>eter3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ETERNIT ON  ED  NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mrve3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mrve3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>MRV ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petr3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>PETROBRAS ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petr4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petr4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>PETROBRAS PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd28</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd28</codigo>
+        <liquidez>22.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbdcd30</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbdcd30</codigo>
+        <liquidez>14.0</liquidez>
+        <nome>BBDC PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd26</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd26</codigo>
+        <liquidez>15.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrd24</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrd24</codigo>
+        <liquidez>2.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbdcd34</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbdcd34</codigo>
+        <liquidez>5.0</liquidez>
+        <nome>BBDC PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbdcd33</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbdcd33</codigo>
+        <liquidez>13.0</liquidez>
+        <nome>BBDCE PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbdcd32</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbdcd32</codigo>
+        <liquidez>13.0</liquidez>
+        <nome>BBDC PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed58</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed58</codigo>
+        <liquidez>33.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>idvl4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>idvl4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>INDUSVAL PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>eeel3b</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>eeel3b</codigo>
+        <liquidez>22.0</liquidez>
+        <nome>CEEE-GT ON      MB</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed56</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed56</codigo>
+        <liquidez>32.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>avil3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>avil3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ACOS VILL ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sgen4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sgen4</codigo>
+        <liquidez>78.0</liquidez>
+        <nome>SERGEN PN *</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed60</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed60</codigo>
+        <liquidez>21.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tvit3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tvit3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TIVIT ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed64</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed64</codigo>
+        <liquidez>7.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>briv3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>briv3</codigo>
+        <liquidez>96.0</liquidez>
+        <nome>ALFA INVEST ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>briv4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>briv4</codigo>
+        <liquidez>93.0</liquidez>
+        <nome>ALFA INVEST PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed62</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed62</codigo>
+        <liquidez>7.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mobi11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mobi11</codigo>
+        <liquidez>15.0</liquidez>
+        <nome>ISHARES MOBI CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>itubd40</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>itubd40</codigo>
+        <liquidez>12.0</liquidez>
+        <nome>ITUB PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>estr4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>estr4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ESTRELA PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tcsa3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tcsa3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TECNISA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tnlp3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tnlp3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TELEMAR ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tnlp4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tnlp4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TELEMAR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ealt4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ealt4</codigo>
+        <liquidez>91.0</liquidez>
+        <nome>ACO ALTONA PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bmin4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bmin4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>MERC INVEST PN  EJ</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>lixc4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>lixc4</codigo>
+        <liquidez>95.0</liquidez>
+        <nome>LIX DA CUNHA PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>telb3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>telb3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TELEBRAS ON *</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tupy3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tupy3</codigo>
+        <liquidez>95.0</liquidez>
+        <nome>TUPY ON *</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>telb4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>telb4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TELEBRAS PN *</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>krot11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>krot11</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>KROTON UNT     N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>gfsa3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>gfsa3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>GAFISA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rdcd3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rdcd3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>REDECARD ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbasc29</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbasc29</codigo>
+        <liquidez>4.0</liquidez>
+        <nome>BBASE ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>txrx4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>txrx4</codigo>
+        <liquidez>85.0</liquidez>
+        <nome>TEX RENAUX PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>vivo4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>vivo4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>VIVO PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>haga4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>haga4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>HAGA S/A PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>haga3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>haga3</codigo>
+        <liquidez>55.0</liquidez>
+        <nome>HAGA S/A ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cbma3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cbma3</codigo>
+        <liquidez>93.0</liquidez>
+        <nome>COBRASMA ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cbma4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cbma4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>COBRASMA PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>aedu11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>aedu11</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ANHANGUERA UNT     N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>vivo3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>vivo3</codigo>
+        <liquidez>91.0</liquidez>
+        <nome>VIVO ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>hgtx3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>hgtx3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CIA HERING ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>btow3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>btow3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>B2W VAREJO ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tgma3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tgma3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TEGMA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>itubd38</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>itubd38</codigo>
+        <liquidez>8.0</liquidez>
+        <nome>ITUB PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>euca4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>euca4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>EUCATEX PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbas13</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbas13</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BRASIL BNS C   NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tcno4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tcno4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TECNOSOLO PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tcno3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tcno3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TECNOSOLO ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brfsd46</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brfsd46</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>BRFS ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ctax3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ctax3</codigo>
+        <liquidez>82.0</liquidez>
+        <nome>CONTAX ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sjos4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sjos4</codigo>
+        <liquidez>76.0</liquidez>
+        <nome>TECEL S JOSE PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mrfg3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mrfg3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>MARFRIG ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sjos3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sjos3</codigo>
+        <liquidez>26.0</liquidez>
+        <nome>TECEL S JOSE ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ctax4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ctax4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CONTAX PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>stbp11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>stbp11</codigo>
+        <liquidez>99.0</liquidez>
+        <nome>SANTOS BRP UNT     N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>czrs4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>czrs4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CRUZEIRO SUL PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>scar3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>scar3</codigo>
+        <liquidez>87.0</liquidez>
+        <nome>SAO CARLOS ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>fesa4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>fesa4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>FERBASA PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>usimc52</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>usimc52</codigo>
+        <liquidez>32.0</liquidez>
+        <nome>USIM PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>fbmc4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>fbmc4</codigo>
+        <liquidez>33.0</liquidez>
+        <nome>FIBAM PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>gvtt3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>gvtt3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>GVT HOLDING ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>gpcp3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>gpcp3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>GPC PART ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ptbl3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ptbl3</codigo>
+        <liquidez>99.0</liquidez>
+        <nome>PORTOBELLO ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>slce3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>slce3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>SLC AGRICOLA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mpxe3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mpxe3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>MPX ENERGIA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbasc30</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbasc30</codigo>
+        <liquidez>15.0</liquidez>
+        <nome>BBAS ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cbee3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cbee3</codigo>
+        <liquidez>98.0</liquidez>
+        <nome>AMPLA ENERG ON *</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cyre3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cyre3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CYRELA REALT ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rent3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rent3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>LOCALIZA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>uoll4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>uoll4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>UOL PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>crem3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>crem3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CREMER ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>nslu11b</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>nslu11b</codigo>
+        <liquidez>84.0</liquidez>
+        <nome>FII LOURDES CI      MB</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sanb3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sanb3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>SANTANDER BR ON      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sanb4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sanb4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>SANTANDER BR PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ctsa4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ctsa4</codigo>
+        <liquidez>68.0</liquidez>
+        <nome>SANTANENSE PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ctsa3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ctsa3</codigo>
+        <liquidez>70.0</liquidez>
+        <nome>SANTANENSE ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>agei3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>agei3</codigo>
+        <liquidez>20.0</liquidez>
+        <nome>AGRE EMP IMO ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>odpv3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>odpv3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ODONTOPREV ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>geti3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>geti3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>AES TIETE ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>geti4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>geti4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>AES TIETE PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>gpiv11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>gpiv11</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>GP INVEST DR3</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rcsl4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rcsl4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>RECRUSUL PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ieng3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ieng3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>IENERGIA ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>grnd3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>grnd3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>GRENDENE ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pcar5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pcar5</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>P.ACUCAR-CBD PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>kepl3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>kepl3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>KEPLER WEBER ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mlft4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mlft4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>JEREISSATI PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>dtcy3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>dtcy3</codigo>
+        <liquidez>84.0</liquidez>
+        <nome>DTCOM-DIRECT ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valeq45</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valeq45</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>VALEE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rdni3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rdni3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>RODOBENSIMOB ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>toyb3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>toyb3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TECTOY ON *</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pfrm3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pfrm3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>PROFARMA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>toyb4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>toyb4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TECTOY PN *</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>toyb9</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>toyb9</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>TECTOY ON *REC</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brpr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brpr3</codigo>
+        <liquidez>6.0</liquidez>
+        <nome>BR PROPERT ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ftrx4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ftrx4</codigo>
+        <liquidez>78.0</liquidez>
+        <nome>FAB C RENAUX PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mndl3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mndl3</codigo>
+        <liquidez>43.0</liquidez>
+        <nome>MUNDIAL ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bpnm4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bpnm4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>PANAMERICANO PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mndl4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mndl4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>MUNDIAL PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bicb4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bicb4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BICBANCO PN  EDJ N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>coce5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>coce5</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>COELCE PNA</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bicb3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bicb3</codigo>
+        <liquidez>46.0</liquidez>
+        <nome>BICBANCO ON  EDJ N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>alpa4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>alpa4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ALPARGATAS PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pmamf8</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pmamf8</codigo>
+        <liquidez>5.0</liquidez>
+        <nome>PMAM ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ibovr70</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ibovr70</codigo>
+        <liquidez>5.0</liquidez>
+        <nome>IBOVE IBO</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>alpa3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>alpa3</codigo>
+        <liquidez>56.0</liquidez>
+        <nome>ALPARGATAS ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pibb11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pibb11</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>PIBB CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ccim3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ccim3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CC DES IMOB ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sfsa4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sfsa4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>SOFISA PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>wson11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>wson11</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>WILSON SONS DR3</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bees3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bees3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BANESTES ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxp3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxp3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>OGX PETROLEO ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rpmg4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rpmg4</codigo>
+        <liquidez>93.0</liquidez>
+        <nome>PET MANGUINH PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ptnt4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ptnt4</codigo>
+        <liquidez>65.0</liquidez>
+        <nome>PETTENATI PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cpfed38</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cpfed38</codigo>
+        <liquidez>2.0</liquidez>
+        <nome>CPFE    /ED ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rpmg3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rpmg3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>PET MANGUINH ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>klbn4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>klbn4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>KLABIN S/A PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>plas3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>plas3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>PLASCAR PART ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pomo4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pomo4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>MARCOPOLO PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbasd32</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbasd32</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>BBAS ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pomo3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pomo3</codigo>
+        <liquidez>92.0</liquidez>
+        <nome>MARCOPOLO ON      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bgip4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bgip4</codigo>
+        <liquidez>69.0</liquidez>
+        <nome>BANESE PN  ED</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbdc3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbdc3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BRADESCO ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbdc4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbdc4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BRADESCO PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbasd30</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbasd30</codigo>
+        <liquidez>6.0</liquidez>
+        <nome>BBAS ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>acgu3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>acgu3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>GUARANI ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ecod3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ecod3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ECODIESEL ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ffci11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ffci11</codigo>
+        <liquidez>86.0</liquidez>
+        <nome>FII RIOB RC CI  ER</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>itsa3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>itsa3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ITAUSA ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>itsa4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>itsa4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ITAUSA PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>maggd40</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>maggd40</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>MAGG ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tibr5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tibr5</codigo>
+        <liquidez>98.0</liquidez>
+        <nome>MILLENNIUM PNA</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tibr6</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tibr6</codigo>
+        <liquidez>78.0</liquidez>
+        <nome>MILLENNIUM PNB</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpd22</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpd22</codigo>
+        <liquidez>12.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpd20</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpd20</codigo>
+        <liquidez>34.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ibovr68</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ibovr68</codigo>
+        <liquidez>8.0</liquidez>
+        <nome>IBOVE IBO</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpd21</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpd21</codigo>
+        <liquidez>17.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ggbrc27</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ggbrc27</codigo>
+        <liquidez>30.0</liquidez>
+        <nome>GGBRE PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>jhsf3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>jhsf3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>JHSF PART ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>baza3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>baza3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>AMAZONIA ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ugpa4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ugpa4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ULTRAPAR PN  ED  N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ibovr60</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ibovr60</codigo>
+        <liquidez>13.0</liquidez>
+        <nome>IBOVE IBO</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tots3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tots3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TOTVS ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pine4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pine4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>PINE PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brto4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brto4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BRASIL TELEC PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brto3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brto3</codigo>
+        <liquidez>86.0</liquidez>
+        <nome>BRASIL TELEC ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>fras4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>fras4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>FRAS-LE PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>trpld50</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>trpld50</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>TRPL    /ES PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>aelp3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>aelp3</codigo>
+        <liquidez>79.0</liquidez>
+        <nome>AES ELPA ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>biom4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>biom4</codigo>
+        <liquidez>58.0</liquidez>
+        <nome>BIOMM PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tlpp4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tlpp4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TELESP PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sula11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sula11</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>SUL AMERICA UNT     N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tlpp3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tlpp3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TELESP ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>logn3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>logn3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>LOG-IN ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>itsad12</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>itsad12</codigo>
+        <liquidez>14.0</liquidez>
+        <nome>ITSA PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pmet6</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pmet6</codigo>
+        <liquidez>97.0</liquidez>
+        <nome>PRO METALURG PNB*</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>itsad13</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>itsad13</codigo>
+        <liquidez>3.0</liquidez>
+        <nome>ITSA PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pssa3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pssa3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>PORTO SEGURO ON  INT NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>itsad11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>itsad11</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>ITSA PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>alll3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>alll3</codigo>
+        <liquidez>57.0</liquidez>
+        <nome>ALL AMER LAT ON      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>alll4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>alll4</codigo>
+        <liquidez>91.0</liquidez>
+        <nome>ALL AMER LAT PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ibovv66</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ibovv66</codigo>
+        <liquidez>15.0</liquidez>
+        <nome>IBOVE IBO</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bova11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bova11</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ISHARES BOVA CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>wplz11b</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>wplz11b</codigo>
+        <liquidez>75.0</liquidez>
+        <nome>FII W PLAZA CI  ER  MB</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ctip3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ctip3</codigo>
+        <liquidez>90.0</liquidez>
+        <nome>CETIP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>jfen3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>jfen3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>JOAO FORTES ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>dirr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>dirr3</codigo>
+        <liquidez>75.0</liquidez>
+        <nome>DIRECIONAL ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brsr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brsr3</codigo>
+        <liquidez>51.0</liquidez>
+        <nome>BANRISUL ON  EJ  N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brsr6</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brsr6</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BANRISUL PNB EJ  N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>elpl6</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>elpl6</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ELETROPAULO PNB     N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>elpl5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>elpl5</codigo>
+        <liquidez>62.0</liquidez>
+        <nome>ELETROPAULO PNA     N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bisa3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bisa3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BROOKFIELD ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbrk3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbrk3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BR BROKERS ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>fmof11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>fmof11</codigo>
+        <liquidez>43.0</liquidez>
+        <nome>FII MEMORIAL CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sapr4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sapr4</codigo>
+        <liquidez>95.0</liquidez>
+        <nome>SANEPAR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ggbr4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ggbr4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>GERDAU PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>inpr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>inpr3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>INPAR S/A ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ggbr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ggbr3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>GERDAU ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpd15</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpd15</codigo>
+        <liquidez>11.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>fher3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>fher3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>FER HERINGER ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>gpar3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>gpar3</codigo>
+        <liquidez>8.0</liquidez>
+        <nome>CELGPAR ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pmamd12</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pmamd12</codigo>
+        <liquidez>22.0</liquidez>
+        <nome>PMAM ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpd16</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpd16</codigo>
+        <liquidez>16.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpd17</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpd17</codigo>
+        <liquidez>22.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpd18</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpd18</codigo>
+        <liquidez>33.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpd19</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpd19</codigo>
+        <liquidez>28.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pmamd10</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pmamd10</codigo>
+        <liquidez>16.0</liquidez>
+        <nome>PMAM ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>vale5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>vale5</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>milk11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>milk11</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>LAEP DR3</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>itsad39</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>itsad39</codigo>
+        <liquidez>7.0</liquidez>
+        <nome>ITSAE PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>frio3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>frio3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>METALFRIO ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpc16</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpc16</codigo>
+        <liquidez>35.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ggbrd30</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ggbrd30</codigo>
+        <liquidez>4.0</liquidez>
+        <nome>GGBR PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpc17</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpc17</codigo>
+        <liquidez>42.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpc18</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpc18</codigo>
+        <liquidez>39.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpe18</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpe18</codigo>
+        <liquidez>4.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>llxl3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>llxl3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>LLX LOG ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ccpr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ccpr3</codigo>
+        <liquidez>93.0</liquidez>
+        <nome>CYRE COM-CCP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpe17</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpe17</codigo>
+        <liquidez>7.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpe16</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpe16</codigo>
+        <liquidez>7.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>posi3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>posi3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>POSITIVO INF ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>vale3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>vale3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>VALE ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>alll11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>alll11</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ALL AMER LAT UNT     N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bovae72</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bovae72</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>BOVA CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ggbrd25</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ggbrd25</codigo>
+        <liquidez>5.0</liquidez>
+        <nome>GGBR PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>stlb3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>stlb3</codigo>
+        <liquidez>5.0</liquidez>
+        <nome>STEEL BRASIL ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ggbrd28</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ggbrd28</codigo>
+        <liquidez>9.0</liquidez>
+        <nome>GGBR PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>csmg3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>csmg3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>COPASA ON  INT NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ggbrd27</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ggbrd27</codigo>
+        <liquidez>15.0</liquidez>
+        <nome>GGBRE PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>glob3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>glob3</codigo>
+        <liquidez>98.0</liquidez>
+        <nome>GLOBEX ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>lame4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>lame4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>LOJAS AMERIC PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>lame3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>lame3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>LOJAS AMERIC ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>plasd35</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>plasd35</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>PLAS ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>llis3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>llis3</codigo>
+        <liquidez>99.0</liquidez>
+        <nome>LE LIS BLANC ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bovaq65</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bovaq65</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>BOVAE CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bovaq68</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bovaq68</codigo>
+        <liquidez>2.0</liquidez>
+        <nome>BOVAE CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>itub4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>itub4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ITAUUNIBANCO PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>itub3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>itub3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ITAUUNIBANCO ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>amil3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>amil3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>AMIL ON  ED  NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brax11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brax11</codigo>
+        <liquidez>14.0</liquidez>
+        <nome>ISHARES BRAX CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ctnm4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ctnm4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>COTEMINAS PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>netcp11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>netcp11</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>NETCE PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bttl4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bttl4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BATTISTELLA PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bttl3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bttl3</codigo>
+        <liquidez>89.0</liquidez>
+        <nome>BATTISTELLA ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cmigd32</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cmigd32</codigo>
+        <liquidez>4.0</liquidez>
+        <nome>CMIG PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ibovp66</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ibovp66</codigo>
+        <liquidez>39.0</liquidez>
+        <nome>IBOVE IBO</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>igbr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>igbr3</codigo>
+        <liquidez>99.0</liquidez>
+        <nome>IGB S/A ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ibovp67</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ibovp67</codigo>
+        <liquidez>4.0</liquidez>
+        <nome>IBOVE IBO</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ibovp68</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ibovp68</codigo>
+        <liquidez>19.0</liquidez>
+        <nome>IBOVE IBO</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mrsl4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mrsl4</codigo>
+        <liquidez>84.0</liquidez>
+        <nome>MARISOL PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>gshp3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>gshp3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>GENERALSHOPP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sgps3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sgps3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>SPRINGS ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>natu3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>natu3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>NATURA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>lpsb3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>lpsb3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>LOPES BRASIL ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>elek3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>elek3</codigo>
+        <liquidez>16.0</liquidez>
+        <nome>ELEKEIROZ ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rsip3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rsip3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>RASIP AGRO ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ibovd70</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ibovd70</codigo>
+        <liquidez>27.0</liquidez>
+        <nome>IBOV IBO</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>elek4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>elek4</codigo>
+        <liquidez>61.0</liquidez>
+        <nome>ELEKEIROZ PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ibovd72</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ibovd72</codigo>
+        <liquidez>29.0</liquidez>
+        <nome>IBOV IBO</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cmig3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cmig3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CEMIG ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>temp3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>temp3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TEMPO PART ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cmig4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cmig4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CEMIG PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>wege3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>wege3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>WEG ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rsip4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rsip4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>RASIP AGRO PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ibovp60</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ibovp60</codigo>
+        <liquidez>34.0</liquidez>
+        <nome>IBOVE IBO</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ibovp64</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ibovp64</codigo>
+        <liquidez>41.0</liquidez>
+        <nome>IBOVE IBO</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cnfb4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cnfb4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CONFAB PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bmeb3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bmeb3</codigo>
+        <liquidez>80.0</liquidez>
+        <nome>MERC BRASIL ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sbsp3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sbsp3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>SABESP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>alsc3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>alsc3</codigo>
+        <liquidez>30.0</liquidez>
+        <nome>ALIANSCE ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>golld26</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>golld26</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>GOLL PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bmeb9</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bmeb9</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>MERC BRASIL ON  REC</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ibovf70</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ibovf70</codigo>
+        <liquidez>12.0</liquidez>
+        <nome>IBOV IBO</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>csab3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>csab3</codigo>
+        <liquidez>15.0</liquidez>
+        <nome>SEG AL BAHIA ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>csab4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>csab4</codigo>
+        <liquidez>26.0</liquidez>
+        <nome>SEG AL BAHIA PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>keplc40</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>keplc40</codigo>
+        <liquidez>14.0</liquidez>
+        <nome>KEPL ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>shul4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>shul4</codigo>
+        <liquidez>89.0</liquidez>
+        <nome>SCHULZ PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>criv3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>criv3</codigo>
+        <liquidez>89.0</liquidez>
+        <nome>ALFA FINANC ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>lupa3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>lupa3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>LUPATECH ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>criv4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>criv4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ALFA FINANC PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed40</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed40</codigo>
+        <liquidez>33.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>strp4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>strp4</codigo>
+        <liquidez>96.0</liquidez>
+        <nome>BOTUCATU TEX PN *</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed42</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed42</codigo>
+        <liquidez>35.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed34</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed34</codigo>
+        <liquidez>17.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ecodd11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ecodd11</codigo>
+        <liquidez>7.0</liquidez>
+        <nome>ECOD ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ecodd12</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ecodd12</codigo>
+        <liquidez>23.0</liquidez>
+        <nome>ECOD ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed36</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed36</codigo>
+        <liquidez>32.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ecodd13</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ecodd13</codigo>
+        <liquidez>13.0</liquidez>
+        <nome>ECOD ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>flry3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>flry3</codigo>
+        <liquidez>56.0</liquidez>
+        <nome>FLEURY ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>htmx11b</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>htmx11b</codigo>
+        <liquidez>53.0</liquidez>
+        <nome>FII HOTEL MX CI      MB</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ecodd14</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ecodd14</codigo>
+        <liquidez>13.0</liquidez>
+        <nome>ECOD ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed38</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed38</codigo>
+        <liquidez>31.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ecodd15</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ecodd15</codigo>
+        <liquidez>10.0</liquidez>
+        <nome>ECOD ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rapt4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rapt4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>RANDON PART PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rapt3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rapt3</codigo>
+        <liquidez>80.0</liquidez>
+        <nome>RANDON PART ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>estc3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>estc3</codigo>
+        <liquidez>98.0</liquidez>
+        <nome>ESTACIO PART ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cgra3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cgra3</codigo>
+        <liquidez>42.0</liquidez>
+        <nome>GRAZZIOTIN ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cgra4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cgra4</codigo>
+        <liquidez>77.0</liquidez>
+        <nome>GRAZZIOTIN PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bvmfc12</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bvmfc12</codigo>
+        <liquidez>31.0</liquidez>
+        <nome>BVMF ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cespd24</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cespd24</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>CESP PNB     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bvmfc11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bvmfc11</codigo>
+        <liquidez>26.0</liquidez>
+        <nome>BVMF ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>unip6</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>unip6</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>UNIPAR PNB     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>jbss3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>jbss3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>JBS ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valed32</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valed32</codigo>
+        <liquidez>8.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>unip3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>unip3</codigo>
+        <liquidez>90.0</liquidez>
+        <nome>UNIPAR ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>trpl2</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>trpl2</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>TRAN PAULIST DIR PRE N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pdgr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pdgr3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>PDG REALT ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>trpl4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>trpl4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TRAN PAULIST PN  ES  N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>hbts5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>hbts5</codigo>
+        <liquidez>74.0</liquidez>
+        <nome>HABITASUL PNA</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brfs3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brfs3</codigo>
+        <liquidez>61.0</liquidez>
+        <nome>BRF FOODS ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pmam4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pmam4</codigo>
+        <liquidez>99.0</liquidez>
+        <nome>PARANAPANEMA PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>hoot4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>hoot4</codigo>
+        <liquidez>99.0</liquidez>
+        <nome>HOTEIS OTHON PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pmam3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pmam3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>PARANAPANEMA ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>toyb10</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>toyb10</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>TECTOY PN *REC</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brkm11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brkm11</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>BRASKEM DIR P/A N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>netcd11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>netcd11</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>NETCE PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cruz3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cruz3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>SOUZA CRUZ ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>lren3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>lren3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>LOJAS RENNER ON  INT NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrf82</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrf82</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>PETR ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>fftl4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>fftl4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>FOSFERTIL PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mypk3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mypk3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>IOCHP-MAXION ON  ED  NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>sanb11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>sanb11</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>SANTANDER BR UNT     N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cpfe3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cpfe3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CPFL ENERGIA ON  ED  NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>beef3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>beef3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>MINERVA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>pnvl3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>pnvl3</codigo>
+        <liquidez>67.0</liquidez>
+        <nome>DIMED ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>netcc4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>netcc4</codigo>
+        <liquidez>24.0</liquidez>
+        <nome>NETCE PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>netcc3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>netcc3</codigo>
+        <liquidez>23.0</liquidez>
+        <nome>NETCE PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brap4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brap4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BRADESPAR PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brap3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brap3</codigo>
+        <liquidez>99.0</liquidez>
+        <nome>BRADESPAR ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrq35</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrq35</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>PETRE PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bvmfd31</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bvmfd31</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>BVMF ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bvmfd30</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bvmfd30</codigo>
+        <liquidez>2.0</liquidez>
+        <nome>BVMF ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>eqtl3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>eqtl3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>EQUATORIAL ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tble3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tble3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TRACTEBEL ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>dhbi4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>dhbi4</codigo>
+        <liquidez>22.0</liquidez>
+        <nome>D H B PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>agro3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>agro3</codigo>
+        <liquidez>75.0</liquidez>
+        <nome>BRASILAGRO ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>netcd7</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>netcd7</codigo>
+        <liquidez>16.0</liquidez>
+        <nome>NETCE PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mplu3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mplu3</codigo>
+        <liquidez>25.0</liquidez>
+        <nome>MULTIPLUS ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>netcd6</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>netcd6</codigo>
+        <liquidez>9.0</liquidez>
+        <nome>NETCE PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrr82</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrr82</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>PETRE ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>netcd1</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>netcd1</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>NETCE PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tnlpe34</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tnlpe34</codigo>
+        <liquidez>5.0</liquidez>
+        <nome>TNLP PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>netcd5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>netcd5</codigo>
+        <liquidez>7.0</liquidez>
+        <nome>NETCE PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ambv4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ambv4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>AMBEV PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrj38</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrj38</codigo>
+        <liquidez>6.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>csnaq4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>csnaq4</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>CSNAE ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brml3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brml3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BR MALLS PAR ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>gtdp4b</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>gtdp4b</codigo>
+        <liquidez>59.0</liquidez>
+        <nome>GTD PART PN      MB</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>drog3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>drog3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>DROGASIL ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bbfi11b</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bbfi11b</codigo>
+        <liquidez>96.0</liquidez>
+        <nome>FII BB PROGR CI      MB</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>hype3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>hype3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>HYPERMARCAS ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>idnt3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>idnt3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>IDEIASNET ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ambv3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ambv3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>AMBEV ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brkm1</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brkm1</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>BRASKEM DIR ORD N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrp34</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrp34</codigo>
+        <liquidez>14.0</liquidez>
+        <nome>PETRE PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>inep4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>inep4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>INEPAR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cmgr4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cmgr4</codigo>
+        <liquidez>51.0</liquidez>
+        <nome>CEMAT PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ggbro80</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ggbro80</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>GGBRE PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valee38</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valee38</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>csrn3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>csrn3</codigo>
+        <liquidez>36.0</liquidez>
+        <nome>COSERN ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ecodc11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ecodc11</codigo>
+        <liquidez>9.0</liquidez>
+        <nome>ECOD ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ecodc12</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ecodc12</codigo>
+        <liquidez>34.0</liquidez>
+        <nome>ECOD ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>camb4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>camb4</codigo>
+        <liquidez>99.0</liquidez>
+        <nome>CAMBUCI PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>inep3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>inep3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>INEPAR ON  INT</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>engi3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>engi3</codigo>
+        <liquidez>68.0</liquidez>
+        <nome>ENERGISA ON  ED</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>engi4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>engi4</codigo>
+        <liquidez>98.0</liquidez>
+        <nome>ENERGISA PN  ED</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valee42</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valee42</codigo>
+        <liquidez>18.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mdia3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mdia3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>M.DIASBRANCO ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>abcp11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>abcp11</codigo>
+        <liquidez>40.0</liquidez>
+        <nome>FII ABC IMOB CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ecode12</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ecode12</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>ECOD ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ogxpc20</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ogxpc20</codigo>
+        <liquidez>41.0</liquidez>
+        <nome>OGXP ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>dasa3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>dasa3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>DASA ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tcsl3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tcsl3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TIM PART S/A ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tcsl4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tcsl4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TIM PART S/A PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tris3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tris3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TRISUL ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>prbc4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>prbc4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>PARANA PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>fftld20</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>fftld20</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>FFTL PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>cafe3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>cafe3</codigo>
+        <liquidez>7.0</liquidez>
+        <nome>CAF BRASILIA ON *</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>fjta4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>fjta4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>FORJA TAURUS PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bvmfd11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bvmfd11</codigo>
+        <liquidez>13.0</liquidez>
+        <nome>BVMF ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>mtig4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>mtig4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>METAL IGUACU PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>gtdp3b</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>gtdp3b</codigo>
+        <liquidez>58.0</liquidez>
+        <nome>GTD PART ON      MB</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bvmfd12</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bvmfd12</codigo>
+        <liquidez>19.0</liquidez>
+        <nome>BVMF ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bvmfd13</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bvmfd13</codigo>
+        <liquidez>17.0</liquidez>
+        <nome>BVMF ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bvmfd14</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bvmfd14</codigo>
+        <liquidez>15.0</liquidez>
+        <nome>BVMF ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>bvmfd15</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>bvmfd15</codigo>
+        <liquidez>2.0</liquidez>
+        <nome>BVMF ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>famb11b</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>famb11b</codigo>
+        <liquidez>74.0</liquidez>
+        <nome>FII ALMIRANT CI      MB</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrf38</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrf38</codigo>
+        <liquidez>19.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrf36</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrf36</codigo>
+        <liquidez>8.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>dufb11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>dufb11</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>DUFRYBRAS DR3</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tpis3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tpis3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TRIUNFO PART ON  ED  NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ggbrc80</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ggbrc80</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>GGBR PN      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valeo46</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valeo46</codigo>
+        <liquidez>22.0</liquidez>
+        <nome>VALEE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrf40</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrf40</codigo>
+        <liquidez>10.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valef56</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valef56</codigo>
+        <liquidez>3.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valee54</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valee54</codigo>
+        <liquidez>20.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>csna3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>csna3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>SID NACIONAL ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>romi3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>romi3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>INDS ROMI ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valee56</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valee56</codigo>
+        <liquidez>22.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valee58</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valee58</codigo>
+        <liquidez>22.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>csnad68</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>csnad68</codigo>
+        <liquidez>5.0</liquidez>
+        <nome>CSNA ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>csnad67</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>csnad67</codigo>
+        <liquidez>2.0</liquidez>
+        <nome>CSNA ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>fibr3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>fibr3</codigo>
+        <liquidez>76.0</liquidez>
+        <nome>FIBRIA ON      N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valee60</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valee60</codigo>
+        <liquidez>21.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>csnad72</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>csnad72</codigo>
+        <liquidez>3.0</liquidez>
+        <nome>CSNA ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>emae4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>emae4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>EMAE PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>elet3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>elet3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ELETROBRAS ON  ED  N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>card3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>card3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>CSU CARDSYST ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrf44</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrf44</codigo>
+        <liquidez>6.0</liquidez>
+        <nome>PETR PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>goll4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>goll4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>GOL PN      N2</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ebtp3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ebtp3</codigo>
+        <liquidez>77.0</liquidez>
+        <nome>EMBRATEL PAR ON *</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>elet6</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>elet6</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ELETROBRAS PNB ED  N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ebtp4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ebtp4</codigo>
+        <liquidez>94.0</liquidez>
+        <nome>EMBRATEL PAR PN *</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>heta4</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>heta4</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>HERCULES PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valee46</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valee46</codigo>
+        <liquidez>23.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valee44</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valee44</codigo>
+        <liquidez>23.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>rnar3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>rnar3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>RENAR ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrr38</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrr38</codigo>
+        <liquidez>2.0</liquidez>
+        <nome>PETRE PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>abnb3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>abnb3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>ABNOTE ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valee48</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valee48</codigo>
+        <liquidez>26.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrp36</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrp36</codigo>
+        <liquidez>8.0</liquidez>
+        <nome>PETRE PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>petrp37</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>petrp37</codigo>
+        <liquidez>3.0</liquidez>
+        <nome>PETRE PN</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>ligt3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>ligt3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>LIGHT S/A ON      NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tmar3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tmar3</codigo>
+        <liquidez>36.0</liquidez>
+        <nome>TELEMAR N L ON</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>hbor1</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>hbor1</codigo>
+        <liquidez>1.0</liquidez>
+        <nome>HELBOR DIR ORD NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>hbor3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>hbor3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>HELBOR ON  ES  NM</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>tmar5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>tmar5</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>TELEMAR N L PNA</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valee52</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valee52</codigo>
+        <liquidez>23.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>valee50</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>valee50</codigo>
+        <liquidez>24.0</liquidez>
+        <nome>VALE PNA     N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>hgre11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>hgre11</codigo>
+        <liquidez>52.0</liquidez>
+        <nome>FII HG REAL CI</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>shph11</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>shph11</codigo>
+        <liquidez>62.0</liquidez>
+        <nome>FII HIGIENOP CI  ER</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brkm5</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brkm5</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BRASKEM PNA ES  N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+    <entry>
+      <string>brkm3</string>
+      <grafix.basedados.CadastroPapeis>
+        <codigo>brkm3</codigo>
+        <liquidez>100.0</liquidez>
+        <nome>BRASKEM ON  ES  N1</nome>
+      </grafix.basedados.CadastroPapeis>
+    </entry>
+  </papeis>
+</grafix.principal.HistoricoPapeis>
