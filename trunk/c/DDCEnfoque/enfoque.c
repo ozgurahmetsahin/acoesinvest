@@ -13,6 +13,7 @@
 #include <string.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <unistd.h>
 
 /*Include de suas proprias prototypes*/
 #include "enfoque.h"
@@ -70,7 +71,7 @@ int subsymbols(int _fd, char *_sfile, int _smax) {
 
             // Realiza chamada
             send(_fd, cmd, strlen(cmd), 0);
-           
+
         }
 
         // Limpa variaveis da memoria
@@ -123,7 +124,7 @@ void test(char *_sfile) {
 
             // Analisa a primeira letra da mensagem.
             // para ver que tipo de mensagem é
-            if (line[0] == 'T' || line[0] == 'N') {
+            if (line[0] == 'T') {
                 // Mensagens Tick ( T: ) e Negocios ( N: )
 
                 // Variavel que conterá a mensagem convertida para o formato cedro
@@ -137,6 +138,29 @@ void test(char *_sfile) {
                 if (cedrofmt != NULL) {
                     writeln("/home/donda/ddc/buffer/test.tbf", cedrofmt, "a+");
                 }
+
+                // Limpa a variavel da memoria
+                free(cedrofmt);
+
+            } else if (line[0] == 'N') {
+
+                // Mensagens Tick ( T: ) e Negocios ( N: )
+
+                // Variavel que conterá a mensagem convertida para o formato cedro
+                char *cedrofmt = malloc(sizeof (char) *1000);
+
+                // Utiliza a funcao da biblioteca Ailib que ja faz as conversoes
+                entoce(line, cedrofmt);
+
+                // Certo, como o dado foi convertido escrevemos
+                // a mensagem no buffer central
+                if (cedrofmt != NULL) {
+                    writeln("/home/donda/ddc/buffer/test.tbf", cedrofmt, "a+");
+                }
+
+                printf("Line:%s\r\n", line, cedrofmt);
+
+                sleep(1);
 
                 // Limpa a variavel da memoria
                 free(cedrofmt);
@@ -220,11 +244,11 @@ void test(char *_sfile) {
                             // e ve qual é a direcao
                             tmp = tmp->next;
 
-                            if(tmp->value[0] == 'A'){
+                            if (tmp->value[0] == 'A') {
                                 // Direcao compra
                                 sprintf(bookcedro, "M:%s:A:%d", cedrobooks, addcountc);
                                 addcountc++;
-                            } else if(tmp->value[0] == 'V'){
+                            } else if (tmp->value[0] == 'V') {
                                 // Direcao venda
                                 sprintf(bookcedro, "M:%s:A:%d", cedrobooks, addcountv);
                                 addcountv++;
@@ -232,7 +256,7 @@ void test(char *_sfile) {
 
 
                             // Altera a flag
-                            book_type = 3;                            
+                            book_type = 3;
 
                         }
 

@@ -76,7 +76,6 @@ int main(int argc, char** argv) {
 
     cedrobooks = malloc(sizeof (char) *1000);
 
-
     //Descritores do PID e SID
     pid_t pid, sid;
 
@@ -309,7 +308,25 @@ int main(int argc, char** argv) {
 
             // Analisa a primeira letra da mensagem.
             // para ver que tipo de mensagem é
-            if (buffer[0] == 'T' || buffer[0] == 'N') {
+            if (buffer[0] == 'T' ) {
+                // Mensagens Tick ( T: ) e Negocios ( N: )
+
+                // Variavel que conterá a mensagem convertida para o formato cedro
+                char *cedrofmt = malloc(sizeof (char) *1000);
+
+                // Utiliza a funcao da biblioteca Ailib que ja faz as conversoes
+                entoce(buffer, cedrofmt);
+
+                // Certo, como o dado foi convertido escrevemos
+                // a mensagem no buffer central
+                if (cedrofmt != NULL) {
+                    writeln(bfile, cedrofmt, "a+");
+                }
+
+                // Limpa a variavel da memoria
+                free(cedrofmt);
+
+            } else if (buffer[0] == 'N') {
                 // Mensagens Tick ( T: ) e Negocios ( N: )
 
                 // Variavel que conterá a mensagem convertida para o formato cedro
@@ -385,7 +402,7 @@ int main(int argc, char** argv) {
                             // Mensagem de atualizacao, montamos
                             // o cabecao da mensagem com o ativo
                             // que esta na variavel global.
-                            sprintf(bookcedro, "M:%s:U", cedrobooks);
+                            sprintf(bookcedro, "K:%s:U", cedrobooks);
 
                             // Altera a falg que identifica que tipo de mensagem é
                             book_type = 1;
@@ -395,7 +412,7 @@ int main(int argc, char** argv) {
                             // Mensagem de delecao, montamos
                             // o cabecao da mensagem com o ativo
                             // que esta na variavel global.
-                            sprintf(bookcedro, "B:%s:D", cedrobooks);
+                            sprintf(bookcedro, "K:%s:D", cedrobooks);
 
                             // Altera a flag que identifica que tipo de mensagem é
                             book_type = 2;
@@ -408,11 +425,11 @@ int main(int argc, char** argv) {
 
                             if (tmp->value[0] == 'A') {
                                 // Direcao compra
-                                sprintf(bookcedro, "B:%s:A:%d", cedrobooks, addcountc);
+                                sprintf(bookcedro, "K:%s:A:%d", cedrobooks, addcountc);
                                 addcountc++;
                             } else if (tmp->value[0] == 'V') {
                                 // Direcao venda
-                                sprintf(bookcedro, "B:%s:A:%d", cedrobooks, addcountv);
+                                sprintf(bookcedro, "K:%s:A:%d", cedrobooks, addcountv);
                                 addcountv++;
                             }
 
@@ -472,7 +489,7 @@ int main(int argc, char** argv) {
 
                 // Escreve no buffer
                 if (book_type > 0) {
-                    writeln(bfile, bookcedro, "a+");
+                    writeln(bfile, bookcedro, "a+");                    
                 }
 
                 // Limpa variaveis
