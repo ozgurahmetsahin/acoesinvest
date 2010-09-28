@@ -87,18 +87,10 @@ int main(int argc, char** argv) {
             // É o mesmo arquivo, lê os dados
             if (fgets(dataline, MAX_BUF_SIZE, fbf) != NULL) {
 
-                printf("%s\r\n", dataline);
+                //printf("%s\r\n", dataline);
 
                 //removechars(dataline, dataline);
 
-                // Destroi a lista
-                if (data != NULL) {
-                    destroylist(data);
-                    data = NULL;
-                }
-                if (t != NULL) {
-                    t = NULL;
-                }
 
                 // Cria uma nova lista
                 data = createlist();
@@ -203,8 +195,17 @@ int main(int argc, char** argv) {
                         t = t->next;
                     }
 
+                    // Destroi a lista
+                    if (data != NULL) {
+                        destroylist(data);
+                        data = NULL;
+                    }
+                    if (t != NULL) {
+                        t = NULL;
+                    }
 
-                } else if (data->value[0] == 'B') {
+
+                } else if (data->value[0] == 'K' || data->value[0] == 'M') {
 
                     // Snapshot do book de ofertas
 
@@ -380,10 +381,20 @@ int main(int argc, char** argv) {
                         free(snap);
                     }
 
+                    // Destroi a lista
+                    if (data != NULL) {
+                        destroylist(data);
+                        data = NULL;
+                    }
+                    if (t != NULL) {
+                        t = NULL;
+                    }
+
 
                 } else {
                     destroylist(data);
                     data = NULL;
+                    t = NULL;
                 }
             } else {
                 // Não consegui ler dados, talves esteja no final
