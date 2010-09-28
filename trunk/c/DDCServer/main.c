@@ -347,18 +347,20 @@ int main() {
             } else {
                 // Processo neto
 
-                /*
-                                grandchart = fork();
 
-                                if (grandchart > 0) {
-                                    // Executa funcao do neto
-                 */
+                grandchart = fork();
+
+                if (grandchart > 0) {
+                // Executa funcao do neto
+
                 grandsonps(sockcli);
-                /*
-                                } else {
-                                    readchart(sockcli);
-                                }
-                 */
+
+
+                } else {
+                  readchart(sockcli);
+                }
+
+
 
             }
         } else {
@@ -694,6 +696,7 @@ void grandsonps(int __fd) {
         blog("Obtendo novo buffer", "a+");
         bzero(_file_buffer, strlen(BUFFER_PATH) + 100);
         blast(_file_buffer);
+        //strcpy(_file_buffer,"/home/donda/ddc/all_data.buf");
         blog(_file_buffer, "a+");
         blog("************** End *****************", "a+");
 
@@ -805,6 +808,9 @@ void grandsonps(int __fd) {
         blog("************** End *******************", "a+");
         synch_buf = 0;
 
+        int bookc = 0;
+        int bookm = 0;
+
 
         // Lemos buffer até que seja trocado
         // o arquivo
@@ -814,6 +820,7 @@ void grandsonps(int __fd) {
             // Aguardando entao 1/10 de segundo
             if (fgets(bfline, MAX_BUF_SIZE, bf_file) != NULL) {
 
+                // Remove os caracteres \r e \n da linha
                 removechars(bfline, bfline);
 
                 if (bfline[0] == 'S' && bfline[1] == 'Y' && bfline[2] == 'N') {
@@ -892,6 +899,7 @@ void grandsonps(int __fd) {
                             // Fecha o descritor
                             fclose(aux_file);
 
+
                         }
 
 
@@ -935,8 +943,12 @@ void grandsonps(int __fd) {
 
                         }
 
-                    } else if (bfline[0] == 'B' && bfline[strlen(bfline) - 1] == '5') {
+                    } else if (bfline[0] == 'K' && bfline[strlen(bfline) - 1] == '5') {
                         // Analise para Book ( B: )
+
+                        int getbook = 0;
+
+                        bfline[0] = 'B';
 
                         getsymbol(bfline, bfline_aux2);
 
@@ -968,9 +980,54 @@ void grandsonps(int __fd) {
                             }
                             sprintf(_mnt_b, "%s\r\n", _mnt_b);
                             send(__fd, _mnt_b, strlen(_mnt_b), 0);
+                            //bqt_snapshoot(__fd, bfline_aux1);
                             free(_mnt_b);
                             // Fecha o descritor
                             fclose(aux_file);
+
+                            getbook = 1;
+
+                            bookc++;
+
+                            if (bookc >= 50) {
+                                bqt_snapshoot(__fd, bfline_aux1);
+                                bookc = 0;
+                            }
+
+
+
+                        }
+
+                        /* Aqui Acontece o seguinte: Já que agora temos o book completo
+                         * enviamos o mini-book a cada alteracao, pois pode ter havido mudancas
+                         * nas posicoes do book completo.
+                         */
+                        // Analise para Book ( M: )
+
+                        getsymbol(bfline, bfline_aux2);
+
+                        // Concatena a extensao .mbq
+                        strcpy(bfline_aux1, bfline_aux2);
+                        sprintf(bfline_aux2, "%s%s", dir, bfline_aux1);
+                        strcat(bfline_aux2, ".mbq");
+
+                        // Verifica existencia de arquivo de solicitacao
+                        aux_file = fopen(bfline_aux2, "r");
+
+                        // Verifica se conseguiu abrir o arquivo
+                        if (aux_file != NULL && getbook == 0) {
+
+                            bookm++;
+
+                            // Arquivo aberto, então existe e foi solicitado
+
+                            // Envia snapshot do mini book
+                            if (bookm >= 3) {
+                                mbq_snapshoot(__fd, bfline_aux1);
+                                // Fecha o descritor
+                                fclose(aux_file);
+                                bookm=0;
+                            }
 
                         }
 
@@ -984,6 +1041,8 @@ void grandsonps(int __fd) {
                 }
 
             } else {
+
+                //break;
 
                 // Aqui significa que o arquivo esta em seu final,
                 // analizamos se não foi trocado o buffer
@@ -2026,117 +2085,117 @@ void mbq_snapshoot(int __f, char *__s) {
 
     } while (cont <= 4);
 
-/*
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.A.0", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+    /*
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.A.0", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.A.1", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.A.1", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.A.2", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.A.2", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.A.3", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.A.3", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.A.4", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.A.4", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.V.0", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.V.0", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.V.1", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.V.1", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.V.2", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.V.2", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.V.3", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.V.3", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.V.4", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
-*/
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.V.4", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
+     */
 
 
     free(__data);
@@ -2214,117 +2273,117 @@ void bqt_snapshoot(int __f, char *__s) {
 
     } while (cont != -1);
 
-/*
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.A.0", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+    /*
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.A.0", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.A.1", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.A.1", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.A.2", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.A.2", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.A.3", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.A.3", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.A.4", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.A.4", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.V.0", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.V.0", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.V.1", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.V.1", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.V.2", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.V.2", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.V.3", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.V.3", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
 
-    bzero(__data, 80);
-    bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
-    sprintf(__fpmbq, "%s%s.V.4", SNAPBK_PATH, __s);
-    __fmbq = fopen(__fpmbq, "r");
-    if (__fmbq != NULL) {
-        fgets(__data, 80, __fmbq);
-        sprintf(__data, "%s\r\n", __data);
-        send(__f, __data, strlen(__data), 0);
-        fclose(__fmbq);
-    }
-*/
+        bzero(__data, 80);
+        bzero(__fpmbq, strlen(SNAPBK_PATH) + 50);
+        sprintf(__fpmbq, "%s%s.V.4", SNAPBK_PATH, __s);
+        __fmbq = fopen(__fpmbq, "r");
+        if (__fmbq != NULL) {
+            fgets(__data, 80, __fmbq);
+            sprintf(__data, "%s\r\n", __data);
+            send(__f, __data, strlen(__data), 0);
+            fclose(__fmbq);
+        }
+     */
 
 
     free(__data);
@@ -2405,9 +2464,6 @@ void chart(int _fd, char *cmd) {
             gettime("%M%H%S", chartid);
 
             for (mr = monthrange; mr <= 9; mr++) {
-                if (mr == 9) {
-                    dayrange = 1;
-                }
                 for (dr = dayrange; dr <= 31; dr++) {
                     strcpy(pathfile, "/home/donda/ddc/buffer/chart");
                     if (mr < 10) {
@@ -2463,19 +2519,25 @@ void chart(int _fd, char *cmd) {
             }
 
             // Pega o candle atual
-            strcpy(pathfile, "/home/donda/ddc/buffer/chart/0906");
+            strcpy(pathfile, "/home/donda/ddc/buffer/chart/");
+            char *dataatual;
+            dataatual = malloc(MAX_BUF_SIZE);
+            gettime("%m%d",dataatual);
+            sprintf(pathfile,"%s%s",pathfile,dataatual);
             sprintf(pathfile, "%s/%s/%s.candle", pathfile, param7, param3);
             FILE *fcandle;
             fcandle = fopen(pathfile, "r");
             if (fcandle != NULL) {
                 fgets(linedata, MAX_BUF_SIZE, fcandle);
-                sprintf(chartheader, "C:%s:%s:%s:A:20100906:", chartid, param3, param7);
+                sprintf(chartheader, "C:%s:%s:%s:A:2010%s:", chartid, param3, param7,dataatual);
                 sscanf(linedata, "%[^':']:%s", charttime, linedata);
                 sprintf(chartheader, "%s%s00:%s\r\n", chartheader, charttime, linedata);
                 send(_fd, chartheader, strlen(chartheader), 0);
                 fclose(fcandle);
             }
             // Fim candle atual
+
+            free(dataatual);
 
             // Pega o header
             sprintf(chartheader, "C:%s:%s:END\r\n", chartid, param3);
