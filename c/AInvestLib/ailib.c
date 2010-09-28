@@ -478,6 +478,10 @@ void entoce(char *data, char *cedrof) {
         // Tick de trade
         entick(trade, cedrof);
     } else if (trade->value[0] == 'N') {
+
+        // Altera N para T
+        trade->value[0] == 'T';
+
         // Negocios realizados
         entrade(trade, cedrof);
     }
@@ -494,7 +498,7 @@ void entick(struct TDDCData *list, char *cedro) {
     struct TDDCData *t = list;
 
     // Dado temporiario para valor de ultimo
-    //char *lastvalue = malloc(sizeof(char)*1000);
+    char *lastvalue = malloc(sizeof (char) *1000);
 
     // Varre a estrutura analisando os dados
     while (t) {
@@ -510,19 +514,19 @@ void entick(struct TDDCData *list, char *cedro) {
                 break;
 
                 // Coluna com o Ultimo
-                /*          Comentado porque esse dado ja vem no pacote N:
-                            case 1:
-                                // Coloca na variavel temporaria lastvalue
-                                // para inserir posteriormente.
-                                strcpy(lastvalue,t->value);
-                                // break obrigatorio
-                                break;
-                 */
+
+            case 1:
+                // Coloca na variavel temporaria lastvalue
+                // para inserir posteriormente.
+                strcpy(lastvalue, t->value);
+                // break obrigatorio
+                break;
+
 
                 // Coluna com a Hora
             case 2:
                 // Coloca na variavel da cedro ja formatado
-                sprintf(cedro, "%s:%s00", cedro, t->value);
+                sprintf(cedro, "%s:%s00:5:%s:2:%s", cedro, t->value, t->value,lastvalue);
                 // break obrigatorio
                 break;
 
@@ -594,13 +598,17 @@ void entrade(struct TDDCData *list, char *cedro) {
     // Varre a estrutura analisando os dados
     while (t) {
 
-        //Ve qual � a coluna
+        //Ve qual é a coluna
         switch (t->index) {
 
                 // Coluna com o ativo
             case 0:
                 // Apenas coloca na variavel
                 strcpy(cedro, t->value);
+
+                // Altera N: Para T:
+                cedro[0] = 'T';
+
                 //break obrigatorio
                 break;
 
@@ -614,8 +622,11 @@ void entrade(struct TDDCData *list, char *cedro) {
 
                 // Coluna com o Ultitmo
             case 2:
+                // Tira os 0 a mais
+                t->value[4]='\0';
+                t->value[5]='\0';
                 // Coloca na variavel da cedro ja formatado
-                sprintf(cedro, "%s:%s00:2:%s", cedro, hour, t->value);
+                sprintf(cedro, "%s:%s00:2:%s:5:%s", cedro, hour, t->value, hour);
                 // break obrigatorio
                 break;
 
