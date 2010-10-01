@@ -623,8 +623,8 @@ void entrade(struct TDDCData *list, char *cedro) {
                 // Coluna com o Ultitmo
             case 2:
                 // Tira os 0 a mais
-                t->value[4]='\0';
                 t->value[5]='\0';
+                t->value[6]='\0';
                 // Coloca na variavel da cedro ja formatado
                 sprintf(cedro, "%s:%s00:2:%s:5:%s", cedro, hour, t->value, hour);
                 // break obrigatorio
