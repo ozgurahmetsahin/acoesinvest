@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <unistd.h>
 #include "ailib.h"
 
 #define MAX_BUF_SIZE sizeof(char) * 1000
@@ -166,7 +167,7 @@ void readalldata(char *dt) {
 
             // Fechamos o descritor do arquivo lido
             fclose(fl);
-            close(fl);
+            //close(fl);
             fl = NULL;
 
         } else {
@@ -342,7 +343,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
             if (ftime != NULL) {
                 fgets(tmptime, 10, ftime);
                 fclose(ftime);
-                close(ftime);
+                //close(ftime);
             } else {
                 // Garante que tmptime nao fique fazia
                 strcpy(tmptime, "0800");
@@ -377,7 +378,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
                 if (f != NULL) {
                     fgets(values, 10, f);
                     fclose(f);
-                    close(f);
+                    //close(f);
                 } else {
                     strcpy(values, "0");
                 }
@@ -393,7 +394,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
                 if (f != NULL) {
                     fgets(values, 10, f);
                     fclose(f);
-                    close(f);
+                    //close(f);
                 } else {
                     strcpy(values, "0");
                 }
@@ -408,7 +409,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
                 if (f != NULL) {
                     fgets(values, 10, f);
                     fclose(f);
-                    close(f);
+                    //close(f);
                 } else {
                     strcpy(values, "0");
                 }
@@ -423,7 +424,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
                 if (f != NULL) {
                     fgets(values, 10, f);
                     fclose(f);
-                    close(f);
+                    //close(f);
                 } else {
                     strcpy(values, "0");
                 }
@@ -438,7 +439,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
                 if (fchart != NULL) {
                     fprintf(fchart, "%s\n", chartline);
                     fclose(fchart);
-                    close(fchart);
+                    //close(fchart);
                 }
 
                 // Escrevemos o novo tempo
@@ -448,7 +449,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
                 if (ftime != NULL) {
                     fprintf(fchart, "%s", TTrade.time);
                     fclose(ftime);
-                    close(ftime);
+                    //close(ftime);
 
                     // Deletamos os arquivos
                     sprintf(path, "/home/donda/ddc/buffer/chart/%s/%d/%s.high", _dt, _pe, TTrade.symbol);
@@ -503,7 +504,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
             if (ftime != NULL) {
                 fgets(tmptime, 10, ftime);
                 fclose(ftime);
-                close(ftime);
+                //close(ftime);
             } else {
                 // Garante que tmptime nao fique fazia
                 strcpy(tmptime, "0800");
@@ -538,7 +539,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
                 // Fecha o arquivo salvando os dados
                 fclose(fo);
                 // Fecha o descritor
-                close(fo);
+                //close(fo);
 
                 // O arquivo de Abertura controla as trocas de horario,
                 // portanto como explicado acima, qdo não existir significa
@@ -552,7 +553,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
                 fgets(o, 10, fo);
                 sprintf(candle, "%s:1:%s", candle, o);
                 fclose(fo);
-                close(fo);
+                //close(fo);
                 // Como novamente mencionado, não existir significa que é o mesmo
                 // candle, então é tipo U para o comando CHART
                 strcat(_l, ":U");
@@ -579,7 +580,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
                 // Fecha o arquivo salvando os dados
                 fclose(fc);
                 // Fecha o descritor do arquivo
-                close(fc);
+                //close(fc);
 
                 // Adiciona dado na linha de candle
                 sprintf(_l, "%s:4:%s", _l, TTrade.last);
@@ -615,7 +616,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
                 // Fechamos o arquivo
                 fclose(fh);
                 // Fechamos o descritor
-                close(fh);
+                //close(fh);
 
                 // Tentamos realizar a conversao de Str para Double
                 high = atof(h);
@@ -645,7 +646,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
                     // Fecha arquivo salvando os dados
                     fclose(fh);
                     // Fecha Descritor de arquivo
-                    close(fh);
+                    //close(fh);
 
                     // Adiciona dado
                     sprintf(_l, "%s:2:%s", _l, TTrade.last);
@@ -687,7 +688,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
                 // Fechamos o arquivo
                 fclose(fl);
                 // Fechamos o descritor
-                close(fl);
+                //close(fl);
 
                 // Tentamos realizar a conversao de Str para Double
                 low = atof(l);
@@ -717,7 +718,7 @@ void tradedata(char *_d, int _pe, char *_dt, char *_f) {
                     // Fecha arquivo salvando os dados
                     fclose(fl);
                     // Fecha Descritor de arquivo
-                    close(fl);
+                    //close(fl);
                     // Adiciona dado
                     sprintf(_l, "%s:3:%s", _l, TTrade.last);
                 } else {
@@ -937,16 +938,18 @@ void readdata(char *_dm) {
                 if (bfline[0] == 'T' && bfline[strlen(bfline) - 1] == '!') {
 
                     // Analisa dados
-/*
                     for (charts = 1; charts <= 30; charts++) {
-                        tradedata(bfline, charts, _dm, "/home/donda/ddc/buffer/ddcchart.data");
+                        tradedata(bfline, charts, _dm, "/home/donda/ddc/buffer/ddcchart.data");                        
                     }
-*/
+/*
                     tradedata(bfline, 1, _dm, "/home/donda/ddc/buffer/ddcchart.data");
                     tradedata(bfline, 5, _dm, "/home/donda/ddc/buffer/ddcchart.data");
                     tradedata(bfline, 10, _dm, "/home/donda/ddc/buffer/ddcchart.data");
                     tradedata(bfline, 15, _dm, "/home/donda/ddc/buffer/ddcchart.data");
                     tradedata(bfline, 30, _dm, "/home/donda/ddc/buffer/ddcchart.data");
+*/
+
+
                     // Volta contador ao inicio
                     charts = 1;
                 }
@@ -954,7 +957,7 @@ void readdata(char *_dm) {
                 // Limpa o buffer e seus auxiliares
                 bzero(bfline, MAX_BUF_SIZE);
                 bzero(bfline_aux1, 5);
-                bzero(bfline_aux2, 10);
+                bzero(bfline_aux2, 10);                
 
             } else {
 
@@ -997,7 +1000,7 @@ void readdata(char *_dm) {
                     // É o mesmo ainda, então aguarda 1/10 de segundo
                     //printf("Same, do nothing...\r\n");
                     free(_check);
-                    usleep(1000);
+                    usleep(10);
                 }
 
 
