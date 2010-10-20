@@ -368,10 +368,28 @@ int main(int argc, char** argv) {
                         FILE *fs;
                         fs = fopen(snapfile, "w+");
                         if (fs != NULL) {
-                            fprintf(fs, "%s", snap);
+                            fprintf(fs, "%s", dataline);
                             fclose(fs);
                         }
 
+/*
+                        if (book_type == 2) {
+                            if (direction == 1) {
+                                sprintf(snapfile, "%s/%s.%c.%d", "/home/donda/ddc/snapshot/books", symbol, 'A', old_position);
+                            } else {
+                                sprintf(snapfile, "%s/%s.%c.%d", "/home/donda/ddc/snapshot/books", symbol, 'V', old_position);
+                            }
+
+                            sprintf(snap, "%s:%s:%s:%s", "--", "--", "--", "--");
+
+                            FILE *fs;
+                            fs = fopen(snapfile, "w+");
+                            if (fs != NULL) {
+                                fprintf(fs, "%s", snap);
+                                fclose(fs);
+                            }
+                        }
+*/
 
 
                     }
