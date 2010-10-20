@@ -526,7 +526,7 @@ void entick(struct TDDCData *list, char *cedro) {
                 // Coluna com a Hora
             case 2:
                 // Coloca na variavel da cedro ja formatado
-                sprintf(cedro, "%s:%s00:5:%s:2:%s", cedro, t->value, t->value,lastvalue);
+                sprintf(cedro, "%s:%s00:5:%s:2:%s", cedro, t->value, t->value, lastvalue);
                 // break obrigatorio
                 break;
 
@@ -562,6 +562,20 @@ void entick(struct TDDCData *list, char *cedro) {
             case 7:
                 // Coloca na variavel da cedro ja formatado
                 sprintf(cedro, "%s:14:%s", cedro, t->value);
+                // break obrigatorio
+
+                break;
+
+            case 8:
+                // Coloca na variavel da cedro ja formatado
+                sprintf(cedro, "%s:3:%s", cedro, t->value);
+                // break obrigatorio
+
+                break;
+
+            case 9:
+                // Coloca na variavel da cedro ja formatado
+                sprintf(cedro, "%s:4:%s", cedro, t->value);
                 // break obrigatorio
 
                 break;
@@ -623,8 +637,8 @@ void entrade(struct TDDCData *list, char *cedro) {
                 // Coluna com o Ultitmo
             case 2:
                 // Tira os 0 a mais
-                t->value[5]='\0';
-                t->value[6]='\0';
+                t->value[5] = '\0';
+                t->value[6] = '\0';
                 // Coloca na variavel da cedro ja formatado
                 sprintf(cedro, "%s:%s00:2:%s:5:%s", cedro, hour, t->value, hour);
                 // break obrigatorio
