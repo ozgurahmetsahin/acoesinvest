@@ -65,12 +65,16 @@ int subsymbols(int _fd, char *_sfile, int _smax) {
             // Realiza chamada
             send(_fd, cmd, strlen(cmd), 0);
 
+            bzero(cmd,_smax+4);
 
+
+/*
             //Monta comando - D
             sprintf(cmd, "%s%s\r\n", "D:", line);
 
             // Realiza chamada
             send(_fd, cmd, strlen(cmd), 0);
+*/
 
         }
 

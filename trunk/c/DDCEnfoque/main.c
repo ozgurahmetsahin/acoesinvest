@@ -36,7 +36,7 @@
 #define HEADER_LOG "********* Start DDCEnfoque*************"
 #define FOOTER_LOG "********* End DDCEnfoque *************"
 #define DEFAULT_PATH "/home/donda/ddc/"
-#define LOGIN_ENFOQUE "L:DIFERENCIAL_FEED:ROGERIO:NMB+TRD\r\n"
+#define LOGIN_ENFOQUE "L:DIFERENCIAL_FEED2:ANDERSON:NMB+TRD\r\n"
 #define MSG_ERR_CONN "Error on connect to server."
 /*********************************************************/
 
@@ -226,15 +226,14 @@ int main(int argc, char** argv) {
         writeln(TERMINAL_LOG, FOOTER_LOG, "a+");
 
         /*Cria o processo filho que lera o FIFO com as entradas de comando*/
-/*
         pid_t fifo;
 
         fifo = fork();
 
         // Verifica se criou o processo fifo
         if (fifo < 0) {
-            /*Erro na criacao do fifo*/
-/*
+            //Erro na criacao do fifo
+
             writeln(TERMINAL_LOG, HEADER_LOG, "a+");
             writeln(TERMINAL_LOG, "Erro ao criar fifo.", "a+");
             writeln(TERMINAL_LOG, FOOTER_LOG, "a+");
@@ -245,9 +244,8 @@ int main(int argc, char** argv) {
         // e se sair da funcao a um exit
         if (fifo == 0) {
             filepiper(s);
-            exit(0);
+            //exit(0);
         }
-*/
 
         // Aqui é o processo pai ( fifo != 0 )
 
@@ -505,7 +503,7 @@ int main(int argc, char** argv) {
 
 
             }
-
+            
 
             // Verifica se mudou arquivo de buffer
             // para atualizar arquivo de ultimo buffer
