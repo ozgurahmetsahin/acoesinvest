@@ -24,7 +24,7 @@
 /*Biblioteca Acoes Invest*/
 #include "ailib.h"
 
-#define SVR_PORT 8185
+#define SVR_PORT 8189
 #define SVR_HOST "0"
 #define MAX_CONN_LISTEN 5
 #define MAX_BUF_RECV sizeof(char)*5000
@@ -348,17 +348,17 @@ int main() {
                 // Processo neto
 
 
-                grandchart = fork();
+               //grandchart = fork();
 
-                if (grandchart > 0) {
-                // Executa funcao do neto
+               //if (grandchart > 0) {
+                    // Executa funcao do neto
 
-                grandsonps(sockcli);
+                    grandsonps(sockcli);
 
 
-                } else {
-                  readchart(sockcli);
-                }
+               // } else {
+                  //  readchart(sockcli);
+               // }
 
 
 
@@ -504,7 +504,7 @@ void sonps(int _fd, pid_t _gson) {
     // Abre o arquivo de fifo
     // ATENCAO: O processo pode ficar travado aqui caso DDCEnfoque nao esteja
     // em execucao.
-    //fpipe = open(FIFO_ARQ, O_WRONLY);
+    fpipe = open(FIFO_ARQ, O_WRONLY);
 
     // Inicia loop de escuta do filho
     while (sonrun) {
@@ -820,6 +820,7 @@ void grandsonps(int __fd) {
             // Aguardando entao 1/10 de segundo
             if (fgets(bfline, MAX_BUF_SIZE, bf_file) != NULL) {
 
+
                 // Remove os caracteres \r e \n da linha
                 removechars(bfline, bfline);
 
@@ -899,6 +900,39 @@ void grandsonps(int __fd) {
                             // Fecha o descritor
                             fclose(aux_file);
 
+                            bookm++;
+
+
+                        }
+
+                        /* Aqui Acontece o seguinte: Já que agora temos o book completo
+                         * enviamos o mini-book a cada alteracao, pois pode ter havido mudancas
+                         * nas posicoes do book completo.
+                         */
+                        // Analise para Book ( M: )
+
+                        getsymbol(bfline, bfline_aux2);
+
+                        // Concatena a extensao .mbq
+                        strcpy(bfline_aux1, bfline_aux2);
+                        sprintf(bfline_aux2, "%s%s", dir, bfline_aux1);
+                        strcat(bfline_aux2, ".mbq");
+
+                        // Verifica existencia de arquivo de solicitacao
+                        aux_file = fopen(bfline_aux2, "r");
+
+                        // Verifica se conseguiu abrir o arquivo
+                        if (aux_file != NULL) {                           
+
+                            // Arquivo aberto, então existe e foi solicitado
+
+                            // Envia snapshot do mini book
+                            if (bookm >= 10) {
+                                mbq_snapshoot(__fd, bfline_aux1);
+                                // Fecha o descritor
+                                fclose(aux_file);
+                                bookm = 0;
+                            }
 
                         }
 
@@ -987,49 +1021,19 @@ void grandsonps(int __fd) {
 
                             getbook = 1;
 
+/*
                             bookc++;
 
-                            if (bookc >= 50) {
-                                bqt_snapshoot(__fd, bfline_aux1);
+                            if (bookc >= 70) {
+                                //bqt_snapshoot(__fd, bfline_aux1);
                                 bookc = 0;
                             }
-
+*/
+                            //usleep(5);
 
 
                         }
-
-                        /* Aqui Acontece o seguinte: Já que agora temos o book completo
-                         * enviamos o mini-book a cada alteracao, pois pode ter havido mudancas
-                         * nas posicoes do book completo.
-                         */
-                        // Analise para Book ( M: )
-
-                        getsymbol(bfline, bfline_aux2);
-
-                        // Concatena a extensao .mbq
-                        strcpy(bfline_aux1, bfline_aux2);
-                        sprintf(bfline_aux2, "%s%s", dir, bfline_aux1);
-                        strcat(bfline_aux2, ".mbq");
-
-                        // Verifica existencia de arquivo de solicitacao
-                        aux_file = fopen(bfline_aux2, "r");
-
-                        // Verifica se conseguiu abrir o arquivo
-                        if (aux_file != NULL && getbook == 0) {
-
-                            bookm++;
-
-                            // Arquivo aberto, então existe e foi solicitado
-
-                            // Envia snapshot do mini book
-                            if (bookm >= 3) {
-                                mbq_snapshoot(__fd, bfline_aux1);
-                                // Fecha o descritor
-                                fclose(aux_file);
-                                bookm=0;
-                            }
-
-                        }
+                        
 
                     }
 
@@ -1118,7 +1122,7 @@ void grandsonps(int __fd) {
 
 
             }
-
+            
         }
 
     }
@@ -1950,7 +1954,7 @@ void bqt(int _fd, char *_symbol, int _fifo) {
         fclose(fmnt);
 
         // Envia snapshot
-        bqt_snapshoot(_fd, _symbol);
+        //bqt_snapshoot(_fd, _symbol);
 
     } else {
 
@@ -1963,10 +1967,10 @@ void bqt(int _fd, char *_symbol, int _fifo) {
     bzero(f_name, 40);
 
     // Cria comando
-    //sprintf(f_name, "D:%s\r\n", _symbol);
+    sprintf(f_name, "D:%s\r\n", _symbol);
 
     // Envia para o fifo
-    //write(_fifo, f_name, strlen(f_name));
+    write(_fifo, f_name, strlen(f_name));
 
     // Libera da memoria a variavel do nome
     free(f_name);
@@ -2463,81 +2467,128 @@ void chart(int _fd, char *cmd) {
             // Gera ID do grafico
             gettime("%M%H%S", chartid);
 
-            for (mr = monthrange; mr <= 9; mr++) {
-                for (dr = dayrange; dr <= 31; dr++) {
-                    strcpy(pathfile, "/home/donda/ddc/buffer/chart");
-                    if (mr < 10) {
-                        if (dr < 10) {
-                            sprintf(pathfile, "%s/0%d0%d", pathfile, mr, dr);
-                        } else {
-                            sprintf(pathfile, "%s/0%d%d", pathfile, mr, dr);
-                        }
-                    } else {
-                        if (dr < 10) {
-                            sprintf(pathfile, "%s/%d0%d", pathfile, mr, dr);
-                        } else {
-                            sprintf(pathfile, "%s/%d%d", pathfile, mr, dr);
-                        }
+            if (!strcmp(param6, "daily")) {
+                strcpy(pathfile, "/home/donda/ddc/buffer/chart");
+                sprintf(pathfile, "%s/daily/%s.data", pathfile, param3);
+
+                FILE *fdatas = fopen(pathfile, "r");
+
+                sprintf(pathfile,"%s\r\n",pathfile);
+                send(_fd, pathfile, strlen(pathfile), 0);
+
+                if (fdatas != NULL) {
+
+                    while (fgets(linedata, MAX_BUF_SIZE, fdatas) != NULL) {
+                        // Pega o header
+                        sprintf(chartheader, "C:%s:%s:D:A:", chartid, param3);
+
+                        sscanf(linedata, "%[^':']:%s", charttime, linedata);
+
+                        sprintf(chartheader, "%s%s:%s\r\n", chartheader, charttime, linedata);
+
+                        send(_fd, chartheader, strlen(chartheader), 0);
+
+                        // limpa header
+                        bzero(chartheader, MAX_BUF_SIZE);
                     }
 
-                    // Verifica o periodo
-                    if (!strcmp(param6, "intraday")) {
+                } else {
+                    strcpy(linedata, "E:CHART:2\r\n");
+                    send(_fd, linedata, strlen(linedata), 0);
+                }
 
-                        sprintf(pathfile, "%s/%s/%s.data", pathfile, param7, param3);
+            } else {
 
-                        FILE *fdatas = fopen(pathfile, "r");
+                for (mr = monthrange; mr <= 10; mr++) {
+                    if (mr > monthrange) {
+                        dr = 1;
+                    } else {
+                        dr = dayrange;
+                    }
+                    for (dr = dr; dr <= 31; dr++) {
+                        strcpy(pathfile, "/home/donda/ddc/buffer/chart");
+                        if (mr < 10) {
+                            if (dr < 10) {
+                                sprintf(pathfile, "%s/0%d0%d", pathfile, mr, dr);
+                            } else {
+                                sprintf(pathfile, "%s/0%d%d", pathfile, mr, dr);
+                            }
+                        } else {
+                            if (dr < 10) {
+                                sprintf(pathfile, "%s/%d0%d", pathfile, mr, dr);
+                            } else {
+                                sprintf(pathfile, "%s/%d%d", pathfile, mr, dr);
+                            }
+                        }
 
-                        if (fdatas != NULL) {
+                        // Verifica o periodo
+                        if (!strcmp(param6, "intraday")) {
 
-                            while (fgets(linedata, MAX_BUF_SIZE, fdatas) != NULL) {
-                                // Pega o header
-                                if (dr < 10) {
-                                    sprintf(chartheader, "C:%s:%s:%s:A:20100%d0%d:", chartid, param3, param7, mr, dr);
-                                } else {
-                                    sprintf(chartheader, "C:%s:%s:%s:A:20100%d%d:", chartid, param3, param7, mr, dr);
+                            sprintf(pathfile, "%s/%s/%s.data", pathfile, param7, param3);
+
+                            FILE *fdatas = fopen(pathfile, "r");
+
+                            if (fdatas != NULL) {
+
+
+                                while (fgets(linedata, MAX_BUF_SIZE, fdatas) != NULL) {
+                                    // Pega o header
+                                    if (dr < 10) {
+                                        if (mr<10){
+                                            sprintf(chartheader, "C:%s:%s:%s:A:20100%d0%d:", chartid, param3, param7, mr, dr);
+                                        }else{
+                                            sprintf(chartheader, "C:%s:%s:%s:A:2010%d0%d:", chartid, param3, param7, mr, dr);
+                                        }
+                                    } else {
+                                        if(mr<10){
+                                            sprintf(chartheader, "C:%s:%s:%s:A:20100%d%d:", chartid, param3, param7, mr, dr);
+                                        }else{
+                                            sprintf(chartheader, "C:%s:%s:%s:A:2010%d%d:", chartid, param3, param7, mr, dr);
+                                        }
+                                    }
+
+                                    sscanf(linedata, "%[^':']:%s", charttime, linedata);
+
+                                    sprintf(chartheader, "%s%s00:%s\r\n", chartheader, charttime, linedata);
+
+                                    send(_fd, chartheader, strlen(chartheader), 0);
+
+                                    // limpa header
+                                    bzero(chartheader, MAX_BUF_SIZE);
                                 }
 
-                                sscanf(linedata, "%[^':']:%s", charttime, linedata);
-
-                                sprintf(chartheader, "%s%s00:%s\r\n", chartheader, charttime, linedata);
-
-                                send(_fd, chartheader, strlen(chartheader), 0);
-
-                                // limpa header
-                                bzero(chartheader, MAX_BUF_SIZE);
+                            } else {
+                                //strcpy(linedata, "E:CHART:2\r\n");
+                                //send(_fd, linedata, strlen(linedata), 0);
                             }
 
-                        } else {
-                            //strcpy(linedata, "E:CHART:2\r\n");
-                            //send(_fd, linedata, strlen(linedata), 0);
+
                         }
 
-
                     }
-
                 }
+
+                // Pega o candle atual
+                strcpy(pathfile, "/home/donda/ddc/buffer/chart/");
+                char *dataatual;
+                dataatual = malloc(MAX_BUF_SIZE);
+                gettime("%m%d", dataatual);
+                sprintf(pathfile, "%s%s", pathfile, dataatual);
+                sprintf(pathfile, "%s/%s/%s.candle", pathfile, param7, param3);
+                FILE *fcandle;
+                fcandle = fopen(pathfile, "r");
+                if (fcandle != NULL) {
+                    fgets(linedata, MAX_BUF_SIZE, fcandle);
+                    sprintf(chartheader, "C:%s:%s:%s:A:2010%s:", chartid, param3, param7, dataatual);
+                    sscanf(linedata, "%[^':']:%s", charttime, linedata);
+                    sprintf(chartheader, "%s%s00:%s\r\n", chartheader, charttime, linedata);
+                    send(_fd, chartheader, strlen(chartheader), 0);
+                    fclose(fcandle);
+                }
+                // Fim candle atual
+                free(dataatual);
             }
 
-            // Pega o candle atual
-            strcpy(pathfile, "/home/donda/ddc/buffer/chart/");
-            char *dataatual;
-            dataatual = malloc(MAX_BUF_SIZE);
-            gettime("%m%d",dataatual);
-            sprintf(pathfile,"%s%s",pathfile,dataatual);
-            sprintf(pathfile, "%s/%s/%s.candle", pathfile, param7, param3);
-            FILE *fcandle;
-            fcandle = fopen(pathfile, "r");
-            if (fcandle != NULL) {
-                fgets(linedata, MAX_BUF_SIZE, fcandle);
-                sprintf(chartheader, "C:%s:%s:%s:A:2010%s:", chartid, param3, param7,dataatual);
-                sscanf(linedata, "%[^':']:%s", charttime, linedata);
-                sprintf(chartheader, "%s%s00:%s\r\n", chartheader, charttime, linedata);
-                send(_fd, chartheader, strlen(chartheader), 0);
-                fclose(fcandle);
-            }
-            // Fim candle atual
-
-            free(dataatual);
 
             // Pega o header
             sprintf(chartheader, "C:%s:%s:END\r\n", chartid, param3);
