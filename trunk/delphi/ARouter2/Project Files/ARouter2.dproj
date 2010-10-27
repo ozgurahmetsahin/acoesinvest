@@ -54,6 +54,9 @@
 			</DCCReference>
 			<DCCReference Include="Units\UConsts.pas"/>
 			<DCCReference Include="Units\UDataControl.pas"/>
+			<DCCReference Include="Units\UFrmConnectionControl.pas">
+				<Form>FrmConnectionControl</Form>
+			</DCCReference>
 			<None Include="ModelSupport_ARouter2\default.txaPackage"/>
 			<None Include="ModelSupport_ARouter2\default.txvpck"/>
 			<None Include="ModelSupport_ARouter2\ARouter2\default.txvpck"/>
