@@ -57,6 +57,12 @@
 			<DCCReference Include="Units\UFrmConnectionControl.pas">
 				<Form>FrmConnectionControl</Form>
 			</DCCReference>
+			<DCCReference Include="Units\UFrmSheet.pas">
+				<Form>FrmSheet</Form>
+			</DCCReference>
+			<DCCReference Include="Units\UFrmOpenSheet.pas">
+				<Form>FrmOpenSheet</Form>
+			</DCCReference>
 			<None Include="ModelSupport_ARouter2\default.txaPackage"/>
 			<None Include="ModelSupport_ARouter2\default.txvpck"/>
 			<None Include="ModelSupport_ARouter2\ARouter2\default.txvpck"/>

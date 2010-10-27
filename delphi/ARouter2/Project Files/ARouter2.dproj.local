@@ -3,8 +3,8 @@
 	<Transactions>
     <Transaction>2010/10/26 18:24:35.000.611,C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Units\UFrmMain.dfm=C:\Users\Donda\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
     <Transaction>2010/10/26 18:25:10.000.674,C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\ARouter2.dproj=C:\Users\Donda\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
-    <Transaction>2010/10/27 01:10:34.000,C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Units\UFrmConnectionControl.dfm=C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Unit1.dfm</Transaction>
-    <Transaction>2010/10/27 01:24:04.833,C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Units\UFrameConnectionConfig.dfm=C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Unit1.dfm</Transaction>
+    <Transaction>2010/10/27 01:10:34.000.000,C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Units\UFrmConnectionControl.dfm=C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Unit1.dfm</Transaction>
+    <Transaction>2010/10/27 01:24:04.000.833,C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Units\UFrameConnectionConfig.dfm=C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Unit1.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="ModelSupport_ARouter2"/>
@@ -25,5 +25,9 @@
     <File Path="Units\UFrmMain.dfm"/>
     <File Path="Units\UFrmConnectionControl.pas"/>
     <File Path="Units\UFrmConnectionControl.dfm"/>
+    <File Path="Units\UFrmSheet.pas"/>
+    <File Path="Units\UFrmSheet.dfm"/>
+    <File Path="Units\UFrmOpenSheet.pas"/>
+    <File Path="Units\UFrmOpenSheet.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>
