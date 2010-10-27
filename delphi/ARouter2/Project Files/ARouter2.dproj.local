@@ -1,19 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2010/10/26 18:24:35.000.611,C:\Users\Donda\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Units\UFrmMain.dfm</Transaction>
-    <Transaction>2010/10/26 18:25:10.000.674,C:\Users\Donda\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\ARouter2.dproj</Transaction>
-    <Transaction>2010/10/26 18:54:29.000.731,C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Units\UConsts.pas=C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Unit1.pas</Transaction>
-    <Transaction>2010/10/26 19:05:29.000.878,C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Units\UDataControl.pas=C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Unit1.pas</Transaction>
-    <Transaction>2010/10/26 19:35:43.000.810,=C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\ModelSupport_ARouter2\default.txaPackage</Transaction>
-    <Transaction>2010/10/26 19:35:50.000.270,=C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\ModelSupport_ARouter2\UDataControl\default.txvpck</Transaction>
+    <Transaction>2010/10/26 18:24:35.000.611,C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Units\UFrmMain.dfm=C:\Users\Donda\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2010/10/26 18:25:10.000.674,C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\ARouter2.dproj=C:\Users\Donda\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2010/10/27 01:10:34.000,C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Units\UFrmConnectionControl.dfm=C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Unit1.dfm</Transaction>
+    <Transaction>2010/10/27 01:24:04.833,C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Units\UFrameConnectionConfig.dfm=C:\Users\Donda\Documents\RAD Studio\Projects\ARouter2\Project Files\Unit1.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
-    <File Path="..\..\ARouter2"/>
-    <File Path="..\Units"/>
-    <File Path="..\Units\UConsts.pas"/>
-    <File Path="..\Units\UDataControl.pas"/>
-    <File Path="..\Units\UFrmMain.pas"/>
     <File Path="ModelSupport_ARouter2"/>
     <File Path="ModelSupport_ARouter2\ARouter2"/>
     <File Path="ModelSupport_ARouter2\ARouter2\default.txvpck"/>
@@ -25,5 +18,12 @@
     <File Path="ModelSupport_ARouter2\UFrmMain\default.txvpck"/>
     <File Path="ModelSupport_ARouter2\default.txaPackage"/>
     <File Path="ModelSupport_ARouter2\default.txvpck"/>
+    <File Path="Units"/>
+    <File Path="Units\UConsts.pas"/>
+    <File Path="Units\UDataControl.pas"/>
+    <File Path="Units\UFrmMain.pas"/>
+    <File Path="Units\UFrmMain.dfm"/>
+    <File Path="Units\UFrmConnectionControl.pas"/>
+    <File Path="Units\UFrmConnectionControl.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

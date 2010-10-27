@@ -13,12 +13,10 @@ type
     Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    Connection:TConnection;
   end;
 
 var
@@ -26,28 +24,13 @@ var
 
 implementation
 
-uses UConsts;
+uses UConsts, UFrmConnectionControl;
 
 {$R *.dfm}
 
 procedure TFrmMain.BitBtn1Click(Sender: TObject);
 begin
-  Connection:=TConnection.Create;
-  Connection.Host:='server2.acoesinvest.com.br';
-  Connection.Port:=81;
-  Connection.ConnectTimeOut:=2000;
-  Connection.ReadTimeOut:=250;
-
-  if Connection.Connect then
-  ShowMessage('Conectado')
-  else ShowMessage('Erro');
-
-
-end;
-
-procedure TFrmMain.Button1Click(Sender: TObject);
-begin
-  Memo1.Lines.AddStrings(Connection.GetAllDataRecv);
+  FrmConnectionControl.Show;
 end;
 
 procedure TFrmMain.FormCreate(Sender: TObject);
