@@ -2,9 +2,9 @@ program ARouter2;
 
 uses
   Forms,
-  UFrmMain in '..\Units\UFrmMain.pas' {FrmMain},
-  UConsts in '..\Units\UConsts.pas',
-  UDataControl in '..\Units\UDataControl.pas';
+  UFrmMain in 'Units\UFrmMain.pas' {FrmMain},
+  UConsts in 'Units\UConsts.pas',
+  UDataControl in 'Units\UDataControl.pas';
 
 {$R *.res}
 
