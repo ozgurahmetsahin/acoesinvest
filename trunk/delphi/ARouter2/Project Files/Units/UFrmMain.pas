@@ -13,6 +13,7 @@ type
     Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -24,13 +25,18 @@ var
 
 implementation
 
-uses UConsts, UFrmConnectionControl;
+uses UConsts, UFrmConnectionControl, UFrmSheet;
 
 {$R *.dfm}
 
 procedure TFrmMain.BitBtn1Click(Sender: TObject);
 begin
   FrmConnectionControl.Show;
+end;
+
+procedure TFrmMain.Button1Click(Sender: TObject);
+begin
+ FrmSheet.Show;
 end;
 
 procedure TFrmMain.FormCreate(Sender: TObject);
