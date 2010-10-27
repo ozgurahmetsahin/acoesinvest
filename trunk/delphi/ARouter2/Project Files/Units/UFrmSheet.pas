@@ -47,7 +47,7 @@ var
 
 implementation
 
-uses UFrmOpenSheet, UConsts;
+uses UFrmOpenSheet, UConsts, UFrmConnectionControl;
 
 {$R *.dfm}
 
@@ -144,6 +144,8 @@ begin
    end;
 
    Save;
+
+   SignalConnection.SendMsg('sqt ' + lblEdtNewSymbol.Text);
 
    lblEdtNewSymbol.Clear;
  end
