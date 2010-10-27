@@ -44,6 +44,7 @@ type
     procedure Disconnect;
     function GetAllDataRecv:TStrings;
     function Connected:Boolean;
+    procedure SendMsg(Msg:String);
   published
     property ConnectTimeOut:Integer read FConnectTimeout write SetConnectTimeout;
     property ReadTimeOut:Integer read FReadTimeOut write SetReadTimeout;
@@ -142,6 +143,13 @@ begin
   Recv:=FConnection.IOHandler.ReadLn;
   if Recv<>'' then
   FDataRecv.Add(Recv);
+end;
+
+{Envia uma mensagem ao servidor}
+procedure TConnection.SendMsg(Msg: String);
+begin
+  if Connected then
+  FConnection.IOHandler.WriteLn(Msg);
 end;
 
 procedure TConnection.SetConnectTimeout(const Value: Integer);
