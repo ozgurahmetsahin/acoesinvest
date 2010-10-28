@@ -7,13 +7,16 @@ uses
   UDataControl in 'Units\UDataControl.pas',
   UFrmConnectionControl in 'Units\UFrmConnectionControl.pas' {FrmConnectionControl},
   UFrmSheet in 'Units\UFrmSheet.pas' {FrmSheet},
-  UFrmOpenSheet in 'Units\UFrmOpenSheet.pas' {FrmOpenSheet};
+  UFrmOpenSheet in 'Units\UFrmOpenSheet.pas' {FrmOpenSheet},
+  UFrmBook in 'Units\UFrmBook.pas' {FrmBook},
+  UFrmLogin in 'Units\UFrmLogin.pas' {Form1};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TFrmConnectionControl, FrmConnectionControl);
   Application.CreateForm(TFrmSheet, FrmSheet);

@@ -63,6 +63,12 @@
 			<DCCReference Include="Units\UFrmOpenSheet.pas">
 				<Form>FrmOpenSheet</Form>
 			</DCCReference>
+			<DCCReference Include="Units\UFrmBook.pas">
+				<Form>FrmBook</Form>
+			</DCCReference>
+			<DCCReference Include="Units\UFrmLogin.pas">
+				<Form>Form1</Form>
+			</DCCReference>
 			<None Include="ModelSupport_ARouter2\default.txaPackage"/>
 			<None Include="ModelSupport_ARouter2\default.txvpck"/>
 			<None Include="ModelSupport_ARouter2\ARouter2\default.txvpck"/>

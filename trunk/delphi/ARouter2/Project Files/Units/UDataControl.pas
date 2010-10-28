@@ -43,6 +43,8 @@ type
     function Connect(Host:String; Port:Integer):Boolean;overload;
     procedure Disconnect;
     function GetAllDataRecv:TStrings;
+    function GetDataLine(ALine:Integer):String;
+    function GetDataCount:Integer;
     function Connected:Boolean;
     procedure SendMsg(Msg:String);
   published
@@ -135,12 +137,31 @@ begin
  Result:=FDataRecv;
 end;
 
+function TConnection.GetDataCount: Integer;
+begin
+  Result:=FDataRecv.Count;
+end;
+
+function TConnection.GetDataLine(ALine: Integer): String;
+begin
+  Result:=FDataRecv.Strings[ALine];
+end;
+
 {Lê os dados do socket}
 procedure TConnection.ReadDataBuffer;
 var Recv:String;
 begin
   {Lê dados do buffer e adiciona na lista}
-  Recv:=FConnection.IOHandler.ReadLn;
+  Recv:='';
+  try
+    Recv:=FConnection.IOHandler.ReadLn;
+  except
+    on E: EIdConnClosedGracefully do
+    Disconnect;
+    on E: EIdReadTimeout do
+    Recv:='';
+  end;
+
   if Recv<>'' then
   FDataRecv.Add(Recv);
 end;
@@ -177,13 +198,19 @@ begin
   begin
     with FConn do
     begin
-      if not FConnection.IOHandler.InputBufferIsEmpty then
-      Synchronize(FConn.ReadDataBuffer);
+//      if not FConnection.IOHandler.InputBufferIsEmpty then
+//      Synchronize(FConn.ReadDataBuffer);
+      while not FConnection.IOHandler.InputBufferIsEmpty do
+      FConn.ReadDataBuffer;
     end;
 
     {Se solicitado, finaliza thread}
     if Terminated then
     Break;
+
+    {Aguarda 100 milisegundos, sem isso o processo fica muito pesado,
+    consumindo muito a CPU}
+    Sleep(100);
   end;
 end;
 

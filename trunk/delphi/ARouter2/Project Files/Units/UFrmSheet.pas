@@ -5,7 +5,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, Grids, StdCtrls, Buttons, ComCtrls, Menus;
+  Dialogs, ExtCtrls, Grids, StdCtrls, Buttons, ComCtrls, Menus, IdGlobal;
 
 type
   TFrmSheet = class(TForm)
@@ -40,11 +40,27 @@ type
     procedure Save;
     procedure Load(Name:String);
     procedure SetValue(Col, Row:Integer; Value:String);
+    function GetSymbolLine(Symbol:String):Integer;
   end;
+
+ {Thread de Leitura dos dados para a planilha}
+ {$M+}
+ TSheetThread = class(TThread)
+  private
+    FSheet: TFrmSheet;
+  protected
+    procedure Execute; override;
+  published
+    property SheetForm:TFrmSheet read FSheet;
+  public
+    constructor Create(ASheet : TFrmSheet); reintroduce;
+
+ end;
+ {$M-}
 
 var
   FrmSheet: TFrmSheet;
-
+  ThreadRead : TSheetThread;
 implementation
 
 uses UFrmOpenSheet, UConsts, UFrmConnectionControl;
@@ -180,6 +196,23 @@ begin
  Sheet.Cells[7,0]:=SSheet_ColumnName_Open;
  Sheet.Cells[8,0]:=SSheet_ColumnName_Close;
  Sheet.Cells[9,0]:=SSheet_ColumnName_Busines;
+ ThreadRead:=TSheetThread.Create(Self);
+end;
+
+function TFrmSheet.GetSymbolLine(Symbol: String): Integer;
+var R:Integer;
+    L:Integer;
+begin
+  L:=-1;
+  for R := 1 to Sheet.RowCount-1 do
+  begin
+    if Sheet.Cells[0,R] = Symbol then
+    begin
+      L:=R;
+      Break;
+    end;
+  end;
+  Result:=L;
 end;
 
 procedure TFrmSheet.Load(Name: String);
@@ -248,29 +281,12 @@ begin
 end;
 
 procedure TFrmSheet.SetValue(Col, Row: Integer; Value: String);
-var Rect:TRect;
-    NewValue:Double;
-    OldValue:Double;
 begin
-
- {Inicializa variaveis}
- NewValue:= 0;
- OldValue:= 0;
-
- {Converte novo valor para pode comparar}
- try
-  NewValue:= StrToFloat(Value);
- except on E: Exception do
-
- end;
-
- {Converte antigo valor para poder comparar}
- try
-   OldValue:=StrToFloat(Sheet.Cells[Col,Row]);
- except on E: Exception do
-
- end;
-
+ {Verifica se tem o ! no final}
+ if Copy(Value,Length(Value),1)='!' then
+  Sheet.Cells[Col,Row]:=Copy(Value,1,Length(Value)-1)
+ else
+  Sheet.Cells[Col,Row]:=Value;
 end;
 
 procedure TFrmSheet.SheetDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -319,6 +335,67 @@ begin
 lblEdtNewSymbol.Text:=Key;
 lblEdtNewSymbol.SetFocus;
 lblEdtNewSymbol.SelStart:=Length(lblEdtNewSymbol.Text);
+end;
+
+{ TSheetThread }
+
+constructor TSheetThread.Create(ASheet: TFrmSheet);
+begin
+  FSheet:=ASheet;
+  inherited Create(False);
+end;
+
+procedure TSheetThread.Execute;
+var Data:TStringList;
+    Row,I,L:Integer;
+    Line:String;
+begin
+  Data:=TStringList.Create;
+  Row:=0;
+
+  while not Terminated do
+  begin
+
+    while SignalConnection.GetDataCount > Row do
+    begin
+      Line:=SignalConnection.GetDataLine(Row);
+      SplitColumns(Line, Data, ':');
+
+      if Data[0]='T' then
+      begin
+        L:=FSheet.GetSymbolLine(Data[1]);
+        for I := 3 to Data.Count-1 do
+        begin
+          if Odd(I) then
+          begin
+            if Data[I]='2' then
+              if L>0 then
+               FSheet.SetValue(1,L,Data[I+1]);
+            if Data[I]='3' then
+              if L>0 then
+               FSheet.SetValue(3,L,Data[I+1]);
+            if Data[I]='4' then
+              if L>0 then
+               FSheet.SetValue(4,L,Data[I+1]);
+            if Data[I]='8' then
+              if L>0 then
+               FSheet.SetValue(9,L,Data[I+1]);
+            if Data[I]='700' then
+              if L>0 then
+               FSheet.SetValue(2,L,Data[I+1]);
+          end;
+        end;
+      end;
+
+      Data.Clear;
+      Row:=Row+1;
+      L:=-1;
+    end;
+    {Aguarda 100 milisegundos, sem isso o processo fica muito pesado,
+    consumindo muito a CPU}
+    Sleep(100);
+  end;
+
 end;
 
 end.
