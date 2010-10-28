@@ -4,16 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, UDataControl, StdCtrls, Buttons;
+  Dialogs, UDataControl, StdCtrls, Buttons, ExtCtrls, pngimage;
 
 type
   TFrmMain = class(TForm)
-    BitBtn1: TBitBtn;
-    Memo1: TMemo;
-    Button1: TButton;
+    Image1: TImage;
+    BtnImgSheet: TImage;
+    BtnImgBook: TImage;
     procedure FormCreate(Sender: TObject);
-    procedure BitBtn1Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure BtnImgSheetClick(Sender: TObject);
+    procedure BtnImgBookClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -25,18 +25,19 @@ var
 
 implementation
 
-uses UConsts, UFrmConnectionControl, UFrmSheet;
+uses UConsts, UFrmConnectionControl, UFrmSheet, UFrmBook;
 
 {$R *.dfm}
 
-procedure TFrmMain.BitBtn1Click(Sender: TObject);
+procedure TFrmMain.BtnImgBookClick(Sender: TObject);
 begin
-  FrmConnectionControl.Show;
+  FrmBook:=TFrmBook.Create(Self);
+  FrmBook.Show;
 end;
 
-procedure TFrmMain.Button1Click(Sender: TObject);
+procedure TFrmMain.BtnImgSheetClick(Sender: TObject);
 begin
- FrmSheet.Show;
+  FrmSheet.Show;
 end;
 
 procedure TFrmMain.FormCreate(Sender: TObject);

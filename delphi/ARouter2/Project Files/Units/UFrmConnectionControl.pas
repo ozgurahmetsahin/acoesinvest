@@ -56,8 +56,8 @@ begin
   {Configura a conexão}
   with SignalConnection do
   begin
-    Host:='server2.acoesinvest.com.br';
-    Port:=81;
+    Host:='server3.acoesinvest.com.br';
+    Port:=8189;
     ConnectTimeOut:=2000;
     ReadTimeOut:=250;
   end;
