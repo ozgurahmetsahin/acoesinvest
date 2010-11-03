@@ -46,6 +46,8 @@ type
     function GetDataLine(ALine:Integer):String;
     function GetDataCount:Integer;
     function Connected:Boolean;
+    procedure SetLineAsRead(ALine:Integer);
+    procedure SetLineAsIgnored(ALine:Integer);
     procedure SendMsg(Msg:String);
   published
     property ConnectTimeOut:Integer read FConnectTimeout write SetConnectTimeout;
@@ -176,6 +178,22 @@ end;
 procedure TConnection.SetConnectTimeout(const Value: Integer);
 begin
   FConnectTimeout := Value;
+end;
+
+procedure TConnection.SetLineAsIgnored(ALine: Integer);
+var Line:String;
+begin
+  Line:=FDataRecv.Strings[ALine];
+  Line:=Line+' (Ignorado)';
+  FDataRecv.Strings[ALine]:=Line;
+end;
+
+procedure TConnection.SetLineAsRead(ALine: Integer);
+var Line:String;
+begin
+  Line:=FDataRecv.Strings[ALine];
+  Line:=Line+' (Lido)';
+  FDataRecv.Strings[ALine]:=Line;
 end;
 
 procedure TConnection.SetReadTimeout(const Value: Integer);

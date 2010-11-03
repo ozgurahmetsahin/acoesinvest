@@ -16,10 +16,6 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm1, Form1);
-  Application.CreateForm(TFrmMain, FrmMain);
-  Application.CreateForm(TFrmConnectionControl, FrmConnectionControl);
-  Application.CreateForm(TFrmSheet, FrmSheet);
-  Application.CreateForm(TFrmOpenSheet, FrmOpenSheet);
+  Application.CreateForm(TFrmBook, FrmBook);
   Application.Run;
 end.

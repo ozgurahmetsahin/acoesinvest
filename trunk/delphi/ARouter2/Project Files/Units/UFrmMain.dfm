@@ -1014,4 +1014,13 @@ object FrmMain: TFrmMain
       00000049454E44AE426082}
     OnClick = BtnImgBookClick
   end
+  object Button1: TButton
+    Left = 376
+    Top = 32
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
 end

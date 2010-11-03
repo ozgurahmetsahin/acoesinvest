@@ -2,7 +2,7 @@ object FrmBook: TFrmBook
   Left = 0
   Top = 0
   Caption = 'Livro de Ofertas'
-  ClientHeight = 190
+  ClientHeight = 289
   ClientWidth = 605
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,15 +19,16 @@ object FrmBook: TFrmBook
   object Panel1: TPanel
     Left = 0
     Top = 24
-    Width = 605
-    Height = 166
+    Width = 420
+    Height = 246
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 605
     object StringGrid1: TStringGrid
       Left = 1
-      Top = 22
-      Width = 603
-      Height = 143
+      Top = 63
+      Width = 418
+      Height = 182
       Align = alClient
       ColCount = 6
       DefaultRowHeight = 17
@@ -35,6 +36,9 @@ object FrmBook: TFrmBook
       RowCount = 6
       TabOrder = 0
       OnDrawCell = StringGrid1DrawCell
+      ExplicitTop = 62
+      ExplicitWidth = 603
+      ExplicitHeight = 183
       ColWidths = (
         133
         72
@@ -46,7 +50,7 @@ object FrmBook: TFrmBook
     object TabSet1: TTabSet
       Left = 1
       Top = 1
-      Width = 603
+      Width = 418
       Height = 21
       Align = alTop
       AutoScroll = False
@@ -65,6 +69,20 @@ object FrmBook: TFrmBook
       TabIndex = 0
       TabPosition = tpTop
       OnChange = TabSet1Change
+      ExplicitWidth = 603
+    end
+    object StringGrid2: TStringGrid
+      Left = 1
+      Top = 22
+      Width = 418
+      Height = 41
+      Align = alTop
+      ColCount = 9
+      DefaultRowHeight = 17
+      FixedCols = 0
+      RowCount = 2
+      ScrollBars = ssNone
+      TabOrder = 2
     end
   end
   object Panel2: TPanel
@@ -104,5 +122,34 @@ object FrmBook: TFrmBook
       TabOrder = 2
       OnClick = CheckBox1Click
     end
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 270
+    Width = 605
+    Height = 19
+    Panels = <
+      item
+        Text = 'N'#227'o Verificado'
+        Width = 300
+      end
+      item
+        Text = 'Offline'
+        Width = 50
+      end>
+    Visible = False
+  end
+  object Memo1: TMemo
+    Left = 420
+    Top = 24
+    Width = 185
+    Height = 246
+    Align = alRight
+    Lines.Strings = (
+      'Logs:')
+    TabOrder = 3
+    Visible = False
+    ExplicitLeft = 425
+    ExplicitTop = 26
   end
 end
