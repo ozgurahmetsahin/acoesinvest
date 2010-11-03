@@ -386,10 +386,8 @@ begin
           end;
         end;
       end;
-
       Data.Clear;
       Row:=Row+1;
-      L:=-1;
     end;
     {Aguarda 100 milisegundos, sem isso o processo fica muito pesado,
     consumindo muito a CPU}
