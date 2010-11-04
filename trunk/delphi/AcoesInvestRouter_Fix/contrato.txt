@@ -1,0 +1,82 @@
+Contrato de prestação de serviços
+
+DE CESSÃO TEMPORARIA DE DIREITO DE USO DE PROGRAMAS DE COMPUTADOR E DE FORNECIMENTO ON-LINE DE INFORMAÇÕES FINANCEIRAS PARA CLIENTES NÃO-PROFISSIONAIS
+
+Partes:
+
+De um lado a Ações Invest Sociedade de Agentes Autonomos de Investimentos S/S LTDA, localizada na Avenida Dr. Altino Arantes, 131, Cobertura, Centro, Ourinhos, São Paulo, portadora do CNPJ 08.395.802/0001-50, de ora em diante denominada CONTRATADA e de outro lado, a Pessoa Jurídica legalmente constituída ou a Pessoa Física civilmente capaz, devidamente identificada pelo registro de usuário do website, doravante denominada CONTRATANTE, celebram o presente contrato sob as cláusulas e condições abaixo descritas:
+
+
+CLÁUSULA PRIMEIRA
+Do Objetivo
+
+O presente contrato tem por objetivo a cessão temporária do uso de programa de computador Ações Invest Router que possibilita ao cliente receber a transmissão de informações e cotações do mercado financeiro, serviço de apoio, conforme descrito na solicitação de serviços feita pelo CONTRATANTE. Sendo estes serviços temporários e não exclusiva permanecendo a Ações Invest como plena detentora da propriedade industrial e intelectual, e dos direitos autorais, (COPYRIGHT).
+
+CLÁUSULA SEGUNDA
+Da Vigência
+	
+1- Na vigência do contrato o CONTRATANTE terá acesso ao serviço contratado, descritos na CLÁUSULA primeira, em conformidade com as regras de uso estabelecidas pela CONTRATADA.
+2- O contrato será automaticamente renovado ao término do tempo estabelecido na CLÁUSULA segunda item 1 (um)caso o uma das partes não se oponha.
+
+
+CLÁUSULA TERCEIRA
+Obrigações e Responsabilidades da CONTRATADA
+
+1- A CONTRATADA obriga-se a transmitir as informações do Serviço ora contratado diariamente, durante o horário de funcionamento do mercado financeiro, no caso das Bolsas brasileiras será seguido o horário delas e no caso de cotações de Bolsas estrangeiras será seguido o horário das mesmas, salvo nos dias em que não as tiver disponíveis ou operantes.
+
+2- A CONTRATADA obriga-se a disponibilizar as atualizações e manutenções promovidas no(s) programa(s) de computador descrito(s) na(s) Solicitação(ões) de Serviço(s), graciosamente ao CONTRATANTE, durante a vigência deste Contrato. 
+
+2.1- As atualizações e manutenções do software em questão são de exclusivo critério, iniciativa e prioridade da CONTRATADA.
+
+3- A CONTRATADA ficará isenta de toda e qualquer responsabilidade quando ficar impedida de disponibilizar o Serviço contratado pelo CONTRATANTE,  seja  a fonte dessa indisponibilidade  erro em informações, provenientes das própria fontes primárias de informação, dos meios de comunicação, do sistema de software, e, em nenhum caso por danos indiretos, lucros cessantes e reclamações de terceiros, 
+
+	3.1- A CONTRATADA envidará o melhor de seus esforços no tocante à: a) avisar ao CONTRATANTE sobre qualquer interrupção do Serviço, sempre que tecnicamente viável, informando a duração estimada da interrupção; b) eliminar a interrupção no menor prazo possível após tomar ciência de sua ocorrência.
+
+4- A CONTRATANTE não responderá pela autenticidade, exatidão e integralidade das informações contidas no Serviço, nem se responsabilizará, perante o CONTRATADO, por quaisquer atrasos, erros ou omissões nas transmissões das informações contidas no Serviço, ou por danos decorrentes ou provocados pelas mesmas.
+
+5- A responsabilidade da CONTRATADA estará limitada ao cumprimento das obrigações aqui assumidas, não lhe cabendo qualquer outra, inclusive, mas não limitados, a danos emergentes, lucros cessantes, interrupção de negócios, mal funcionamento de qualquer outro software ou hardware, perda de informações e outros prejuízos decorrentes do uso ou da impossibilidade de usar, cujas causas possam ser atribuídas, direta ou indiretamente, à cessa do software e / ou ao Serviço.
+
+
+CLÁUSULA QUARTA
+Obrigações e Responsabilidades do CONTRATANTE
+
+1- O CONTRATANTE não poderá utilizar-se do nome, marca, direitos autorais e intelectuais da CONTRATADA sem expressa e prévia autorização da mesma.
+O CONTRATANTE SE COMPROMETE TAMBÉM EM OBSERVAR TODAS AS RESTRIÇÕES E CONDIÇÕES DE USO das informações e conteúdos fornecidos por terceiros, inclusive quanto o acesso, armazenamento ou redistribuição, que tenham sidos entregue pela CONTRATADA.
+  
+2- O CONTRATANTE deverá manter a CONTRATADA informada sobre qualquer alteração do nome do responsável descrito na(s) Solicitação(ões) de Serviço(s), sem que haja necessidade de pedido.
+
+2.1- A CONTRATADA não será responsável por falha ou ausência de comunicação, devido à não observância pelo CONTRATANTE no disposto no item 3 acima.
+
+3- É proibida ao CONTRATANTE qualquer atitude ou postura que represente direta ou indiretamente a elaboração de índice ou qualquer outro indicador do comportamento agregado dos preços de ativos, títulos e valores mobiliários, para fins comerciais, sob pena do imediato cancelamento do presente Contrato, sem prejuízo das providências judiciais cabíveis, exceto com o prévio e expresso consentimento da Ações Invest.
+
+4- Fica reservado a CONTRATANTE, o seu exclusivo critério, a concessão de autorização ou proibição do uso da marca, símbolos, logotipos e logomarcas de sua propriedade.
+
+5- O CONTRATANTE compromete-se a permitir o acesso de auditores da CONTRATADA e de seus contribuidores em suas dependências, atendendo e fornecendo à eles quaisquer informações solicitadas relativas ao Contrato.
+
+
+CLÁUSULA QUINTA
+Da Rescisão
+
+1- O presente Contrato poderá ser rescindido pelo CONTRATANTE, a qualquer tempo, sem multa de parte a parte, mediante aviso prévio por escrito, com antecedência mínima de 60(sessenta) dias do término do contrato.
+
+2- O presente Contrato poderá ser rescindido pela CONTRATANTE, a qualquer tempo, mediante notificação expressa para o endereço residencial e e-mail do CONTRATADO, com 60 (sessenta) dias de antecedência ou de eventuais renovações.
+
+3- A Contratada poderá ceder, transferir e/ou delegar quaisquer de seus direitos e/ou delegar quaisquer de seus direitos e/ou obrigações do presente contrato sem o consentimento prévio da outra parte.
+
+4- O presente Contrato estará rescindido automaticamente no caso de falência, concordata, liquidação judicial ou extrajudicial de quaisquer das partes.
+
+
+CLÁUSULA SEXTA
+Das Disposições Gerais
+
+1- Qualquer tipo de notificação entre as partes deste Contrato deverá ser feito via e-mail, fac-símile, via postal, ou em mãos.
+
+2- O fato de uma das partes não exigir o cumprimento de qualquer das obrigações ora estipuladas não poderá, de modo algum, ser considerado como novação ou renúncia daquela parte ao direito de, quando julgar necessário, exigir o seu cumprimento ou considerar rescindido o Contrato.
+
+3- As partes não poderão ceder, transferir e/ou delegar quaisquer de seus direitos e/ou obrigações do presente Contrato sem o consentimento prévio por escrito da outra parte.
+
+
+CLÁUSULA SÉTIMA
+Do Foro. 
+
+ As partes elegem o Foro Central da Comarca da Cidade de Ourinhos, Estado de São Paulo, para dirimir toda e qualquer questão ou dúvida oriunda deste Contrato, com renúncia expressa de qualquer outro, por mais privilegiado que seja.
