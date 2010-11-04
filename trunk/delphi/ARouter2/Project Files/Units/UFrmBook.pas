@@ -195,14 +195,14 @@ begin
    else
    Font.Color:=clWhite;
    TextRect(Rect,Rect.Left + 3,Rect.Top + 3,StringGrid1.Cells[ACol,ARow]);
-//
-//   if (ACol = 0 ) or ( ACol = 5 ) then
-//    begin
-//    BrokeRageFile:=TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'brokerages.ini');
-//    TextRect(Rect,Rect.Left + 3,Rect.Top + 3,BrokeRageFile.ReadString('brokerage',StringGrid1.Cells[ACol,ARow],''));
-//    BrokeRageFile.Free;
-//    end;
-//
+
+   if (ACol = 0 ) or ( ACol = 5 ) then
+   begin
+    BrokeRageFile:=TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'brokerages.ini');
+    TextRect(Rect,Rect.Left + 3,Rect.Top + 3,BrokeRageFile.ReadString('brokerage',StringGrid1.Cells[ACol,ARow],''));
+    BrokeRageFile.Free;
+   end;
+
   end;
 
 

@@ -10,7 +10,9 @@ object FrmBook: TFrmBook
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  FormStyle = fsStayOnTop
   OldCreateOrder = False
+  Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
@@ -23,7 +25,6 @@ object FrmBook: TFrmBook
     Height = 246
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 605
     object StringGrid1: TStringGrid
       Left = 1
       Top = 63
@@ -34,11 +35,9 @@ object FrmBook: TFrmBook
       DefaultRowHeight = 17
       FixedCols = 0
       RowCount = 6
+      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing]
       TabOrder = 0
       OnDrawCell = StringGrid1DrawCell
-      ExplicitTop = 62
-      ExplicitWidth = 603
-      ExplicitHeight = 183
       ColWidths = (
         133
         72
@@ -69,7 +68,6 @@ object FrmBook: TFrmBook
       TabIndex = 0
       TabPosition = tpTop
       OnChange = TabSet1Change
-      ExplicitWidth = 603
     end
     object StringGrid2: TStringGrid
       Left = 1
@@ -119,6 +117,8 @@ object FrmBook: TFrmBook
       Width = 97
       Height = 17
       Caption = 'Sempre Vis'#237'vel'
+      Checked = True
+      State = cbChecked
       TabOrder = 2
       OnClick = CheckBox1Click
     end
@@ -149,7 +149,5 @@ object FrmBook: TFrmBook
       'Logs:')
     TabOrder = 3
     Visible = False
-    ExplicitLeft = 425
-    ExplicitTop = 26
   end
 end
