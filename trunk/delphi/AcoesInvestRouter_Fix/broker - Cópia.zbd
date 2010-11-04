@@ -1,8 +1,0 @@
-verbosity 9			# Basic messages only
-server false			# It's a client
-detached false			# Detach from terminal
-message "Starting Cedro Lite"
-compression zlib:9		# Request normal Zlib compression
-serverport 443
-#httpproxy host:port
-#httpproxyauth "username:password"
