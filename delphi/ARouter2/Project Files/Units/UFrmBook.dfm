@@ -79,6 +79,7 @@ object FrmBook: TFrmBook
       DefaultRowHeight = 17
       FixedCols = 0
       RowCount = 2
+      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing]
       ScrollBars = ssNone
       TabOrder = 2
     end
