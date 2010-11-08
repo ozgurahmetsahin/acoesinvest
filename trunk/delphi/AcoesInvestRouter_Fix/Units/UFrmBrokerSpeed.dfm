@@ -1,6 +1,7 @@
 object FrmBrokerSpeed: TFrmBrokerSpeed
   Left = 0
   Top = 0
+  BorderStyle = bsDialog
   Caption = 'Boleta Express'
   ClientHeight = 358
   ClientWidth = 516

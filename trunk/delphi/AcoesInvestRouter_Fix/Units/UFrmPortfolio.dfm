@@ -332,14 +332,14 @@ object FrmPortfolio: TFrmPortfolio
       ParentFont = False
     end
     object Label23: TLabel
-      Left = 574
+      Left = 547
       Top = 1
       Width = 129
       Height = 16
       Caption = 'Ordens Executadas:'
     end
     object Label25: TLabel
-      Left = 611
+      Left = 584
       Top = 18
       Width = 45
       Height = 14
@@ -352,7 +352,7 @@ object FrmPortfolio: TFrmPortfolio
       ParentFont = False
     end
     object Label26: TLabel
-      Left = 660
+      Left = 633
       Top = 18
       Width = 43
       Height = 14
@@ -365,7 +365,7 @@ object FrmPortfolio: TFrmPortfolio
       ParentFont = False
     end
     object Label28: TLabel
-      Left = 660
+      Left = 633
       Top = 36
       Width = 43
       Height = 14
@@ -378,7 +378,7 @@ object FrmPortfolio: TFrmPortfolio
       ParentFont = False
     end
     object Label29: TLabel
-      Left = 617
+      Left = 590
       Top = 36
       Width = 39
       Height = 14
@@ -391,7 +391,7 @@ object FrmPortfolio: TFrmPortfolio
       ParentFont = False
     end
     object Label30: TLabel
-      Left = 624
+      Left = 597
       Top = 56
       Width = 32
       Height = 14
@@ -404,7 +404,7 @@ object FrmPortfolio: TFrmPortfolio
       ParentFont = False
     end
     object Label31: TLabel
-      Left = 660
+      Left = 633
       Top = 56
       Width = 43
       Height = 14
@@ -415,6 +415,17 @@ object FrmPortfolio: TFrmPortfolio
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+    end
+    object BitBtn1: TBitBtn
+      Left = 4
+      Top = 61
+      Width = 131
+      Height = 25
+      Caption = 'Atualizar dados'
+      DoubleBuffered = True
+      ParentDoubleBuffered = False
+      TabOrder = 0
+      OnClick = BitBtn1Click
     end
   end
   object Calculator: TTimer
