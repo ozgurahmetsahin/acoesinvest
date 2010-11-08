@@ -3,7 +3,7 @@ object FrmBrokerBuy: TFrmBrokerBuy
   Top = 222
   BorderStyle = bsDialog
   Caption = 'Compra'
-  ClientHeight = 296
+  ClientHeight = 285
   ClientWidth = 407
   Color = 8454143
   Font.Charset = DEFAULT_CHARSET
@@ -23,7 +23,7 @@ object FrmBrokerBuy: TFrmBrokerBuy
     Left = 0
     Top = 0
     Width = 407
-    Height = 296
+    Height = 285
     Align = alClient
     Brush.Color = 8454143
     ExplicitHeight = 246
@@ -131,7 +131,6 @@ object FrmBrokerBuy: TFrmBrokerBuy
     Width = 121
     Height = 22
     Style = csOwnerDrawFixed
-    ItemHeight = 16
     ItemIndex = 0
     TabOrder = 3
     Text = 'Hoje'
@@ -155,7 +154,7 @@ object FrmBrokerBuy: TFrmBrokerBuy
   end
   object BitBtn1: TBitBtn
     Left = 288
-    Top = 138
+    Top = 147
     Width = 59
     Height = 25
     Caption = 'Enviar'
@@ -167,7 +166,7 @@ object FrmBrokerBuy: TFrmBrokerBuy
   end
   object BitBtn2: TBitBtn
     Left = 288
-    Top = 169
+    Top = 178
     Width = 60
     Height = 25
     Caption = 'Cancelar'
@@ -327,52 +326,6 @@ object FrmBrokerBuy: TFrmBrokerBuy
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Label18: TLabel
-      Left = 241
-      Top = 35
-      Width = 32
-      Height = 13
-      Caption = 'Comp'
-    end
-    object Label20: TLabel
-      Left = 241
-      Top = 54
-      Width = 28
-      Height = 13
-      Caption = 'Vend'
-    end
-    object Label21: TLabel
-      Left = 280
-      Top = 54
-      Width = 30
-      Height = 13
-      Cursor = crHandPoint
-      Caption = '69000'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      OnClick = Label21Click
-      OnMouseMove = Label21MouseMove
-    end
-    object Label19: TLabel
-      Left = 280
-      Top = 35
-      Width = 30
-      Height = 13
-      Cursor = crHandPoint
-      Caption = '69000'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      OnClick = Label19Click
-      OnMouseMove = Label19MouseMove
-    end
   end
   object GroupBox2: TGroupBox
     Left = 16
@@ -401,8 +354,8 @@ object FrmBrokerBuy: TFrmBrokerBuy
     end
   end
   object LabeledEdit4: TLabeledEdit
-    Left = 270
-    Top = 93
+    Left = 128
+    Top = 412
     Width = 93
     Height = 19
     Ctl3D = False
@@ -501,10 +454,64 @@ object FrmBrokerBuy: TFrmBrokerBuy
       TabOrder = 3
     end
   end
+  object GroupBox3: TGroupBox
+    Left = 270
+    Top = 77
+    Width = 129
+    Height = 55
+    Caption = 'Compra/Venda'
+    TabOrder = 12
+    object Label20: TLabel
+      Left = 9
+      Top = 38
+      Width = 38
+      Height = 13
+      Caption = 'Venda:'
+    end
+    object Label21: TLabel
+      Left = 62
+      Top = 38
+      Width = 30
+      Height = 13
+      Cursor = crHandPoint
+      Caption = '69000'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      OnClick = Label21Click
+      OnMouseMove = Label21MouseMove
+    end
+    object Label19: TLabel
+      Left = 62
+      Top = 19
+      Width = 30
+      Height = 13
+      Cursor = crHandPoint
+      Caption = '69000'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      OnClick = Label19Click
+      OnMouseMove = Label19MouseMove
+    end
+    object Label18: TLabel
+      Left = 9
+      Top = 19
+      Width = 47
+      Height = 13
+      Caption = 'Compra:'
+    end
+  end
   object Timer1: TTimer
     Interval = 500
     OnTimer = Timer1Timer
-    Left = 352
-    Top = 120
+    Left = 232
+    Top = 136
   end
 end

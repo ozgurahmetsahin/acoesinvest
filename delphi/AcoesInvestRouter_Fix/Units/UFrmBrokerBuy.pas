@@ -50,11 +50,12 @@ type
     Edit2: TEdit;
     Label26: TLabel;
     Label27: TLabel;
-    Label18: TLabel;
+    Label28: TLabel;
+    GroupBox3: TGroupBox;
     Label20: TLabel;
     Label21: TLabel;
     Label19: TLabel;
-    Label28: TLabel;
+    Label18: TLabel;
     procedure LabeledEdit2Change(Sender: TObject);
     procedure LabeledEdit1Change(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);

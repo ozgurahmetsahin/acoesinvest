@@ -240,9 +240,6 @@ begin
               if not FrmPortfolio.Portfolio.FindQuote(Data.ValueFromIndex[K]) then
               FrmPortfolio.Portfolio.NewLine(Data.ValueFromIndex[K]);
               LastCodOR:=Data.ValueFromIndex[K];
-              MsgSend:='35=ADR' + #1 + '5017=5' + #1 + #3;
-              BMsgSend:=FrmMainTreeView.StrToBytes(MsgSend);
-              FrmMainTreeView.Broker.IOHandler.WriteDirect(BMsgSend);
             end;
 
             //Verifica atde total

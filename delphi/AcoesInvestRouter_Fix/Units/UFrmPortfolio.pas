@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, Sheet, StdCtrls, ExtCtrls;
+  Dialogs, Grids, Sheet, StdCtrls, ExtCtrls, Buttons;
 
 type
   TFrmPortfolio = class(TForm)
@@ -42,9 +42,11 @@ type
     Label29: TLabel;
     Label30: TLabel;
     Label31: TLabel;
+    BitBtn1: TBitBtn;
     procedure FormShow(Sender: TObject);
     procedure CalculatorTimer(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,6 +61,15 @@ implementation
 uses UFrmMainTreeView;
 
 {$R *.dfm}
+
+procedure TFrmPortfolio.BitBtn1Click(Sender: TObject);
+var MsgSend:String;
+    BMsgSend:TBytes;
+begin
+  MsgSend:='35=ADR' + #1 + '5017=5' + #1 + #3;
+  BMsgSend:=FrmMainTreeView.StrToBytes(MsgSend);
+  FrmMainTreeView.Broker.IOHandler.WriteDirect(BMsgSend);
+end;
 
 procedure TFrmPortfolio.CalculatorTimer(Sender: TObject);
 var Qtde : Integer;
