@@ -173,26 +173,13 @@ begin
 
   with StringGrid1.Canvas do
   begin
-    case ARow of
-       1 : Brush.Color:=RGB(241,234,180);
-       2 : Brush.Color:=RGB(234,204,21);
-       3 : Brush.Color:=RGB(140,213,43);
-       4 : Brush.Color:=RGB(0,170,0);
-       5 : Brush.Color:=RGB(132,193,255);
-       else
-        begin
-          if Odd(ARow) then
-          Brush.Color:=$00400000
-          else
-          Brush.Color:=$00770000;
-        end;
-    end;
+    if Odd(ARow) then
+      Brush.Color:=$00400000
+    else
+      Brush.Color:=$00770000;
    FillRect(Rect);
    Font:=StringGrid1.Font;
    Font.Style:=Font.Style + [fsBold];
-   if ARow <= 5 then
-   Font.Color:=clBlack
-   else
    Font.Color:=clWhite;
    TextRect(Rect,Rect.Left + 3,Rect.Top + 3,StringGrid1.Cells[ACol,ARow]);
 
@@ -360,10 +347,12 @@ begin
    Edit1.Text:=FSymbol;
    exit;
  end;
+ Symbol:=UpperCase(Edit1.Text);
+ ListBuy.Clear;
+ ListSell.Clear;
  SignalConnection.SendMsg('sqt '+ Edit1.Text);
  SignalConnection.SendMsg('bqt '+ Edit1.Text);
  Self.Caption:='Livro de Ofertas [' +  UpperCase(Edit1.Text) + ']';
- Symbol:=UpperCase(Edit1.Text);
 end;
 
 procedure TFrmBook.CheckBox1Click(Sender: TObject);
