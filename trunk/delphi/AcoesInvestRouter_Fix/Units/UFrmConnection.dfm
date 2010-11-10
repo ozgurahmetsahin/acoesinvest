@@ -4819,7 +4819,7 @@ object FrmConnection: TFrmConnection
     OnClick = BtnLoginClick
   end
   object BtnLogout: TBitBtn
-    Left = 194
+    Left = 96
     Top = 390
     Width = 92
     Height = 25
@@ -4921,5 +4921,11 @@ object FrmConnection: TFrmConnection
     ParentDoubleBuffered = False
     TabOrder = 10
     OnClick = BitBtn1Click
+  end
+  object Timer1: TTimer
+    Enabled = False
+    OnTimer = Timer1Timer
+    Left = 320
+    Top = 168
   end
 end

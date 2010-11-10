@@ -4,11 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, Sheet, Menus, ExtCtrls, StdCtrls, Tabs;
+  Dialogs, Grids, Sheet, Menus, ExtCtrls, StdCtrls, Tabs, ComCtrls;
 
 type
   TFrmHistoryOrders = class(TForm)
-    HistorySheet: TSheet;
     PopupMenu1: TPopupMenu;
     Cancelar1: TMenuItem;
     Timer1: TTimer;
@@ -25,8 +24,12 @@ type
     Label5: TLabel;
     Shape5: TShape;
     Label6: TLabel;
-    TabSet1: TTabSet;
     CheckBox1: TCheckBox;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    HistorySheet: TSheet;
+    StartStopSheet: TSheet;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure HistorySheetDrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);

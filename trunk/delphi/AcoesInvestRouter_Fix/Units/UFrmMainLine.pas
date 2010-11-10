@@ -52,7 +52,6 @@ type
     procedure Label3Click(Sender: TObject);
     procedure Label4Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure PlanilhadeCotaes1Click(Sender: TObject);
     procedure ResumodoAtivo1Click(Sender: TObject);
     procedure Livro5Melhores1Click(Sender: TObject);
     procedure Compra1Click(Sender: TObject);
@@ -73,6 +72,7 @@ type
     procedure Label10Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Image8Click(Sender: TObject);
+    procedure Image10Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -90,7 +90,8 @@ implementation
 
 uses UFrmMainTreeView, UFrmConnection, UFrmTrade, UFrmMiniBook,
   UFrmAbstractSymbol, UFrmBrokerBuy, UFrmHistoryOrders, UFrmStartStop,
-  UFrmBrokerSell,UFrmWebBrowser, UFrmPortfolio, UFrmBrokerSpeed, UFrmOpenChart;
+  UFrmBrokerSell,UFrmWebBrowser, UFrmPortfolio, UFrmBrokerSpeed, UFrmOpenChart,
+  UFrmTradeCentral, UFrmBook, UThrdDaileonFwRead;
 
 {$R *.dfm}
 
@@ -122,6 +123,10 @@ end;
 
 procedure TFrmMainLine.Compra1Click(Sender: TObject);
 begin
+  if not Assigned(FrmCentral) then
+  begin
+    FrmCentral:=TFrmCentral.Create(Application);
+  end;
 if FrmMainTreeView.Broker.Connected then
 begin
     FrmBrokerBuy.Label23.Caption:='';
@@ -151,20 +156,27 @@ procedure TFrmMainLine.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
  try
    Self.Caption:='Aguarde... Finalizando sua aplicação.';
+
    if FrmMainTreeView.Broker.Connected then
    FrmMainTreeView.Broker.Disconnect;
 
    if FrmMainTreeView.DaileonFW.Connected then
    FrmMainTreeView.DaileonFW.Disconnect;
 
+   if Assigned(SignalThread) then
+   begin
+     SignalThread.Terminate;
+     while not SignalThread.CheckTerminated do
+     Application.ProcessMessages;
+   end;
+
    {Eqto as Flags da Thread do Sinal OU a Thread do Broker estiverem como
    True, aguarda finalização}
-   while (FrmMainTreeView.ThrdSignal) OR(FrmMainTreeView.ThrdBroker) do
-   begin
-    Application.ProcessMessages;
-   end;
+//   while (FrmMainTreeView.ThrdSignal) OR(FrmMainTreeView.ThrdBroker) do
+//   begin
+//    Application.ProcessMessages;
+//   end;
    FrmMainTreeView.TerminateProcesso(ExtractFilePath(ParamStr(0)) + 'broker.exe');
-   FrmMainTreeView.TerminateProcesso(ExtractFilePath(ParamStr(0)) + 'Luma.exe');
    FrmMainTreeView.SaveLog;
  finally
    Application.Terminate;
@@ -190,15 +202,19 @@ end;
 
 procedure TFrmMainLine.FormShow(Sender: TObject);
 begin
-
- if not FrmMainTreeView.DaileonFW.Connected then
- FrmConnection.ShowModal;
-
- Self.FormStyle:=fsStayOnTop;
+//
+// if not FrmMainTreeView.DaileonFW.Connected then
+// FrmConnection.ShowModal;
+//
+// Self.FormStyle:=fsStayOnTop;
 end;
 
 procedure TFrmMainLine.HistricodeOrdens1Click(Sender: TObject);
 begin
+  if not Assigned(FrmCentral) then
+  begin
+    FrmCentral:=TFrmCentral.Create(Application);
+  end;
 if FrmMainTreeView.Broker.Connected then
 begin
  FrmHistoryOrders.Show;
@@ -214,16 +230,47 @@ begin
 ShellExecute(handle,'open','http://hb.acoesinvest.com.br','','',SW_SHOWNORMAL);
 end;
 
+procedure TFrmMainLine.Image10Click(Sender: TObject);
+begin
+
+  if not Assigned(FrmCentral) then
+  begin
+    FrmCentral:=TFrmCentral.Create(Application);
+  end;
+
+  if not Assigned(FrmTrade) then
+  begin
+    FrmTrade:=TFrmTrade.Create(Application);
+    FrmTrade.Load;
+  end;
+
+  FrmTrade.Show;
+
+end;
+
 procedure TFrmMainLine.Image8Click(Sender: TObject);
 begin
+  if not Assigned(FrmCentral) then
+  begin
+    FrmCentral:=TFrmCentral.Create(Application);
+  end;
 // if FrmMainTreeView.Broker.Connected then
- FrmBrokerSpeed.Show
+// FrmBrokerSpeed.Show
 // else
 // MessageDlg('Você não está conectado ao broker.',mtError,[mbOk],0);
+if not Assigned(FrmBrokerSpeed) then
+begin
+  FrmBrokerSpeed:=TFrmBrokerSpeed.Create(Application);
+end;
+FrmBrokerSpeed.Show;
 end;
 
 procedure TFrmMainLine.Label10Click(Sender: TObject);
 begin
+  if not Assigned(FrmCentral) then
+  begin
+    FrmCentral:=TFrmCentral.Create(Application);
+  end;
 if FrmMainTreeView.Broker.Connected then
 begin
  FrmStartStop.Show;
@@ -241,6 +288,10 @@ end;
 
 procedure TFrmMainLine.Label12Click(Sender: TObject);
 begin
+  if not Assigned(FrmCentral) then
+  begin
+    FrmCentral:=TFrmCentral.Create(Application);
+  end;
  StartStopBovespa1Click(Self);
 end;
 
@@ -270,13 +321,24 @@ begin
 //          break;
 //        end;
 //      end;
- ShellExecute(Handle,'open','Luma.exe','',PChar(ExtractFilePath(ParamStr(0))),SW_NORMAL);
+// ShellExecute(Handle,'open','Luma.exe','',PChar(ExtractFilePath(ParamStr(0))),SW_NORMAL);
+  if not Assigned(FrmCentral) then
+  begin
+    FrmCentral:=TFrmCentral.Create(Application);
+  end;
+ FrmBook:=TFrmBook.Create(Application);
+ FrmBook.Visible:=True;
+ FrmBook.Show;
 end;
 
 procedure TFrmMainLine.Label3Click(Sender: TObject);
 var //PtnMouse : TPoint;
     FrmWeb:TFrmWebBrowser;
 begin
+  if not Assigned(FrmCentral) then
+  begin
+    FrmCentral:=TFrmCentral.Create(Application);
+  end;
  //ShellExecute(handle,'open','http://www.acoesinvest.com.br/grafico.html','','',SW_SHOWNORMAL);
  if(FrmMainTreeView.DaileonFW.Connected) then
  begin
@@ -296,6 +358,10 @@ end;
 procedure TFrmMainLine.Label4Click(Sender: TObject);
 var PtnMouse : TPoint;
 begin
+  if not Assigned(FrmCentral) then
+  begin
+    FrmCentral:=TFrmCentral.Create(Application);
+  end;
   GetCursorPos(PtnMouse);
   PopupMenuOutros.Popup(PtnMouse.X - 10,PtnMouse.Y + 10);
 //ShellExecute(handle,'open','https://hb.diferencial.com.br/','','',SW_SHOWNORMAL);
@@ -332,11 +398,6 @@ begin
  MoveWin:=False;
 end;
 
-procedure TFrmMainLine.PlanilhadeCotaes1Click(Sender: TObject);
-begin
- FrmTrade.Show;
-end;
-
 procedure TFrmMainLine.radingSystemWeb1Click(Sender: TObject);
 begin
 ShellExecute(handle,'open','http://www.acoesinvest.com.br/servicos/acoes/tsweb.php','','',SW_SHOWNORMAL);
@@ -367,6 +428,10 @@ end;
 
 procedure TFrmMainLine.Venda1Click(Sender: TObject);
 begin
+  if not Assigned(FrmCentral) then
+  begin
+    FrmCentral:=TFrmCentral.Create(Application);
+  end;
 if FrmMainTreeView.Broker.Connected then
 begin
     FrmBrokerSell.Label23.Caption:='';

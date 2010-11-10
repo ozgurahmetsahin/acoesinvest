@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, pngimage, ExtCtrls, Grids, Buttons, Sheet,IniFiles;
+  Dialogs, StdCtrls, pngimage, ExtCtrls, Grids, Buttons, Sheet,IniFiles, UFrmBook;
 
 type
   TFrmBrokerSpeed = class(TForm)
@@ -40,6 +40,7 @@ type
     procedure Edit1KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
+    Book:TFrmBook;
   public
     { Public declarations }
     Symbol:String;
@@ -53,7 +54,7 @@ var
 
 implementation
 
-uses UFrmTradeCentral, UFrmMainTreeView;
+uses UFrmTradeCentral, UFrmMainTreeView, UThrdDaileonFwRead;
 
 {$R *.dfm}
 
@@ -72,13 +73,15 @@ begin
   StringGrid1.Cells[3,0]:= 'Preço';
   StringGrid1.Cells[4,0]:= 'Qtde.';
   StringGrid1.Cells[5,0]:= 'Vendedor';
+  if not Assigned(Book) then
+  Application.CreateForm(TFrmBook,Book);
 end;
 
 procedure TFrmBrokerSpeed.FormShow(Sender: TObject);
 begin
- // Pega o código da conta e o nome do cliente
- Edit2.Text:=FrmMainTreeView.MarketID;
- Edit3.Text:=FrmMainTreeView.ClientName;
+// Pega o código da conta e o nome do cliente
+// Edit2.Text:=FrmMainTreeView.MarketID;
+// Edit3.Text:=FrmMainTreeView.ClientName;
 end;
 
 procedure TFrmBrokerSpeed.SpeedButton1Click(Sender: TObject);
@@ -99,8 +102,14 @@ begin
     FrmCentral.AddSymbol(Symbol);
 
     // Realiza chamada do ativo
-    FrmMainTreeView.DaileonFW.IOHandler.WriteLn('sqt ' + Symbol);
-    FrmMainTreeView.DaileonFW.IOHandler.WriteLn('mbq ' + Symbol);
+//    FrmMainTreeView.DaileonFW.IOHandler.WriteLn('sqt ' + Symbol);
+//    FrmMainTreeView.DaileonFW.IOHandler.WriteLn('mbq ' + Symbol);
+    Book.Edit1.Text:=Edit1.Text;
+    Book.BitBtn1Click(Self);
+
+    Timer1.Enabled:=True;
+
+
   except on E: Exception do
     FrmMainTreeView.AddLogMsg('Erro ao adicionar ativo à boleta speed:'+E.Message);
   end;
@@ -266,7 +275,7 @@ begin
        end;
 
 
-       FillRect(Rect);
+     FillRect(Rect);
      Font:=StringGrid1.Font;
      Font.Style:=Font.Style + [fsBold];
      Font.Color:=clBlack;
@@ -279,7 +288,7 @@ begin
       begin
         BrokeRageFile:=TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'brokerages.ini');
 
-        TextRect(Rect,Rect.Left + 3,Rect.Top + 3,BrokeRageFile.ReadString('brokerage',StringGrid1.Cells[ACol,ARow],'ERRO'));
+        TextRect(Rect,Rect.Left + 3,Rect.Top + 3,BrokeRageFile.ReadString('brokerage',StringGrid1.Cells[ACol,ARow],''));
 
         BrokeRageFile.Free;
       end;
@@ -294,6 +303,8 @@ begin
 end;
 
 procedure TFrmBrokerSpeed.Timer1Timer(Sender: TObject);
+var I,J:Integer;
+    Rect:TRect;
 begin
   // Tenta obter os dados
   try
@@ -312,6 +323,17 @@ begin
         // Preco de venda ( Melhor valor de compra)
         Edit5.Text:=StringGrid1.Cells[2,1];
       end;
+      for I := 0 to StringGrid1.ColCount-1 do
+      begin
+        for J := 1 to StringGrid1.RowCount-1 do
+        begin
+          Rect:=Book.StringGrid1.CellRect(I,J);
+          Book.StringGrid1DrawCell(Self,I,J,Rect,[gdSelected]);
+          StringGrid1.Cells[I,J]:=Book.StringGrid1.Cells[I,J];
+        end;
+      end;
+
+
     end;
 
   except on E: Exception do

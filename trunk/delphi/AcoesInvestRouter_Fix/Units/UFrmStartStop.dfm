@@ -20,7 +20,7 @@ object FrmStartStop: TFrmStartStop
     Top = 0
     Width = 417
     Height = 375
-    ActivePage = Stop
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     OnChange = PageControl1Change
@@ -368,58 +368,6 @@ object FrmStartStop: TFrmStartStop
           OnChange = LabeledEdit10Change
           OnKeyPress = LabeledEdit10KeyPress
         end
-      end
-    end
-    object TabSheet2: TTabSheet
-      Caption = 'Consultar Ordens'
-      ImageIndex = 2
-      object StartStopSheet: TSheet
-        Left = 0
-        Top = 0
-        Width = 409
-        Height = 347
-        Align = alClient
-        ColCount = 12
-        DefaultRowHeight = 17
-        FixedCols = 0
-        RowCount = 2
-        PopupMenu = PopupMenu1
-        TabOrder = 0
-        OnMouseDown = StartStopSheetMouseDown
-        ColumsVisible = [clQuote, clPicture, clLast, clVar, clBuy, clSell, clStatus, clBaseIn, clObj1, clObj2, clObj3, clObj4]
-        StringclQuote = 'C'#243'd.'
-        StringclPicture = 'Start/Stop'
-        StringclLast = 'Ativo'
-        StringclVar = 'Qtde'
-        StringclBuy = 'Start Compra Disparo'
-        StringclSell = 'Start Lim.'
-        StringclStatus = 'Stop Gain Disp.'
-        StringclBaseIn = 'Stop Gain Lim.'
-        StringclObj1 = 'Stop Loss Disp.'
-        StringclObj2 = 'Stop Loss Lim.'
-        StringclObj3 = 'Validade'
-        StringclObj4 = 'Status'
-        FilterColums = stAll
-        FontColorPaint = clBlack
-        EvenColorLine = clBlack
-        OddColorLine = clBlack
-        ShowClearLine = False
-        ColWidths = (
-          64
-          68
-          64
-          64
-          64
-          64
-          94
-          88
-          90
-          86
-          96
-          64)
-        RowHeights = (
-          17
-          17)
       end
     end
   end

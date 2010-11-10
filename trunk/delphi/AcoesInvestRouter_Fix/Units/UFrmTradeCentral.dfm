@@ -39,9 +39,14 @@ object FrmCentral: TFrmCentral
     EvenColorLine = clBlack
     OddColorLine = clBlack
     ShowClearLine = False
-    ExplicitWidth = 345
     RowHeights = (
       17
       17)
+  end
+  object Timer1: TTimer
+    Interval = 10
+    OnTimer = Timer1Timer
+    Left = 208
+    Top = 128
   end
 end

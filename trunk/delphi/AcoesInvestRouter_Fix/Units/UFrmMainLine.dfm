@@ -3449,7 +3449,7 @@ object FrmMainLine: TFrmMainLine
       611242891E70A88A15465892781D4924D4FE445FF3C93FEF91479117FCF24FFB
       E450062F99EF456D79117FCF24FF00BE45140125145140051451400514514005
       145140051451401FFFD9}
-    OnClick = PlanilhadeCotaes1Click
+    OnClick = Image10Click
   end
   object Image11: TImage
     Left = 606
@@ -3693,7 +3693,6 @@ object FrmMainLine: TFrmMainLine
     Top = 2
     object PlanilhadeCotaes1: TMenuItem
       Caption = 'Planilha de Cota'#231#245'es'
-      OnClick = PlanilhadeCotaes1Click
     end
     object ResumodoAtivo1: TMenuItem
       Caption = 'Resumo do Ativo'

@@ -3,7 +3,7 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Boleta Express'
-  ClientHeight = 358
+  ClientHeight = 355
   ClientWidth = 516
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,7 +18,7 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
   TextHeight = 13
   object Image1: TImage
     Left = 0
-    Top = -3
+    Top = -8
     Width = 518
     Height = 366
     Picture.Data = {
@@ -397,7 +397,7 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
   end
   object SpeedButton1: TSpeedButton
     Left = 133
-    Top = 20
+    Top = 15
     Width = 34
     Height = 20
     Flat = True
@@ -471,7 +471,7 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
   end
   object SpeedButton2: TSpeedButton
     Left = 82
-    Top = 294
+    Top = 289
     Width = 97
     Height = 28
     Glyph.Data = {
@@ -733,7 +733,7 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
   end
   object SpeedButton3: TSpeedButton
     Left = 333
-    Top = 297
+    Top = 293
     Width = 93
     Height = 26
     Glyph.Data = {
@@ -978,8 +978,8 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
     OnClick = CheckBox1Click
   end
   object Edit1: TEdit
-    Left = 52
-    Top = 20
+    Left = 53
+    Top = 16
     Width = 77
     Height = 21
     CharCase = ecUpperCase
@@ -987,8 +987,8 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
     OnKeyPress = Edit1KeyPress
   end
   object Edit2: TEdit
-    Left = 58
-    Top = 185
+    Left = 56
+    Top = 182
     Width = 79
     Height = 24
     AutoSize = False
@@ -996,8 +996,8 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
     TabOrder = 2
   end
   object Edit3: TEdit
-    Left = 152
-    Top = 185
+    Left = 150
+    Top = 182
     Width = 352
     Height = 24
     AutoSize = False
@@ -1006,35 +1006,35 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
   end
   object Edit4: TEdit
     Left = 26
-    Top = 245
+    Top = 239
     Width = 90
     Height = 21
     TabOrder = 4
   end
   object Edit5: TEdit
     Left = 145
-    Top = 245
+    Top = 239
     Width = 94
     Height = 21
     TabOrder = 5
   end
   object Edit6: TEdit
     Left = 282
-    Top = 241
+    Top = 235
     Width = 86
     Height = 21
     TabOrder = 6
   end
   object Edit7: TEdit
     Left = 391
-    Top = 241
+    Top = 235
     Width = 95
     Height = 21
     TabOrder = 7
   end
   object Panel1: TPanel
-    Left = 5
-    Top = 61
+    Left = 6
+    Top = 55
     Width = 505
     Height = 106
     Caption = 'Panel1'
@@ -1069,7 +1069,7 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
   end
   object Panel2: TPanel
     Left = 0
-    Top = 339
+    Top = 336
     Width = 516
     Height = 19
     Align = alBottom
@@ -1094,6 +1094,8 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
     end
   end
   object Timer1: TTimer
+    Enabled = False
+    Interval = 100
     OnTimer = Timer1Timer
     Left = 232
     Top = 96

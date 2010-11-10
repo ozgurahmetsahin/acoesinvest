@@ -65,7 +65,7 @@ var
 implementation
 
 uses UFrmMainTreeView, UFrmTradeCentral, UFrmBrokerBuy,UFrmBrokerSell,
-  UFrmMiniBook, UFrmAbstractSymbol;
+  UFrmMiniBook, UFrmAbstractSymbol, UThrdDaileonFwRead;
 
 {$R *.dfm}
 
@@ -106,8 +106,7 @@ begin
      else
      MessageDlg('Esse ativo já existe em sua planilha.',mtInformation,[mbOK],0);
 
-     FrmMainTreeView.DaileonFW.IOHandler.WriteLn('sqt ' + LowerCase(Edit1.Text));
-     FrmMainTreeView.DaileonFW.IOHandler.WriteBufferFlush;
+     SignalThread.WriteLn('sqt ' + LowerCase(Edit1.Text));
 
      if( not FrmCentral.CentralSheet.FindQuote(Edit1.Text) ) then
      FrmCentral.AddSymbol(Edit1.Text);
@@ -180,8 +179,7 @@ begin
      FrmCentral.AddSymbol(SymbolList.Strings[I])
      else
      begin
-      FrmMainTreeView.DaileonFW.IOHandler.WriteLn('sqt ' + LowerCase(SymbolList.Strings[I]));
-      FrmMainTreeView.DaileonFW.IOHandler.WriteBufferFlush;
+      SignalThread.WriteLn('sqt ' + SymbolList.Strings[I]);
      end;
 
      TradeSheet.NewLine(SymbolList.Strings[I]);

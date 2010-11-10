@@ -65,7 +65,7 @@ begin
       Synchronize(EchoMessage);
 
       //Iniciamos Thread de Leitura
-      ThrdRead:=TThrdDaileonFwRead.Create(True);
+//      ThrdRead:=TThrdDaileonFwRead.Create(True);
       ThrdRead.Resume;
 
       //Fechamos o form de conexao e exibimos o form main
