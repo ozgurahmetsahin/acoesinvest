@@ -20,7 +20,6 @@ type
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
     Stop: TTabSheet;
-    TabSheet2: TTabSheet;
     GroupBox1: TGroupBox;
     Label3: TLabel;
     Label4: TLabel;
@@ -37,7 +36,6 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Shape2: TShape;
-    StartStopSheet: TSheet;
     GroupBox3: TGroupBox;
     LabeledEdit7: TLabeledEdit;
     LabeledEdit9: TLabeledEdit;
@@ -261,26 +259,26 @@ procedure TFrmStartStop.Cancelar1Click(Sender: TObject);
 var MsgStartStopCancel : String;
     BMsgStartStopCancel:TBytes;
 begin
-  MsgStartStopCancel:='35=OCSS' + #1 +
-                      '5017=0' + #1 +
-                      '37=' + StartStopSheet.Cells[0,StartStopSheet.Row] + #1;
-
-                      if StartStopSheet.GetValue(clPicture,StartStopSheet.SelectedQuote) = 'Start' then
-                      MsgStartStopCancel:=MsgStartStopCancel+'5035=0' + #1
-                      else
-                      MsgStartStopCancel:=MsgStartStopCancel + '5035=1' + #1;
-
-                      MsgStartStopCancel:=MsgStartStopCancel + '117=' + StartStopSheet.GetValue(clLast,StartStopSheet.SelectedQuote) + #1 +
-                      '5162=' + FrmMainTreeView.ShadownCode +#1 + #3;
-
-  BMsgStartStopCancel:= FrmMainTreeView.StrToBytes(MsgStartStopCancel);
-
-  if MessageDlg('Deseja realmente cancelar a ordem ' + StartStopSheet.Cells[0,StartStopSheet.Row] + '?',mtConfirmation,[mbYEs,MbNo],0) = mrYes then
-  begin
-    FrmMainTreeView.AddLogMsg(MsgStartStopCancel);
-    FrmMainTreeView.Broker.IOHandler.WriteDirect(BMsgStartStopCancel);
-    FrmMainTreeView.Broker.IOHandler.WriteBufferFlush;
-  end;
+//  MsgStartStopCancel:='35=OCSS' + #1 +
+//                      '5017=0' + #1 +
+//                      '37=' + StartStopSheet.Cells[0,StartStopSheet.Row] + #1;
+//
+//                      if StartStopSheet.GetValue(clPicture,StartStopSheet.SelectedQuote) = 'Start' then
+//                      MsgStartStopCancel:=MsgStartStopCancel+'5035=0' + #1
+//                      else
+//                      MsgStartStopCancel:=MsgStartStopCancel + '5035=1' + #1;
+//
+//                      MsgStartStopCancel:=MsgStartStopCancel + '117=' + StartStopSheet.GetValue(clLast,StartStopSheet.SelectedQuote) + #1 +
+//                      '5162=' + FrmMainTreeView.ShadownCode +#1 + #3;
+//
+//  BMsgStartStopCancel:= FrmMainTreeView.StrToBytes(MsgStartStopCancel);
+//
+//  if MessageDlg('Deseja realmente cancelar a ordem ' + StartStopSheet.Cells[0,StartStopSheet.Row] + '?',mtConfirmation,[mbYEs,MbNo],0) = mrYes then
+//  begin
+//    FrmMainTreeView.AddLogMsg(MsgStartStopCancel);
+//    FrmMainTreeView.Broker.IOHandler.WriteDirect(BMsgStartStopCancel);
+//    FrmMainTreeView.Broker.IOHandler.WriteBufferFlush;
+//  end;
 
 end;
 
@@ -425,13 +423,13 @@ procedure TFrmStartStop.StartStopSheetMouseDown(Sender: TObject;
 var
   Col, Row: Integer;
 begin
-  if Button = mbRight then
-  begin
-	StartStopSheet.MouseToCell(X, Y, Col, Row);
-	StartStopSheet.Col := Col;
-	StartStopSheet.Row := Row;
-  StartStopSheet.SetQuoteByCell;
-  end;
+//  if Button = mbRight then
+//  begin
+//	StartStopSheet.MouseToCell(X, Y, Col, Row);
+//	StartStopSheet.Col := Col;
+//	StartStopSheet.Row := Row;
+//  StartStopSheet.SetQuoteByCell;
+//  end;
 end;
 
 end.

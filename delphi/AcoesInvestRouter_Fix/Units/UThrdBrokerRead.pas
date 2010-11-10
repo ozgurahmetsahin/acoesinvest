@@ -171,42 +171,42 @@ begin
             //Verifica Codigo da ordem
             if Copy(Data[K],1,3) = '37=' then
             begin
-              if not FrmStartStop.StartStopSheet.FindQuote(Data.ValueFromIndex[K]) then
-              FrmStartStop.StartStopSheet.NewLine(Data.ValueFromIndex[K]);
+              if not FrmHistoryOrders.StartStopSheet.FindQuote(Data.ValueFromIndex[K]) then
+              FrmHistoryOrders.StartStopSheet.NewLine(Data.ValueFromIndex[K]);
               LastCodOR:=Data.ValueFromIndex[K];
             end;
 
             //Seta como Start
-            FrmStartStop.StartStopSheet.SetValue(clPicture,LastCodOR,'Start');
+            FrmHistoryOrders.StartStopSheet.SetValue(clPicture,LastCodOR,'Start');
 
             //Verifica preco limite
             if Copy(Data[K],1,3) = '44=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clSell,LastCodOR,Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clSell,LastCodOR,Data.ValueFromIndex[K]);
             end;
 
             //Quantidade
             if Copy(Data[K],1,3) = '53=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clVar,LastCodOR,Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clVar,LastCodOR,Data.ValueFromIndex[K]);
             end;
 
             //Verifica preco de disparo
             if Copy(Data[K],1,5) = '5022=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clBuy,LastCodOR,Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clBuy,LastCodOR,Data.ValueFromIndex[K]);
             end;
 
             //Ativo
             if Copy(Data[K],1,4) = '117=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clLast,LastCodOR,Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clLast,LastCodOR,Data.ValueFromIndex[K]);
             end;
 
             //Validade
             if Copy(Data[K],1,4) = '432=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clObj3,LastCodOR,Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clObj3,LastCodOR,Data.ValueFromIndex[K]);
             end;
 
             //Status
@@ -215,11 +215,11 @@ begin
               IdStatus := StrToInt(Data.ValueFromIndex[K]);
 
               case IdStatus of
-                0: FrmStartStop.StartStopSheet.SetValue(clObj4,LastCodOR,'Pendente');
-                2: FrmStartStop.StartStopSheet.SetValue(clObj4,LastCodOR,'Acionada');
-                3: FrmStartStop.StartStopSheet.SetValue(clObj4,LastCodOR,'Expirada');
-                4: FrmStartStop.StartStopSheet.SetValue(clObj4,LastCodOR,'Rejeitada');
-                5: FrmStartStop.StartStopSheet.SetValue(clObj4,LastCodOR,'Cancelada');
+                0: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,LastCodOR,'Pendente');
+                2: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,LastCodOR,'Acionada');
+                3: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,LastCodOR,'Expirada');
+                4: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,LastCodOR,'Rejeitada');
+                5: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,LastCodOR,'Cancelada');
               end;
             end;
 
@@ -360,54 +360,54 @@ begin
             //Verifica Codigo da ordem
             if Copy(Data[K],1,3) = '37=' then
             begin
-              if not FrmStartStop.StartStopSheet.FindQuote(Data.ValueFromIndex[K]) then
-              FrmStartStop.StartStopSheet.NewLine(Data.ValueFromIndex[K]);
+              if not FrmHistoryOrders.StartStopSheet.FindQuote(Data.ValueFromIndex[K]) then
+              FrmHistoryOrders.StartStopSheet.NewLine(Data.ValueFromIndex[K]);
               LastCodOR:=Data.ValueFromIndex[K];
             end;
 
             //Seta como Stop
-            FrmStartStop.StartStopSheet.SetValue(clPicture,LastCodOR,'Stop');
+            FrmHistoryOrders.StartStopSheet.SetValue(clPicture,LastCodOR,'Stop');
 
             //Verifica preco Stop Loss Disp.
             if Copy(Data[K],1,5) = '5033=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clObj1,LastCodOR,Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clObj1,LastCodOR,Data.ValueFromIndex[K]);
             end;
 
             //Verifica preco Stop Loss Lim.
             if Copy(Data[K],1,5) = '5034=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clObj2,LastCodOR,Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clObj2,LastCodOR,Data.ValueFromIndex[K]);
             end;
 
             //Verifica preco Stop Gain Disp.
             if Copy(Data[K],1,5) = '5031=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clStatus,LastCodOR,Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clStatus,LastCodOR,Data.ValueFromIndex[K]);
             end;
 
             //Verifica preco Stop Gain Lim.
             if Copy(Data[K],1,5) = '5032=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clBaseIn,LastCodOR,Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clBaseIn,LastCodOR,Data.ValueFromIndex[K]);
             end;
 
             //Quantidade
             if Copy(Data[K],1,3) = '53=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clVar,LastCodOR,Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clVar,LastCodOR,Data.ValueFromIndex[K]);
             end;
 
             //Ativo
             if Copy(Data[K],1,4) = '117=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clLast,LastCodOR,Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clLast,LastCodOR,Data.ValueFromIndex[K]);
             end;
 
             //Validade
             if Copy(Data[K],1,4) = '432=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clObj3,LastCodOR,Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clObj3,LastCodOR,Data.ValueFromIndex[K]);
             end;
 
             //Status
@@ -416,11 +416,11 @@ begin
               IdStatus := StrToInt(Data.ValueFromIndex[K]);
 
               case IdStatus of
-                0: FrmStartStop.StartStopSheet.SetValue(clObj4,LastCodOR,'Pendente');
-                2: FrmStartStop.StartStopSheet.SetValue(clObj4,LastCodOR,'Acionada');
-                3: FrmStartStop.StartStopSheet.SetValue(clObj4,LastCodOR,'Expirada');
-                4: FrmStartStop.StartStopSheet.SetValue(clObj4,LastCodOR,'Rejeitada');
-                5: FrmStartStop.StartStopSheet.SetValue(clObj4,LastCodOR,'Cancelada');
+                0: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,LastCodOR,'Pendente');
+                2: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,LastCodOR,'Acionada');
+                3: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,LastCodOR,'Expirada');
+                4: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,LastCodOR,'Rejeitada');
+                5: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,LastCodOR,'Cancelada');
               end;
 
             end;
@@ -561,12 +561,6 @@ begin
               end;
        end;
 
-     case FrmHistoryOrders.TabSet1.TabIndex of
-        0: FrmHistoryOrders.FilterLines('Todos');
-        1: FrmHistoryOrders.FilterLines('Bovespa');
-        2: FrmHistoryOrders.FilterLines('BMF');
-      end;
-
 
      end;
 
@@ -575,9 +569,9 @@ begin
      begin
       ExistID:=False;
 
-      for K := 0 to FrmStartStop.StartStopSheet.RowCount - 1 do
+      for K := 0 to FrmHistoryOrders.StartStopSheet.RowCount - 1 do
       begin
-        if FrmStartStop.StartStopSheet.Cells[0,K] = Data.Values['37'] then
+        if FrmHistoryOrders.StartStopSheet.Cells[0,K] = Data.Values['37'] then
         begin
           ExistID:=True;
           break;
@@ -588,46 +582,46 @@ begin
       if not ExistID then
       begin
         //Nova Linha
-        FrmStartStop.StartStopSheet.NewLine('');
+        FrmHistoryOrders.StartStopSheet.NewLine('');
 
         //Move tudo para baixo
-        for K := 0 to FrmStartStop.StartStopSheet.ColCount -1 do
+        for K := 0 to FrmHistoryOrders.StartStopSheet.ColCount -1 do
         begin
-          for J := FrmStartStop.StartStopSheet.RowCount - 1 downto 2 do
+          for J := FrmHistoryOrders.StartStopSheet.RowCount - 1 downto 2 do
           begin
-            FrmStartStop.StartStopSheet.Cells[K,J]:=FrmStartStop.StartStopSheet.Cells[K,J-1];
-            FrmStartStop.StartStopSheet.Cells[K,J-1]:='';
+            FrmHistoryOrders.StartStopSheet.Cells[K,J]:=FrmHistoryOrders.StartStopSheet.Cells[K,J-1];
+            FrmHistoryOrders.StartStopSheet.Cells[K,J-1]:='';
           end;
         end;
 
-        FrmStartStop.StartStopSheet.Cells[0,1]:=Data.Values['37'];
-        FrmStartStop.StartStopSheet.Cells[1,1]:='Start';
+        FrmHistoryOrders.StartStopSheet.Cells[0,1]:=Data.Values['37'];
+        FrmHistoryOrders.StartStopSheet.Cells[1,1]:='Start';
       end;
 
        for K := 0 to Data.Count - 1 do
        begin
            if Copy(Data[K],1,3) = '53=' then
               begin
-                FrmStartStop.StartStopSheet.SetValue(clVar,Data.Values['37'],Data.ValueFromIndex[K]);
+                FrmHistoryOrders.StartStopSheet.SetValue(clVar,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
 
               if Copy(Data[K],1,4) = '117=' then
               begin
-                FrmStartStop.StartStopSheet.SetValue(clLast,Data.Values['37'],Data.ValueFromIndex[K]);
+                FrmHistoryOrders.StartStopSheet.SetValue(clLast,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
 
               if Copy(Data[K],1,4) = '432=' then
               begin
-                FrmStartStop.StartStopSheet.SetValue(clObj3,Data.Values['37'],Data.ValueFromIndex[K]);
+                FrmHistoryOrders.StartStopSheet.SetValue(clObj3,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,3) = '44=' then
               begin
-                FrmStartStop.StartStopSheet.SetValue(clSell,Data.Values['37'],Data.ValueFromIndex[K]);
+                FrmHistoryOrders.StartStopSheet.SetValue(clSell,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
 
               if Copy(Data[K],1,5) = '5022=' then
               begin
-                FrmStartStop.StartStopSheet.SetValue(clBuy,Data.Values['37'],Data.ValueFromIndex[K]);
+                FrmHistoryOrders.StartStopSheet.SetValue(clBuy,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
 
               if Copy(Data[K],1,5) = '5073=' then
@@ -635,11 +629,11 @@ begin
                 IdStatus:=StrToInt(Data.ValueFromIndex[K]);
 
                 case IdStatus of
-                  0: FrmStartStop.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Pendente');
-                  2: FrmStartStop.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Acionada');
-                  3: FrmStartStop.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Expirada');
-                  4: FrmStartStop.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Rejeitada');
-                  5: FrmStartStop.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Cancelada');
+                  0: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Pendente');
+                  2: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Acionada');
+                  3: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Expirada');
+                  4: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Rejeitada');
+                  5: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Cancelada');
                 end;
 
               end;
@@ -652,9 +646,9 @@ begin
      begin
       ExistID:=False;
 
-      for K := 0 to FrmStartStop.StartStopSheet.RowCount - 1 do
+      for K := 0 to FrmHistoryOrders.StartStopSheet.RowCount - 1 do
       begin
-        if FrmStartStop.StartStopSheet.Cells[0,K] = Data.Values['37'] then
+        if FrmHistoryOrders.StartStopSheet.Cells[0,K] = Data.Values['37'] then
         begin
           ExistID:=True;
           break;
@@ -665,61 +659,61 @@ begin
       if not ExistID then
       begin
         //Nova Linha
-        FrmStartStop.StartStopSheet.NewLine('');
+        FrmHistoryOrders.StartStopSheet.NewLine('');
 
         //Move tudo para baixo
-        for K := 0 to FrmStartStop.StartStopSheet.ColCount -1 do
+        for K := 0 to FrmHistoryOrders.StartStopSheet.ColCount -1 do
         begin
-          for J := FrmStartStop.StartStopSheet.RowCount - 1 downto 2 do
+          for J := FrmHistoryOrders.StartStopSheet.RowCount - 1 downto 2 do
           begin
-            FrmStartStop.StartStopSheet.Cells[K,J]:=FrmStartStop.StartStopSheet.Cells[K,J-1];
-            FrmStartStop.StartStopSheet.Cells[K,J-1]:='';
+            FrmHistoryOrders.StartStopSheet.Cells[K,J]:=FrmHistoryOrders.StartStopSheet.Cells[K,J-1];
+            FrmHistoryOrders.StartStopSheet.Cells[K,J-1]:='';
           end;
         end;
 
-        FrmStartStop.StartStopSheet.Cells[0,1]:=Data.Values['37'];
-        FrmStartStop.StartStopSheet.Cells[1,1]:='Stop';
+        FrmHistoryOrders.StartStopSheet.Cells[0,1]:=Data.Values['37'];
+        FrmHistoryOrders.StartStopSheet.Cells[1,1]:='Stop';
       end;
 
        for K := 0 to Data.Count - 1 do
        begin
            if Copy(Data[K],1,3) = '53=' then
               begin
-                FrmStartStop.StartStopSheet.SetValue(clVar,Data.Values['37'],Data.ValueFromIndex[K]);
+                FrmHistoryOrders.StartStopSheet.SetValue(clVar,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
 
               if Copy(Data[K],1,4) = '117=' then
               begin
-                FrmStartStop.StartStopSheet.SetValue(clLast,Data.Values['37'],Data.ValueFromIndex[K]);
+                FrmHistoryOrders.StartStopSheet.SetValue(clLast,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
 
               if Copy(Data[K],1,4) = '432=' then
               begin
-                FrmStartStop.StartStopSheet.SetValue(clObj3,Data.Values['37'],Data.ValueFromIndex[K]);
+                FrmHistoryOrders.StartStopSheet.SetValue(clObj3,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
 
               //Verifica preco Stop Loss Disp.
             if Copy(Data[K],1,5) = '5033=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clObj1,Data.Values['37'],Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clObj1,Data.Values['37'],Data.ValueFromIndex[K]);
             end;
 
             //Verifica preco Stop Loss Lim.
             if Copy(Data[K],1,5) = '5034=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clObj2,Data.Values['37'],Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clObj2,Data.Values['37'],Data.ValueFromIndex[K]);
             end;
 
             //Verifica preco Stop Gain Disp.
             if Copy(Data[K],1,5) = '5031=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clStatus,Data.Values['37'],Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clStatus,Data.Values['37'],Data.ValueFromIndex[K]);
             end;
 
             //Verifica preco Stop Gain Lim.
             if Copy(Data[K],1,5) = '5032=' then
             begin
-              FrmStartStop.StartStopSheet.SetValue(clBaseIn,Data.Values['37'],Data.ValueFromIndex[K]);
+              FrmHistoryOrders.StartStopSheet.SetValue(clBaseIn,Data.Values['37'],Data.ValueFromIndex[K]);
             end;
 
               if Copy(Data[K],1,5) = '5073=' then
@@ -727,11 +721,11 @@ begin
                 IdStatus:=StrToInt(Data.ValueFromIndex[K]);
 
                 case IdStatus of
-                  0: FrmStartStop.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Pendente');
-                  2: FrmStartStop.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Acionada');
-                  3: FrmStartStop.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Expirada');
-                  4: FrmStartStop.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Rejeitada');
-                  5: FrmStartStop.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Cancelada');
+                  0: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Pendente');
+                  2: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Acionada');
+                  3: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Expirada');
+                  4: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Rejeitada');
+                  5: FrmHistoryOrders.StartStopSheet.SetValue(clObj4,Data.Values['37'],'Cancelada');
                 end;
 
               end;

@@ -33,7 +33,7 @@ var
 
 implementation
 
-uses UFrmSheet, UMain, UMsgs;
+uses UFrmSheet;
 
 {$R *.dfm}
 
@@ -53,7 +53,7 @@ begin
  if FrmSheet.SheetName <> ExtractFileName(FileListBox1.FileName) then
  DeleteFile(FileListBox1.FileName)
  else
- MessageDlg(OpenSheet_MsgDlg_CantDeleteSheetOpened, mtInformation, [mbOk], 0);
+ MessageDlg('Esta planilha está atualmente aberta.', mtInformation, [mbOk], 0);
 
  FileListBox1.Update;
 end;

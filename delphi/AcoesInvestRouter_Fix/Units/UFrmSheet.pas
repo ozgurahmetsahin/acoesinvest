@@ -46,14 +46,15 @@ var
 
 implementation
 
-uses UFrmTradeCentral, UMain, UMsgs, UFrmOpenSheet;
+uses UFrmOpenSheet;
+
 
 {$R *.dfm}
 
 procedure TFrmSheet.btnOpenDeleteSheetClick(Sender: TObject);
 begin
  {Configura o filelist para exibir arquivos da pasta de instalação}
- FrmOpenSheet.FileListBox1.Directory:=AppPath;
+ FrmOpenSheet.FileListBox1.Directory:=ExtractFilePath(ParamStr(0));
  {Carrega Lista de arquivos}
  FrmOpenSheet.FileListBox1.Update;
  {Exibe o formulario de escolha de planilha}
@@ -64,7 +65,7 @@ procedure TFrmSheet.btnNewSheetClick(Sender: TObject);
 var NewSheetName:String;
 begin
   {Pergunta o novo nome da planilha}
-  NewSheetName:=InputBox(Sheet_Caption_NewSheet, Sheet_Prompt_NewSheet, '');
+  NewSheetName:=InputBox('Nova Planilha', 'Digite o nome da planilha', '');
 
   if(NewSheetName<>'')then
   begin
@@ -138,14 +139,14 @@ begin
    end;
 
    {Adiciona o Ativo na Planilha Central}
-   FrmCentral.AddSymbol(lblEdtNewSymbol.Text);
+   //FrmSheetCentral.AddRow(lblEdtNewSymbol.Text);
 
    Save;
 
    lblEdtNewSymbol.Clear;
  end
  else if SheetName='' then
-      MessageDlg(Sheet_AddSymbol_WithSheetNameEmpty,mtInformation,[mbOk],0);
+      MessageDlg('Escolha uma planilha para inserir este ativo.',mtInformation,[mbOk],0);
 end;
 
 procedure TFrmSheet.ClearSheet;
@@ -165,16 +166,16 @@ end;
 procedure TFrmSheet.FormCreate(Sender: TObject);
 begin
  {Carrega nome das colunas}
- Sheet.Cells[0,0]:=Sheet_ColumnName_Symbol;
- Sheet.Cells[1,0]:=Sheet_ColumnName_LastPrice;
- Sheet.Cells[2,0]:=Sheet_ColumnName_Percent;
- Sheet.Cells[3,0]:=Sheet_ColumnName_Bid;
- Sheet.Cells[4,0]:=Sheet_ColumnName_Ask;
- Sheet.Cells[5,0]:=Sheet_ColumnName_High;
- Sheet.Cells[6,0]:=Sheet_ColumnName_Low;
- Sheet.Cells[7,0]:=Sheet_ColumnName_Open;
- Sheet.Cells[8,0]:=Sheet_ColumnName_Close;
- Sheet.Cells[9,0]:=Sheet_ColumnName_Busines;
+ Sheet.Cells[0,0]:='Ativo';
+ Sheet.Cells[1,0]:='Último';
+ Sheet.Cells[2,0]:='Oscilação';
+ Sheet.Cells[3,0]:='Compra';
+ Sheet.Cells[4,0]:='Venda';
+ Sheet.Cells[5,0]:='Máxima';
+ Sheet.Cells[6,0]:='Mínima';
+ Sheet.Cells[7,0]:='Abertura';
+ Sheet.Cells[8,0]:='Fechamento';
+ Sheet.Cells[9,0]:='Negócios';
 end;
 
 procedure TFrmSheet.Load(Name: String);
@@ -205,16 +206,16 @@ begin
       end;
 
       {Adiciona o Ativo na Planilha Central}
-      FrmCentral.AddSymbol(SymbolList[I]);
+      //FrmSheetCentral.AddRow(SymbolList[I]);
     end;
 
     SheetName:=ExtractFileName( Name );
     {Atualiza barra de status}
-    StatusBar1.Panels.Items[0].Text:=Sheet_Panel_SheetName + SheetName;
+    StatusBar1.Panels.Items[0].Text:='Planilha:' + SheetName;
     if(Sheet.Cells[0,1]<>'')then
-    StatusBar1.Panels.Items[1].Text:=Sheet_Panel_SymbolsQty+IntToStr(Sheet.RowCount-1)
+    StatusBar1.Panels.Items[1].Text:='Ativos:'+IntToStr(Sheet.RowCount-1)
     else
-    StatusBar1.Panels.Items[1].Text:=Sheet_Panel_SymbolsQty+IntToStr(Sheet.RowCount-2);
+    StatusBar1.Panels.Items[1].Text:='Quantidade:'+IntToStr(Sheet.RowCount-2);
 
     {Limpa instancia para arquivo}
     SymbolList.Free;

@@ -32,32 +32,20 @@ uses
   UMsgs in 'Units\UMsgs.pas',
   UMain in 'Units\UMain.pas',
   UFrmBrokerSpeed in 'Units\UFrmBrokerSpeed.pas' {FrmBrokerSpeed},
-  UFrmOpenChart in 'Units\UFrmOpenChart.pas' {FrmOpenChart};
+  UFrmOpenChart in 'Units\UFrmOpenChart.pas' {FrmOpenChart},
+  UFrmBook in 'Units\UFrmBook.pas' {FrmBook};
 
 {$R *.res}
 
 begin
   Application.Initialize;
+  Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFrmConnection, FrmConnection);
-  Application.CreateForm(TFrmMainLine, FrmMainLine);
   Application.CreateForm(TFrmMainTreeView, FrmMainTreeView);
-  Application.CreateForm(TFrmTradingSystem, FrmTradingSystem);
-  Application.CreateForm(TFrmTrade, FrmTrade);
-  Application.CreateForm(TFrmCentral, FrmCentral);
   Application.CreateForm(TFrmBrokerBuy, FrmBrokerBuy);
   Application.CreateForm(TFrmBrokerSell, FrmBrokerSell);
   Application.CreateForm(TFrmHistoryOrders, FrmHistoryOrders);
   Application.CreateForm(TFrmStartStop, FrmStartStop);
-  Application.CreateForm(TFrmBrokerageNote, FrmBrokerageNote);
-  Application.CreateForm(TFrmCloses, FrmCloses);
-  Application.CreateForm(TFrmWebBrowser, FrmWebBrowser);
-  Application.CreateForm(TFrmConfig, FrmConfig);
   Application.CreateForm(TFrmPortfolio, FrmPortfolio);
-  Application.CreateForm(TFrmConnConfig, FrmConnConfig);
-  Application.CreateForm(TFrmBrokerSpeed, FrmBrokerSpeed);
-  Application.CreateForm(TFrmOpenChart, FrmOpenChart);
-  //Application.ShowMainForm:=False;
-  //FrmMainTreeView.Show;
-  Application.MainFormOnTaskbar := True;
   Application.Run;
 end.

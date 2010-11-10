@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons, ComCtrls,ShellAPI,IniFiles, jpeg;
+  Dialogs, ExtCtrls, StdCtrls, Buttons, ComCtrls,ShellAPI,IniFiles, jpeg, IdGlobal;
 
 type
   TFrmConnection = class(TForm)
@@ -20,6 +20,7 @@ type
     EdtPassBroker: TEdit;
     Image1: TImage;
     BitBtn1: TBitBtn;
+    Timer1: TTimer;
     procedure BtnCloseClick(Sender: TObject);
     procedure BtnLoginClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -29,8 +30,10 @@ type
     procedure EdtUserBrokerChange(Sender: TObject);
     procedure EdtPassBrokerChange(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
+    RowRead:Integer;
   public
     { Public declarations }
     procedure SaveInformations;
@@ -43,7 +46,7 @@ var
 implementation
 
 uses UFrmMainTreeView,UThrdDaileonFwConnection,UThrdBrokerConnection,UThrdFixConnection,
-  UFrmMainLine, UFrmConfig, UFrmConnConfig, UMain, UMsgs;
+  UFrmMainLine, UFrmConfig, UFrmConnConfig, UMain, UMsgs, UThrdDaileonFwRead;
 
 {$R *.dfm}
 
@@ -53,10 +56,34 @@ var DaileonConn : TDaileonFwConnection;
     FixConn : TFixConnection;
     IniSettings : TIniFile;
 begin
-  StatusBar1.SimpleText:='Iniciando conexão com servidor.(' + FrmMainTreeView.DaileonFW.Host + ')';
-  DaileonConn:= TDaileonFwConnection.Create(True);
-  DaileonConn.Resume;
+  StatusBar1.SimpleText:='Iniciando conexão com servidor...';
 
+  {Cria Instancia da Thread de Conexao}
+  if not Assigned(SignalThread) then
+  begin
+    SignalThread:=TThrdDaileonFwRead.Create;
+  end;
+
+  SignalThread.Connection.Host:='server3.acoesinvest.com.br';
+  SignalThread.Connection.Port:=8189;
+  SignalThread.Connection.ReadTimeout:=500;
+  SignalThread.Connection.ConnectTimeout:=2500;
+
+  if SignalThread.Connect then
+  begin
+    SignalThread.Start;
+    RowRead:=0;
+    Timer1.Enabled:=True;
+    StatusBar1.SimpleText:='Conectado, enviando dados de autenticação...';
+    SignalThread.WriteLn('login ' + EdtUserTrade.Text + ' ' + EdtPassTrade.Text);
+  end
+  else
+  StatusBar1.SimpleText:='Não foi possível efetuar a conexão com o servidor.';
+
+
+//  DaileonConn:= TDaileonFwConnection.Create(True);
+//  DaileonConn.Resume;
+//
   if EdtUserBroker.Text <> '' then
   begin
     //FrmMainTreeView.TerminateProcesso(AppPath + 'broker.exe');
@@ -65,7 +92,6 @@ begin
     BrokerConn := TBrokerConnection.Create(True);
     BrokerConn.Resume;
   end;
-
 //  if Edit1.Text <> '' then
 //  begin
 //    FixConn:= TFixConnection.Create(True);
@@ -146,6 +172,8 @@ end;
 
 procedure TFrmConnection.BtnCloseClick(Sender: TObject);
 begin
+  if Assigned(SignalThread) then
+  SignalThread.Terminate;
   Self.Close;
 end;
 
@@ -159,47 +187,47 @@ begin
 end;
 
 procedure TFrmConnection.FormShow(Sender: TObject);
-var IniData : TIniFile;
+//var IniData : TIniFile;
 begin
 //  CheckBox2.Visible:=False;
 //  CheckBox2.Checked:=True;
 //  CheckBox2Click(Self);
 
   //Caso esteja conectado desabilita botoes
-  if FrmMainTreeView.DaileonFW.Connected then
-  begin
-    EdtUserTrade.Enabled:=False;
-    EdtPassTrade.Enabled:=False;
-    EdtUserBroker.Enabled:=False;
-    EdtPassBroker.Enabled:=False;
-
-    BtnLogin.Visible:=False;
-    BtnLogout.Visible:=True;
-    BtnClear.Enabled:=False;
-  end
-  else
-  begin
+//  if FrmMainTreeView.DaileonFW.Connected then
+//  begin
+//    EdtUserTrade.Enabled:=False;
+//    EdtPassTrade.Enabled:=False;
+//    EdtUserBroker.Enabled:=False;
+//    EdtPassBroker.Enabled:=False;
+//
+//    BtnLogin.Visible:=False;
+//    BtnLogout.Visible:=True;
+//    BtnClear.Enabled:=False;
+//  end
+//  else
+//  begin
   //Como não está, habilita os botoes por segurança
 
 //   FrmMainTreeView.TerminateProcesso(ExtractFilePath(ParamStr(0)) + 'broker.exe');
 
-   LoadInformations;
-
-   FrmConnConfig.FormShow(Self);
-
-   EdtUserTrade.Enabled:=True;
-   EdtPassTrade.Enabled:=True;
-   EdtUserBroker.Enabled:=True;
-   EdtPassBroker.Enabled:=True;
-
-   BtnLogin.Visible:=True;
-   BtnLogout.Visible:=False;
-   BtnClear.Enabled:=True;
-
-  end;
-
-
-  StatusBar1.SimpleText:='';
+//   LoadInformations;
+//
+//   FrmConnConfig.FormShow(Self);
+//
+//   EdtUserTrade.Enabled:=True;
+//   EdtPassTrade.Enabled:=True;
+//   EdtUserBroker.Enabled:=True;
+//   EdtPassBroker.Enabled:=True;
+//
+//   BtnLogin.Visible:=True;
+//   BtnLogout.Visible:=False;
+//   BtnClear.Enabled:=True;
+//
+//  end;
+//
+//
+//  StatusBar1.SimpleText:='';
 end;
 
 procedure TFrmConnection.LoadInformations;
@@ -258,6 +286,39 @@ begin
 
     IniData.Free;
 
+  end;
+end;
+
+procedure TFrmConnection.Timer1Timer(Sender: TObject);
+var Line:String;
+    DataSplit:TStringList;
+begin
+  if SignalThread.Data.Count > RowRead then
+  begin
+    Line:=SignalThread.Data.Strings[RowRead];
+
+    DataSplit:=TStringList.Create;
+    SplitColumns(Line,DataSplit,':');
+
+    if DataSplit[0] = 'LOGIN' then
+      if DataSplit[2] = '0' then
+      StatusBar1.SimpleText:='Usuário/Senha inválido(s).'
+      else if DataSplit[2] = '1' then
+           begin
+             StatusBar1.SimpleText:='Autenticação efetuada com sucesso, abrindo aplicação...';
+             if not Assigned(FrmMainLine) then
+             begin
+               FrmMainLine:=TFrmMainLine.Create(Application);
+               FrmMainLine.Show;
+               FrmConnection.Hide;
+             end;
+             Timer1.Enabled:=False;
+           end
+           else StatusBar1.SimpleText:='Não foi possível efetuar sua autenticação.';
+
+    FreeAndNil(DataSplit);
+
+    RowRead:=RowRead+1;
   end;
 end;
 

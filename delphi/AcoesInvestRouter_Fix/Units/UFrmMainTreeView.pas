@@ -436,11 +436,7 @@ begin
        FrmHistoryOrders.Caption:='Histórico de Ordens (' + IntToStr(FrmHistoryOrders.HistorySheet.RowCount - 1 ) + ')';
 
    end;
-    case FrmHistoryOrders.TabSet1.TabIndex of
-    0: FrmHistoryOrders.FilterLines('Todos');
-    1: FrmHistoryOrders.FilterLines('Bovespa');
-    2: FrmHistoryOrders.FilterLines('BMF');
-  end;
+
   end;
 end;
 
