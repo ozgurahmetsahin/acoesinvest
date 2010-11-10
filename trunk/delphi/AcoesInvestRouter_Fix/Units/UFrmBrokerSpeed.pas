@@ -80,8 +80,8 @@ end;
 procedure TFrmBrokerSpeed.FormShow(Sender: TObject);
 begin
 // Pega o código da conta e o nome do cliente
-// Edit2.Text:=FrmMainTreeView.MarketID;
-// Edit3.Text:=FrmMainTreeView.ClientName;
+ Edit2.Text:=FrmMainTreeView.MarketID;
+ Edit3.Text:=FrmMainTreeView.ClientName;
 end;
 
 procedure TFrmBrokerSpeed.SpeedButton1Click(Sender: TObject);
@@ -266,11 +266,11 @@ begin
 
        case ARow of
 
-         1 : Brush.Color:=RGB(241,234,180);
-         2 : Brush.Color:=RGB(234,204,21);
-         3 : Brush.Color:=RGB(140,213,43);
-         4 : Brush.Color:=RGB(0,170,0);
-         5 : Brush.Color:=RGB(132,193,255);
+         1 : Brush.Color:=RGB(254,253,231);
+         2 : Brush.Color:=RGB(255,255,128);
+         3 : Brush.Color:=RGB(187,227,111);
+         4 : Brush.Color:=RGB(132,192,255);
+         5 : Brush.Color:=RGB(83,169,255);
 
        end;
 

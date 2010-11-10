@@ -1047,11 +1047,12 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
       Width = 503
       Height = 104
       Align = alClient
-      Color = 4194304
+      Color = 1428714
       ColCount = 6
       Ctl3D = False
       DefaultColWidth = 82
       DefaultRowHeight = 17
+      FixedColor = clSilver
       FixedCols = 0
       RowCount = 6
       Font.Charset = DEFAULT_CHARSET
@@ -1059,7 +1060,7 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
-      Options = [goFixedVertLine, goRangeSelect]
+      Options = [goFixedVertLine, goRangeSelect, goColSizing]
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 0

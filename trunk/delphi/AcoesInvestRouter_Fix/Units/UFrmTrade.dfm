@@ -59,9 +59,9 @@ object FrmTrade: TFrmTrade
     StringclNeg = 'N'#250'm. Neg'#243'cios'
     StringclVarWeek = 'Hora'
     FilterColums = stAll
-    FontColorPaint = clWhite
-    EvenColorLine = 7798784
-    OddColorLine = 4194304
+    FontColorPaint = clBlack
+    EvenColorLine = 12908023
+    OddColorLine = 15203838
     ShowClearLine = False
     ColWidths = (
       64
@@ -85,13 +85,22 @@ object FrmTrade: TFrmTrade
     Width = 742
     Height = 22
     Align = alTop
+    Color = clBlack
+    ParentBackground = False
     TabOrder = 1
+    ExplicitTop = -6
     object Label1: TLabel
       Left = 4
       Top = 3
       Width = 56
       Height = 13
       Caption = 'Novo ativo:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object SpeedButton1: TSpeedButton
       Left = 177
@@ -116,6 +125,19 @@ object FrmTrade: TFrmTrade
       ParentShowHint = False
       ShowHint = True
       OnClick = SpeedButton2Click
+    end
+    object Label2: TLabel
+      Left = 668
+      Top = 3
+      Width = 68
+      Height = 13
+      Caption = 'Sempre Vis'#237'vel'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object Edit1: TEdit
       Left = 64
@@ -146,10 +168,15 @@ object FrmTrade: TFrmTrade
     end
     object CheckBox1: TCheckBox
       Left = 651
-      Top = 0
-      Width = 87
+      Top = 3
+      Width = 86
       Height = 17
-      Caption = 'Sempre Vis'#237'vel'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 2
       OnClick = CheckBox1Click
     end

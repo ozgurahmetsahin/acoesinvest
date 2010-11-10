@@ -212,9 +212,9 @@ begin
 
       FrmMainTreeView.Memo1.Lines.Add(MsgOrderBuy);
 
-//      FrmMainTreeView.Broker.IOHandler.WriteBufferClear;
-//      FrmMainTreeView.Broker.IOHandler.WriteDirect(MsgOrderBuyBytes);
-//      FrmMainTreeView.Broker.IOHandler.WriteBufferFlush;
+      FrmMainTreeView.Broker.IOHandler.WriteBufferClear;
+      FrmMainTreeView.Broker.IOHandler.WriteDirect(MsgOrderBuyBytes);
+      FrmMainTreeView.Broker.IOHandler.WriteBufferFlush;
 
      // Compra
      if(Self.Caption = 'Compra') then

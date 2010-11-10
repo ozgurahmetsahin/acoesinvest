@@ -29,6 +29,7 @@ object FrmBook: TFrmBook
       Width = 418
       Height = 182
       Align = alClient
+      Color = 15790032
       ColCount = 6
       DefaultRowHeight = 17
       FixedCols = 0
@@ -88,9 +89,24 @@ object FrmBook: TFrmBook
     Width = 605
     Height = 24
     Align = alTop
+    Color = clBlack
     Ctl3D = False
+    ParentBackground = False
     ParentCtl3D = False
     TabOrder = 1
+    object Label1: TLabel
+      Left = 527
+      Top = 5
+      Width = 68
+      Height = 13
+      Caption = 'Sempre Vis'#237'vel'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
     object Edit1: TEdit
       Left = 2
       Top = 2
@@ -111,11 +127,10 @@ object FrmBook: TFrmBook
       OnClick = BitBtn1Click
     end
     object CheckBox1: TCheckBox
-      Left = 509
-      Top = 3
+      Left = 507
+      Top = 2
       Width = 97
       Height = 17
-      Caption = 'Sempre Vis'#237'vel'
       Checked = True
       State = cbChecked
       TabOrder = 2

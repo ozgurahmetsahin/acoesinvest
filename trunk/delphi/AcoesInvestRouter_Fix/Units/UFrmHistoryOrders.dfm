@@ -20,98 +20,154 @@ object FrmHistoryOrders: TFrmHistoryOrders
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 251
+    Top = 244
     Width = 881
-    Height = 20
+    Height = 27
     Align = alBottom
     BevelOuter = bvNone
+    Color = clBlack
     Ctl3D = False
+    ParentBackground = False
     ParentCtl3D = False
     TabOrder = 0
-    ExplicitTop = 232
+    ExplicitTop = 243
     object Shape1: TShape
       Left = 61
-      Top = 2
+      Top = 5
       Width = 18
       Height = 16
       Brush.Color = clLime
     end
     object Shape2: TShape
       Left = 145
-      Top = 2
+      Top = 5
       Width = 18
       Height = 16
       Brush.Color = clRed
     end
     object Label1: TLabel
       Left = 87
-      Top = 3
+      Top = 6
       Width = 51
       Height = 13
       Caption = 'Executada'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object Label2: TLabel
       Left = 170
-      Top = 3
+      Top = 6
       Width = 46
       Height = 13
       Caption = 'Rejeitada'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object Shape3: TShape
       Left = 222
-      Top = 2
+      Top = 5
       Width = 18
       Height = 16
       Brush.Color = clYellow
     end
     object Label3: TLabel
       Left = 248
-      Top = 3
+      Top = 6
       Width = 44
       Height = 13
       Caption = 'Recebida'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object Shape4: TShape
       Left = 300
-      Top = 2
+      Top = 5
       Width = 18
       Height = 16
       Brush.Color = 16744448
     end
     object Label4: TLabel
       Left = 326
-      Top = 3
+      Top = 6
       Width = 50
       Height = 13
       Caption = 'Cancelada'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object Label5: TLabel
       Left = 7
-      Top = 3
+      Top = 6
       Width = 50
       Height = 13
       Caption = 'Legendas:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object Shape5: TShape
       Left = 384
-      Top = 2
+      Top = 5
       Width = 18
       Height = 16
     end
     object Label6: TLabel
       Left = 410
-      Top = 5
+      Top = 8
       Width = 33
       Height = 13
       Caption = 'Outros'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label7: TLabel
+      Left = 789
+      Top = 7
+      Width = 68
+      Height = 13
+      Caption = 'Sempre Vis'#237'vel'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object CheckBox1: TCheckBox
-      Left = 784
-      Top = 2
+      Left = 769
+      Top = 5
       Width = 97
       Height = 17
-      Caption = 'Sempre Vis'#237'vel'
       Checked = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       State = cbChecked
       TabOrder = 0
       OnClick = CheckBox1Click
@@ -121,23 +177,20 @@ object FrmHistoryOrders: TFrmHistoryOrders
     Left = 0
     Top = 0
     Width = 881
-    Height = 251
+    Height = 244
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 1
     TabPosition = tpBottom
-    ExplicitHeight = 232
+    ExplicitHeight = 251
     object TabSheet1: TTabSheet
       Caption = 'Ordens'
-      ExplicitLeft = 12
-      ExplicitTop = 0
-      ExplicitWidth = 281
-      ExplicitHeight = 167
+      ExplicitHeight = 225
       object HistorySheet: TSheet
         Left = 0
         Top = 0
         Width = 873
-        Height = 225
+        Height = 218
         Align = alClient
         ColCount = 12
         Ctl3D = False
@@ -169,8 +222,7 @@ object FrmHistoryOrders: TFrmHistoryOrders
         EvenColorLine = clBlack
         OddColorLine = clBlack
         ShowClearLine = False
-        ExplicitWidth = 881
-        ExplicitHeight = 211
+        ExplicitHeight = 225
         RowHeights = (
           17
           17)
@@ -179,19 +231,18 @@ object FrmHistoryOrders: TFrmHistoryOrders
     object TabSheet2: TTabSheet
       Caption = 'Start/Stop'
       ImageIndex = 1
-      ExplicitWidth = 281
-      ExplicitHeight = 167
+      ExplicitHeight = 225
       object StartStopSheet: TSheet
         Left = 0
         Top = 0
         Width = 873
-        Height = 225
+        Height = 218
         Align = alClient
         ColCount = 12
         DefaultRowHeight = 17
         FixedCols = 0
         RowCount = 2
-        PopupMenu = PopupMenu1
+        PopupMenu = PopupMenu2
         TabOrder = 0
         ColumsVisible = [clQuote, clPicture, clLast, clVar, clBuy, clSell, clStatus, clBaseIn, clObj1, clObj2, clObj3, clObj4]
         StringclQuote = 'C'#243'd.'
@@ -211,8 +262,7 @@ object FrmHistoryOrders: TFrmHistoryOrders
         EvenColorLine = clBlack
         OddColorLine = clBlack
         ShowClearLine = False
-        ExplicitWidth = 409
-        ExplicitHeight = 347
+        ExplicitHeight = 225
         ColWidths = (
           64
           68
@@ -249,5 +299,13 @@ object FrmHistoryOrders: TFrmHistoryOrders
     OnTimer = Timer1Timer
     Left = 368
     Top = 96
+  end
+  object PopupMenu2: TPopupMenu
+    Left = 288
+    Top = 160
+    object Cancelar2: TMenuItem
+      Caption = 'Cancelar'
+      OnClick = Cancelar2Click
+    end
   end
 end

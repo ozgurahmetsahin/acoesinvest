@@ -24,12 +24,15 @@ type
     Label5: TLabel;
     Shape5: TShape;
     Label6: TLabel;
-    CheckBox1: TCheckBox;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     HistorySheet: TSheet;
     StartStopSheet: TSheet;
+    PopupMenu2: TPopupMenu;
+    Cancelar2: TMenuItem;
+    CheckBox1: TCheckBox;
+    Label7: TLabel;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure HistorySheetDrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
@@ -43,6 +46,7 @@ type
     procedure HistorySheetMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure CheckBox1Click(Sender: TObject);
+    procedure Cancelar2Click(Sender: TObject);
   private
     { Private declarations }
     OrderMassRequest: Boolean;
@@ -131,6 +135,32 @@ begin
 
 
 end;
+end;
+
+procedure TFrmHistoryOrders.Cancelar2Click(Sender: TObject);
+var MsgStartStopCancel : String;
+    BMsgStartStopCancel:TBytes;
+begin
+  MsgStartStopCancel:='35=OCSS' + #1 +
+                      '5017=0' + #1 +
+                      '37=' + StartStopSheet.Cells[0,StartStopSheet.Row] + #1;
+
+                      if StartStopSheet.GetValue(clPicture,StartStopSheet.SelectedQuote) = 'Start' then
+                      MsgStartStopCancel:=MsgStartStopCancel+'5035=0' + #1
+                      else
+                      MsgStartStopCancel:=MsgStartStopCancel + '5035=1' + #1;
+
+                      MsgStartStopCancel:=MsgStartStopCancel + '117=' + StartStopSheet.GetValue(clLast,StartStopSheet.SelectedQuote) + #1 +
+                      '5162=' + FrmMainTreeView.ShadownCode +#1 + #3;
+
+  BMsgStartStopCancel:= FrmMainTreeView.StrToBytes(MsgStartStopCancel);
+
+  if MessageDlg('Deseja realmente cancelar a ordem ' + StartStopSheet.Cells[0,StartStopSheet.Row] + '?',mtConfirmation,[mbYEs,MbNo],0) = mrYes then
+  begin
+    FrmMainTreeView.AddLogMsg(MsgStartStopCancel);
+    FrmMainTreeView.Broker.IOHandler.WriteDirect(BMsgStartStopCancel);
+    FrmMainTreeView.Broker.IOHandler.WriteBufferFlush;
+  end;
 end;
 
 procedure TFrmHistoryOrders.CheckBox1Click(Sender: TObject);

@@ -43,6 +43,10 @@ type
     Label30: TLabel;
     Label31: TLabel;
     BitBtn1: TBitBtn;
+    Label32: TLabel;
+    Label33: TLabel;
+    Label34: TLabel;
+    Shape1: TShape;
     procedure FormShow(Sender: TObject);
     procedure CalculatorTimer(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -138,6 +142,16 @@ begin
        ValTemp := (ValTemp / Val1) * 100;
        //if(Val2 < Val1)then ValTemp:=ValTemp * -1;
        Portfolio.SetValue(clObj3,Portfolio.Cells[0,K], FormatFloat('0.00',ValTemp));
+
+       // Zera para não ter erros
+       Val1 := 0; Val2 := 0;
+
+       // Diferenca entre compra e vendas
+       Val1:=StrToFloat(FrmMainTreeView.ChangeDecimalSeparator(Label26.Caption,'.',','));
+       Val2:=StrToFloat(FrmMainTreeView.ChangeDecimalSeparator(Label28.Caption,'.',','));
+       ValTemp:=Val2-Val1;
+       Label33.Caption:=FormatFloat('0.00',ValTemp);
+
      end;
 
     except
@@ -150,7 +164,7 @@ begin
 
   // Somatoria
   Label3.Caption:=FormatFloat('0.00',Val3);
-  if(Val4 < 0)then Label4.Font.Color:=clRed else Label4.Font.Color:=clGreen;
+  if(Val4 < 0)then Label4.Font.Color:=clRed else Label4.Font.Color:=clLime;
   Label4.Caption:=FormatFloat('0.00',Val4);
   end
   else
