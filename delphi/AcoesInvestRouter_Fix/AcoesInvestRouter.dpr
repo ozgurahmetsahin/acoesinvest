@@ -47,5 +47,6 @@ begin
   Application.CreateForm(TFrmHistoryOrders, FrmHistoryOrders);
   Application.CreateForm(TFrmStartStop, FrmStartStop);
   Application.CreateForm(TFrmPortfolio, FrmPortfolio);
+  Application.CreateForm(TFrmConnConfig, FrmConnConfig);
   Application.Run;
 end.

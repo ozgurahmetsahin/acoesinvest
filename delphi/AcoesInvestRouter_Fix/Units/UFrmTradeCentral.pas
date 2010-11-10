@@ -127,7 +127,7 @@ begin
               // Atualizamos o form central
               FrmCentral.CentralSheet.SetValue(clPicture,TradeSplit[1],Value);
 
-              FrmTrade.TradeSheet.SetValue(clVarWeek,TradeSplit[1],Value);
+              FrmTrade.TradeSheet.SetValue(clVarWeek,TradeSplit[1],SignalThread.FormatTimeTrade(Value));
 
             end;
 

@@ -120,13 +120,16 @@ begin
         Synchronize(SynchDataClient);
 
         //Vamos solicitar aqui o FOV - Lista de Ordens
-        MsgSend:= '35=FOV' + #1 + '5017=5' + #1 + '5013=T' + #1 + '5487=0' +#1 +
-                 '9999=0' + #1 + '5262=1' + #1 +  '5463=0' + #1 +#3;
+        if FrmHistoryOrders.HistorySheet.Cells[0,1]='' then
+        begin
+          MsgSend:= '35=FOV' + #1 + '5017=5' + #1 + '5013=T' + #1 + '5487=0' +#1 +
+                   '9999=0' + #1 + '5262=1' + #1 +  '5463=0' + #1 +#3;
 
-        FrmMainTreeView.Memo1.Lines.Add(MsgSend);
-        BMsgSend:=FrmMainTreeView.StrToBytes(MsgSend);
-        FrmMainTreeView.Broker.IOHandler.WriteDirect(BMsgSend);
-        FrmMainTreeView.Broker.IOHandler.WriteBufferFlush;
+          FrmMainTreeView.Memo1.Lines.Add(MsgSend);
+          BMsgSend:=FrmMainTreeView.StrToBytes(MsgSend);
+          FrmMainTreeView.Broker.IOHandler.WriteDirect(BMsgSend);
+          FrmMainTreeView.Broker.IOHandler.WriteBufferFlush;
+        end;
 
         //Vamos solicitar aqui o FFD - Saldo em conta
         MsgSend:= '35=FFD' + #1 + '5017=5' + #1 + '5209=1' + #1 + '5019=' +

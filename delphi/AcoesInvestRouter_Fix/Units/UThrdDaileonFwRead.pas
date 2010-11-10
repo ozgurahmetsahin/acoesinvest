@@ -25,6 +25,8 @@ type
     destructor Destroy; reintroduce;
     function Connect:Boolean;
     procedure WriteLn(AMsg:String);
+    function RemoveChar(Text : String;Char: Char):String;
+    function FormatTimeTrade(Time: String): String;
   published
     property Data:TStrings read FData;
     property Connection:TIdTCPClient read FConnection;
@@ -95,7 +97,7 @@ begin
 
     {Efetua tentativa de leitura}
     try
-      Read:=FConnection.IOHandler.ReadLn();
+      Read:=RemoveChar(FConnection.IOHandler.ReadLn(),'!');
       {Se Read não esta vazio, insere na lista de dados recebidos}
       if Read<>'' then
       begin
@@ -163,6 +165,36 @@ procedure TThrdDaileonFwRead.WriteLn(AMsg: String);
 begin
   if FConnection.Connected then
   FConnection.IOHandler.WriteLn(AMsg);
+end;
+
+function TThrdDaileonFwRead.RemoveChar(Text : String;Char: Char):String;
+var
+  I: Integer;
+  R : String;
+begin
+  R:='';
+  for I := 1 to Length(Text)  do
+  begin
+    if(Copy(Text,I,1) <> Char) then
+    begin
+      R:=R + Copy(Text,I,1);
+    end;
+  end;
+
+  Result:=R;
+end;
+
+function TThrdDaileonFwRead.FormatTimeTrade(Time: String): String;
+var r: String;
+begin
+ try
+   r:=Copy(Time,1,2);
+   r:=r+':';
+   r:= r + Copy(Time,3,2);
+   Result:=r;
+ except
+   Result:='00:00';
+ end;
 end;
 
 end.

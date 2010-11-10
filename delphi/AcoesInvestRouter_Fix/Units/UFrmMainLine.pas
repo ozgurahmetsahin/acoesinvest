@@ -91,7 +91,7 @@ implementation
 uses UFrmMainTreeView, UFrmConnection, UFrmTrade, UFrmMiniBook,
   UFrmAbstractSymbol, UFrmBrokerBuy, UFrmHistoryOrders, UFrmStartStop,
   UFrmBrokerSell,UFrmWebBrowser, UFrmPortfolio, UFrmBrokerSpeed, UFrmOpenChart,
-  UFrmTradeCentral, UFrmBook, UThrdDaileonFwRead;
+  UFrmTradeCentral, UFrmBook, UThrdDaileonFwRead, UFrmConnConfig;
 
 {$R *.dfm}
 
@@ -142,7 +142,7 @@ end;
 
 procedure TFrmMainLine.Conexes1Click(Sender: TObject);
 begin
-FrmConnection.Show;
+  FrmConnConfig.Show;
 end;
 
 procedure TFrmMainLine.CreateParams(var Params: TCreateParams);
@@ -262,7 +262,7 @@ if not Assigned(FrmBrokerSpeed) then
 begin
   FrmBrokerSpeed:=TFrmBrokerSpeed.Create(Application);
 end;
-FrmBrokerSpeed.Show;
+  FrmBrokerSpeed.Show;
 end;
 
 procedure TFrmMainLine.Label10Click(Sender: TObject);
@@ -340,17 +340,17 @@ begin
     FrmCentral:=TFrmCentral.Create(Application);
   end;
  //ShellExecute(handle,'open','http://www.acoesinvest.com.br/grafico.html','','',SW_SHOWNORMAL);
- if(FrmMainTreeView.DaileonFW.Connected) then
- begin
+// if(FrmMainTreeView.DaileonFW.Connected) then
+// begin
    FrmWeb:=TFrmWebBrowser.Create(Application);
    FrmWeb.SetSize(610,855);
    FrmWeb.Show;
    FrmWeb.WebBrowser1.Navigate('http://quotes2.enfoque.com.br/diferencial/flashchartHB/pt/grafico.aspx');
- end
- else
- begin
-   MessageDlg('Você não está conectado ao servidor.', mtError, [mbOk], 0);
- end;
+// end
+// else
+// begin
+//   MessageDlg('Você não está conectado ao servidor.', mtError, [mbOk], 0);
+// end;
 // FrmOpenChart.Show;
 // ShellExecute(Handle,'open','chartRun.bat','',PChar(ExtractFilePath(ParamStr(0))+'JGrafix/'),SW_HIDE);
 end;

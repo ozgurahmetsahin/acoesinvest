@@ -19,6 +19,7 @@ type
     StringGrid2: TStringGrid;
     StatusBar1: TStatusBar;
     Memo1: TMemo;
+    Label1: TLabel;
     procedure Menu_ConnOnOffClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -163,13 +164,13 @@ begin
   with StringGrid1.Canvas do
   begin
     if Odd(ARow) then
-      Brush.Color:=$00400000
+      Brush.Color:=RGB(234,255,255)
     else
-      Brush.Color:=$00770000;
+      Brush.Color:=RGB(181,231,232);
    FillRect(Rect);
    Font:=StringGrid1.Font;
    Font.Style:=Font.Style + [fsBold];
-   Font.Color:=clWhite;
+   Font.Color:=clBlack;
    TextRect(Rect,Rect.Left + 3,Rect.Top + 3,StringGrid1.Cells[ACol,ARow]);
 
    if (ACol = 0 ) or ( ACol = 5 ) then

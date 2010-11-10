@@ -30,6 +30,7 @@ type
     BalloonHint1: TBalloonHint;
     CheckBox1: TCheckBox;
     Timer1: TTimer;
+    Label2: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure MoverparCima1Click(Sender: TObject);
     procedure Moverparabaixo1Click(Sender: TObject);
