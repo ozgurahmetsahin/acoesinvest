@@ -47,6 +47,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure CheckBox1Click(Sender: TObject);
     procedure Cancelar2Click(Sender: TObject);
+    procedure PageControl1Change(Sender: TObject);
   private
     { Private declarations }
     OrderMassRequest: Boolean;
@@ -383,6 +384,29 @@ begin
 	HistorySheet.Col := Col;
 	HistorySheet.Row := Row;
   HistorySheet.SetQuoteByCell;
+  end;
+end;
+
+procedure TFrmHistoryOrders.PageControl1Change(Sender: TObject);
+var MsgSend : String;
+    BMsgSend : TBytes;
+begin
+  try
+   //Vamos solicitar aqui o FOSB - Lista de ordens de start
+    MsgSend:= '35=FOSB' + #1 + '5017=5' + #1 + '5013=T' + #1 +
+                 '5262=1' + #1 + '5209=1' + #1 + '5019='+ FrmMainTreeView.MarketID + #1 + #3;
+    BMsgSend:=FrmMainTreeView.StrToBytes(MsgSend);
+    FrmMainTreeView.Broker.IOHandler.WriteDirect(BMsgSend);
+    FrmMainTreeView.Broker.IOHandler.WriteBufferFlush;
+
+     //Vamos solicitar aqui o FOSS - Lista de ordens de stop
+    MsgSend:= '35=FOSS' + #1 + '5017=5' + #1 + '5013=T' + #1 +
+                 '5262=1' + #1 + '5209=1' + #1 + '5019='+ FrmMainTreeView.MarketID + #1 + #3;
+    BMsgSend:=FrmMainTreeView.StrToBytes(MsgSend);
+    FrmMainTreeView.Broker.IOHandler.WriteDirect(BMsgSend);
+    FrmMainTreeView.Broker.IOHandler.WriteBufferFlush;
+  except
+    //
   end;
 end;
 

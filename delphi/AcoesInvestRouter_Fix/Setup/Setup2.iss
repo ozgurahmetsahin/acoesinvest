@@ -5,7 +5,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{A7EFA358-B3DE-48B2-8660-24409B418A50}
+AppId={{2F4F19F2-7672-4745-826D-83A9C685A9FE}
 AppName=Ações Invest Router
 AppVerName=Ações Invest Router 1.3.5.4
 AppPublisher=Ações Invest
@@ -37,7 +37,7 @@ Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\brok
 Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\brokerages.ini"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\brokerRun.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\requisitos.rtf"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\Luma.exe"; DestDir: "{app}"; Flags: ignoreversion
+;Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\Luma.exe"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

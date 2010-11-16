@@ -30,7 +30,6 @@ object FrmHistoryOrders: TFrmHistoryOrders
     ParentBackground = False
     ParentCtl3D = False
     TabOrder = 0
-    ExplicitTop = 243
     object Shape1: TShape
       Left = 61
       Top = 5
@@ -182,10 +181,9 @@ object FrmHistoryOrders: TFrmHistoryOrders
     Align = alClient
     TabOrder = 1
     TabPosition = tpBottom
-    ExplicitHeight = 251
+    OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Ordens'
-      ExplicitHeight = 225
       object HistorySheet: TSheet
         Left = 0
         Top = 0
@@ -222,7 +220,6 @@ object FrmHistoryOrders: TFrmHistoryOrders
         EvenColorLine = clBlack
         OddColorLine = clBlack
         ShowClearLine = False
-        ExplicitHeight = 225
         RowHeights = (
           17
           17)
@@ -231,6 +228,9 @@ object FrmHistoryOrders: TFrmHistoryOrders
     object TabSheet2: TTabSheet
       Caption = 'Start/Stop'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
       ExplicitHeight = 225
       object StartStopSheet: TSheet
         Left = 0
