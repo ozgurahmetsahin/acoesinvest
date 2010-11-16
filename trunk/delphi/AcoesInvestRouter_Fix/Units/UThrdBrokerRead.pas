@@ -167,6 +167,7 @@ begin
        //Verificacao RFOSB - Lista de Ordens de compra
       if Data.Values['35'] = 'RFOSB' then
       begin
+
         if StrToInt(Data.Values['5042']) > 0 then
         begin
           for K := 0 to Data.Count - 1 do
