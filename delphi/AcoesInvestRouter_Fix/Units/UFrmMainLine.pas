@@ -43,6 +43,7 @@ type
     Image10: TImage;
     Image11: TImage;
     Image8: TImage;
+    Calculadora1: TMenuItem;
     procedure Label6Click(Sender: TObject);
     procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -73,6 +74,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Image8Click(Sender: TObject);
     procedure Image10Click(Sender: TObject);
+    procedure Calculadora1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -103,6 +105,11 @@ end;
 procedure TFrmMainLine.Button1Click(Sender: TObject);
 begin
   FrmMainTreeView.Show;
+end;
+
+procedure TFrmMainLine.Calculadora1Click(Sender: TObject);
+begin
+  ShellExecute(handle,'open','calc.exe','','',SW_NORMAL);
 end;
 
 procedure TFrmMainLine.CalculadoraBMF1Click(Sender: TObject);

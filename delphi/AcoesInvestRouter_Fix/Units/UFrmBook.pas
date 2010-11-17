@@ -393,7 +393,7 @@ var Data:TStringList;
     IsUpdate:Boolean;
 begin
   Data:=TStringList.Create;
-  Row:=0;
+  Row:=SignalThread.Data.Count-1;
 
   while not Terminated do
   begin
@@ -452,7 +452,7 @@ begin
                 if Data[I] = '2' then
                 FBook.StringGrid2.Cells[0,1]:=Data[I+1];
 
-                if Data[I] = '700' then
+                if (Data[I] = '700') or (Data[I] = '664') then
                 FBook.StringGrid2.Cells[1,1]:=Data[I+1];
 
                 if Data[I] = '3' then

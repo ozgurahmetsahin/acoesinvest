@@ -88,7 +88,6 @@ object FrmTrade: TFrmTrade
     Color = clBlack
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = -6
     object Label1: TLabel
       Left = 4
       Top = 3
@@ -231,6 +230,7 @@ object FrmTrade: TFrmTrade
   end
   object Timer1: TTimer
     Enabled = False
+    Interval = 10
     OnTimer = Timer1Timer
     Left = 400
     Top = 112

@@ -3,7 +3,7 @@ object FrmMainLine: TFrmMainLine
   Top = 15
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'A'#231#245'es Invest Router 1.3.5.4'
+  Caption = 'A'#231#245'es Invest Router 1.4'
   ClientHeight = 96
   ClientWidth = 872
   Color = clPurple
@@ -3769,6 +3769,10 @@ object FrmMainLine: TFrmMainLine
     object CalculadoraBMF2: TMenuItem
       Caption = 'Calculadora BMF'
       OnClick = CalculadoraBMF1Click
+    end
+    object Calculadora1: TMenuItem
+      Caption = 'Calculadora'
+      OnClick = Calculadora1Click
     end
   end
   object Timer1: TTimer
