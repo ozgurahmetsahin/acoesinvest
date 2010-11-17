@@ -36,7 +36,7 @@
 #define HEADER_LOG "********* Start DDCEnfoque*************"
 #define FOOTER_LOG "********* End DDCEnfoque *************"
 #define DEFAULT_PATH "/home/donda/ddc/"
-#define LOGIN_ENFOQUE "L:DIFERENCIAL_FEED2:ANDERSON:NMB+TRD\r\n"
+#define LOGIN_ENFOQUE "L:DIFERENCIAL_FEED:ROGERIO:NMB+TRD\r\n"
 #define MSG_ERR_CONN "Error on connect to server."
 /*********************************************************/
 
