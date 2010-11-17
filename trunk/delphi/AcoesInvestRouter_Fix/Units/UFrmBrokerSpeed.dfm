@@ -384,7 +384,7 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
   end
   object Label2: TLabel
     Left = 391
-    Top = 27
+    Top = 17
     Width = 118
     Height = 13
     Caption = 'Pre'#231'o do livro de ofertas'
@@ -965,7 +965,7 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
   end
   object CheckBox1: TCheckBox
     Left = 376
-    Top = 25
+    Top = 15
     Width = 17
     Height = 17
     Font.Charset = DEFAULT_CHARSET
@@ -979,7 +979,7 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
   end
   object Edit1: TEdit
     Left = 53
-    Top = 16
+    Top = 15
     Width = 77
     Height = 21
     CharCase = ecUpperCase
@@ -1008,28 +1008,28 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
     Left = 26
     Top = 239
     Width = 90
-    Height = 21
+    Height = 25
     TabOrder = 4
   end
   object Edit5: TEdit
     Left = 145
     Top = 239
     Width = 94
-    Height = 21
+    Height = 25
     TabOrder = 5
   end
   object Edit6: TEdit
     Left = 282
     Top = 235
     Width = 86
-    Height = 21
+    Height = 24
     TabOrder = 6
   end
   object Edit7: TEdit
     Left = 391
     Top = 235
     Width = 95
-    Height = 21
+    Height = 24
     TabOrder = 7
   end
   object Panel1: TPanel

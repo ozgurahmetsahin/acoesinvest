@@ -64,8 +64,8 @@ begin
     SignalThread:=TThrdDaileonFwRead.Create;
   end;
 
-  SignalThread.Connection.Host:='server3.acoesinvest.com.br';
-  SignalThread.Connection.Port:=8189;
+  SignalThread.Connection.Host:='server2.acoesinvest.com.br';
+  SignalThread.Connection.Port:=81;
   SignalThread.Connection.ReadTimeout:=500;
   SignalThread.Connection.ConnectTimeout:=2500;
 
@@ -211,7 +211,7 @@ begin
 
 //   FrmMainTreeView.TerminateProcesso(ExtractFilePath(ParamStr(0)) + 'broker.exe');
 
-//   LoadInformations;
+   LoadInformations;
 //
 //   FrmConnConfig.FormShow(Self);
 //
