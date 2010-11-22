@@ -526,7 +526,7 @@ void entick(struct TDDCData *list, char *cedro) {
                 // Coluna com a Hora
             case 2:
                 // Coloca na variavel da cedro ja formatado
-                sprintf(cedro, "%s:%s00:5:%s:2:%s", cedro, t->value, t->value, lastvalue);
+                sprintf(cedro, "%s:%s00:5:%s00:2:%s", cedro, t->value, t->value, lastvalue);
                 // break obrigatorio
                 break;
 
