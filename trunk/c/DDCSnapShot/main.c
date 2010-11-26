@@ -148,6 +148,10 @@ int main(int argc, char** argv) {
                                     // Vai para o proximo registro
                                     t = t->next;
 
+                                    if(!strcmp(t->value,"000")){
+                                        strcpy(t->value,"000000");
+                                    }
+
                                     // Atualiza arquivo
                                     updatesnapshot(symbol, TIMETRD, t->value);
                                 } else if (!strcmp(t->value, "8")) {
@@ -205,7 +209,7 @@ int main(int argc, char** argv) {
                     }
 
 
-                } else if (data->value[0] == 'K' || data->value[0] == 'M') {
+                } /*else if (data->value[0] == 'K' || data->value[0] == 'M') {
 
                     // Snapshot do book de ofertas
 
@@ -389,7 +393,7 @@ int main(int argc, char** argv) {
                                 fclose(fs);
                             }
                         }
-*/
+
 
 
                     }
@@ -409,7 +413,7 @@ int main(int argc, char** argv) {
                     }
 
 
-                } else {
+                } */else {
                     destroylist(data);
                     data = NULL;
                     t = NULL;
