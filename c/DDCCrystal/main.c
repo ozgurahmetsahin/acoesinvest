@@ -14,6 +14,9 @@
 #include <unistd.h>
 #include <signal.h>
 #include <netdb.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 /*Biblioteca Acoes Invest*/
 #include "ailib.h"
@@ -24,16 +27,16 @@
 #define SNAP_BK_PATH "/home/donda/ddc/snapshot/books/"
 #define TERMINAL_LOG "/home/donda/ddc/ddccrystal.log"
 #define SYNCH_BUFF_FILE "/home/donda/ddc/buffer/last.buf"
-
+#define FIFO_ARQ "/home/donda/ddc/buffer/fifo"
 #define MAX_BUF_SIZE sizeof(char) * 1000
 #define SYMBOL_SIZE sizeof(char) * 20
 #define USER_CEDRO "ets012\r\n"
 #define PASS_CEDRO "123456\r\n"
 
-#define SVR_CRYSTAL_1 "crystal205.cedrofinances.com.br"
+#define SVR_CRYSTAL_1 "crystal509.cedrofinances.com.br"
 #define SVR_CRYSTAL_2 "crystal507.cedrofinances.com.br"
-#define SVR_CRYSTAL_3 "crystal515.cedrofinances.com.br"
-#define SVR_CRYSTAL_4 "crystal209.cedrofinances.com.br"
+#define SVR_CRYSTAL_3 "crystal505.cedrofinances.com.br"
+#define SVR_CRYSTAL_4 "crystal515.cedrofinances.com.br"
 
 #define SVR_CRYSTAL_5 "crystal201.cedrofinances.com.br"
 #define SVR_CRYSTAL_6 "crystal501.cedrofinances.com.br"
@@ -57,6 +60,7 @@ void snapshotbk(char *__b);
 int islogin(char *_m);
 void changecrystal(int _sig);
 int checktrade(char *_t);
+void filepiper(int _fd);
 
 // Id inicial de qual crystal usar
 int crystal_id = 1;
@@ -170,6 +174,31 @@ int main(int argc, char** argv) {
         writeln(TERMINAL_LOG, "********* Start *************", "a+");
         writeln(TERMINAL_LOG, "Conectado", "a+");
         writeln(TERMINAL_LOG, "********* End ***************", "a+");
+
+
+        /*Cria o processo filho que lera o FIFO com as entradas de comando*/
+        pid_t fifo;
+
+        fifo = fork();
+
+        // Verifica se criou o processo fifo
+        if (fifo < 0) {
+            //Erro na criacao do fifo
+
+            writeln(TERMINAL_LOG, "********* Start *************", "a+");
+            writeln(TERMINAL_LOG, "Erro ao criar fifo.", "a+");
+            writeln(TERMINAL_LOG, "********* End ***************", "a+");
+            exit(EXIT_FAILURE);
+        }
+
+        // Se for o processo fifo executa sua funcao
+        // e se sair da funcao a um exit
+        if (fifo == 0) {
+            filepiper(s);
+            //exit(0);
+        }
+
+        // Aqui é o processo pai ( fifo != 0 )
 
 
         // Registra nome do arquivo de buffer
@@ -1260,5 +1289,48 @@ int checktrade(char *_t) {
     free(b);
 
     return islastprice;
+
+}
+
+void filepiper(int _fd) {
+
+    int n, fpipe;
+
+    char txt[100];
+
+    mknod(FIFO_ARQ, S_IFIFO | 0666, 0);
+
+    fpipe = open(FIFO_ARQ, O_RDONLY);
+    int v = 0;
+    while (1) {
+
+        n = read(fpipe, txt, 100);
+
+        if (n > 5) {
+
+            char *cmdbf = malloc(n+10);
+
+            strcpy(cmdbf,"bqt ");
+
+            for(v=2;v<=n;v++){
+                sprintf(cmdbf,"%s%c",cmdbf,txt[v]);
+            }
+
+            //cmdbf[v]='\0';
+            cmdbf[v]='\r';
+            cmdbf[v+1]='\n';
+            
+            send(_fd, cmdbf, strlen(cmdbf), 0);
+
+            writeln(TERMINAL_LOG, "********* Start ***************", "a+");
+            writeln(TERMINAL_LOG, "Enviado linha:", "a+");
+            writeln(TERMINAL_LOG, cmdbf, "a+");
+            writeln(TERMINAL_LOG, "********* End ***************", "a+");
+
+            free(cmdbf);
+        }
+
+    }
+
 
 }

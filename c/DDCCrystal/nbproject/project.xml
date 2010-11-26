@@ -10,6 +10,12 @@
             <header-extensions/>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
+            <sourceRootList/>
+            <confList>
+                <confElem>Debug</confElem>
+                <confElem>Release</confElem>
+                <confElem>AInvestLib</confElem>
+            </confList>
         </data>
     </configuration>
 </project>
