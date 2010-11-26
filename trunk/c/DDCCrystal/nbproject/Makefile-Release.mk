@@ -10,6 +10,8 @@
 # Environment
 MKDIR=mkdir
 CP=cp
+GREP=grep
+NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
 CC=gcc
@@ -33,6 +35,7 @@ OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/main.o
 
+
 # C Compiler Flags
 CFLAGS=
 
@@ -51,13 +54,13 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	${MAKE}  -f nbproject/Makefile-Release.mk dist/Release/GNU-Linux-x86/ddccrystal
+	"${MAKE}"  -f nbproject/Makefile-Release.mk dist/Release/GNU-Linux-x86/ddccrystal
 
 dist/Release/GNU-Linux-x86/ddccrystal: ${OBJECTFILES}
 	${MKDIR} -p dist/Release/GNU-Linux-x86
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ddccrystal ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.c 
+${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.c) -O2 -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c

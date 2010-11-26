@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="62">
+<configurationDescriptor version="69">
   <logicalFolder name="root" displayName="root" projectFiles="true">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -29,8 +29,14 @@
         <platform>2</platform>
       </toolsSet>
       <compileType>
+        <cTool>
+          <incDir>
+            <pElem>../AInvestLib</pElem>
+          </incDir>
+        </cTool>
         <linkerTool>
           <linkerLibItems>
+            <linkerLibFileItem>../AInvestLib/dist/Debug/GNU-Linux-x86/libainvestlib.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -55,10 +61,6 @@
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
         </fortranCompilerTool>
-        <linkerTool>
-          <linkerLibItems>
-          </linkerLibItems>
-        </linkerTool>
       </compileType>
     </conf>
     <conf name="AInvestLib" type="1">
