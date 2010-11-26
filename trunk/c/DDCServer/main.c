@@ -24,7 +24,7 @@
 /*Biblioteca Acoes Invest*/
 #include "ailib.h"
 
-#define SVR_PORT 8189
+#define SVR_PORT 8182
 #define SVR_HOST "0"
 #define MAX_CONN_LISTEN 5
 #define MAX_BUF_RECV sizeof(char)*5000
@@ -565,7 +565,7 @@ void sonps(int _fd, pid_t _gson) {
                 } else {
                     send(_fd, MSG_SVR_NOTLOG, strlen(MSG_SVR_NOTLOG), 0);
                 }
-            } else if (!strcmp(aux1, "MBQ")) {
+            } /*else if (!strcmp(aux1, "MBQ")) {
                 // Cliente solicitou book
                 // Converte ativo para maiuscula
                 uppercase(aux2);
@@ -576,7 +576,7 @@ void sonps(int _fd, pid_t _gson) {
                 } else {
                     send(_fd, MSG_SVR_NOTLOG, strlen(MSG_SVR_NOTLOG), 0);
                 }
-            } else if (!strcmp(aux1, "BQT")) {
+            } */else if (!strcmp(aux1, "BQT")) {
                 // Cliente solicitou book
                 // Converte ativo para maiuscula
                 uppercase(aux2);
@@ -623,6 +623,11 @@ void sonps(int _fd, pid_t _gson) {
                 version_app(_fd, aux2);
             } else if (!strcmp(aux1, "CHART")) {
                 chart(_fd, bf_son_recv);
+            } else if (!strcmp(aux1, "SESSION")) {
+                // Cliente solicitou ativo
+                // Converte ativo para maiuscula
+                sprintf(dir,"%s%s/",SQT_TEMP,aux2);
+                send(_fd,dir,strlen(dir),0);
             }
 
             // Limpa variaveis auxiliares

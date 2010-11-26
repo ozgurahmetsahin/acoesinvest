@@ -15,8 +15,8 @@ NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
 CC=gcc
-CCC=
-CXX=
+CCC=g++
+CXX=g++
 FC=
 AS=as
 
@@ -50,11 +50,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=../AInvestLib/dist/Debug/GNU-Linux-x86/libainvestlib.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-Debug.mk dist/Debug/GNU-Linux-x86/ddcserver
+
+dist/Debug/GNU-Linux-x86/ddcserver: ../AInvestLib/dist/Debug/GNU-Linux-x86/libainvestlib.a
 
 dist/Debug/GNU-Linux-x86/ddcserver: ${OBJECTFILES}
 	${MKDIR} -p dist/Debug/GNU-Linux-x86
@@ -63,7 +65,7 @@ dist/Debug/GNU-Linux-x86/ddcserver: ${OBJECTFILES}
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
+	$(COMPILE.c) -g -I../AInvestLib -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
 
 # Subprojects
 .build-subprojects:
