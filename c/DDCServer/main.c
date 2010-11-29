@@ -24,7 +24,7 @@
 /*Biblioteca Acoes Invest*/
 #include "ailib.h"
 
-#define SVR_PORT 8182
+#define SVR_PORT 81
 #define SVR_HOST "0"
 #define MAX_CONN_LISTEN 5
 #define MAX_BUF_RECV sizeof(char)*5000
@@ -2011,7 +2011,7 @@ void version_app(int _fd, char *_app) {
     if (!strcmp(_app, "ROUTER")) {
         send(_fd, "VERSION:ROUTER:1.3.1:www.acoesinvest.com.br/downloads/router/acoesrouter.exe\r\n", strlen("VERSION:ROUTER:1.3.1:www.acoesinvest.com.br/downloads/router/acoesrouter.exe\r\n"), 0);
     } else if (!strcmp(_app, "DIFROUTER")) {
-        send(_fd, "VERSION:DIFROUTER:1.0:www.acoesinvest.com.br/downloads/router/diferencial/difrouter.exe\r\n", strlen("VERSION:DIFROUTER:1.0:www.acoesinvest.com.br/downloads/router/diferencial/difrouter.exe\r\n"), 0);
+        send(_fd, "VERSION:DIFROUTER:1.8:www.acoesinvest.com.br/downloads/router/diferencial/dmatrader.exe\r\n", strlen("VERSION:DIFROUTER:1.8:www.acoesinvest.com.br/downloads/router/diferencial/dmatrader.exe\r\n"), 0);
     }
 
 }
