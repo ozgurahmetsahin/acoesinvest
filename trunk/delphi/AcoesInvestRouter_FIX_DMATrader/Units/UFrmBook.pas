@@ -487,6 +487,27 @@ begin
             IsUpdate:=True;
           end;
 
+          if (Data[0]='M') And (Data[1]=FBook.Symbol) then
+          begin
+            // Analisamos se é tipo A ( Adiciona )
+//            EnterCriticalSection(CritSection);
+            if(Data[2]='A')then
+            FBook.AddLine(Data[3], Data[4], Data[5], Data[6], Data[7]);
+
+            // Analisamos se é tipo U ( Atualiza )
+            if(Data[2]='U')then
+            FBook.UpdateLine(Data[3], Data[4],Data[5], Data[6], Data[7], Data[8]);
+
+            // Analisamos se é tipo D ( Deleta )
+            if(Data[2]='D')then
+             if(Data[3] <> '3')then
+             FBook.DelLine(Data[5], Data[4], Data[3]);
+
+//             LeaveCriticalSection(CritSection);
+
+            IsUpdate:=True;
+          end;
+
           {Cotação}
           if (Data[0] = 'T') And ( Data[1] = FBook.FSymbol) then
           begin

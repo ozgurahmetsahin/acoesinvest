@@ -20,7 +20,7 @@ object FrmStartStop: TFrmStartStop
     Top = 0
     Width = 417
     Height = 375
-    ActivePage = TabSheet1
+    ActivePage = Stop
     Align = alClient
     TabOrder = 0
     OnChange = PageControl1Change

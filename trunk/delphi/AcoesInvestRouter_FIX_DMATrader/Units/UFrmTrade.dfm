@@ -60,11 +60,10 @@ object FrmTrade: TFrmTrade
     StringclVarWeek = 'Hora'
     FilterColums = stAll
     FontColorPaint = clBlack
-    EvenColorLine = 15263669
-    OddColorLine = 16777194
+    EvenColorLine = 12908023
+    OddColorLine = 15203838
     ShowClearLine = False
     BlinkCellValue = True
-    ExplicitTop = 29
     ColWidths = (
       64
       64

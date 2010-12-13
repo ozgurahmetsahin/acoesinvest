@@ -228,9 +228,9 @@ object FrmPortfolio: TFrmPortfolio
     object Label6: TLabel
       Left = 404
       Top = 26
-      Width = 44
+      Width = 25
       Height = 16
-      Caption = 'R$ 0,00'
+      Caption = '0,00'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
@@ -241,9 +241,9 @@ object FrmPortfolio: TFrmPortfolio
     object Label7: TLabel
       Left = 404
       Top = 95
-      Width = 44
+      Width = 25
       Height = 16
-      Caption = 'R$ 0,00'
+      Caption = '0,00'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
@@ -280,9 +280,9 @@ object FrmPortfolio: TFrmPortfolio
     object Label10: TLabel
       Left = 168
       Top = 61
-      Width = 44
+      Width = 25
       Height = 16
-      Caption = 'R$ 0,00'
+      Caption = '0,00'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
@@ -306,9 +306,9 @@ object FrmPortfolio: TFrmPortfolio
     object Label12: TLabel
       Left = 404
       Top = 43
-      Width = 44
+      Width = 25
       Height = 16
-      Caption = 'R$ 0,00'
+      Caption = '0,00'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
@@ -332,9 +332,9 @@ object FrmPortfolio: TFrmPortfolio
     object Label18: TLabel
       Left = 404
       Top = 61
-      Width = 44
+      Width = 25
       Height = 16
-      Caption = 'R$ 0,00'
+      Caption = '0,00'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
@@ -358,9 +358,9 @@ object FrmPortfolio: TFrmPortfolio
     object Label22: TLabel
       Left = 404
       Top = 79
-      Width = 44
+      Width = 25
       Height = 16
-      Caption = 'R$ 0,00'
+      Caption = '0,00'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
@@ -449,9 +449,9 @@ object FrmPortfolio: TFrmPortfolio
     object Label31: TLabel
       Left = 638
       Top = 81
-      Width = 44
+      Width = 25
       Height = 16
-      Caption = 'R$ 0,00'
+      Caption = '0,00'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
@@ -475,9 +475,9 @@ object FrmPortfolio: TFrmPortfolio
     object Label33: TLabel
       Left = 638
       Top = 101
-      Width = 44
+      Width = 25
       Height = 16
-      Caption = 'R$ 0,00'
+      Caption = '0,00'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13

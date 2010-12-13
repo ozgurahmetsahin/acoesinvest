@@ -51,7 +51,7 @@
           <visible>true</visible>
         </grafix.graficos.eixos.EixoExtra>
       </eixosExtras>
-      <periodicidade>5</periodicidade>
+      <periodicidade>1</periodicidade>
       <volume>
         <autoEscala>false</autoEscala>
         <corGradeHorizontal reference="../../candles/corGradeHorizontal"/>
@@ -83,7 +83,7 @@
     <falpha>0.0</falpha>
     <value>-13794816</value>
   </corVolume>
-  <cursorExtendido>true</cursorExtendido>
+  <cursorExtendido>false</cursorExtendido>
   <espacColunasVolume>6</espacColunasVolume>
   <exibeEixoX>true</exibeEixoX>
   <exibeSomenteDiasUteis>true</exibeSomenteDiasUteis>

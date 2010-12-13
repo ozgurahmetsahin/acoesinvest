@@ -65,7 +65,7 @@ type
     const DefaultRouterHost : String = 'broker.acoesinvest.com.br';
 
     // Versao do sistema
-    const VersionID:String = '1.7.2';
+    const VersionID:String = '1.3';
 
     procedure ShowMsgErr;
     procedure DelUnknowSymbol(Symbol : String);
@@ -85,9 +85,9 @@ var
 implementation
 
 uses UFrmTrade, UFrmAbstractSymbol, UFrmConnection,UFrmTradeCentral,
-UFrmTradingSystem, UFrmBrokerBuy, UFrmBrokerSell, UFrmHistoryOrders,
+ UFrmBrokerBuy, UFrmBrokerSell, UFrmHistoryOrders,
   UFrmStartStop, UFrmBrokerageNote, UFrmWebBrowser, UFrmConfig, UFrmMainLine,
-  UThrdDaileonFwRead;
+  UThrdDaileonFwRead, UFrmTradingSystem;
 
 {$R *.dfm}
 

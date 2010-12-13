@@ -10,8 +10,6 @@ type
   TFrmBrokerSpeed = class(TForm)
     Image1: TImage;
     Label1: TLabel;
-    CheckBox1: TCheckBox;
-    Label2: TLabel;
     Edit1: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;
@@ -27,6 +25,16 @@ type
     SpeedButton3: TSpeedButton;
     Panel2: TPanel;
     Label3: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    CheckBox2: TCheckBox;
+    Label4: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label2: TLabel;
+    CheckBox1: TCheckBox;
     procedure Timer1Timer(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -38,9 +46,12 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure StringGrid1Click(Sender: TObject);
     procedure Edit1KeyPress(Sender: TObject; var Key: Char);
+    procedure CheckBox2Click(Sender: TObject);
   private
     { Private declarations }
     Book:TFrmBook;
+  protected
+    procedure CreateParams(var Params: TCreateParams); override;
   public
     { Public declarations }
     Symbol:String;
@@ -63,6 +74,21 @@ begin
  // Muda estado dos campos de preços
  Edit5.ReadOnly:=CheckBox1.Checked;
  Edit7.ReadOnly:=CheckBox1.Checked;
+end;
+
+procedure TFrmBrokerSpeed.CheckBox2Click(Sender: TObject);
+begin
+  if CheckBox2.Checked then
+  Self.FormStyle:=fsStayOnTop
+  else
+  Self.FormStyle:=fsNormal;
+end;
+
+procedure TFrmBrokerSpeed.CreateParams(var Params: TCreateParams);
+begin
+  inherited;
+  Params.ExStyle:= Params.ExStyle or WS_EX_APPWINDOW;
+  Params.WndParent:= GetDesktopWindow;
 end;
 
 procedure TFrmBrokerSpeed.FormCreate(Sender: TObject);
@@ -313,6 +339,9 @@ begin
     begin
       // Pega o valor do último
       Label1.Caption:=FrmCentral.CentralSheet.GetValue(clLast,Symbol);
+      Label5.Caption:=FrmCentral.CentralSheet.GetValue(clVar,Symbol);
+      Label7.Caption:=FrmCentral.CentralSheet.GetValue(clBuy,Symbol);
+      Label9.Caption:=FrmCentral.CentralSheet.GetValue(clSell,Symbol);
 
       // Se chekbox estiver ativo, pega o valor da boleta
       if(CheckBox1.State=cbChecked)then
@@ -322,6 +351,14 @@ begin
 
         // Preco de venda ( Melhor valor de compra)
         Edit5.Text:=StringGrid1.Cells[2,1];
+
+        if (Copy(Symbol,1,3)='WIN') or (Copy(Symbol,1,3)='IND') or (Copy(Symbol,1,3)='DOL') then
+        begin
+          Edit7.Text:=Label9.Caption;
+
+        // Preco de venda ( Melhor valor de compra)
+          Edit5.Text:=Label7.Caption;
+        end;
       end;
       for I := 0 to StringGrid1.ColCount-1 do
       begin

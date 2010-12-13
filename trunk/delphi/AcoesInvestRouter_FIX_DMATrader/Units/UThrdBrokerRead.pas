@@ -47,6 +47,7 @@ var ReadBroker: String;
     LastCodOR:String;
     IdStatus, IdType:Integer;
     K,J:Integer;
+    SheetHistory:TSheet;
 begin
   { Place thread code here }
 
@@ -123,7 +124,7 @@ begin
         if FrmHistoryOrders.HistorySheet.Cells[0,1]='' then
         begin
           MsgSend:= '35=FOV' + #1 + '5017=5' + #1 + '5013=T' + #1 + '5487=0' +#1 +
-                   '9999=0' + #1 + '5262=1' + #1 +  '5463=0' + #1 +#3;
+                   '9999=0' + #1 + '5262=1' + #1 +  '5463=0' + #1 +  '5209=1' + #1 +#3;
 
           FrmMainTreeView.Memo1.Lines.Add(MsgSend);
           BMsgSend:=FrmMainTreeView.StrToBytes(MsgSend);
@@ -462,9 +463,14 @@ begin
      begin
       ExistID:=False;
 
-      for K := 0 to FrmHistoryOrders.HistorySheet.RowCount - 1 do
+      if FrmHistoryOrders.PageControl1.ActivePageIndex=0 then
+      SheetHistory:=FrmHistoryOrders.HistorySheet
+      else
+      SheetHistory:=FrmHistoryOrders.Sheet1;
+
+      for K := 0 to SheetHistory.RowCount - 1 do
       begin
-        if FrmHistoryOrders.HistorySheet.Cells[0,K] = Data.Values['37'] then
+        if SheetHistory.Cells[0,K] = Data.Values['37'] then
         begin
           ExistID:=True;
           break;
@@ -475,72 +481,72 @@ begin
       if not ExistID then
       begin
         //Nova Linha
-        FrmHistoryOrders.HistorySheet.NewLine('');
+        SheetHistory.NewLine('');
 
         //Move tudo para baixo
-        for K := 0 to FrmHistoryOrders.HistorySheet.ColCount -1 do
+        for K := 0 to SheetHistory.ColCount -1 do
         begin
-          for J := FrmHistoryOrders.HistorySheet.RowCount - 1 downto 2 do
+          for J := SheetHistory.RowCount - 1 downto 2 do
           begin
-            FrmHistoryOrders.HistorySheet.Cells[K,J]:=FrmHistoryOrders.HistorySheet.Cells[K,J-1];
-            FrmHistoryOrders.HistorySheet.Cells[K,J-1]:='';
+            SheetHistory.Cells[K,J]:=SheetHistory.Cells[K,J-1];
+            SheetHistory.Cells[K,J-1]:='';
           end;
         end;
 
-        FrmHistoryOrders.HistorySheet.Cells[0,1]:=Data.Values['37'];
+        SheetHistory.Cells[0,1]:=Data.Values['37'];
 
 
         //Atualiza numero de ordens
-        FrmHistoryOrders.Caption:='Histórico de Ordens (' + IntToStr(FrmHistoryOrders.HistorySheet.RowCount - 1 ) + ')';
+        FrmHistoryOrders.Caption:='Histórico de Ordens (' + IntToStr(SheetHistory.RowCount - 1 ) + ')';
       end;
 
        for K := 0 to Data.Count - 1 do
        begin
            if (Copy(Data[K],1,3) = '53=') or (Copy(Data[K],1,5) = '5531=')  then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clStatus,Data.Values['37'],Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clStatus,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,3) = '54=' then
               begin
                 if Data.ValueFromIndex[K] = '1' then
-                FrmHistoryOrders.HistorySheet.SetValue(clVar,Data.Values['37'],'Compra')
+                SheetHistory.SetValue(clVar,Data.Values['37'],'Compra')
                 else
-                FrmHistoryOrders.HistorySheet.SetValue(clVar,Data.Values['37'],'Venda');
+                SheetHistory.SetValue(clVar,Data.Values['37'],'Venda');
               end;
               if Copy(Data[K],1,4) = '117=' then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clBuy,Data.Values['37'],Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clBuy,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,5) = '5128=' then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clObj3,Data.Values['37'],Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clObj3,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,5) = '5071=' then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clPicture,Data.Values['37'],Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clPicture,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,3) = '44=' then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clSell,Data.Values['37'],Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clSell,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,5) = '5028=' then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clObj2,Data.Values['37'],Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clObj2,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,5) = '5027=' then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clObj1,Data.Values['37'],Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clObj1,Data.Values['37'],Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,5) = '5018=' then
               begin
                 IdType:=StrToInt(Data.ValueFromIndex[K]);
 
                 case IdType of
-                  0: FrmHistoryOrders.HistorySheet.SetValue(clLast,Data.Values['37'],'Hoje');
-                  1: FrmHistoryOrders.HistorySheet.SetValue(clLast,Data.Values['37'],'Até Canc.');
-                  2: FrmHistoryOrders.HistorySheet.SetValue(clLast,Data.Values['37'],'Dt. Espec.');
-                  3: FrmHistoryOrders.HistorySheet.SetValue(clLast,Data.Values['37'],'Tudo/Nada');
-                  4: FrmHistoryOrders.HistorySheet.SetValue(clLast,Data.Values['37'],'Exec ou Canc.');
+                  0: SheetHistory.SetValue(clLast,Data.Values['37'],'Hoje');
+                  1: SheetHistory.SetValue(clLast,Data.Values['37'],'Até Canc.');
+                  2: SheetHistory.SetValue(clLast,Data.Values['37'],'Dt. Espec.');
+                  3: SheetHistory.SetValue(clLast,Data.Values['37'],'Tudo/Nada');
+                  4: SheetHistory.SetValue(clLast,Data.Values['37'],'Exec ou Canc.');
                 end;
 
               end;
@@ -549,16 +555,16 @@ begin
                 IdStatus:=StrToInt(Data.ValueFromIndex[K]);
 
                 case IdStatus of
-                  0: FrmHistoryOrders.HistorySheet.SetValue(clObj4,Data.Values['37'],'Pendente');
-                  1: FrmHistoryOrders.HistorySheet.SetValue(clObj4,Data.Values['37'],'Rejeitada');
-                  2: FrmHistoryOrders.HistorySheet.SetValue(clObj4,Data.Values['37'],'Cancelada');
-                  3: FrmHistoryOrders.HistorySheet.SetValue(clObj4,Data.Values['37'],'Executada');
-                  4: FrmHistoryOrders.HistorySheet.SetValue(clObj4,Data.Values['37'],'Parc. Executada');
-                  5: FrmHistoryOrders.HistorySheet.SetValue(clObj4,Data.Values['37'],'Expirada');
-                  6: FrmHistoryOrders.HistorySheet.SetValue(clObj4,Data.Values['37'],'Recebida');
-                  8: FrmHistoryOrders.HistorySheet.SetValue(clObj4,Data.Values['37'],'Esp. Mercado');
-                  9: FrmHistoryOrders.HistorySheet.SetValue(clObj4,Data.Values['37'],'Congelada');
-                  10: FrmHistoryOrders.HistorySheet.SetValue(clObj4,Data.Values['37'],'Canc. Pendente');
+                  0: SheetHistory.SetValue(clObj4,Data.Values['37'],'Pendente');
+                  1: SheetHistory.SetValue(clObj4,Data.Values['37'],'Rejeitada');
+                  2: SheetHistory.SetValue(clObj4,Data.Values['37'],'Cancelada');
+                  3: SheetHistory.SetValue(clObj4,Data.Values['37'],'Executada');
+                  4: SheetHistory.SetValue(clObj4,Data.Values['37'],'Parc. Executada');
+                  5: SheetHistory.SetValue(clObj4,Data.Values['37'],'Expirada');
+                  6: SheetHistory.SetValue(clObj4,Data.Values['37'],'Recebida');
+                  8: SheetHistory.SetValue(clObj4,Data.Values['37'],'Esp. Mercado');
+                  9: SheetHistory.SetValue(clObj4,Data.Values['37'],'Congelada');
+                  10: SheetHistory.SetValue(clObj4,Data.Values['37'],'Canc. Pendente');
                 end;
 
               end;
@@ -739,6 +745,13 @@ begin
       //Verificacao FOV
       if  Data.Values['35'] ='RFOV'  then
       begin
+        if FrmHistoryOrders.PageControl1.ActivePageIndex=0 then
+      SheetHistory:=FrmHistoryOrders.HistorySheet
+      else
+      SheetHistory:=FrmHistoryOrders.Sheet1;
+
+
+
 
          if StrToInt( Data.Values['5042'] ) > 0 then
          begin
@@ -747,54 +760,55 @@ begin
             begin
               if Copy(Data[K],1,3) = '37=' then
               begin
-                FrmHistoryOrders.HistorySheet.NewLine(Data.ValueFromIndex[K]);
+
+                SheetHistory.NewLine(Data.ValueFromIndex[K]);
                 LastCodOR:=Data.ValueFromIndex[K];
               end;
               if Copy(Data[K],1,3) = '53=' then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clStatus,LastCodOR,Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clStatus,LastCodOR,Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,3) = '54=' then
               begin
                 if Data.ValueFromIndex[K] = '1' then
-                FrmHistoryOrders.HistorySheet.SetValue(clVar,LastCodOR,'Compra')
+                SheetHistory.SetValue(clVar,LastCodOR,'Compra')
                 else
-                FrmHistoryOrders.HistorySheet.SetValue(clVar,LastCodOR,'Venda');
+                SheetHistory.SetValue(clVar,LastCodOR,'Venda');
               end;
               if Copy(Data[K],1,4) = '117=' then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clBuy,LastCodOR,Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clBuy,LastCodOR,Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,5) = '5128=' then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clObj3,LastCodOR,Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clObj3,LastCodOR,Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,5) = '5071=' then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clPicture,LastCodOR,Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clPicture,LastCodOR,Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,3) = '44=' then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clSell,LastCodOR,Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clSell,LastCodOR,Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,5) = '5028=' then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clObj2,LastCodOR,Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clObj2,LastCodOR,Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,5) = '5027=' then
               begin
-                FrmHistoryOrders.HistorySheet.SetValue(clObj1,LastCodOR,Data.ValueFromIndex[K]);
+                SheetHistory.SetValue(clObj1,LastCodOR,Data.ValueFromIndex[K]);
               end;
               if Copy(Data[K],1,5) = '5018=' then
               begin
                 IdType:=StrToInt(Data.ValueFromIndex[K]);
 
                 case IdType of
-                  0: FrmHistoryOrders.HistorySheet.SetValue(clLast,LastCodOR,'Hoje');
-                  1: FrmHistoryOrders.HistorySheet.SetValue(clLast,LastCodOR,'Até Canc.');
-                  2: FrmHistoryOrders.HistorySheet.SetValue(clLast,LastCodOR,'Dt. Espec.');
-                  3: FrmHistoryOrders.HistorySheet.SetValue(clLast,LastCodOR,'Tudo/Nada');
-                  4: FrmHistoryOrders.HistorySheet.SetValue(clLast,LastCodOR,'Exec ou Canc.');
+                  0: SheetHistory.SetValue(clLast,LastCodOR,'Hoje');
+                  1: SheetHistory.SetValue(clLast,LastCodOR,'Até Canc.');
+                  2: SheetHistory.SetValue(clLast,LastCodOR,'Dt. Espec.');
+                  3: SheetHistory.SetValue(clLast,LastCodOR,'Tudo/Nada');
+                  4: SheetHistory.SetValue(clLast,LastCodOR,'Exec ou Canc.');
                 end;
 
               end;
@@ -803,16 +817,16 @@ begin
                 IdStatus:=StrToInt(Data.ValueFromIndex[K]);
 
                 case IdStatus of
-                  0: FrmHistoryOrders.HistorySheet.SetValue(clObj4,LastCodOR,'Pendente');
-                  1: FrmHistoryOrders.HistorySheet.SetValue(clObj4,LastCodOR,'Rejeitada');
-                  2: FrmHistoryOrders.HistorySheet.SetValue(clObj4,LastCodOR,'Cancelada');
-                  3: FrmHistoryOrders.HistorySheet.SetValue(clObj4,LastCodOR,'Executada');
-                  4: FrmHistoryOrders.HistorySheet.SetValue(clObj4,LastCodOR,'Parc. Executada');
-                  5: FrmHistoryOrders.HistorySheet.SetValue(clObj4,LastCodOR,'Expirada');
-                  6: FrmHistoryOrders.HistorySheet.SetValue(clObj4,LastCodOR,'Recebida');
-                  8: FrmHistoryOrders.HistorySheet.SetValue(clObj4,LastCodOR,'Esp. Mercado');
-                  9: FrmHistoryOrders.HistorySheet.SetValue(clObj4,LastCodOR,'Congelada');
-                  10: FrmHistoryOrders.HistorySheet.SetValue(clObj4,LastCodOR,'Canc. Pendente');
+                  0: SheetHistory.SetValue(clObj4,LastCodOR,'Pendente');
+                  1: SheetHistory.SetValue(clObj4,LastCodOR,'Rejeitada');
+                  2: SheetHistory.SetValue(clObj4,LastCodOR,'Cancelada');
+                  3: SheetHistory.SetValue(clObj4,LastCodOR,'Executada');
+                  4: SheetHistory.SetValue(clObj4,LastCodOR,'Parc. Executada');
+                  5: SheetHistory.SetValue(clObj4,LastCodOR,'Expirada');
+                  6: SheetHistory.SetValue(clObj4,LastCodOR,'Recebida');
+                  8: SheetHistory.SetValue(clObj4,LastCodOR,'Esp. Mercado');
+                  9: SheetHistory.SetValue(clObj4,LastCodOR,'Congelada');
+                  10: SheetHistory.SetValue(clObj4,LastCodOR,'Canc. Pendente');
                 end;
 
               end;
