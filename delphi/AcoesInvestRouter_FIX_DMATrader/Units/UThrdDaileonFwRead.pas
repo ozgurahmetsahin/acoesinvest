@@ -20,6 +20,8 @@ type
     { Private declarations }
   protected
     procedure Execute; override;
+    procedure OnConn(Sender: TObject);
+    procedure OnDisConn(Sender:TObject);
   public
     constructor Create; reintroduce;
     destructor Destroy; reintroduce;
@@ -40,6 +42,8 @@ type
   var SignalThread:TThrdDaileonFwRead;
 
 implementation
+
+uses UFrmMainLine;
 
 { TThrdDaileonFwRead }
 
@@ -78,6 +82,9 @@ begin
 
   {Cria controle de seção critica}
   InitializeCriticalSection(FCriticalSection);
+
+  FConnection.OnConnected:=OnConn;
+  FConnection.OnDisconnected:=OnDisConn;
 
   {Cria thread em modo suspendido.}
   inherited Create(True);
@@ -219,6 +226,18 @@ begin
 //  EnterCriticalSection(FCriticalSection);
   Result:=Data.Strings[0];
 //  LeaveCriticalSection(FCriticalSection);
+end;
+
+procedure TThrdDaileonFwRead.OnConn(Sender: TObject);
+begin
+  FrmMainLine.Image16.Visible:=False;
+  FrmMainLine.Image17.Visible:=True;
+end;
+
+procedure TThrdDaileonFwRead.OnDisConn(Sender: TObject);
+begin
+  FrmMainLine.Image17.Visible:=False;
+  FrmMainLine.Image16.Visible:=True;
 end;
 
 end.

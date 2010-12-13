@@ -1,7 +1,7 @@
 object FrmWebBrowser: TFrmWebBrowser
   Left = 0
   Top = 0
-  Caption = 'WebBrowser DMA Trader'
+  Caption = 'WebBrowser A'#231#245'es Invest Router'
   ClientHeight = 474
   ClientWidth = 675
   Color = clBtnFace

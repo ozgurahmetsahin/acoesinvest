@@ -4,7 +4,7 @@ inherited FrmTradingSystem: TFrmTradingSystem
   ClientWidth = 947
   OnShow = FormShow
   ExplicitWidth = 963
-  ExplicitHeight = 468
+  ExplicitHeight = 470
   PixelsPerInch = 96
   TextHeight = 13
   object Label28: TLabel [0]
@@ -29,7 +29,7 @@ inherited FrmTradingSystem: TFrmTradingSystem
   end
   inherited TradeSheet: TSheet
     Width = 947
-    Height = 255
+    Height = 249
     ColCount = 17
     OnClick = TradeSheetClick
     ColumsVisible = [clQuote, clPicture, clLast, clVar, clBuy, clSell, clStatus, clBaseIn, clObj1, clObj2, clObj3, clObj4, clMax, clMin, clOpen, clClose, clNeg]
@@ -40,7 +40,7 @@ inherited FrmTradingSystem: TFrmTradingSystem
     StringclObj3 = 'Obj. 3'
     StringclObj4 = 'Obj. 4'
     ExplicitWidth = 947
-    ExplicitHeight = 255
+    ExplicitHeight = 249
     ColWidths = (
       64
       64
@@ -117,13 +117,6 @@ inherited FrmTradingSystem: TFrmTradingSystem
       Width = 193
       Height = 76
       Shape = bsFrame
-    end
-    object Label2: TLabel
-      Left = 134
-      Top = 42
-      Width = 18
-      Height = 13
-      Caption = 'Dia'
     end
     object Label3: TLabel
       Left = 176
@@ -660,9 +653,12 @@ inherited FrmTradingSystem: TFrmTradingSystem
         22
         15
         22)
+      ColorPaletteIndex = 13
       object Series1: TBarSeries
         BarBrush.Color = clWhite
         BarBrush.Style = bsDiagCross
+        BarBrush.Gradient.EndColor = 10708548
+        BarBrush.Gradient.Visible = True
         BarBrush.Image.Data = {
           07544269746D61707E000000424D7E000000000000003E000000280000001000
           0000100000000100010000000000400000000000000000000000020000000200
@@ -680,7 +676,8 @@ inherited FrmTradingSystem: TFrmTradingSystem
         BarStyle = bsRectGradient
         BarWidthPercent = 55
         DepthPercent = 50
-        Gradient.Direction = gdTopBottom
+        Gradient.EndColor = 10708548
+        Gradient.Visible = True
         SideMargins = False
         StackGroup = 16
         XValues.Name = 'X'

@@ -183,7 +183,7 @@ object FrmHistoryOrders: TFrmHistoryOrders
     TabPosition = tpBottom
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
-      Caption = 'Ordens'
+      Caption = 'Bovespa'
       object HistorySheet: TSheet
         Left = 0
         Top = 0
@@ -271,6 +271,50 @@ object FrmHistoryOrders: TFrmHistoryOrders
           86
           96
           64)
+        RowHeights = (
+          17
+          17)
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'BMF'
+      ImageIndex = 2
+      object Sheet1: TSheet
+        Left = 0
+        Top = 0
+        Width = 873
+        Height = 218
+        Align = alClient
+        ColCount = 12
+        Ctl3D = False
+        DefaultColWidth = 70
+        DefaultRowHeight = 17
+        FixedCols = 0
+        RowCount = 2
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goRangeSelect, goColSizing]
+        ParentCtl3D = False
+        PopupMenu = PopupMenu1
+        TabOrder = 0
+        OnDrawCell = HistorySheetDrawCell
+        OnMouseDown = HistorySheetMouseDown
+        ColumsVisible = [clQuote, clPicture, clLast, clVar, clBuy, clSell, clStatus, clBaseIn, clObj1, clObj2, clObj3, clObj4]
+        StringclQuote = 'C'#243'd.'
+        StringclPicture = 'Data'
+        StringclLast = 'Validade'
+        StringclVar = 'Tipo'
+        StringclBuy = 'Ativo'
+        StringclSell = 'Pre'#231'o'
+        StringclStatus = 'Qtde Ap.'
+        StringclBaseIn = 'Dt. Negoc.'
+        StringclObj1 = 'Qt. Canc'
+        StringclObj2 = 'Qt. Negoc'
+        StringclObj3 = 'Pr. Negc'
+        StringclObj4 = 'Situa'#231#227'o'
+        FilterColums = stAll
+        FontColorPaint = clBlack
+        EvenColorLine = clBlack
+        OddColorLine = clBlack
+        ShowClearLine = False
         RowHeights = (
           17
           17)

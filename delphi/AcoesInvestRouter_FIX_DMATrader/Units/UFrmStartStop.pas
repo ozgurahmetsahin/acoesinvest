@@ -133,12 +133,19 @@ begin
   MsgStop := '35=OSS' + #1 +
              '5017=0' + #1 +
              '117='  + LabeledEdit5.Text + #1 +
-             '53=' + LabeledEdit6.Text + #1 +
-             '5031=' + FrmMainTreeView.ChangeDecimalSeparator(LabeledEdit7.Text,',','.') + #1 +
-             '5032=' + FrmMainTreeView.ChangeDecimalSeparator(LabeledEdit9.Text,',','.') + #1 +
-             '5033=' + FrmMainTreeView.ChangeDecimalSeparator(LabeledEdit8.Text,',','.') + #1 +
-             '5034=' + FrmMainTreeView.ChangeDecimalSeparator(LabeledEdit10.Text,',','.')+ #1 +
-             '5018=2' + #1 + '5013=C' + #1 +
+             '53=' + LabeledEdit6.Text + #1;
+
+             if LabeledEdit7.Text<>'' then
+             begin
+             MsgStop:=MsgStop + '5031=' + FrmMainTreeView.ChangeDecimalSeparator(LabeledEdit7.Text,',','.') + #1 +
+             '5032=' + FrmMainTreeView.ChangeDecimalSeparator(LabeledEdit9.Text,',','.') + #1
+             end;
+             if LabeledEdit8.Text<>'' then
+             begin
+             MsgStop:=MsgStop+ '5033=' + FrmMainTreeView.ChangeDecimalSeparator(LabeledEdit8.Text,',','.') + #1 +
+             '5034=' + FrmMainTreeView.ChangeDecimalSeparator(LabeledEdit10.Text,',','.')+ #1;
+             end;
+             MsgStop:=MsgStop + '5018=2' + #1 + '5013=C' + #1 +
              '432=' + FormatDateTime('YYYYMMDD',DateTimePicker2.Date) + #1 +
              '5019=' + FrmMainTreeView.MarketID + #1 + '5020=0' + #1 + #3;
 

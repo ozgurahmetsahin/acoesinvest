@@ -5,23 +5,23 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{9B3B9FAB-A781-49BA-B709-2727D34046E3}
-AppName=DMA Trader
-AppVerName=DMA Trader 1.7.1
-AppPublisher=Invest Software
-AppPublisherURL=http://www.diferencial.com.br
-AppSupportURL=http://www.diferencial.com.br
-AppUpdatesURL=http://www.diferencial.com.br
-DefaultDirName=C:\DMATrader
-DefaultGroupName=DMA Trader
+AppId={{103FFF86-73F5-46DD-966C-D66D6CC1D1C5}
+AppName=Ações Invest Router
+AppVerName=Ações Invest Router 1.6  
+AppPublisher=Ações Invest
+AppPublisherURL=http://www.aifix.com.br
+AppSupportURL=http://www.aifix.com.br
+AppUpdatesURL=http://www.aifix.com.br
+DefaultDirName=C:\Ações Invest Router
+DefaultGroupName=Ações Invest Router
 AllowNoIcons=yes
-LicenseFile=C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX_DMATrader\contrato.txt
-InfoBeforeFile=C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX_DMATrader\requisitos.rtf
-InfoAfterFile=C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX_DMATrader\requisitos.rtf
-OutputBaseFilename=difrouter
+LicenseFile=C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\contrato.txt
+;InfoBeforeFile=C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\requisitos.rtf
+InfoAfterFile=C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\requisitos.rtf
+OutputBaseFilename=acoesrouter
 Compression=lzma
 SolidCompression=yes
-;WizardImageFile=C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX_DMATrader\Wizard1 copy.bmp
+WizardImageFile=C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\Wizard1 copy.bmp
 
 [Languages]
 Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
@@ -31,20 +31,26 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX_DMATrader\DMATrader.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX_DMATrader\broker.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX_DMATrader\broker.zbd"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX_DMATrader\brokerages.ini"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX_DMATrader\brokerRun.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX_DMATrader\requisitos.rtf"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\AcoesRouter.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\broker.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\broker.zbd"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\brokerages.ini"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\brokerRun.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\requisitos.rtf"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\StockChartX.ocx"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\StockChartX.lic"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\Registrar.bat"; DestDir: "{app}"; Flags: ignoreversion
+;Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\data\*"; DestDir: "{app}\data"; Flags: ignoreversion recursesubdirs createallsubdirs
+;Source: "C:\Users\Donda\Documents\RAD Studio\Projects\AcoesInvestRouter_FIX\Luma.exe"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\DMA Trader"; Filename: "{app}\DMATrader.exe"
-Name: "{group}\{cm:UninstallProgram,DMATrader}"; Filename: "{uninstallexe}"
-Name: "{commondesktop}\DMA Trader"; Filename: "{app}\DMATrader.exe"; Tasks: desktopicon
-Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\DMA Trader"; Filename: "{app}\DMATrader.exe"; Tasks: quicklaunchicon
+Name: "{group}\Ações Invest Router"; Filename: "{app}\AcoesRouter.exe"
+Name: "{group}\{cm:UninstallProgram,Ações Invest Router}"; Filename: "{uninstallexe}"
+Name: "{commondesktop}\Ações Invest Router"; Filename: "{app}\AcoesRouter.exe"; Tasks: desktopicon
+Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\Ações Invest Router"; Filename: "{app}\AcoesRouter.exe"; Tasks: quicklaunchicon
 
 [Run]
-Filename: "{app}\DMATrader.exe"; Description: "{cm:LaunchProgram,DMA Trader}"; Flags: nowait postinstall skipifsilent
+Filename: "regsvr32.exe"; Parameters: "-s ""{app}\StockChartX.ocx"; Flags: waituntilterminated skipifsilent
+Filename: "{app}\AcoesRouter.exe"; Description: "{cm:LaunchProgram,Ações Invest Router}"; Flags: nowait postinstall skipifsilent
 

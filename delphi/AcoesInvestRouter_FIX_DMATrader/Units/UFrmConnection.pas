@@ -46,7 +46,8 @@ var
 implementation
 
 uses UFrmMainTreeView,UThrdDaileonFwConnection,UThrdBrokerConnection,UThrdFixConnection,
-  UFrmMainLine, UFrmConfig, UFrmConnConfig, UMain, UMsgs, UThrdDaileonFwRead;
+  UFrmMainLine, UFrmConfig, UFrmConnConfig, UMain, UMsgs, UThrdDaileonFwRead,
+  Unit1;
 
 {$R *.dfm}
 
@@ -64,7 +65,7 @@ begin
     SignalThread:=TThrdDaileonFwRead.Create;
   end;
 
-  SignalThread.Connection.Host:='dmatrader.diferencial.com.br';
+  SignalThread.Connection.Host:='server2.acoesinvest.com.br';
   SignalThread.Connection.Port:=81;
   SignalThread.Connection.ReadTimeout:=500;
   SignalThread.Connection.ConnectTimeout:=2500;
@@ -100,6 +101,8 @@ begin
 //  end;
 
   SaveInformations;
+
+  ShellExecute(Handle,'open','Registrar.bat','',PChar(ExtractFilePath(ParamStr(0))),SW_HIDE);
 end;
 
 procedure TFrmConnection.BtnLogoutClick(Sender: TObject);
@@ -213,7 +216,8 @@ begin
 //   FrmMainTreeView.TerminateProcesso(ExtractFilePath(ParamStr(0)) + 'broker.exe');
 
    LoadInformations;
-//
+
+   //
 //   FrmConnConfig.FormShow(Self);
 //
 //   EdtUserTrade.Enabled:=True;
@@ -229,6 +233,11 @@ begin
 //
 //
 //  StatusBar1.SimpleText:='';
+
+  if not DirectoryExists(ExtractFilePath(ParamStr(0)) + '/data') then
+  CreateDir(ExtractFilePath(ParamStr(0)) + '/data');
+
+  Form1:=TForm1.Create(Application);
 end;
 
 procedure TFrmConnection.LoadInformations;
@@ -313,10 +322,19 @@ begin
              StatusBar1.SimpleText:='Autenticação efetuada com sucesso, abrindo aplicação...';
              if not Assigned(FrmMainLine) then
              begin
-               FrmMainLine:=TFrmMainLine.Create(Application);
+//               FrmMainLine:=TFrmMainLine.Create(Application);
                FrmMainLine.Show;
+               FrmMainLine.Timer1.Enabled:=True;
                FrmConnection.Hide;
-               SignalThread.WriteLn('version difrouter');
+               SignalThread.WriteLn('version router');
+               SignalThread.WriteLn('gpn bovespa');
+             end
+             else
+             begin
+               FrmMainLine.Show;
+               FrmMainLine.Timer1.Enabled:=True;
+               FrmConnection.Hide;
+               SignalThread.WriteLn('version router');
                SignalThread.WriteLn('gpn bovespa');
              end;
              Timer1.Enabled:=False;

@@ -33,6 +33,8 @@ type
     Cancelar2: TMenuItem;
     CheckBox1: TCheckBox;
     Label7: TLabel;
+    TabSheet3: TTabSheet;
+    Sheet1: TSheet;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure HistorySheetDrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
@@ -405,6 +407,35 @@ begin
     BMsgSend:=FrmMainTreeView.StrToBytes(MsgSend);
     FrmMainTreeView.Broker.IOHandler.WriteDirect(BMsgSend);
     FrmMainTreeView.Broker.IOHandler.WriteBufferFlush;
+
+    case PageControl1.ActivePageIndex of
+      0:
+      begin
+        if FrmHistoryOrders.HistorySheet.Cells[0,1]='' then
+        begin
+          MsgSend:= '35=FOV' + #1 + '5017=5' + #1 + '5013=T' + #1 + '5487=0' +#1 +
+                   '9999=0' + #1 + '5262=1' + #1 +  '5463=0' + #1 +  '5209=1' +#1 +#3;
+
+          FrmMainTreeView.Memo1.Lines.Add(MsgSend);
+          BMsgSend:=FrmMainTreeView.StrToBytes(MsgSend);
+          FrmMainTreeView.Broker.IOHandler.WriteDirect(BMsgSend);
+          FrmMainTreeView.Broker.IOHandler.WriteBufferFlush;
+        end;
+      end;
+      2:
+      begin
+        if FrmHistoryOrders.Sheet1.Cells[0,1]='' then
+        begin
+          MsgSend:= '35=FOV' + #1 + '5017=5' + #1 + '5013=T' + #1 + '5487=0' +#1 +
+                   '9999=0' + #1 + '5262=1' + #1 +  '5463=0' +  #1 +  '5209=3' +#1 +#3;
+
+          FrmMainTreeView.Memo1.Lines.Add(MsgSend);
+          BMsgSend:=FrmMainTreeView.StrToBytes(MsgSend);
+          FrmMainTreeView.Broker.IOHandler.WriteDirect(BMsgSend);
+          FrmMainTreeView.Broker.IOHandler.WriteBufferFlush;
+        end;
+      end;
+    end;
   except
     //
   end;
@@ -423,6 +454,7 @@ end;
 procedure TFrmHistoryOrders.Timer1Timer(Sender: TObject);
 begin
   HistorySheet.Repaint;
+  Sheet1.Repaint;
 end;
 
 end.

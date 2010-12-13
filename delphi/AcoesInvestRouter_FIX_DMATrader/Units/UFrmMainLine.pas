@@ -54,6 +54,9 @@ type
     Agenda1: TMenuItem;
     Comentrios1: TMenuItem;
     CarteiraSugerida1: TMenuItem;
+    Image15: TImage;
+    Image16: TImage;
+    Image17: TImage;
     procedure Label6Click(Sender: TObject);
     procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -114,7 +117,8 @@ implementation
 uses UFrmMainTreeView, UFrmConnection, UFrmTrade, UFrmMiniBook,
   UFrmAbstractSymbol, UFrmBrokerBuy, UFrmHistoryOrders, UFrmStartStop,
   UFrmBrokerSell,UFrmWebBrowser, UFrmPortfolio, UFrmBrokerSpeed, UFrmOpenChart,
-  UFrmTradeCentral, UFrmBook, UThrdDaileonFwRead, UFrmConnConfig, UFrmRSS;
+  UFrmTradeCentral, UFrmBook, UThrdDaileonFwRead, UFrmConnConfig, UFrmRSS,
+  UFrmChart;
 
 {$R *.dfm}
 
@@ -415,6 +419,7 @@ end;
 procedure TFrmMainLine.Label3Click(Sender: TObject);
 var //PtnMouse : TPoint;
     FrmWeb:TFrmWebBrowser;
+    FChart:TFrmChart;
 begin
   if not Assigned(FrmCentral) then
   begin
@@ -433,7 +438,10 @@ begin
 //   MessageDlg('Você não está conectado ao servidor.', mtError, [mbOk], 0);
 // end;
 // FrmOpenChart.Show;
-// ShellExecute(Handle,'open','chartRun.bat','',PChar(ExtractFilePath(ParamStr(0))+'JGrafix/'),SW_HIDE);
+// ShellExecute(Handle,'open','chartRun.bat','',PChar(ExtractFilePath(ParamStr(0))+'JGrafix'),SW_SHOW);
+//  FChart:=TFrmChart.Create(Application);
+//  FChart.Show;
+//  FrmChart.Show;
 end;
 
 procedure TFrmMainLine.Label4Click(Sender: TObject);
@@ -528,7 +536,7 @@ begin
   begin
     FrmMainTreeView.AddLogMsg(Read);
 //    SignalThread.SetDataAsRead;
-    if (Copy(Read,19,3) <> FrmMainTreeView.VersionID) then
+    if (Copy(Read,16,3) <> FrmMainTreeView.VersionID) then
     begin
       if not CheckVersion then
       begin

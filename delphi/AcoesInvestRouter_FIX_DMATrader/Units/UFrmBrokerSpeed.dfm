@@ -1,9 +1,10 @@
 object FrmBrokerSpeed: TFrmBrokerSpeed
   Left = 0
   Top = 0
-  BorderStyle = bsDialog
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'Boleta Express'
-  ClientHeight = 355
+  ClientHeight = 358
   ClientWidth = 516
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,8 +18,8 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    Left = -1
-    Top = -3
+    Left = -2
+    Top = -5
     Width = 518
     Height = 366
     Picture.Data = {
@@ -382,22 +383,9 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label2: TLabel
-    Left = 390
-    Top = 16
-    Width = 118
-    Height = 13
-    Caption = 'Pre'#231'o do livro de ofertas'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
   object SpeedButton1: TSpeedButton
-    Left = 132
-    Top = 19
+    Left = 130
+    Top = 18
     Width = 34
     Height = 20
     Flat = True
@@ -470,8 +458,8 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
     OnClick = SpeedButton1Click
   end
   object SpeedButton2: TSpeedButton
-    Left = 82
-    Top = 289
+    Left = 81
+    Top = 292
     Width = 97
     Height = 28
     Glyph.Data = {
@@ -733,7 +721,7 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
   end
   object SpeedButton3: TSpeedButton
     Left = 333
-    Top = 293
+    Top = 295
     Width = 93
     Height = 26
     Glyph.Data = {
@@ -963,27 +951,104 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
       FFFFBFFFFFBFFFFFBFFFFFBFFFFFBFFFFFBFFFFF0000}
     OnClick = SpeedButton3Click
   end
-  object CheckBox1: TCheckBox
-    Left = 375
-    Top = 14
-    Width = 17
-    Height = 17
+  object Label5: TLabel
+    Left = 289
+    Top = 21
+    Width = 35
+    Height = 19
+    Caption = '0.00'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 16750125
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 282
+    Top = 12
+    Width = 22
+    Height = 13
+    Caption = 'Osc.'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 0
-    OnClick = CheckBox1Click
+  end
+  object Label7: TLabel
+    Left = 366
+    Top = 21
+    Width = 35
+    Height = 18
+    Caption = '0.00'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 16750125
+    Font.Height = -15
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label8: TLabel
+    Left = 353
+    Top = 10
+    Width = 52
+    Height = 13
+    Caption = 'M. Compra'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label9: TLabel
+    Left = 432
+    Top = 21
+    Width = 35
+    Height = 18
+    Caption = '0.00'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 16750125
+    Font.Height = -15
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label10: TLabel
+    Left = 422
+    Top = 10
+    Width = 45
+    Height = 13
+    Caption = 'M. Venda'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 388
+    Top = 44
+    Width = 118
+    Height = 13
+    Caption = 'Pre'#231'o do livro de ofertas'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
   end
   object Edit1: TEdit
-    Left = 53
+    Left = 52
     Top = 19
     Width = 77
     Height = 21
     CharCase = ecUpperCase
-    TabOrder = 1
+    TabOrder = 0
     OnKeyPress = Edit1KeyPress
   end
   object Edit2: TEdit
@@ -993,44 +1058,48 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
     Height = 24
     AutoSize = False
     ReadOnly = True
-    TabOrder = 2
+    TabOrder = 1
   end
   object Edit3: TEdit
     Left = 150
     Top = 185
-    Width = 352
+    Width = 356
     Height = 24
     AutoSize = False
     ReadOnly = True
-    TabOrder = 3
+    TabOrder = 2
   end
   object Edit4: TEdit
-    Left = 26
-    Top = 242
-    Width = 90
-    Height = 25
-    TabOrder = 4
+    Left = 25
+    Top = 243
+    Width = 92
+    Height = 24
+    AutoSize = False
+    TabOrder = 3
   end
   object Edit5: TEdit
     Left = 145
     Top = 243
-    Width = 94
-    Height = 25
-    TabOrder = 5
+    Width = 99
+    Height = 27
+    AutoSize = False
+    TabOrder = 4
   end
   object Edit6: TEdit
     Left = 281
-    Top = 238
+    Top = 239
     Width = 88
-    Height = 25
-    TabOrder = 6
+    Height = 26
+    AutoSize = False
+    TabOrder = 5
   end
   object Edit7: TEdit
     Left = 390
-    Top = 237
+    Top = 239
     Width = 96
     Height = 26
-    TabOrder = 7
+    AutoSize = False
+    TabOrder = 6
   end
   object Panel1: TPanel
     Left = 6
@@ -1040,7 +1109,7 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
     Caption = 'Panel1'
     Color = clBlack
     ParentBackground = False
-    TabOrder = 8
+    TabOrder = 7
     object StringGrid1: TStringGrid
       Left = 1
       Top = 1
@@ -1066,12 +1135,11 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
       TabOrder = 0
       OnClick = StringGrid1Click
       OnDrawCell = StringGrid1DrawCell
-      ExplicitHeight = 83
     end
   end
   object Panel2: TPanel
     Left = 0
-    Top = 336
+    Top = 339
     Width = 516
     Height = 19
     Align = alBottom
@@ -1081,7 +1149,7 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
     Ctl3D = False
     ParentBackground = False
     ParentCtl3D = False
-    TabOrder = 9
+    TabOrder = 8
     object Label3: TLabel
       Left = 13
       Top = 2
@@ -1094,6 +1162,41 @@ object FrmBrokerSpeed: TFrmBrokerSpeed
       Font.Style = [fsBold]
       ParentFont = False
     end
+    object Label4: TLabel
+      Left = 441
+      Top = 4
+      Width = 68
+      Height = 13
+      Caption = 'Sempre Vis'#237'vel'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object CheckBox2: TCheckBox
+      Left = 424
+      Top = 2
+      Width = 19
+      Height = 17
+      TabOrder = 0
+      OnClick = CheckBox2Click
+    end
+  end
+  object CheckBox1: TCheckBox
+    Left = 372
+    Top = 42
+    Width = 17
+    Height = 17
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 9
+    OnClick = CheckBox1Click
   end
   object Timer1: TTimer
     Enabled = False

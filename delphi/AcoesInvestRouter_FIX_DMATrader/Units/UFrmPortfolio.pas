@@ -143,15 +143,6 @@ begin
        //if(Val2 < Val1)then ValTemp:=ValTemp * -1;
        Portfolio.SetValue(clObj3,Portfolio.Cells[0,K], FormatFloat('0.00',ValTemp));
 
-       // Zera para não ter erros
-       Val1 := 0; Val2 := 0;
-
-       // Diferenca entre compra e vendas
-       Val1:=StrToFloat(FrmMainTreeView.ChangeDecimalSeparator(Label26.Caption,'.',','));
-       Val2:=StrToFloat(FrmMainTreeView.ChangeDecimalSeparator(Label28.Caption,'.',','));
-       ValTemp:=Val2-Val1;
-       Label33.Caption:=FormatFloat('0.00',ValTemp);
-
      end;
 
     except
@@ -196,6 +187,20 @@ begin
     ValTemp := (Val1 + Val3 + Val4) - Val2;
     Label7.Caption:=FormatFloat('0.00',ValTemp);
   except
+   on E: Exception do
+   FrmMainTreeView.Memo1.Lines.Add(E.Message);
+  end;
+
+  // Zera para não ter erros
+ Val1 := 0; Val2 := 0;
+
+ // Diferenca entre compra e vendas
+ try
+ Val1:=StrToFloatDef(FrmMainTreeView.ChangeDecimalSeparator(Label26.Caption,'.',','),0);
+ Val2:=StrToFloatDef(FrmMainTreeView.ChangeDecimalSeparator(Label28.Caption,'.',','),0);
+ ValTemp:=Val2-Val1;
+ Label33.Caption:=FormatFloat('0.00',ValTemp);
+ except
    on E: Exception do
    FrmMainTreeView.Memo1.Lines.Add(E.Message);
   end;

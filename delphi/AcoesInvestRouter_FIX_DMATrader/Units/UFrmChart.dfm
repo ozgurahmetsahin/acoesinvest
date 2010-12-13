@@ -1,9 +1,9 @@
 object FrmChart: TFrmChart
   Left = 0
   Top = 0
-  Caption = 'FrmChart'
-  ClientHeight = 342
-  ClientWidth = 725
+  Caption = 'Gr'#225'fico'
+  ClientHeight = 331
+  ClientWidth = 866
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,149 +12,428 @@ object FrmChart: TFrmChart
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
+  OnClose = FormClose
   OnCreate = FormCreate
-  OnKeyUp = FormKeyUp
+  OnResize = FormResize
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object CoolBar2: TCoolBar
+  object Panel5: TPanel
+    Left = 0
+    Top = 317
+    Width = 866
+    Height = 14
+    Align = alBottom
+    Alignment = taLeftJustify
+    Color = clBlack
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 5
+  end
+  object CoolBar1: TCoolBar
     Left = 0
     Top = 0
-    Width = 29
-    Height = 342
-    Align = alLeft
+    Width = 866
+    Height = 29
     AutoSize = True
     Bands = <
       item
-        Control = ToolBar2
+        Control = ToolBar1
         ImageIndex = -1
-        Width = 336
+        Width = 860
       end>
-    Ctl3D = False
     Images = ImageList
-    Vertical = True
-    object ToolBar2: TToolBar
-      Left = 0
-      Top = 11
-      Width = 25
-      Height = 327
-      Align = alLeft
+    ParentShowHint = False
+    ShowHint = True
+    ShowText = False
+    object ToolBar1: TToolBar
+      Left = 11
+      Top = 0
+      Width = 851
+      Height = 25
+      ButtonWidth = 26
       Images = ImageList
-      List = True
       TabOrder = 0
-      object ToolButton11: TToolButton
+      object Edit1: TEdit
         Left = 0
         Top = 0
-        Caption = 'ToolButton11'
-        Down = True
+        Width = 75
+        Height = 22
+        CharCase = ecUpperCase
+        TabOrder = 1
+      end
+      object ToolButton13: TToolButton
+        Left = 75
+        Top = 0
+        Caption = 'ToolButton13'
+        ImageIndex = 56
+        OnClick = ToolButton13Click
+      end
+      object ComboBox1: TComboBox
+        Left = 101
+        Top = 0
+        Width = 68
+        Height = 21
+        Style = csDropDownList
+        ItemIndex = 1
+        TabOrder = 2
+        Text = '5 min'
+        OnChange = ComboBox1Change
+        Items.Strings = (
+          '1 min'
+          '5 min'
+          '10 min'
+          '15 min'
+          '30 min'
+          'Di'#225'rio')
+      end
+      object ToolButton14: TToolButton
+        Left = 169
+        Top = 0
+        Width = 8
+        Caption = 'ToolButton14'
+        ImageIndex = 317
+        Style = tbsSeparator
+      end
+      object Arrow: TToolButton
+        Left = 177
+        Top = 0
+        Hint = 'Retorna o cursor para o padr'#227'o'
+        Caption = 'Arrow'
         ImageIndex = 296
-        Wrap = True
-        Style = tbsCheck
-        OnClick = ToolButton11Click
+        OnClick = ArrowClick
       end
-      object ToolButton12: TToolButton
-        Left = 0
-        Top = 22
-        Caption = 'ToolButton12'
+      object Cross: TToolButton
+        Left = 203
+        Top = 0
+        Hint = 'Cursor em modo Cruz'
+        Caption = 'Cross'
         ImageIndex = 308
-        Wrap = True
-        Style = tbsCheck
-        OnClick = ToolButton12Click
-      end
-      object ToolButton1: TToolButton
-        Left = 0
-        Top = 44
-        Caption = 'ToolButton1'
-        ImageIndex = 243
-        Wrap = True
-        OnClick = ToolButton1Click
-      end
-      object ToolButton2: TToolButton
-        Left = 0
-        Top = 66
-        Caption = 'ToolButton2'
-        ImageIndex = 242
-        Wrap = True
-        OnClick = ToolButton2Click
+        OnClick = CrossClick
       end
       object ToolButton3: TToolButton
-        Left = 0
-        Top = 88
+        Left = 229
+        Top = 0
+        Width = 8
         Caption = 'ToolButton3'
-        ImageIndex = 189
-        Wrap = True
-        OnClick = ToolButton3Click
-      end
-      object ToolButton8: TToolButton
-        Left = 0
-        Top = 110
-        Caption = 'ToolButton8'
-        ImageIndex = 297
-        Wrap = True
-        OnClick = SpeedButton1Click
-      end
-      object ToolButton10: TToolButton
-        Left = 0
-        Top = 132
-        Caption = 'ToolButton10'
-        ImageIndex = 312
-        Wrap = True
-        OnClick = ToolButton10Click
-      end
-      object ToolButton9: TToolButton
-        Left = 0
-        Top = 154
-        Caption = 'ToolButton9'
         ImageIndex = 309
-        Wrap = True
-        OnClick = ToolButton9Click
+        Style = tbsSeparator
       end
-      object ToolButton4: TToolButton
-        Left = 0
-        Top = 176
-        Caption = 'ToolButton4'
-        ImageIndex = 310
-        Wrap = True
-        OnClick = ToolButton4Click
+      object ZoomUser: TToolButton
+        Left = 237
+        Top = 0
+        Hint = 'Zoom em uma area definida'
+        Caption = 'ZoomUser'
+        ImageIndex = 189
+        OnClick = ZoomUserClick
       end
-      object ToolButton5: TToolButton
-        Left = 0
-        Top = 198
-        Caption = 'ToolButton5'
-        ImageIndex = 311
-        Wrap = True
-        OnClick = ToolButton5Click
+      object ZoomIn: TToolButton
+        Left = 263
+        Top = 0
+        Hint = 'Aumentar Zoom'
+        Caption = 'ZoomIn'
+        ImageIndex = 243
+        OnClick = ZoomInClick
       end
-      object ToolButton6: TToolButton
-        Left = 0
-        Top = 220
-        Caption = 'ToolButton6'
-        ImageIndex = 314
-        Wrap = True
-        OnClick = ToolButton6Click
+      object ZoomOut: TToolButton
+        Left = 289
+        Top = 0
+        Hint = 'Diminuir Zoom'
+        Caption = 'ZoomOut'
+        ImageIndex = 242
+        OnClick = ZoomOutClick
       end
       object ToolButton7: TToolButton
-        Left = 0
-        Top = 242
+        Left = 315
+        Top = 0
+        Width = 8
         Caption = 'ToolButton7'
+        ImageIndex = 243
+        Style = tbsSeparator
+      end
+      object ToolButton5: TToolButton
+        Left = 323
+        Top = 0
+        Action = TrendLine
+      end
+      object ToolButton6: TToolButton
+        Left = 349
+        Top = 0
+        Action = Elipse
+      end
+      object ToolButton8: TToolButton
+        Left = 375
+        Top = 0
+        Action = Rectangle
+      end
+      object ToolButton9: TToolButton
+        Left = 401
+        Top = 0
+        Action = FibonacciRetracements
+      end
+      object ToolButton10: TToolButton
+        Left = 427
+        Top = 0
+        Action = FibonacciTimeZones
+      end
+      object ToolButton12: TToolButton
+        Left = 453
+        Top = 0
+        Action = FibonacciFan
+      end
+      object ToolButton4: TToolButton
+        Left = 479
+        Top = 0
+        Hint = 'Desenhar linhas de estudos'
+        Caption = 'ToolButton4'
+        DropdownMenu = PopupMenu3
+        ImageIndex = 43
+        Style = tbsDropDown
+      end
+      object ColorBox1: TColorBox
+        Left = 520
+        Top = 0
+        Width = 39
+        Height = 22
+        Hint = 'Cor para linhas de estudo'
+        DefaultColorColor = clBlue
+        Selected = clBlue
+        TabOrder = 0
+        TabStop = False
+        OnChange = ColorBox1Change
+      end
+      object ToolButton11: TToolButton
+        Left = 559
+        Top = 0
+        Width = 8
+        Caption = 'ToolButton11'
         ImageIndex = 315
-        Wrap = True
-        OnClick = ToolButton7Click
+        Style = tbsSeparator
+      end
+      object Indicators: TToolButton
+        Left = 567
+        Top = 0
+        Hint = 'Indicadores'
+        Caption = '-'
+        DropdownMenu = PopupMenu1
+        ImageIndex = 315
+        Style = tbsDropDown
+      end
+      object ToolButton1: TToolButton
+        Left = 608
+        Top = 0
+        Width = 8
+        Caption = 'ToolButton1'
+        ImageIndex = 316
+        Style = tbsSeparator
+      end
+      object ToolButton2: TToolButton
+        Left = 616
+        Top = 0
+        Hint = 'Alterar periodo do gr'#225'fico'
+        Caption = 'ChgPeriodo'
+        ImageIndex = 316
+        Visible = False
+        OnClick = ToolButton2Click
       end
     end
   end
-  object PopupMenu1: TPopupMenu
-    Left = 168
-    Top = 32
-    object ExibirBarraLateral1: TMenuItem
-      Caption = 'Resetar Zoom'
-      OnClick = ExibirBarraLateral1Click
+  object Panel1: TPanel
+    Left = 0
+    Top = 29
+    Width = 866
+    Height = 19
+    Align = alTop
+    Color = clBlack
+    ParentBackground = False
+    TabOrder = 0
+    object LbDate: TLabel
+      Left = 85
+      Top = 3
+      Width = 3
+      Height = 13
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 10
+      Top = 2
+      Width = 69
+      Height = 13
+      Caption = 'Data / Hora:'
+      Color = clBlack
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clYellow
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 250
+      Top = 2
+      Width = 25
+      Height = 13
+      Caption = 'Abe:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clYellow
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LbOpen: TLabel
+      Left = 286
+      Top = 2
+      Width = 3
+      Height = 13
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LbHigh: TLabel
+      Left = 399
+      Top = 3
+      Width = 3
+      Height = 13
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 362
+      Top = 3
+      Width = 27
+      Height = 13
+      Caption = 'M'#225'x:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clYellow
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LbLow: TLabel
+      Left = 516
+      Top = 3
+      Width = 3
+      Height = 13
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label8: TLabel
+      Left = 483
+      Top = 3
+      Width = 23
+      Height = 13
+      Caption = 'M'#237'n:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clYellow
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LbClose: TLabel
+      Left = 627
+      Top = 2
+      Width = 3
+      Height = 13
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label10: TLabel
+      Left = 592
+      Top = 2
+      Width = 29
+      Height = 13
+      Caption = 'Fech:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clYellow
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
   end
+  object StockChartX1: TStockChartX
+    Left = 0
+    Top = 48
+    Width = 866
+    Height = 269
+    Align = alClient
+    PopupMenu = PopupMenu2
+    TabOrder = 1
+    OnSelectSeries = StockChartX1SelectSeries
+    OnMouseMove = StockChartX1MouseMove
+    OnPaint = StockChartX1Paint
+    OnKeyUp = StockChartX1KeyUp
+    OnUserDrawingComplete = StockChartX1UserDrawingComplete
+    ExplicitTop = 50
+    ControlData = {
+      0000050081590000CD1B000000000000FFFFFF00FAF5D70000000000FFFFFF00
+      4646460000FF0000FF0000000000FF00FFFFFF00FFFFFF000000000000000000
+      00FF0000FF000000FAF5D7000200000002000000020000000000000001007B14
+      AE47E17A843F00000100}
+  end
+  object Panel3: TPanel
+    Left = 816
+    Top = 168
+    Width = 50
+    Height = 17
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    Caption = '0,00'
+    Color = clWhite
+    Ctl3D = False
+    ParentBackground = False
+    ParentCtl3D = False
+    TabOrder = 2
+    Visible = False
+  end
+  object Panel4: TPanel
+    Left = 348
+    Top = 312
+    Width = 105
+    Height = 19
+    BevelOuter = bvNone
+    Caption = '00:00:00'
+    Color = clWhite
+    Ctl3D = False
+    ParentBackground = False
+    ParentCtl3D = False
+    TabOrder = 3
+    Visible = False
+  end
   object ImageList: TImageList
-    Left = 340
-    Top = 40
+    Left = 76
+    Top = 88
     Bitmap = {
-      494C01013D014401080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D014401240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000005000001002000000000000000
       0500000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10721,52 +11000,265 @@ object FrmChart: TFrmChart
       F01FFFFFFFFFFFFFF83FFFFFFFFFFFFF00000000000000000000000000000000
       000000000000}
   end
-  object PopupMenu2: TPopupMenu
-    Left = 248
-    Top = 32
-    object IFR1: TMenuItem
+  object ActionManager1: TActionManager
+    Images = ImageList
+    Left = 144
+    Top = 88
+    StyleName = 'Platform Default'
+    object IFRIndicator: TAction
+      Category = 'Indicators'
       Caption = 'IFR'
-      OnClick = IFR1Click
+      OnExecute = IFRIndicatorExecute
     end
-    object StochasticOscIndicator1: TMenuItem
+    object StochasticOscIndicator: TAction
+      Category = 'Indicators'
       Caption = 'Estoc'#225'stico'
-      OnClick = StochasticOscIndicator1Click
+      OnExecute = StochasticOscIndicatorExecute
     end
-    object BandasdeBollinger1: TMenuItem
+    object BollingerBandsIndicator: TAction
+      Category = 'Indicators'
       Caption = 'Bandas de Bollinger'
-      OnClick = BandasdeBollinger1Click
+      OnExecute = BollingerBandsIndicatorExecute
     end
-    object MdiaExponencial1: TMenuItem
-      Caption = 'Media Exponencial'
-      OnClick = MdiaExponencial1Click
+    object SimpleMovingAverageIndicator: TAction
+      Category = 'Indicators'
+      Caption = 'M'#233'dia Aritm'#233'tica'
+      OnExecute = SimpleMovingAverageIndicatorExecute
     end
-    object MdiaAritmtica1: TMenuItem
-      Caption = 'Media Aritimetica'
+    object ExponentialMovingAverageIndicator: TAction
+      Category = 'Indicators'
+      Caption = 'M'#233'dia Exponencial'
+      OnExecute = ExponentialMovingAverageIndicatorExecute
     end
-    object MACD1: TMenuItem
-      Caption = 'MACD'
-      OnClick = MACD1Click
+    object ParabolicSARIndicator: TAction
+      Category = 'Indicators'
+      Caption = 'Parab'#243'lico'
+      OnExecute = ParabolicSARIndicatorExecute
     end
-    object OBV1: TMenuItem
-      Caption = 'OBV'
-      OnClick = OBV1Click
-    end
-    object Parablico1: TMenuItem
-      Caption = 'Parabolico'
-      OnClick = Parablico1Click
-    end
-    object Estocstico1: TMenuItem
+    object TrixIndicator: TAction
+      Category = 'Indicators'
       Caption = 'Trix'
-      OnClick = Estocstico1Click
+      OnExecute = TrixIndicatorExecute
     end
-    object WilliansR1: TMenuItem
-      Caption = 'Willians'
-      OnClick = WilliansR1Click
+    object WilliamsPctIndicator: TAction
+      Category = 'Indicators'
+      Caption = 'Willians %R'
+      OnExecute = WilliamsPctIndicatorExecute
+    end
+    object OnBalanceVolIndicator: TAction
+      Category = 'Indicators'
+      Caption = 'OBV'
+      OnExecute = OnBalanceVolIndicatorExecute
+    end
+    object MacdIndicator: TAction
+      Category = 'Indicators'
+      Caption = 'MACD'
+      OnExecute = MacdIndicatorExecute
+    end
+    object TrendLine: TAction
+      Category = 'DrawLines'
+      Caption = 'Reta'
+      Hint = 'Reta'
+      ImageIndex = 297
+      OnExecute = TrendLineExecute
+    end
+    object Elipse: TAction
+      Category = 'DrawLines'
+      Caption = 'Oval'
+      Hint = 'Oval'
+      ImageIndex = 268
+      OnExecute = ElipseExecute
+    end
+    object Rectangle: TAction
+      Category = 'DrawLines'
+      Caption = 'Quadrado'
+      Hint = 'Quadrado'
+      ImageIndex = 270
+      OnExecute = RectangleExecute
+    end
+    object SpeedLines: TAction
+      Category = 'DrawLines'
+      Caption = 'Linhas de Velocidade'
+      OnExecute = SpeedLinesExecute
+    end
+    object Gannfan: TAction
+      Category = 'DrawLines'
+      Caption = 'Linhas GannFan'
+      OnExecute = GannfanExecute
+    end
+    object FibonacciArcs: TAction
+      Category = 'DrawLines'
+      Caption = 'Arcos Fibonacci'
+      OnExecute = FibonacciArcsExecute
+    end
+    object FibonacciFan: TAction
+      Category = 'DrawLines'
+      Caption = 'Fibonacci Fan'
+      Hint = 'Fibonacci Fan'
+      ImageIndex = 310
+      OnExecute = FibonacciFanExecute
+    end
+    object FibonacciRetracements: TAction
+      Category = 'DrawLines'
+      Caption = 'Fibonacci Retracements'
+      Hint = 'Fibonacci Retracements'
+      ImageIndex = 311
+      OnExecute = FibonacciRetracementsExecute
+    end
+    object FibonacciTimeZones: TAction
+      Category = 'DrawLines'
+      Caption = 'Fibonacci TimeZones'
+      Hint = 'Fibonacci Time Zones'
+      ImageIndex = 314
+      OnExecute = FibonacciTimeZonesExecute
+    end
+    object TironeLevels: TAction
+      Category = 'DrawLines'
+      Caption = 'N'#237'ves de Tirone'
+      OnExecute = TironeLevelsExecute
+    end
+    object QuadrantLines: TAction
+      Category = 'DrawLines'
+      Caption = 'Linhas de Quadrante'
+      OnExecute = QuadrantLinesExecute
+    end
+    object RaffRegression: TAction
+      Category = 'DrawLines'
+      Caption = 'Regress'#227'o Raff'
+      OnExecute = RaffRegressionExecute
+    end
+    object ErrorChannels: TAction
+      Category = 'DrawLines'
+      Caption = 'Erro de Canais'
+      OnExecute = ErrorChannelsExecute
     end
   end
-  object Timer1: TTimer
-    OnTimer = Timer1Timer
-    Left = 440
-    Top = 40
+  object PopupMenu1: TPopupMenu
+    Left = 208
+    Top = 88
+    object IFR1: TMenuItem
+      Action = IFRIndicator
+    end
+    object StochasticOscIndicator1: TMenuItem
+      Action = StochasticOscIndicator
+    end
+    object BandasdeBollinger1: TMenuItem
+      Action = BollingerBandsIndicator
+    end
+    object MdiaExponencial1: TMenuItem
+      Action = ExponentialMovingAverageIndicator
+    end
+    object MdiaAritmtica1: TMenuItem
+      Action = SimpleMovingAverageIndicator
+    end
+    object MACD1: TMenuItem
+      Action = MacdIndicator
+    end
+    object OBV1: TMenuItem
+      Action = OnBalanceVolIndicator
+    end
+    object Parablico1: TMenuItem
+      Action = ParabolicSARIndicator
+    end
+    object Estocstico1: TMenuItem
+      Action = TrixIndicator
+    end
+    object WilliansR1: TMenuItem
+      Action = WilliamsPctIndicator
+    end
+  end
+  object PopupMenu2: TPopupMenu
+    Images = ImageList
+    Left = 272
+    Top = 88
+    object AlterarPeriodo1: TMenuItem
+      Caption = 'Alterar Periodo'
+      OnClick = AlterarPeriodo1Click
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object Zoom1: TMenuItem
+      Caption = 'Zoom +'
+      ImageIndex = 243
+      OnClick = Zoom1Click
+    end
+    object Zoon1: TMenuItem
+      Caption = 'Zoom -'
+      ImageIndex = 242
+      OnClick = Zoon1Click
+    end
+    object ResetarZoom1: TMenuItem
+      Caption = 'Resetar Zoom'
+      OnClick = ResetarZoom1Click
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object BandasdeBollinger2: TMenuItem
+      Caption = 'Estudos'
+      ImageIndex = 43
+      OnClick = BandasdeBollinger2Click
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
+    object Indicadores1: TMenuItem
+      Caption = 'Indicadores'
+      ImageIndex = 315
+      OnClick = Indicadores1Click
+    end
+  end
+  object PopupMenu3: TPopupMenu
+    Left = 344
+    Top = 88
+    object rendLines1: TMenuItem
+      Action = TrendLine
+    end
+    object Elipse1: TMenuItem
+      Action = Elipse
+    end
+    object Rectangle1: TMenuItem
+      Action = Rectangle
+    end
+    object SpeedLines1: TMenuItem
+      Action = SpeedLines
+    end
+    object Gannfan1: TMenuItem
+      Action = Gannfan
+    end
+    object FibonacciArcs1: TMenuItem
+      Action = FibonacciArcs
+    end
+    object FibonacciFan1: TMenuItem
+      Action = FibonacciFan
+    end
+    object FibonacciRetracements1: TMenuItem
+      Action = FibonacciRetracements
+    end
+    object FibonacciTimeZones1: TMenuItem
+      Action = FibonacciTimeZones
+    end
+    object ironeLevels1: TMenuItem
+      Action = TironeLevels
+    end
+    object QuadrantLines1: TMenuItem
+      Action = QuadrantLines
+    end
+    object RaffRegression1: TMenuItem
+      Action = RaffRegression
+    end
+    object ErrorChannels1: TMenuItem
+      Action = ErrorChannels
+    end
+  end
+  object IdTCPClient1: TIdTCPClient
+    ConnectTimeout = 0
+    Host = 'server2.acoesinvest.com.br'
+    IPVersion = Id_IPv4
+    Port = 8185
+    ReadTimeout = -1
+    Left = 432
+    Top = 112
   end
 end
