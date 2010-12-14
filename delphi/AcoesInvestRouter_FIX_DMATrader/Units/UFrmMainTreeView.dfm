@@ -2586,6 +2586,7 @@ object FrmMainTreeView: TFrmMainTreeView
     Top = 112
   end
   object Broker: TIdTCPClient
+    OnDisconnected = BrokerDisconnected
     OnConnected = BrokerConnected
     ConnectTimeout = 500
     Host = 'localhost'

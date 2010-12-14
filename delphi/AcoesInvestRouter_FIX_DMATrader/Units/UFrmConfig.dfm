@@ -2,9 +2,9 @@ object FrmConfig: TFrmConfig
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'Configura'#231#245'es'
-  ClientHeight = 137
-  ClientWidth = 314
+  Caption = 'Status das Conex'#245'es'
+  ClientHeight = 195
+  ClientWidth = 307
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,104 +13,117 @@ object FrmConfig: TFrmConfig
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
+  OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object PageControl1: TPageControl
-    Left = 0
-    Top = 0
-    Width = 314
-    Height = 102
-    ActivePage = TabSheet2
-    Align = alClient
+  object GroupBox1: TGroupBox
+    Left = 8
+    Top = 8
+    Width = 281
+    Height = 89
+    Caption = 'Sinal de Cota'#231#245'es:'
     TabOrder = 0
-    object TabSheet1: TTabSheet
-      Caption = 'Servidor Cota'#231#245'es'
-      object Panel3: TPanel
-        Left = 0
-        Top = 0
-        Width = 306
-        Height = 74
-        Align = alClient
-        BevelKind = bkFlat
-        BevelOuter = bvLowered
-        Ctl3D = False
-        ParentCtl3D = False
-        TabOrder = 0
-        object LabeledEdit3: TLabeledEdit
-          Left = 16
-          Top = 36
-          Width = 121
-          Height = 19
-          EditLabel.Width = 102
-          EditLabel.Height = 13
-          EditLabel.Caption = 'Servidor de Cota'#231#227'o:'
-          TabOrder = 0
-        end
-      end
+    object Label1: TLabel
+      Left = 16
+      Top = 16
+      Width = 35
+      Height = 13
+      Caption = 'Status:'
     end
-    object TabSheet2: TTabSheet
-      Caption = 'Servidores de Negocia'#231#227'o'
-      ImageIndex = 1
-      object Panel1: TPanel
-        Left = 0
-        Top = 0
-        Width = 306
-        Height = 74
-        Align = alClient
-        BevelKind = bkFlat
-        BevelOuter = bvLowered
-        Ctl3D = False
-        ParentCtl3D = False
-        TabOrder = 0
-        object LabeledEdit1: TLabeledEdit
-          Left = 16
-          Top = 36
-          Width = 121
-          Height = 19
-          EditLabel.Width = 88
-          EditLabel.Height = 13
-          EditLabel.Caption = 'Servidor Bovespa:'
-          TabOrder = 0
-        end
-        object LabeledEdit2: TLabeledEdit
-          Left = 167
-          Top = 36
-          Width = 121
-          Height = 19
-          EditLabel.Width = 70
-          EditLabel.Height = 13
-          EditLabel.Caption = 'Servidor BM&&F'
-          TabOrder = 1
-        end
-      end
+    object Label2: TLabel
+      Left = 57
+      Top = 16
+      Width = 68
+      Height = 13
+      Caption = 'Desconectado'
     end
-  end
-  object Panel2: TPanel
-    Left = 0
-    Top = 102
-    Width = 314
-    Height = 35
-    Align = alBottom
-    TabOrder = 1
-    object BitBtn1: TBitBtn
-      Left = 154
-      Top = 6
-      Width = 75
-      Height = 25
-      Caption = 'Aplicar'
-      DoubleBuffered = True
-      ParentDoubleBuffered = False
+    object LabeledEdit1: TLabeledEdit
+      Left = 16
+      Top = 51
+      Width = 121
+      Height = 21
+      EditLabel.Width = 40
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Usu'#225'rio:'
       TabOrder = 0
     end
-    object BitBtn2: TBitBtn
-      Left = 235
-      Top = 6
-      Width = 75
-      Height = 25
-      Caption = 'Cancelar'
-      DoubleBuffered = True
-      ParentDoubleBuffered = False
+    object LabeledEdit2: TLabeledEdit
+      Left = 143
+      Top = 51
+      Width = 121
+      Height = 21
+      EditLabel.Width = 34
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Senha:'
+      PasswordChar = '*'
       TabOrder = 1
     end
+    object Button1: TButton
+      Left = 205
+      Top = 10
+      Width = 75
+      Height = 25
+      Caption = 'Conectar'
+      TabOrder = 2
+      OnClick = Button1Click
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 8
+    Top = 103
+    Width = 281
+    Height = 89
+    Caption = 'Sinal de Negocia'#231#245'es:'
+    TabOrder = 1
+    object Label3: TLabel
+      Left = 16
+      Top = 16
+      Width = 35
+      Height = 13
+      Caption = 'Status:'
+    end
+    object Label4: TLabel
+      Left = 57
+      Top = 16
+      Width = 68
+      Height = 13
+      Caption = 'Desconectado'
+    end
+    object LabeledEdit3: TLabeledEdit
+      Left = 16
+      Top = 51
+      Width = 121
+      Height = 21
+      EditLabel.Width = 40
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Usu'#225'rio:'
+      TabOrder = 0
+    end
+    object LabeledEdit4: TLabeledEdit
+      Left = 143
+      Top = 51
+      Width = 121
+      Height = 21
+      EditLabel.Width = 34
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Senha:'
+      PasswordChar = '*'
+      TabOrder = 1
+    end
+    object Button2: TButton
+      Left = 205
+      Top = 11
+      Width = 75
+      Height = 25
+      Caption = 'Conectar'
+      TabOrder = 2
+      OnClick = Button2Click
+    end
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 152
+    Top = 88
   end
 end
