@@ -938,16 +938,16 @@ void readdata(char *_dm) {
                 if (bfline[0] == 'T' && bfline[strlen(bfline) - 1] == '!') {
 
                     // Analisa dados
+/*
                     for (charts = 1; charts <= 30; charts++) {
                         tradedata(bfline, charts, _dm, "/home/donda/ddc/buffer/ddcchart.data");                        
                     }
-/*
+*/
                     tradedata(bfline, 1, _dm, "/home/donda/ddc/buffer/ddcchart.data");
                     tradedata(bfline, 5, _dm, "/home/donda/ddc/buffer/ddcchart.data");
                     tradedata(bfline, 10, _dm, "/home/donda/ddc/buffer/ddcchart.data");
                     tradedata(bfline, 15, _dm, "/home/donda/ddc/buffer/ddcchart.data");
                     tradedata(bfline, 30, _dm, "/home/donda/ddc/buffer/ddcchart.data");
-*/
 
 
                     // Volta contador ao inicio
