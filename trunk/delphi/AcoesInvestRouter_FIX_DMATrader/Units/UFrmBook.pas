@@ -199,6 +199,7 @@ begin
   end;
 end;
 
+
 procedure TFrmBook.AddLine(Line, Direction, Value, Qty, Broker: String);
 var DataLine:String;
 begin
@@ -208,13 +209,13 @@ begin
  if Direction = 'A' then
  begin
    EnterCriticalSection(CritSection);
-   ListBuy.Add(DataLine);
+   ListBuy.Insert(StrToInt(Line), DataLine);
    LeaveCriticalSection(CritSection);
  end
  else
  begin
    EnterCriticalSection(CritSection);
-   ListSell.Add(DataLine);
+   ListSell.Insert(StrToInt(Line),DataLine);
    LeaveCriticalSection(CritSection);
  end;
  except
