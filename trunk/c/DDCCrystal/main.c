@@ -177,6 +177,7 @@ int main(int argc, char** argv) {
 
 
         /*Cria o processo filho que lera o FIFO com as entradas de comando*/
+/*
         pid_t fifo;
 
         fifo = fork();
@@ -197,6 +198,7 @@ int main(int argc, char** argv) {
             filepiper(s);
             //exit(0);
         }
+*/
 
         // Aqui é o processo pai ( fifo != 0 )
 
@@ -263,6 +265,10 @@ int main(int argc, char** argv) {
 
             // Gera snapshot, caso seja book ( B ou M )
             //snapshotbk(buffer);
+
+            if(buffer[0] == 'B'){
+                writeln(bfile,buffer,"a+");
+            }
 
             // Verifica se contem indices que realmente sao importantes.
             istrade = checktrade(buffer);
@@ -391,7 +397,6 @@ int callsymbols(int _fd) {
         // Lê dados
         while ((fgets(line, SYMBOL_SIZE, fsymbols)) != NULL) {
 
-
             //Monta comando - SQT
             sprintf(cmd, "%s%s\r\n", "sqt ", line);
 
@@ -403,7 +408,7 @@ int callsymbols(int _fd) {
 
             //Monta comando - MBQ
 
-            sprintf(cmd, "%s%s\r\n", "mbq ", line);
+            sprintf(cmd, "%s%s\r\n", "bqt ", line);
 
             // Realiza chamada
             send(_fd, cmd, strlen(cmd), 0);
