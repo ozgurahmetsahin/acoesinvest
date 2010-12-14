@@ -34,6 +34,7 @@ type
       Msg: string);
     procedure RouterLibrary1SecurityListReport(Sender: TObject; Msg: string);
     procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
+    procedure BrokerDisconnected(Sender: TObject);
   private
     { Private declarations }
   public
@@ -191,6 +192,14 @@ end;
 procedure TFrmMainTreeView.BrokerConnected(Sender: TObject);
 begin
   FrmHistoryOrders.HistorySheet.ClearLines;
+  FrmMainLine.Image19.Visible:=False;
+  FrmMainLine.Image18.Visible:=True;
+end;
+
+procedure TFrmMainTreeView.BrokerDisconnected(Sender: TObject);
+begin
+FrmMainLine.Image18.Visible:=False;
+FrmMainLine.Image19.Visible:=True;
 end;
 
 function TFrmMainTreeView.ChangeDecimalSeparator(Value : String;Decimal : String;DecimalChange : String): String;

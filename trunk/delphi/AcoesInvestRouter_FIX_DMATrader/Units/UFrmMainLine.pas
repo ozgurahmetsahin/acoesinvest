@@ -57,6 +57,12 @@ type
     Image15: TImage;
     Image16: TImage;
     Image17: TImage;
+    Image18: TImage;
+    Image19: TImage;
+    PopMenuConfig: TPopupMenu;
+    AtivarBarraSempreVisvel1: TMenuItem;
+    StatusdasConexes1: TMenuItem;
+    ExibirConfiguraesdeServidores1: TMenuItem;
     procedure Label6Click(Sender: TObject);
     procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -97,6 +103,9 @@ type
     procedure CarteiraSugerida1Click(Sender: TObject);
     procedure Image13Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ExibirConfiguraesdeServidores1Click(Sender: TObject);
+    procedure StatusdasConexes1Click(Sender: TObject);
+    procedure AtivarBarraSempreVisvel1Click(Sender: TObject);
   private
     { Private declarations }
     Row:Integer;
@@ -118,7 +127,7 @@ uses UFrmMainTreeView, UFrmConnection, UFrmTrade, UFrmMiniBook,
   UFrmAbstractSymbol, UFrmBrokerBuy, UFrmHistoryOrders, UFrmStartStop,
   UFrmBrokerSell,UFrmWebBrowser, UFrmPortfolio, UFrmBrokerSpeed, UFrmOpenChart,
   UFrmTradeCentral, UFrmBook, UThrdDaileonFwRead, UFrmConnConfig, UFrmRSS,
-  UFrmChart;
+  UFrmChart, UFrmConfig;
 
 {$R *.dfm}
 
@@ -140,6 +149,14 @@ end;
 procedure TFrmMainLine.AnliseGrfica1Click(Sender: TObject);
 begin
   ShellExecute(handle,'open','http://www.acoesinvest.com.br/servicos/diferencial/dif_analisegrafica.php?where=analisegraficaf','','',SW_SHOWNORMAL);
+end;
+
+procedure TFrmMainLine.AtivarBarraSempreVisvel1Click(Sender: TObject);
+begin
+  if AtivarBarraSempreVisvel1.Checked then
+  FrmMainLine.FormStyle:=fsStayOnTop
+  else
+  FrmMainLine.FormStyle:=fsNormal;
 end;
 
 procedure TFrmMainLine.Button1Click(Sender: TObject);
@@ -193,8 +210,10 @@ end;
 end;
 
 procedure TFrmMainLine.Conexes1Click(Sender: TObject);
+var PtnMouse:TPoint;
 begin
-  FrmConnConfig.Show;
+  GetCursorPos(PtnMouse);
+  PopMenuConfig.Popup(PtnMouse.X - 10,PtnMouse.Y + 10);
 end;
 
 procedure TFrmMainLine.CreateParams(var Params: TCreateParams);
@@ -202,6 +221,11 @@ begin
   inherited;
   Params.ExStyle:= Params.ExStyle or WS_EX_APPWINDOW;
   Params.WndParent:= GetDesktopWindow;
+end;
+
+procedure TFrmMainLine.ExibirConfiguraesdeServidores1Click(Sender: TObject);
+begin
+ FrmConnConfig.Show;
 end;
 
 procedure TFrmMainLine.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -518,6 +542,11 @@ else
 begin
  MessageDlg('Você não está conectado ao broker.',mtError,[mbOk],0);
 end;
+end;
+
+procedure TFrmMainLine.StatusdasConexes1Click(Sender: TObject);
+begin
+ FrmConfig.Show;
 end;
 
 procedure TFrmMainLine.Timer1Timer(Sender: TObject);

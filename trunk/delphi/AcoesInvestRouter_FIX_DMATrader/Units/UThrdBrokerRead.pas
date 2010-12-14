@@ -98,11 +98,13 @@ begin
         begin
            FrmMainTreeView.MsgErr:='Usuário/Senha de Negociação inválidos.';
            Synchronize(FrmMainTreeView.ShowMsgErr);
+           FrmMainTreeView.BrokerDisconnected(Self);
         end
         else if Data.Values['5279'] = '4' then
         begin
            FrmMainTreeView.MsgErr:='Você foi bloqueado pelo administrador.';
            Synchronize(FrmMainTreeView.ShowMsgErr);
+           FrmMainTreeView.BrokerDisconnected(Self);
         end
         else if Data.Values['5279'] = '1' then
         begin
