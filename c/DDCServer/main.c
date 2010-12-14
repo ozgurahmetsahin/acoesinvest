@@ -24,7 +24,7 @@
 /*Biblioteca Acoes Invest*/
 #include "ailib.h"
 
-#define SVR_PORT 81
+#define SVR_PORT 8185
 #define SVR_HOST "0"
 #define MAX_CONN_LISTEN 5
 #define MAX_BUF_RECV sizeof(char)*5000
@@ -348,17 +348,17 @@ int main() {
                 // Processo neto
 
 
-               //grandchart = fork();
+               grandchart = fork();
 
-               //if (grandchart > 0) {
+               if (grandchart > 0) {
                     // Executa funcao do neto
 
                     grandsonps(sockcli);
 
 
-               // } else {
-                  //  readchart(sockcli);
-               // }
+                } else {
+                    readchart(sockcli);
+               }
 
 
 
@@ -2504,7 +2504,7 @@ void chart(int _fd, char *cmd) {
 
             } else {
 
-                for (mr = monthrange; mr <= 10; mr++) {
+                for (mr = monthrange; mr <= 12; mr++) {
                     if (mr > monthrange) {
                         dr = 1;
                     } else {
