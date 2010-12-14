@@ -351,7 +351,7 @@ int main(int argc, char** argv) {
                 // Estrutura para analise
                 struct TDDCData *dbook = createlist();
 
-                // Popula a estrutura ( 58 é o codigo asci para o :
+                // Popula a estrutura ( 58 é o codigo asci para o : )
                 splitcolumns(buffer, 58, dbook);
 
                 // Estrutura temporaria varredura dos dados da estrutura
@@ -496,7 +496,7 @@ int main(int argc, char** argv) {
 
                 // Destroi a lista
                 destroylist(dbook);
-
+                destroylist(tmp);
                 tmp = NULL;
 
                 //temp_book(bfile,cedrobooks);
