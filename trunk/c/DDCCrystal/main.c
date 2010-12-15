@@ -27,10 +27,10 @@
 #define SNAP_BK_PATH "/home/donda/ddc/snapshot/books/"
 #define TERMINAL_LOG "/home/donda/ddc/ddccrystal.log"
 #define SYNCH_BUFF_FILE "/home/donda/ddc/buffer/last.buf"
-#define FIFO_ARQ "/home/donda/ddc/buffer/fifo"
+#define FIFO_ARQ "/home/donda/ddc/buffer/cmd_crystal"
 #define MAX_BUF_SIZE sizeof(char) * 1000
 #define SYMBOL_SIZE sizeof(char) * 20
-#define USER_CEDRO "ets012\r\n"
+#define USER_CEDRO "aicrystal\r\n"
 #define PASS_CEDRO "123456\r\n"
 
 #define SVR_CRYSTAL_1 "crystal509.cedrofinances.com.br"
@@ -177,7 +177,7 @@ int main(int argc, char** argv) {
 
 
         /*Cria o processo filho que lera o FIFO com as entradas de comando*/
-/*
+
         pid_t fifo;
 
         fifo = fork();
@@ -196,9 +196,9 @@ int main(int argc, char** argv) {
         // e se sair da funcao a um exit
         if (fifo == 0) {
             filepiper(s);
-            //exit(0);
+            exit(0);
         }
-*/
+
 
         // Aqui é o processo pai ( fifo != 0 )
 
@@ -285,10 +285,12 @@ int main(int argc, char** argv) {
 
             // Verifica se é a frase You are connected
             // Chama ativos caso seja.
+/*
             if (buffer[0] == 'Y') {
                 callsymbols(s);
                 login = 1;
             }
+*/
 
 
             // Verifica se mudou arquivo de buffer
@@ -307,7 +309,7 @@ int main(int argc, char** argv) {
                 // o modo w+ significa para escrever, limpando
                 // tudo q estiver escrito e se nao existir o arquivo
                 // deve-se cria-lo
-                //writeln(SYNCH_BUFF_FILE, bfile, "w+");
+                writeln(SYNCH_BUFF_FILE, bfile, "w+");
 
                 // Copia o novo caminho do buffer
                 strcpy(bflast, bfile);
@@ -1306,33 +1308,20 @@ void filepiper(int _fd) {
     mknod(FIFO_ARQ, S_IFIFO | 0666, 0);
 
     fpipe = open(FIFO_ARQ, O_RDONLY);
-    int v = 0;
     while (1) {
 
         n = read(fpipe, txt, 100);
 
         if (n > 5) {
 
-            char *cmdbf = malloc(n+10);
+            txt[n] = '\0';
 
-            strcpy(cmdbf,"bqt ");
-
-            for(v=2;v<=n;v++){
-                sprintf(cmdbf,"%s%c",cmdbf,txt[v]);
-            }
-
-            //cmdbf[v]='\0';
-            cmdbf[v]='\r';
-            cmdbf[v+1]='\n';
-            
-            send(_fd, cmdbf, strlen(cmdbf), 0);
+            send(_fd, txt, strlen(txt), 0);
 
             writeln(TERMINAL_LOG, "********* Start ***************", "a+");
             writeln(TERMINAL_LOG, "Enviado linha:", "a+");
-            writeln(TERMINAL_LOG, cmdbf, "a+");
+            writeln(TERMINAL_LOG, txt, "a+");
             writeln(TERMINAL_LOG, "********* End ***************", "a+");
-
-            free(cmdbf);
         }
 
     }
