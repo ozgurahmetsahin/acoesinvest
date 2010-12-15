@@ -24,7 +24,7 @@
 /*Biblioteca Acoes Invest*/
 #include "ailib.h"
 
-#define SVR_PORT 8185
+#define SVR_PORT 81
 #define SVR_HOST "0"
 #define MAX_CONN_LISTEN 5
 #define MAX_BUF_RECV sizeof(char)*5000
@@ -43,7 +43,7 @@
 #define SQT_TEMP "/home/donda/ddc/tmp/"
 #define GPN_BOVESPA "/home/donda/ddc/gpn_bovespa.dat"
 #define GPN_BMF "/home/donda/ddc/gpn_bmf.dat"
-#define FIFO_ARQ "/home/donda/ddc/buffer/fifo"
+#define FIFO_ARQ "/home/donda/ddc/buffer/cmd_crystal"
 #define MBQ_BUYER 1
 #define MBQ_SELLER 2
 #define TERMINAL_LOG "/home/donda/ddc/ddcserver.log"
@@ -84,7 +84,7 @@ int blog(char *text, char *_modes);
 void sonexit(int _sig);
 void getsymbol(char *_b, char *_s);
 void mounttrade(char *symbol, char *__t);
-void sqt(int _fd, char *_symbol);
+void sqt(int _fd, char *_symbol, int _fifo);
 void mbq(int _fd, char *_symbol, int _fifo);
 void bqt(int _fd, char *_symbol, int _fifo);
 int checkuser(int _fd, char *_user, char *_pass);
@@ -348,18 +348,22 @@ int main() {
                 // Processo neto
 
 
+/*
                grandchart = fork();
 
                if (grandchart > 0) {
                     // Executa funcao do neto
+*/
 
                     grandsonps(sockcli);
+/*
 
 
                 } else {
                     readchart(sockcli);
                }
 
+*/
 
 
             }
@@ -561,11 +565,11 @@ void sonps(int _fd, pid_t _gson) {
 
                 // Se esta logado autoriza comando
                 if (login == 1) {
-                    sqt(_fd, aux2);
+                    sqt(_fd, aux2, fpipe);
                 } else {
                     send(_fd, MSG_SVR_NOTLOG, strlen(MSG_SVR_NOTLOG), 0);
                 }
-            } /*else if (!strcmp(aux1, "MBQ")) {
+            } else if (!strcmp(aux1, "MBQ")) {
                 // Cliente solicitou book
                 // Converte ativo para maiuscula
                 uppercase(aux2);
@@ -576,7 +580,7 @@ void sonps(int _fd, pid_t _gson) {
                 } else {
                     send(_fd, MSG_SVR_NOTLOG, strlen(MSG_SVR_NOTLOG), 0);
                 }
-            } */else if (!strcmp(aux1, "BQT")) {
+            } else if (!strcmp(aux1, "BQT")) {
                 // Cliente solicitou book
                 // Converte ativo para maiuscula
                 uppercase(aux2);
@@ -982,12 +986,12 @@ void grandsonps(int __fd) {
 
                         }
 
-                    } else if (bfline[0] == 'K' && bfline[strlen(bfline) - 1] == '5') {
+                    } else if (bfline[0] == 'B') {
                         // Analise para Book ( B: )
 
                         int getbook = 0;
 
-                        bfline[0] = 'B';
+                        //bfline[0] = 'B';
 
                         getsymbol(bfline, bfline_aux2);
 
@@ -1830,7 +1834,7 @@ void mounttrade(char *symbol, char *__t) {
 
 // SQT
 
-void sqt(int _fd, char *_symbol) {
+void sqt(int _fd, char *_symbol, int _fifo) {
     // Cliente solicitou ativo
 
     // Cria nome do arquivo de solicitacao
@@ -1861,7 +1865,7 @@ void sqt(int _fd, char *_symbol) {
         fclose(fsqt);
 
         // Envia snapshot
-        send(_fd, mntsnapshot(_symbol), strlen(mntsnapshot(_symbol)), 0);
+        //send(_fd, mntsnapshot(_symbol), strlen(mntsnapshot(_symbol)), 0);
 
     } else {
 
@@ -1870,6 +1874,14 @@ void sqt(int _fd, char *_symbol) {
         // Emite mensagem de erro
         perror("Error on add sqt file");
     }
+
+    bzero(f_name, 40);
+
+    // Cria comando
+    sprintf(f_name, "sqt %s\r\n", _symbol);
+
+    // Envia para o fifo
+    write(_fifo, f_name, strlen(f_name));
 
     // Libera da memoria a variavel do nome
     free(f_name);
@@ -1919,13 +1931,20 @@ void mbq(int _fd, char *_symbol, int _fifo) {
     bzero(f_name, 40);
 
     // Cria comando
+    sprintf(f_name, "mbq %s\r\n", _symbol);
+
+    // Envia para o fifo
+    write(_fifo, f_name, strlen(f_name));
+
+    // Libera da memoria a variavel do nome
+    free(f_name);
+
+    // Cria comando
     //sprintf(f_name, "D:%s\r\n", _symbol);
 
     // Envia para o fifo
     //write(_fifo, f_name, strlen(f_name));
 
-    // Libera da memoria a variavel do nome
-    free(f_name);
 }
 
 void bqt(int _fd, char *_symbol, int _fifo) {
@@ -1972,7 +1991,7 @@ void bqt(int _fd, char *_symbol, int _fifo) {
     bzero(f_name, 40);
 
     // Cria comando
-    sprintf(f_name, "D:%s\r\n", _symbol);
+    sprintf(f_name, "bqt %s\r\n", _symbol);
 
     // Envia para o fifo
     write(_fifo, f_name, strlen(f_name));
