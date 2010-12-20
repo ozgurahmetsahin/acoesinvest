@@ -229,6 +229,7 @@ begin
 end;
 
 procedure TFrmMainLine.FormClose(Sender: TObject; var Action: TCloseAction);
+var EndBroker:BOOL;
 begin
  try
    Self.Caption:='Aguarde... Finalizando sua aplicação.';
@@ -252,9 +253,13 @@ begin
 //   begin
 //    Application.ProcessMessages;
 //   end;
-   FrmMainTreeView.TerminateProcesso(ExtractFilePath(ParamStr(0)) + 'broker.exe');
-   FrmMainTreeView.SaveLog;
  finally
+   EndBroker:= FrmMainTreeView.TerminateProcesso(ExtractFilePath(ParamStr(0)) + 'broker.exe');
+   if(EndBroker)then
+   FrmMainTreeView.AddLogMsg('Finalizando broker...OK')
+   else
+   FrmMainTreeView.AddLogMsg('Finalizando broker...ERR (' +ExtractFilePath(ParamStr(0)) + 'broker.exe'+')');
+   FrmMainTreeView.SaveLog;
    Application.Terminate;
  end;
 end;
@@ -453,9 +458,11 @@ begin
 // if(FrmMainTreeView.DaileonFW.Connected) then
 // begin
    FrmWeb:=TFrmWebBrowser.Create(Application);
-   FrmWeb.SetSize(610,855);
+//   FrmWeb.SetSize(610,855);
+  FrmWeb.WindowState:=wsMaximized;
    FrmWeb.Show;
-   FrmWeb.WebBrowser1.Navigate('http://quotes2.enfoque.com.br/diferencial/flashchartHB/pt/grafico.aspx');
+   FrmWeb.WebBrowser1.Navigate('http://www.acoesinvest.com.br/open_chart.html');
+//   FrmWeb.WebBrowser1.Navigate('https://quotes2.enfoque.com.br/demo/diferencial/flash/grafique.aspx');
 // end
 // else
 // begin

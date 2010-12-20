@@ -66,7 +66,7 @@ type
     const DefaultRouterHost : String = 'broker.acoesinvest.com.br';
 
     // Versao do sistema
-    const VersionID:String = '1.3';
+    const VersionID:String = '1.6';
 
     procedure ShowMsgErr;
     procedure DelUnknowSymbol(Symbol : String);

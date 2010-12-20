@@ -3,7 +3,7 @@ object FrmMainLine: TFrmMainLine
   Top = 15
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'A'#231#245'es Invest Router 1.6.1'
+  Caption = 'A'#231#245'es Invest Router 1.6.3'
   ClientHeight = 96
   ClientWidth = 973
   Color = clPurple

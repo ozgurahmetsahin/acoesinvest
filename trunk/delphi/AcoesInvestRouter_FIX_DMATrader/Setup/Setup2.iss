@@ -5,9 +5,9 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{FAD40308-4A2B-435D-814D-66C5FA775634}
+AppId={{5779D855-C7F2-4BBB-8A6B-D721C84AC841}
 AppName=Ações Invest Router
-AppVerName=Ações Invest Router 1.6.1
+AppVerName=Ações Invest Router 1.6.3
 AppPublisher=Ações Invest
 AppPublisherURL=http://www.aifix.com.br
 AppSupportURL=http://www.aifix.com.br

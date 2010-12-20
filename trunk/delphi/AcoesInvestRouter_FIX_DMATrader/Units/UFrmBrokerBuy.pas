@@ -608,6 +608,7 @@ begin
       LabeledEdit1.Clear;
       LabeledEdit2.Clear;
       LabeledEdit3.Clear;
+      Timer1.Enabled:=False;
 end;
 
 procedure TFrmBrokerBuy.FormKeyDown(Sender: TObject; var Key: Word;
@@ -629,6 +630,8 @@ begin
     Label22.Visible:=False;
     Label23.Visible:=False;
   end;
+
+  Timer1.Enabled:=True;
 end;
 
 procedure TFrmBrokerBuy.GroupBox1MouseMove(Sender: TObject; Shift: TShiftState;

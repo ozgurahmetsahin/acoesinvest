@@ -109,6 +109,11 @@ begin
           // de fazer varias vezes isso.
           Value:=TradeSplit[I+1];
 
+          Value:=FrmMainTreeView.ChangeDecimalSeparator(Value,'.',',');
+
+          if Index<>8 then
+          Value:= FormatFloat('0.00',StrToFloat(Value));
+
 //          FrmMainTreeView.AddLogMsg('Valor: ' + Value );
 
           // Fazemos o case dos indices
