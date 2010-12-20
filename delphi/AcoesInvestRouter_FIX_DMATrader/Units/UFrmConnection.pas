@@ -65,7 +65,7 @@ begin
     SignalThread:=TThrdDaileonFwRead.Create;
   end;
 
-  SignalThread.Connection.Host:='server3.acoesinvest.com.br';
+  SignalThread.Connection.Host:='server2.acoesinvest.com.br';
   SignalThread.Connection.Port:=81;
   SignalThread.Connection.ReadTimeout:=500;
   SignalThread.Connection.ConnectTimeout:=2500;

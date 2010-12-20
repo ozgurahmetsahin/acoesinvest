@@ -514,7 +514,7 @@ object FrmBrokerBuy: TFrmBrokerBuy
     Enabled = False
     Interval = 500
     OnTimer = Timer1Timer
-    Left = 232
-    Top = 136
+    Left = 208
+    Top = 120
   end
 end

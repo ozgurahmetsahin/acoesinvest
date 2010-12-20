@@ -4,7 +4,7 @@ object FrmMainTreeView: TFrmMainTreeView
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = '  A'#231#245'es Invest Router 1.0'
-  ClientHeight = 620
+  ClientHeight = 507
   ClientWidth = 461
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -2569,12 +2569,13 @@ object FrmMainTreeView: TFrmMainTreeView
     Left = 0
     Top = 0
     Width = 461
-    Height = 620
+    Height = 507
     Align = alClient
     Lines.Strings = (
       'Log')
     ScrollBars = ssVertical
     TabOrder = 2
+    ExplicitHeight = 620
   end
   object DaileonFW: TIdTCPClient
     ConnectTimeout = 2000
@@ -2611,7 +2612,7 @@ object FrmMainTreeView: TFrmMainTreeView
     Top = 328
   end
   object RouterLibrary1: TRouterLibrary
-    Left = 136
+    Left = 168
     Top = 280
   end
 end

@@ -74,7 +74,7 @@ var
 
 implementation
 
-uses UThrdDaileonFwRead;
+uses UThrdDaileonFwRead, UFrmMainTreeView;
 
 
 {$R *.dfm}
@@ -205,6 +205,9 @@ var DataLine:String;
 begin
 // EnterCriticalSection(CritSection);
  try
+ Value:=FrmMainTreeView.ChangeDecimalSeparator(Value,'.',',');
+ Value:=FormatFloat('0.00',StrToFloat(Value));
+
  DataLine:=Line+':'+Value+':'+Qty+':'+Broker;
  if Direction = 'A' then
  begin
@@ -249,6 +252,8 @@ var LO,LN:Integer;
      DataLine:String;
 begin
  //  EnterCriticalSection(CritSection);
+   Value:=FrmMainTreeView.ChangeDecimalSeparator(Value,'.',',');
+    Value:=FormatFloat('0.00',StrToFloat(Value));
    DataLine:=NewLine+':'+Value+':'+Qty+':'+Broker;
    LN:=StrToInt(NewLine);
    LO:=StrToInt(OldLine);
@@ -454,6 +459,8 @@ begin
           if Line = '' then exit;
 
 //          Line:=RemoveChar(Line,'!');
+
+//          FBook.Memo1.Lines.Add(Line);
 
           SplitColumns(Line, Data, ':');
 
