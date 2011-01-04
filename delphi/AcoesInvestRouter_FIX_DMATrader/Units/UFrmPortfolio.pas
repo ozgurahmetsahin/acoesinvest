@@ -97,9 +97,9 @@ begin
 
     try
 
-     if Portfolio.GetValue(clLast,Portfolio.Cells[0,K]) <>'0' then
-     Qtde := StrToInt(Portfolio.GetValue(clLast,Portfolio.Cells[0,K]))
-     else
+//     if Portfolio.GetValue(clLast,Portfolio.Cells[0,K]) <>'0' then
+//     Qtde := StrToInt(Portfolio.GetValue(clLast,Portfolio.Cells[0,K]))
+//     else
      Qtde := StrToInt(Portfolio.GetValue(clPicture,Portfolio.Cells[0,K]));
 
      // Se quantidade estiver zerada, excluir da lista
