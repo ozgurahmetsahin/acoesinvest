@@ -37,6 +37,7 @@
         <linkerTool>
           <linkerLibItems>
             <linkerLibFileItem>../AInvestLib/dist/Debug/GNU-Linux-x86/libainvestlib.a</linkerLibFileItem>
+            <linkerLibLibItem>pq</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

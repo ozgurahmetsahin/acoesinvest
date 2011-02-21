@@ -15,8 +15,8 @@ NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
 CC=gcc
-CCC=g++
-CXX=g++
+CCC=
+CXX=
 FC=
 AS=as
 
@@ -50,7 +50,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../AInvestLib/dist/Debug/GNU-Linux-x86/libainvestlib.a
+LDLIBSOPTIONS=../AInvestLib/dist/Debug/GNU-Linux-x86/libainvestlib.a -lpq
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

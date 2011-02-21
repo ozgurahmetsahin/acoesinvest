@@ -20,11 +20,12 @@
 #include <ctype.h>
 #include <sys/wait.h>
 #include <fcntl.h>
+#include <postgresql/libpq-fe.h>
 
 /*Biblioteca Acoes Invest*/
 #include "ailib.h"
 
-#define SVR_PORT 81
+#define SVR_PORT 8185
 #define SVR_HOST "0"
 #define MAX_CONN_LISTEN 5
 #define MAX_BUF_RECV sizeof(char)*5000
@@ -60,7 +61,7 @@
 #define MSG_ERR_WCME "Error on welcome client."
 #define MSG_ERR_GRDSON "Error on create grandson."
 #define MSG_SVR_START "Server is online."
-#define MSG_SVR_WCME "Welcome to DDC Server v1.8.\r\nYou are connected\r\n"
+#define MSG_SVR_WCME "Welcome to DDC Server v1.9.\r\nYou are connected\r\n"
 #define MSG_SVR_NOTLOG "W:T:Sorry. You do not have permission for this command.\r\n"
 #define MSG_SVR_GRNDEXIT "W:T:Connection with market was closed.\r\n"
 #define MSG_SVR_BYE "W:T:bye bye.\r\n"
@@ -2004,9 +2005,10 @@ void bqt(int _fd, char *_symbol, int _fifo) {
 
 int checkuser(int _fd, char *_user, char *_pass) {
 
+
     char *_rcheck;
     _rcheck = malloc(MAX_BUF_RECV);
-
+/*
     // Verifica se foi passado os parametros
     if ((strlen(_user) > 0) && (strlen(_pass) > 0)) {
         sprintf(_rcheck, "LOGIN:%s:1\r\n", _user);
@@ -2020,7 +2022,48 @@ int checkuser(int _fd, char *_user, char *_pass) {
     free(_rcheck);
 
     return 1;
+*/
 
+/*
+    PGconn *conn = NULL;
+    conn = PQconnectdb("host=server2.acoesinvest.com.br dbname=intraDb");
+
+    if(PQstatus(conn) == CONNECTION_OK){
+        PGresult *result;
+
+        FILE *output_stream;
+
+        PQprintOpt print_options;
+
+        result = PQexec(conn,"SELECT * FROM clientes_login WHERE usuario = 'donda'");
+
+
+        if(!result){
+            sprintf(_rcheck, "LOGIN:%s:4\r\n", _user);
+        } else {
+            switch (PQresultStatus(result)){
+                case PGRES_EMPTY_QUERY:
+                    sprintf(_rcheck, "LOGIN:%s:0\r\n", _user);
+                    break;
+                case PGRES_TUPLES_OK:
+                    sprintf(_rcheck, "LOGIN:%s:1\r\n", _user);
+                    break;
+            }
+
+            PQclear(result);
+
+            if(conn != NULL)
+                PQfinish(conn);
+
+        }
+
+        return 1;
+    } else {
+        sprintf(_rcheck, "LOGIN:%s:0\r\n", _user);
+        PQfinish(conn);
+        return -1;
+    }
+*/
 
 
 }
