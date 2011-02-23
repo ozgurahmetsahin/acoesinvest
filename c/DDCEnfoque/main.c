@@ -226,6 +226,7 @@ int main(int argc, char** argv) {
         writeln(TERMINAL_LOG, FOOTER_LOG, "a+");
 
         /*Cria o processo filho que lera o FIFO com as entradas de comando*/
+/*
         pid_t fifo;
 
         fifo = fork();
@@ -246,6 +247,7 @@ int main(int argc, char** argv) {
             filepiper(s);
             //exit(0);
         }
+*/
 
         // Aqui é o processo pai ( fifo != 0 )
 
