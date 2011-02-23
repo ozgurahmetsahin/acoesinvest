@@ -115,4 +115,4 @@ extern "C" {
 }
 #endif
 */
-#endif	/* _AILIB_H */
+#endif
