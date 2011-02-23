@@ -25,7 +25,7 @@
 /*Biblioteca Acoes Invest*/
 #include "ailib.h"
 
-#define SVR_PORT 8185
+#define SVR_PORT 8189
 #define SVR_HOST "0"
 #define MAX_CONN_LISTEN 5
 #define MAX_BUF_RECV sizeof(char)*5000
@@ -95,11 +95,23 @@ void mbq_snapshoot(int __f, char *__s);
 void bqt_snapshoot(int __f, char *__s);
 void chart(int _fd, char *cmd);
 void readchart(int __fd);
+void setonline(int status);
 
 /****** Variaveis Globais Usadas por filhos e netos *****/
 
 // Diretorio temporario com informações do cliente
 char *dir;
+
+char *shadowcode;
+
+    // Flag de login
+    int login = 0;
+
+
+    // Flag de controle de loop
+    // para o filho. Valor inicial = 1
+    // para validar inicio.
+    int sonrun = 1;
 
 // Flag de controle de loop para
 // o servidor. Valor inicial = 1
@@ -325,6 +337,7 @@ int main() {
             // para que ele nao entre em loop
             svrrun = 0;
 
+
             // Cria neto para envio de buffer
             grandson = fork();
 
@@ -345,6 +358,7 @@ int main() {
 
                 // Executa funcao do filho
                 sonps(sockcli, grandson);
+                
             } else {
                 // Processo neto
 
@@ -355,16 +369,16 @@ int main() {
                if (grandchart > 0) {
                     // Executa funcao do neto
 */
-
                     grandsonps(sockcli);
-/*
 
+/*
 
                 } else {
                     readchart(sockcli);
                }
 
 */
+
 
 
             }
@@ -413,6 +427,10 @@ void sonexit(int _sig) {
             // finaliza filho
             if (grandson == son_pid && quit == 0 && son == getpid()) {
 
+                if(login==1){
+                    setonline(0);
+                }
+
                 printf("%d\n", (int) getpid());
 
                 // Envia mensagem de finalizacao
@@ -438,10 +456,6 @@ void sonexit(int _sig) {
 
 void sonps(int _fd, pid_t _gson) {
 
-    // Flag de controle de loop
-    // para o filho. Valor inicial = 1
-    // para validar inicio.
-    int sonrun = 1;
 
     // Obtem o proprio PID
     son = getpid();
@@ -458,8 +472,6 @@ void sonps(int _fd, pid_t _gson) {
     // Retorno padrao de comandos
     int func_return2;
 
-    // Flag de login
-    int login = 0;
 
     // Mensagem de boas vindas
     func_return2 = send(_fd, MSG_SVR_WCME, strlen(MSG_SVR_WCME), 0);
@@ -554,6 +566,9 @@ void sonps(int _fd, pid_t _gson) {
                 // Ativa flag de quit para nao recriar o neto na funcao signal
                 quit = 1;
 
+                if(login==1)
+                    setonline(0);
+
                 // Manda sinal de kill para processo neto
                 kill(_gson, SIGKILL);
 
@@ -570,7 +585,7 @@ void sonps(int _fd, pid_t _gson) {
                 } else {
                     send(_fd, MSG_SVR_NOTLOG, strlen(MSG_SVR_NOTLOG), 0);
                 }
-            } else if (!strcmp(aux1, "MBQ")) {
+            }/* else if (!strcmp(aux1, "MBQ")) {
                 // Cliente solicitou book
                 // Converte ativo para maiuscula
                 uppercase(aux2);
@@ -581,7 +596,7 @@ void sonps(int _fd, pid_t _gson) {
                 } else {
                     send(_fd, MSG_SVR_NOTLOG, strlen(MSG_SVR_NOTLOG), 0);
                 }
-            } else if (!strcmp(aux1, "BQT")) {
+            }*/ else if (!strcmp(aux1, "BQT")) {
                 // Cliente solicitou book
                 // Converte ativo para maiuscula
                 uppercase(aux2);
@@ -618,6 +633,9 @@ void sonps(int _fd, pid_t _gson) {
                 // retorna 0 e mantem usuario bloqueado
                 // ao uso.
                 login = checkuser(_fd, aux2, aux3);
+
+                                    
+             
             } else if (!strcmp(aux1, "VERSION")) {
 
                 // Cliente solicitou versao do sistema
@@ -631,8 +649,8 @@ void sonps(int _fd, pid_t _gson) {
             } else if (!strcmp(aux1, "SESSION")) {
                 // Cliente solicitou ativo
                 // Converte ativo para maiuscula
-                sprintf(dir,"%s%s/",SQT_TEMP,aux2);
-                send(_fd,dir,strlen(dir),0);
+                sprintf(dir, "%s%s/", SQT_TEMP, aux2);
+                send(_fd, dir, strlen(dir), 0);
             }
 
             // Limpa variaveis auxiliares
@@ -714,7 +732,7 @@ void grandsonps(int __fd) {
         // blast retorna NULL caso não consiga ler os
         // dados do arquivo last.buf
         if (_file_buffer == NULL || strlen(_file_buffer) < 5) {
-            // Altera flag de execucao de neto            
+            // Altera flag de execucao de neto
             blog("************** Start *****************", "a+");
             blog("Erro ao obter novo buffer", "a+");
             blog(_file_buffer, "a+");
@@ -932,7 +950,7 @@ void grandsonps(int __fd) {
                         aux_file = fopen(bfline_aux2, "r");
 
                         // Verifica se conseguiu abrir o arquivo
-                        if (aux_file != NULL) {                           
+                        if (aux_file != NULL) {
 
                             // Arquivo aberto, então existe e foi solicitado
 
@@ -948,7 +966,7 @@ void grandsonps(int __fd) {
 
 
 
-                    } else if (bfline[0] == 'M' && bfline[strlen(bfline) - 1] == '5') {
+                    } else if (bfline[0] == 'M') {
                         // Analise para Book ( M: )
 
                         getsymbol(bfline, bfline_aux2);
@@ -1031,19 +1049,19 @@ void grandsonps(int __fd) {
 
                             getbook = 1;
 
-/*
-                            bookc++;
+                            /*
+                                                        bookc++;
 
-                            if (bookc >= 70) {
-                                //bqt_snapshoot(__fd, bfline_aux1);
-                                bookc = 0;
-                            }
-*/
+                                                        if (bookc >= 70) {
+                                                            //bqt_snapshoot(__fd, bfline_aux1);
+                                                            bookc = 0;
+                                                        }
+                             */
                             //usleep(5);
 
 
                         }
-                        
+
 
                     }
 
@@ -1132,7 +1150,7 @@ void grandsonps(int __fd) {
 
 
             }
-            
+
         }
 
     }
@@ -1866,7 +1884,7 @@ void sqt(int _fd, char *_symbol, int _fifo) {
         fclose(fsqt);
 
         // Envia snapshot
-        //send(_fd, mntsnapshot(_symbol), strlen(mntsnapshot(_symbol)), 0);
+        send(_fd, mntsnapshot(_symbol), strlen(mntsnapshot(_symbol)), 0);
 
     } else {
 
@@ -1919,7 +1937,7 @@ void mbq(int _fd, char *_symbol, int _fifo) {
         fclose(fmnt);
 
         // Envia snapshot
-        mbq_snapshoot(_fd, _symbol);
+        //mbq_snapshoot(_fd, _symbol);
 
     } else {
 
@@ -2005,65 +2023,109 @@ void bqt(int _fd, char *_symbol, int _fifo) {
 
 int checkuser(int _fd, char *_user, char *_pass) {
 
-
+    int r = 0;
     char *_rcheck;
     _rcheck = malloc(MAX_BUF_RECV);
-/*
-    // Verifica se foi passado os parametros
-    if ((strlen(_user) > 0) && (strlen(_pass) > 0)) {
-        sprintf(_rcheck, "LOGIN:%s:1\r\n", _user);
-    } else {
-        // Nada foi passado, recusa login
-        sprintf(_rcheck, "LOGIN:%s:0\r\n", _user);
-    }
 
-    send(_fd, _rcheck, strlen(_rcheck), 0);
+    char *_sql;
+    _sql = malloc(MAX_BUF_RECV);
+    /*
+        // Verifica se foi passado os parametros
+        if ((strlen(_user) > 0) && (strlen(_pass) > 0)) {
+            sprintf(_rcheck, "LOGIN:%s:1\r\n", _user);
+        } else {
+            // Nada foi passado, recusa login
+            sprintf(_rcheck, "LOGIN:%s:0\r\n", _user);
+        }
 
-    free(_rcheck);
+        send(_fd, _rcheck, strlen(_rcheck), 0);
 
-    return 1;
-*/
+        free(_rcheck);
 
-/*
+        return 1;
+     */
+
     PGconn *conn = NULL;
-    conn = PQconnectdb("host=server2.acoesinvest.com.br dbname=intraDb");
+    conn = PQconnectdb("host=server2.acoesinvest.com.br dbname=intraDb user=postgres password=sabedoria");
 
-    if(PQstatus(conn) == CONNECTION_OK){
+    if (PQstatus(conn) == CONNECTION_OK) {
         PGresult *result;
 
-        FILE *output_stream;
+        sprintf(_sql, "SELECT codigo,usuario,senha,tipo,online FROM clientes_login WHERE usuario = '%s' AND senha = '%s'", _user, _pass);
 
-        PQprintOpt print_options;
+        writeln(TERMINAL_LOG, _sql, "a+");
 
-        result = PQexec(conn,"SELECT * FROM clientes_login WHERE usuario = 'donda'");
+        result = PQexec(conn, _sql);
 
 
-        if(!result){
-            sprintf(_rcheck, "LOGIN:%s:4\r\n", _user);
+        if (!result) {
+            sprintf(_rcheck, "LOGIN:%s:0:0\r\n", _user);
         } else {
-            switch (PQresultStatus(result)){
+            switch (PQresultStatus(result)) {
                 case PGRES_EMPTY_QUERY:
-                    sprintf(_rcheck, "LOGIN:%s:0\r\n", _user);
+                    sprintf(_rcheck, "LOGIN:%s:0:0\r\n", _user);
+                    r = 0;
                     break;
                 case PGRES_TUPLES_OK:
-                    sprintf(_rcheck, "LOGIN:%s:1\r\n", _user);
+                    if (PQntuples(result) == 1) {
+                        char *t = PQgetvalue(result, 0, 3);
+                        if (!strcmp(t, "A") || !strcmp(t, "D")) {
+
+                            char *on = PQgetvalue(result, 0, 4);
+
+                            if (!strcmp(on, "0")) {
+                                shadowcode = PQgetvalue(result, 0, 0);
+                                sprintf(_rcheck, "LOGIN:%s:1:%s\r\n", _user, shadowcode);
+                                r = 1;
+                                setonline(1);
+                            } else {
+                                sprintf(_rcheck, "LOGIN:%s:0:3\r\n", _user);
+                                r = 0;
+                            }
+
+
+                        } else {
+                            sprintf(_rcheck, "LOGIN:%s:0:2\r\n", _user);
+                            r = 0;
+                        }
+
+                    } else if (PQntuples(result) > 1) {
+                        sprintf(_rcheck, "LOGIN:%s:0:4\r\n", _user);
+                        r = 0;
+                    } else {
+                        sprintf(_rcheck, "LOGIN:%s:0:1\r\n", _user);
+                        r = 0;
+                    }
                     break;
             }
 
             PQclear(result);
 
-            if(conn != NULL)
+            if (conn != NULL)
                 PQfinish(conn);
 
         }
 
-        return 1;
+        send(_fd, _rcheck, strlen(_rcheck), 0);
+
+        free(_rcheck);
+
+        /*
+                if(r==0){
+                    quit=1;
+                    sonrun=0;
+                    kill(grandson,SIGKILL);
+                }
+         */
+
+        return r;
     } else {
         sprintf(_rcheck, "LOGIN:%s:0\r\n", _user);
+        send(_fd, _rcheck, strlen(_rcheck), 0);
+        free(_rcheck);
         PQfinish(conn);
-        return -1;
+        return 0;
     }
-*/
 
 
 }
@@ -2071,9 +2133,9 @@ int checkuser(int _fd, char *_user, char *_pass) {
 void version_app(int _fd, char *_app) {
 
     if (!strcmp(_app, "ROUTER")) {
-        send(_fd, "VERSION:ROUTER:1.3.1:www.acoesinvest.com.br/downloads/router/acoesrouter.exe\r\n", strlen("VERSION:ROUTER:1.3.1:www.acoesinvest.com.br/downloads/router/acoesrouter.exe\r\n"), 0);
+        send(_fd, "VERSION:ROUTER:1.6:wwwwww.acoesinvest.com.br/downloads/router/acoesrouter.exe\r\n", strlen("VERSION:ROUTER:1.6:wwwwww.acoesinvest.com.br/downloads/router/acoesrouter.exe\r\n"), 0);
     } else if (!strcmp(_app, "DIFROUTER")) {
-        send(_fd, "VERSION:DIFROUTER:1.8:www.acoesinvest.com.br/downloads/router/diferencial/dmatrader.exe\r\n", strlen("VERSION:DIFROUTER:1.8:www.acoesinvest.com.br/downloads/router/diferencial/dmatrader.exe\r\n"), 0);
+        send(_fd, "VERSION:DIFROUTER:1.9:www.acoesinvest.com.br/downloads/router/diferencial/download.php\r\n", strlen("VERSION:DIFROUTER:1.8:www.acoesinvest.com.br/downloads/router/diferencial/dmatrader.exe\r\n"), 0);
     }
 
 }
@@ -2486,6 +2548,8 @@ void chart(int _fd, char *cmd) {
 
     char mounth[3];
     char day[3];
+    char hour[3];
+    char min[3];
 
     char *pathfile;
     pathfile = malloc(MAX_BUF_SIZE);
@@ -2524,6 +2588,13 @@ void chart(int _fd, char *cmd) {
             day[0] = param5[6];
             day[1] = param5[7];
             day[2] = '\0';
+            hour[0] = param5[9];
+            hour[1] = param5[10];
+            hour[2] = '\0';
+            min[0] = param5[11];
+            min[1] = param5[12];
+            min[2] = '\0';
+
 
             int monthrange = atoi(mounth);
             int dayrange = atoi(day);
@@ -2540,7 +2611,7 @@ void chart(int _fd, char *cmd) {
 
                 FILE *fdatas = fopen(pathfile, "r");
 
-                sprintf(pathfile,"%s\r\n",pathfile);
+                sprintf(pathfile, "%s\r\n", pathfile);
                 send(_fd, pathfile, strlen(pathfile), 0);
 
                 if (fdatas != NULL) {
@@ -2601,16 +2672,16 @@ void chart(int _fd, char *cmd) {
                                 while (fgets(linedata, MAX_BUF_SIZE, fdatas) != NULL) {
                                     // Pega o header
                                     if (dr < 10) {
-                                        if (mr<10){
-                                            sprintf(chartheader, "C:%s:%s:%s:A:20100%d0%d:", chartid, param3, param7, mr, dr);
-                                        }else{
-                                            sprintf(chartheader, "C:%s:%s:%s:A:2010%d0%d:", chartid, param3, param7, mr, dr);
+                                        if (mr < 10) {
+                                            sprintf(chartheader, "C:%s:%s:%s:A:20110%d0%d:", chartid, param3, param7, mr, dr);
+                                        } else {
+                                            sprintf(chartheader, "C:%s:%s:%s:A:2011%d0%d:", chartid, param3, param7, mr, dr);
                                         }
                                     } else {
-                                        if(mr<10){
-                                            sprintf(chartheader, "C:%s:%s:%s:A:20100%d%d:", chartid, param3, param7, mr, dr);
-                                        }else{
-                                            sprintf(chartheader, "C:%s:%s:%s:A:2010%d%d:", chartid, param3, param7, mr, dr);
+                                        if (mr < 10) {
+                                            sprintf(chartheader, "C:%s:%s:%s:A:20110%d%d:", chartid, param3, param7, mr, dr);
+                                        } else {
+                                            sprintf(chartheader, "C:%s:%s:%s:A:2011%d%d:", chartid, param3, param7, mr, dr);
                                         }
                                     }
 
@@ -2622,6 +2693,7 @@ void chart(int _fd, char *cmd) {
 
                                     // limpa header
                                     bzero(chartheader, MAX_BUF_SIZE);
+                                    bzero(linedata, MAX_BUF_SIZE);
                                 }
 
                             } else {
@@ -2646,7 +2718,7 @@ void chart(int _fd, char *cmd) {
                 fcandle = fopen(pathfile, "r");
                 if (fcandle != NULL) {
                     fgets(linedata, MAX_BUF_SIZE, fcandle);
-                    sprintf(chartheader, "C:%s:%s:%s:A:2010%s:", chartid, param3, param7, dataatual);
+                    sprintf(chartheader, "C:%s:%s:%s:A:2011%s:", chartid, param3, param7, dataatual);
                     sscanf(linedata, "%[^':']:%s", charttime, linedata);
                     sprintf(chartheader, "%s%s00:%s\r\n", chartheader, charttime, linedata);
                     send(_fd, chartheader, strlen(chartheader), 0);
@@ -2814,4 +2886,45 @@ void readchart(int __fd) {
     free(chartdata);
 
 
+}
+
+void setonline(int status) {
+
+    PGconn *conn = NULL;
+    conn = PQconnectdb("host=server2.acoesinvest.com.br dbname=intraDb user=postgres password=sabedoria");
+
+    if (PQstatus(conn) == CONNECTION_OK) {
+        PGresult *result;
+
+        char *sql = malloc(MAX_BUF_SIZE);
+
+        sprintf(sql, "UPDATE clientes_login SET online=%d WHERE codigo=%d", status, atoi(shadowcode));
+
+        writeln(TERMINAL_LOG, sql, "a+");
+
+        result = PQexec(conn, sql);
+
+        /*
+                if(status==1)
+                    sprintf(sql,"INSERT INTO logins_log(log_cod, user_cod, log_type, log_time,"
+                        "user_ip,user_temp_dir) VALUES(default, %d, 'I', current_timestamp, '192.168.1.1', '%s')",
+                        atoi(shadowcode), dir);
+                else
+                    sprintf(sql,"INSERT INTO logins_log(log_cod, user_cod, log_type, log_time,"
+                        "user_ip,user_temp_dir) VALUES(default, %d, 'O', current_timestamp, '192.168.1.1', '%s')",
+                        atoi(shadowcode), dir);
+
+                writeln(TERMINAL_LOG,sql,"a+");
+
+                result = PQexec(conn,sql);
+         */
+
+        PQclear(result);
+
+        PQfinish(conn);
+    } else {
+        if (conn != NULL) {
+            PQfinish(conn);
+        }
+    }
 }
