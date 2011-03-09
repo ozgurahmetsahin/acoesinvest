@@ -33,15 +33,17 @@
 #define USER_CEDRO "difainvest01\r\n"
 #define PASS_CEDRO "5587\r\n"
 
-#define SVR_CRYSTAL_1 "crystal509.cedrofinances.com.br"
-#define SVR_CRYSTAL_2 "crystal507.cedrofinances.com.br"
+#define SVR_CRYSTAL_1 "187.84.226.2"
+//#define SVR_CRYSTAL_2 "crystaldiferencial3.cedrofinances.com.br"
+/*
 #define SVR_CRYSTAL_3 "crystal505.cedrofinances.com.br"
 #define SVR_CRYSTAL_4 "crystal515.cedrofinances.com.br"
 
 #define SVR_CRYSTAL_5 "crystal201.cedrofinances.com.br"
 #define SVR_CRYSTAL_6 "crystal501.cedrofinances.com.br"
+*/
 
-#define MAX_CRYSTAL 6
+#define MAX_CRYSTAL 1
 #define TIME_OUT 35
 
 #define MSG_ERR_CONN "Error on connect to server."
@@ -109,9 +111,12 @@ int main(int argc, char** argv) {
             case 1: writeln(TERMINAL_LOG, SVR_CRYSTAL_1, "a+");
                 s = connecttoserver(SVR_CRYSTAL_1, 81);
                 break;
+/*
             case 2: writeln(TERMINAL_LOG, SVR_CRYSTAL_2, "a+");
                 s = connecttoserver(SVR_CRYSTAL_2, 81);
                 break;
+*/
+/*
             case 3: writeln(TERMINAL_LOG, SVR_CRYSTAL_3, "a+");
                 s = connecttoserver(SVR_CRYSTAL_3, 81);
                 break;
@@ -123,6 +128,7 @@ int main(int argc, char** argv) {
                 break;
             case 6: writeln(TERMINAL_LOG, SVR_CRYSTAL_6, "a+");
                 s = connecttoserver(SVR_CRYSTAL_6, 81);
+*/
                 break;
 
         }
@@ -141,8 +147,11 @@ int main(int argc, char** argv) {
 
                 case 1: writeln(TERMINAL_LOG, SVR_CRYSTAL_1, "a+");
                     break;
+/*
                 case 2: writeln(TERMINAL_LOG, SVR_CRYSTAL_2, "a+");
                     break;
+*/
+/*
                 case 3: writeln(TERMINAL_LOG, SVR_CRYSTAL_3, "a+");
                     break;
                 case 4: writeln(TERMINAL_LOG, SVR_CRYSTAL_4, "a+");
@@ -150,6 +159,7 @@ int main(int argc, char** argv) {
                 case 5: writeln(TERMINAL_LOG, SVR_CRYSTAL_5, "a+");
                     break;
                 case 6: writeln(TERMINAL_LOG, SVR_CRYSTAL_6, "a+");
+*/
                     break;
 
             }
@@ -332,8 +342,11 @@ int main(int argc, char** argv) {
 
             case 1: writeln(TERMINAL_LOG, SVR_CRYSTAL_1, "a+");
                 break;
+/*
             case 2: writeln(TERMINAL_LOG, SVR_CRYSTAL_2, "a+");
                 break;
+*/
+/*
             case 3: writeln(TERMINAL_LOG, SVR_CRYSTAL_3, "a+");
                 break;
             case 4: writeln(TERMINAL_LOG, SVR_CRYSTAL_4, "a+");
@@ -342,6 +355,7 @@ int main(int argc, char** argv) {
                 break;
             case 6: writeln(TERMINAL_LOG, SVR_CRYSTAL_6, "a+");
                 break;
+*/
 
 
         }
