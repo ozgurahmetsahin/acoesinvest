@@ -1,0 +1,108 @@
+Starting server listener.
+Server Listener Started.
+Clearing all connections.
+Server Listerner started sucefully.
+Starting connect market signal.
+Thread Market Signal Started,
+Connecting to crystaldiferencial1.com.br
+Connect Market Signal started sucefully.
+Starting Sender Data.
+Sender Data started.
+Waiting for all.
+Connected.
+Prepared to read datas.
+UPDATE clientes_login SET online=0
+Waiting for new clients...
+Market signal send You are connected
+Starting server listener.
+Server Listener Started.
+Clearing all connections.
+Server Listerner started sucefully.
+Starting connect market signal.
+Thread Market Signal Started,
+Connecting to crystaldiferencial1.com.br
+Connect Market Signal started sucefully.
+Starting Sender Data.
+Sender Data started.
+Waiting for all.
+Connected.
+Prepared to read datas.
+Market signal send You are connected
+UPDATE clientes_login SET online=0
+Waiting for new clients...
+New client has been accept sucefully.
+Waiting for new clients...
+sqt PETR4
+
+A client connection has been closed.
+New client has been accept sucefully.
+Waiting for new clients...
+UPDATE clientes_login SET online=1 WHERE codigo=3602
+sqt VALE5
+
+bqt PETR4
+
+bqt VALE5
+
+UPDATE clientes_login SET online=0 WHERE codigo=3602
+A client connection has been closed.
+New client has been accept sucefully.
+Waiting for new clients...
+UPDATE clientes_login SET online=1 WHERE codigo=3602
+bqt PETR4
+
+UPDATE clientes_login SET online=0 WHERE codigo=3602
+A client connection has been closed.
+New client has been accept sucefully.
+Waiting for new clients...
+A client connection has been closed.
+Starting server listener.
+Server Listener Started.
+Error on bind socket.
+Server Listerner started sucefully.
+Starting connect market signal.
+Thread Market Signal Started,
+Connecting to crystaldiferencial1.com.br
+Connect Market Signal started sucefully.
+Starting Sender Data.
+Sender Data started.
+Waiting for all.
+Connected.
+Prepared to read datas.
+Market signal send You are connected
+Starting server listener.
+Server Listener Started.
+Clearing all connections.
+Server Listerner started sucefully.
+Starting connect market signal.
+Thread Market Signal Started,
+Connecting to crystaldiferencial1.com.br
+Connect Market Signal started sucefully.
+Starting Sender Data.
+Sender Data started.
+Waiting for all.
+UPDATE clientes_login SET online=0
+Waiting for new clients...
+Connected.
+Prepared to read datas.
+New client has been accept sucefully.
+Waiting for new clients...
+Market signal send You are connected
+New client has been accept sucefully.
+Waiting for new clients...
+UPDATE clientes_login SET online=1 WHERE codigo=3602
+UPDATE clientes_login SET online=1 WHERE codigo=3643
+bqt VALE5
+
+UPDATE clientes_login SET online=0 WHERE codigo=3643
+A client connection has been closed.
+New client has been accept sucefully.
+Waiting for new clients...
+bqt VALE5
+
+UPDATE clientes_login SET online=0 WHERE codigo=3602
+A client connection has been closed.
+New client has been accept sucefully.
+Waiting for new clients...
+A client connection has been closed.
+A client connection has been closed.
