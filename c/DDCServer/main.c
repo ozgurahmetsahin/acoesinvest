@@ -25,7 +25,7 @@
 /*Biblioteca Acoes Invest*/
 #include "ailib.h"
 
-#define SVR_PORT 8189
+#define SVR_PORT 8190
 #define SVR_HOST "0"
 #define MAX_CONN_LISTEN 5
 #define MAX_BUF_RECV sizeof(char)*5000
@@ -96,6 +96,7 @@ void bqt_snapshoot(int __f, char *__s);
 void chart(int _fd, char *cmd);
 void readchart(int __fd);
 void setonline(int status);
+void changepass(int _fd, char *shadowcode, char *newpass);
 
 /****** Variaveis Globais Usadas por filhos e netos *****/
 
@@ -336,7 +337,6 @@ int main() {
             // A flag de controle de servidor é zerada
             // para que ele nao entre em loop
             svrrun = 0;
-
 
             // Cria neto para envio de buffer
             grandson = fork();
@@ -632,9 +632,7 @@ void sonps(int _fd, pid_t _gson) {
                 // um login valido retorna 1, caso contrario
                 // retorna 0 e mantem usuario bloqueado
                 // ao uso.
-                login = checkuser(_fd, aux2, aux3);
-
-                                    
+                login = checkuser(_fd, aux2, aux3);                                    
              
             } else if (!strcmp(aux1, "VERSION")) {
 
@@ -2046,7 +2044,7 @@ int checkuser(int _fd, char *_user, char *_pass) {
      */
 
     PGconn *conn = NULL;
-    conn = PQconnectdb("host=server2.acoesinvest.com.br dbname=intraDb user=postgres password=sabedoria");
+    conn = PQconnectdb("host=187.84.226.2 dbname=intraDb user=postgres password=sabedoria");
 
     if (PQstatus(conn) == CONNECTION_OK) {
         PGresult *result;
@@ -2899,6 +2897,46 @@ void setonline(int status) {
         char *sql = malloc(MAX_BUF_SIZE);
 
         sprintf(sql, "UPDATE clientes_login SET online=%d WHERE codigo=%d", status, atoi(shadowcode));
+
+        writeln(TERMINAL_LOG, sql, "a+");
+
+        result = PQexec(conn, sql);
+
+        /*
+                if(status==1)
+                    sprintf(sql,"INSERT INTO logins_log(log_cod, user_cod, log_type, log_time,"
+                        "user_ip,user_temp_dir) VALUES(default, %d, 'I', current_timestamp, '192.168.1.1', '%s')",
+                        atoi(shadowcode), dir);
+                else
+                    sprintf(sql,"INSERT INTO logins_log(log_cod, user_cod, log_type, log_time,"
+                        "user_ip,user_temp_dir) VALUES(default, %d, 'O', current_timestamp, '192.168.1.1', '%s')",
+                        atoi(shadowcode), dir);
+
+                writeln(TERMINAL_LOG,sql,"a+");
+
+                result = PQexec(conn,sql);
+         */
+
+        PQclear(result);
+
+        PQfinish(conn);
+    } else {
+        if (conn != NULL) {
+            PQfinish(conn);
+        }
+    }
+}
+
+void changepass(int _fd, char *shadowcode, char *newpass){
+    PGconn *conn = NULL;
+    conn = PQconnectdb("host=server2.acoesinvest.com.br dbname=intraDb user=postgres password=sabedoria");
+
+    if (PQstatus(conn) == CONNECTION_OK) {
+        PGresult *result;
+
+        char *sql = malloc(MAX_BUF_SIZE);
+
+        sprintf(sql, "UPDATE clientes_login SET senha='%s' WHERE codigo=%d", newpass, atoi(shadowcode));
 
         writeln(TERMINAL_LOG, sql, "a+");
 
