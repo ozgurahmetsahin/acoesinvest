@@ -106,3 +106,16 @@ New client has been accept sucefully.
 Waiting for new clients...
 A client connection has been closed.
 A client connection has been closed.
+Starting server listener.
+Server Listener Started.
+Error on bind socket.
+Server Listerner started sucefully.
+Starting connect market signal.
+Thread Market Signal Started,
+Connecting to crystaldiferencial1.com.br
+Connect Market Signal started sucefully.
+Starting Sender Data.
+Sender Data started.
+Waiting for all.
+Connected.
+Prepared to read datas.

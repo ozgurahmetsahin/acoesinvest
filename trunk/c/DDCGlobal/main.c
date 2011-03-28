@@ -17,7 +17,8 @@
 #include <postgresql/libpq-fe.h>
 #include "ailib.h"
 
-#define USERNAME "difainvest01\r\n"
+//#define USERNAME "difainvest01\r\n"
+#define USERNAME "L:71cb0980-ea37-44f0-9615-8919d2eefcfa\n"
 #define PASSWORD "5587\r\n"
 
 #define CONN_TIMEOUT 40
@@ -52,6 +53,7 @@ int connectedClients[1000];
 /* Variavel de troca */
 pthread_mutex_t mutexData;
 char *exchangeData;
+pthread_mutex_t mutexConnections;
 
 /*
  * 
@@ -122,8 +124,8 @@ int main(int argc, char** argv) {
 }
 
 void setlog(char *msg) {
-    //printf("Log:%s\r\n", msg);
-    writeln("ddcglobal.log",msg,"a+");
+    printf("Log:%s\r\n", msg);
+    //writeln("ddcglobal.log",msg,"a+");
 }
 
 void *connectMarketSignal() {
@@ -150,9 +152,9 @@ void *connectMarketSignal() {
 
     while (1) {
 
-        setlog("Connecting to crystaldiferencial1.com.br");
+        setlog("Connecting to TraderData server.");
 
-        sockMarketSignal = connecttoserver("crystaldiferencial1.cedrofinances.com.br", 81);
+        sockMarketSignal = connecttoserver("201.49.223.92", 805);
 
         if (sockMarketSignal < 0) {
             setlog("Connection Error");
@@ -176,7 +178,9 @@ void *connectMarketSignal() {
                 break;
             }
 
+       
             if (islogin(buffer) == 1) {
+                setlog("Sending GUID.");
                 send(sockMarketSignal, USERNAME, strlen(USERNAME), 0);
             }
             if (islogin(buffer) == 2) {
@@ -274,7 +278,7 @@ void *serverListener() {
 
     // Cria estrutura de endereço para o socket do servidor criado
     svr_addr.sin_family = PF_INET;
-    svr_addr.sin_port = htons(81);
+    svr_addr.sin_port = htons(8189);
     svr_addr.sin_addr.s_addr = inet_addr("0");
 
     // Realiza bind para a estrutura criada e o socket
@@ -299,6 +303,13 @@ void *serverListener() {
 
     setlog("Clearing all connections.");
     clearConnections();
+
+    int mutexRConn = pthread_mutex_init(&mutexConnections,NULL);
+
+    if(mutexRConn<0){
+        setlog("Error on init mutex connection.");
+        pthread_exit((void *)-1);
+    }
 
     while (1) {
         cli_addr_len = sizeof (cli_addr);
@@ -433,7 +444,17 @@ void *clientListener(void *fd) {
             } else {
 */
                 char *cmd_sqt = malloc(40);
-                sprintf(cmd_sqt, "sqt %s\r\n", aux2);
+                sprintf(cmd_sqt, "A:T:%s:false\r\n", aux2);
+                setlog(cmd_sqt);
+                send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
+                sprintf(cmd_sqt, "A:T:%s:true\r\n", aux2);
+                setlog(cmd_sqt);
+                send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
+
+                sprintf(cmd_sqt, "A:N:%s:false\r\n", aux2);
+                setlog(cmd_sqt);
+                send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
+                sprintf(cmd_sqt, "A:N:%s:true\r\n", aux2);
                 setlog(cmd_sqt);
                 send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
                 free(cmd_sqt);
@@ -446,7 +467,10 @@ void *clientListener(void *fd) {
                 send(_fd, NOT_AUTH, strlen(NOT_AUTH), 0);
             } else {
                 char *cmd_sqt = malloc(40);
-                sprintf(cmd_sqt, "bqt %s\r\n", aux2);
+                sprintf(cmd_sqt, "A:D:%s:false\r\n", aux2);
+                setlog(cmd_sqt);
+                send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
+                sprintf(cmd_sqt, "A:D:%s:true\r\n", aux2);
                 setlog(cmd_sqt);
                 send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
                 free(cmd_sqt);
@@ -463,6 +487,19 @@ void *clientListener(void *fd) {
                 sprintf(cmd_sqt, "mbq %s\r\n", aux2);
                 setlog(cmd_sqt);
                 send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
+                free(cmd_sqt);
+            }
+        } else if (!strcmp(aux1, "CHANGEPASS")) {
+            // Cliente solicitou ativo
+            // Converte ativo para maiuscula
+            //uppercase(aux2);
+            if (login <= 0) {
+                send(_fd, NOT_AUTH, strlen(NOT_AUTH), 0);
+            } else {
+                send(_fd, "CHANGEPASS:1\r\n", strlen("CHANGEPASS:1\r\n"), 0);
+                char *cmd_sqt = malloc(40);
+                sprintf(cmd_sqt,"CHANGEPASS:%s:%s",aux2,aux3);
+                setlog(cmd_sqt);
                 free(cmd_sqt);
             }
         } else if (!strcmp(aux1, "LOGIN")) {
@@ -486,11 +523,11 @@ void *clientListener(void *fd) {
 
     }
 
+    close(_fd);
+
     if(removeConnection(_fd)<0){
         setlog("Cant remove a connection.");
     }
-
-    close(_fd);
 
     setlog("A client connection has been closed.");
 
@@ -501,21 +538,25 @@ void *clientListener(void *fd) {
 void *senderData() {
 
     int c = 0;
-
+    int r = 0;
     setlog("Sender Data started.");
 
     while (1) {
-
-        if (strlen(exchangeData) > 0) {
-            pthread_mutex_lock(&mutexData);
-            if (strlen(exchangeData) > 0)
-                for (c = 0; c <= 300; c++)
-                    if (connectedClients[c] != 0)
-                        send(connectedClients[c], exchangeData, strlen(exchangeData), 0);                  
-
-            memset(exchangeData, (int) '\0', 1024);
-            pthread_mutex_unlock(&mutexData);
+        usleep(100);
+        pthread_mutex_lock(&mutexData);
+        if(strlen(exchangeData)>0){
+            for(c=0;c<=999;c++){
+                if(connectedClients[c]!=0){
+                    r = send(connectedClients[c],exchangeData,strlen(exchangeData),MSG_DONTWAIT);
+                    if(r < 0){
+                        setlog("Error on sending data.");
+                    }
+                }
+            }
+            memset((char *)exchangeData,0,1024);
         }
+        pthread_mutex_unlock(&mutexData);
+
     }
 
     setlog("Sender Data finished.");
@@ -683,8 +724,8 @@ int islogin(char *_m) {
 
     int j;
 
+/*
     for (j = 0; j <= strlen(_m); j++) {
-
         if (_m[j] == 'U') {
 
             if (_m[j + 7] == 'e') {
@@ -692,8 +733,7 @@ int islogin(char *_m) {
                 return 1;
 
             }
-
-        }
+        
 
         if (_m[j] == 'P') {
 
@@ -726,8 +766,14 @@ int islogin(char *_m) {
         }
 
     }
+*/
 
-    return -1;
+    j = -1;
+
+    if(_m[0]=='V' && _m[1]==':')
+        j = 1;
+
+    return j;
 
 }
 
@@ -767,6 +813,7 @@ int addNewConnection(int fd){
 
     int c;
     int r=-1;
+    pthread_mutex_lock(&mutexConnections);
     for(c=0;c<=999;c++){
         if(connectedClients[c]==0){
             r=c;
@@ -774,13 +821,14 @@ int addNewConnection(int fd){
             break;
         }
     }
-
+    pthread_mutex_unlock(&mutexConnections);
     return r;
 }
 
 int removeConnection(int fd){
     int c;
     int r=-1;
+    pthread_mutex_lock(&mutexConnections);
     for(c=0;c<=999;c++){
         if(connectedClients[c]==fd){
             r=c;
@@ -788,6 +836,6 @@ int removeConnection(int fd){
             break;
         }
     }
-
+    pthread_mutex_unlock(&mutexConnections);
     return r;
 }
