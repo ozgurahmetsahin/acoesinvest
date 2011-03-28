@@ -33,6 +33,24 @@
 #define NOT_AUTH "You are not authorized for this command. Try login first.\r\n"
 #define ALREADY_CONN "You already made logon.\r\n"
 
+struct t_ddclist {
+    int index;
+    char *value;
+    struct t_ddclist *next;
+};
+
+typedef struct t_ddclist ddclist;
+
+
+ddclist *createDDCList();
+int addDDCList(ddclist *list, char *value);
+ddclist *insertDDCList(ddclist *list, int index, char *value);
+ddclist *deleteDDCList(ddclist *list, int index);
+ddclist *getDDCList(ddclist *list, int index);
+void displayDDCList(ddclist *list);
+void _splitcolumns(char *data, unsigned int separator, ddclist *list);
+void destroyDDCList(ddclist *list);
+
 void *connectMarketSignal();
 void *serverListener();
 void *clientListener(void *fd);
@@ -48,7 +66,7 @@ int removeConnection(int fd);
 
 /* Variaveis Globais */
 int sockMarketSignal = -1; // socket do sinal
-int connectedClients[1000];
+ddclist *connectedClients[1000];
 
 /* Variavel de troca */
 pthread_mutex_t mutexData;
@@ -547,7 +565,8 @@ void *senderData() {
         if(strlen(exchangeData)>0){
             for(c=0;c<=999;c++){
                 if(connectedClients[c]!=0){
-                    r = send(connectedClients[c],exchangeData,strlen(exchangeData),MSG_DONTWAIT);
+                    //r = send(connectedClients[c],exchangeData,strlen(exchangeData),MSG_DONTWAIT);
+                    addDDCList(connectedClients[c],exchangeData);
                     if(r < 0){
                         setlog("Error on sending data.");
                     }
@@ -781,7 +800,7 @@ void clearConnections(){
     int i;
     for(i=0;i<=999;i++){
         if(connectedClients[i]!=0){
-            close(connectedClients[i]);
+            //close(connectedClients[i]);
         }
         connectedClients[i]=0;
     }
@@ -817,7 +836,7 @@ int addNewConnection(int fd){
     for(c=0;c<=999;c++){
         if(connectedClients[c]==0){
             r=c;
-            connectedClients[c]=fd;
+            connectedClients[c]=createDDCList();
             break;
         }
     }
@@ -829,6 +848,7 @@ int removeConnection(int fd){
     int c;
     int r=-1;
     pthread_mutex_lock(&mutexConnections);
+/*
     for(c=0;c<=999;c++){
         if(connectedClients[c]==fd){
             r=c;
@@ -836,6 +856,274 @@ int removeConnection(int fd){
             break;
         }
     }
+*/
     pthread_mutex_unlock(&mutexConnections);
     return r;
+}
+
+
+
+ddclist *createDDCList() {
+
+    ddclist *newList = NULL;
+
+    newList = malloc(sizeof (ddclist));
+
+    if (!newList) {
+        return NULL;
+    }
+
+    newList->index = -1;
+    newList->value = malloc(sizeof (char) *256);
+    newList->next = NULL;
+    if (!newList->value) {
+        return NULL;
+    }
+
+    return newList;
+}
+
+int addDDCList(ddclist *list, char *value) {
+
+    ddclist *addList = NULL;
+
+    addList = createDDCList();
+
+    if (!addList) {
+        return -1;
+    }
+
+    if (list->index == -1) {
+        list->index = 0;
+        strcpy(list->value, value);
+        return 1;
+    }
+
+    ddclist *i, *temp;
+
+    i = list;
+
+    while (i) {
+        if (!i->next) {
+            temp = i;
+        }
+        i = i->next;
+    }
+    addList->index = (temp->index + 1);
+    strcpy(addList->value, value);
+    temp->next = addList;
+    return addList->index;
+}
+
+void displayDDCList(ddclist *list) {
+
+    ddclist *l = list;
+
+    while (l) {
+        printf("Index:%d\nValue:%s\n\n", l->index, l->value);
+        l = l->next;
+    }
+}
+
+// Separa os valores baseado no caracter de separa��o(separator) e popula
+// a lista com os dados separados.
+// Utilize a conversao de caracter para obter o separador desejado.
+// Ex: (unsigned int)':' Coloca como separador o caracter de dois pontos( : )
+
+void _splitcolumns(char *data, unsigned int separator, ddclist *list) {
+
+    // Variavel temporaria que guardar� os dados entre a colunas
+    // 256 = 255 caracteres + 1 caracter de finalizacao de string '\0'
+    char tempdata[256];
+
+    // Posicao de inscrita de caracter na tempdata
+    int position = 0;
+
+    // Contador de varredura dos caracteres
+    int c = 0;
+
+    // Contador das colunas encontradas
+    int count = 0;
+
+    // Ultima Estrutura usada
+    //struct TDDCData *end;
+
+    // Varre os caracteres at� o fim de todos
+    for (c = 0; c < strlen(data); c++) {
+
+        // Verifica se � o separador
+        if ((unsigned int) data[c] == separator) {
+
+            // Finaliza a string de temp data
+            tempdata[position] = '\0';
+
+            // � o separador, coloca os dados na estrutura
+            // Primeiro, se for a primeira coluna encontrada, coloca
+            // os dados na estrutura ddcdata. Caso contrario, cria uma
+            // nova estrutura e coloca na posicao next.
+            if (count == 0) {
+                //list->index = count;
+                //strcpy(list->value, tempdata);
+                //list->next = NULL;
+                // Como � a primeira, a ultima usada � ela mesma
+                //end = list;
+                addDDCList(list, tempdata);
+            } else {
+                // Como nao � o primeiro, cria uma
+                // nova estrutura e popula os dados
+                // o malloc aloca a nova estrutura
+                // na memoria.
+                //struct TDDCData *last;
+                //last = malloc(sizeof (struct TDDCData));
+                // Popula os dados
+                //last->index = count;
+                //strcpy(last->value, tempdata);
+                //last->next = NULL;
+
+                // Coloca na ultima usada, essa proxima estrutura
+                //end->next = last;
+
+                // Atualiza a ultima usada para esta nova criada
+                //end = last;
+                addDDCList(list, tempdata);
+            }
+
+            // Muda contador da coluna
+            count++;
+
+            // Zera tempdata
+            bzero(tempdata, 256);
+
+            // Reinicializa posicao de caracter para tempdata
+            position = 0;
+
+        } else {
+            // Não é o separador, adiciona caracter ao tempdata, soh se for caracter valido
+            if ((unsigned int) data[c] != 10 && (unsigned int) data[c] != 13) {
+                tempdata[position] = data[c];
+                position++;
+            }
+        }
+
+    } // fim do for
+
+    // Acabou o for, ent�o tempos que colocar todos os dados restantes como ultima coluna.
+    //struct TDDCData *last;
+    //last = malloc(sizeof (struct TDDCData));
+    // Popula os dados
+    //last->index = count;
+    //strcpy(last->value, tempdata);
+    //last->next = NULL;
+
+    // Coloca na ultima usada, essa proxima estrutura
+    //end->next = last;
+
+    // Atualiza a ultima usada para esta nova criada
+    //end = NULL;
+
+    addDDCList(list, tempdata);
+
+}
+
+ddclist *insertDDCList(ddclist *list, int index, char *value) {
+
+    ddclist *i, *temp,*t;
+    int c = 0;
+    ddclist *insertList = createDDCList();
+    insertList->index = index;
+    strcpy(insertList->value, value);
+
+    i = list;
+    t = list;
+    temp = NULL;
+
+    while (i) {
+        if (i->index == index) {
+            if (temp == NULL) {
+                insertList->next = i;
+                t = insertList;
+                while(t){
+                    t->index=c;
+                    c++;
+                    t=t->next;
+                }
+                return insertList;
+            } else {
+                temp->next = insertList;
+                insertList->next = i;
+                while(t){
+                    t->index=c;
+                    c++;
+                    t=t->next;
+                }
+            }
+            return list;
+        }
+        temp = i;
+        i=i->next;
+    }
+}
+
+ddclist *deleteDDCList(ddclist *list, int index){
+
+    ddclist *i, *temp,*t;
+    int c = 0;
+    i = list;
+    t = list;
+    temp = NULL;
+
+    while (i) {
+        if (i->index == index) {
+            if (temp == NULL) {
+                temp = temp->next;
+                free(i);
+                while(t){
+                    t->index=c;
+                    c++;
+                    t=t->next;
+                }
+                return temp;
+            } else {
+                temp->next = i->next;
+                free(i);
+                while(t){
+                    t->index=c;
+                    c++;
+                    t=t->next;
+                }
+            }
+            return list;
+        }
+        temp = i;
+        i=i->next;
+    }
+
+}
+
+void destroyDDCList(ddclist *list){
+
+    ddclist *temp;
+
+    while(list){
+        temp=list;
+        free(temp);
+        list=list->next;
+    }
+
+}
+
+ddclist *getDDCList(ddclist *list, int index){
+
+    if(index==0 && list->index==-1){
+        return NULL;
+    }
+
+    ddclist *t=list;
+    while(t){
+        if(t->index==index){
+            return t;
+        }
+        t=t->next;
+    }
+
 }
