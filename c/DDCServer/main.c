@@ -25,7 +25,7 @@
 /*Biblioteca Acoes Invest*/
 #include "ailib.h"
 
-#define SVR_PORT 8190
+#define SVR_PORT 8189
 #define SVR_HOST "0"
 #define MAX_CONN_LISTEN 5
 #define MAX_BUF_RECV sizeof(char)*5000
@@ -427,9 +427,9 @@ void sonexit(int _sig) {
             // finaliza filho
             if (grandson == son_pid && quit == 0 && son == getpid()) {
 
-                if(login==1){
-                    setonline(0);
-                }
+                //if(login==1){
+                  //  setonline(0);
+               // }
 
                 printf("%d\n", (int) getpid());
 
@@ -459,6 +459,8 @@ void sonps(int _fd, pid_t _gson) {
 
     // Obtem o proprio PID
     son = getpid();
+
+    shadowcode = malloc(sizeof(char)*10);
 
     // Buffer de recebimento de dados
     char *bf_son_recv;
@@ -566,8 +568,11 @@ void sonps(int _fd, pid_t _gson) {
                 // Ativa flag de quit para nao recriar o neto na funcao signal
                 quit = 1;
 
-                if(login==1)
+                if(login==1){
                     setonline(0);
+                    writeln(TERMINAL_LOG,"Connection closed sucefully.","a+");
+                }
+                    
 
                 // Manda sinal de kill para processo neto
                 kill(_gson, SIGKILL);
@@ -632,8 +637,8 @@ void sonps(int _fd, pid_t _gson) {
                 // um login valido retorna 1, caso contrario
                 // retorna 0 e mantem usuario bloqueado
                 // ao uso.
-                login = checkuser(_fd, aux2, aux3);                                    
-             
+                login = checkuser(_fd, aux2, aux3);
+
             } else if (!strcmp(aux1, "VERSION")) {
 
                 // Cliente solicitou versao do sistema
@@ -649,6 +654,8 @@ void sonps(int _fd, pid_t _gson) {
                 // Converte ativo para maiuscula
                 sprintf(dir, "%s%s/", SQT_TEMP, aux2);
                 send(_fd, dir, strlen(dir), 0);
+            } else if (!strcmp(aux1, "CHANGEPASS")) {
+                changepass(_fd, shadowcode, aux3);
             }
 
             // Limpa variaveis auxiliares
@@ -663,6 +670,11 @@ void sonps(int _fd, pid_t _gson) {
             // Altera flag de loop de escuta
             sonrun = 0;
 
+            if (login == 1) {
+                setonline(0);
+                writeln(TERMINAL_LOG, "Connection close gracefully.", "a+");
+            }
+
             // Manda sinal de kill para processo neto
             kill(_gson, SIGKILL);
 
@@ -672,6 +684,8 @@ void sonps(int _fd, pid_t _gson) {
         }
 
     }
+
+
 
 }
 
@@ -742,9 +756,10 @@ void grandsonps(int __fd) {
             sleep(5);
 
             // Contabiliza tentativa
-            synch_buf++;
+            //synch_buf++;
 
             // Analisa se ja tentou o numero maximo
+/*
             if (synch_buf > MAX_SYNCH_TRY) {
 
                 blog("************** Start *****************", "a+");
@@ -755,6 +770,7 @@ void grandsonps(int __fd) {
                 // Quebra fluxo
                 break;
             } else {
+*/
                 blog("************** Start *****************", "a+");
                 blog("Iniciando uma nova tentativa", "a+");
                 blog("************** End *******************", "a+");
@@ -771,7 +787,7 @@ void grandsonps(int __fd) {
 
                 // Retorna fluxo ao seu inicio
                 continue;
-            }
+            //}
 
 
         }
@@ -795,9 +811,10 @@ void grandsonps(int __fd) {
             sleep(5);
 
             // Contabiliza tentativa
-            synch_buf++;
+            //synch_buf++;
 
             // Analisa se ja tentou o numero maximo
+/*
             if (synch_buf > MAX_SYNCH_TRY) {
 
                 blog("************** Start *****************", "a+");
@@ -808,6 +825,7 @@ void grandsonps(int __fd) {
                 // Quebra fluxo
                 break;
             } else {
+*/
                 blog("************** Start *****************", "a+");
                 blog("Iniciando uma nova tentativa", "a+");
                 blog("************** End *******************", "a+");
@@ -824,7 +842,7 @@ void grandsonps(int __fd) {
 
                 // Retorna fluxo ao seu inicio
                 continue;
-            }
+            //}
         }
 
         // Chegando aqui, foi possivel abrir o arquivo de buffer
@@ -876,7 +894,7 @@ void grandsonps(int __fd) {
                     //sscanf(bfline, "%[^':']:%[^':']:", bfline_aux1, bfline_aux2);
 
                     // Analises para Trade ( T: )
-                    if (bfline[0] == 'T' && bfline[strlen(bfline) - 1] == '!') {
+                    if (bfline[0] == 'T' || bfline[0] == 'N') {
 
                         // Obtem o ativo
                         getsymbol(bfline, bfline_aux2);
@@ -1900,6 +1918,27 @@ void sqt(int _fd, char *_symbol, int _fifo) {
     // Envia para o fifo
     write(_fifo, f_name, strlen(f_name));
 
+    // Cria comando
+    //sprintf(f_name, "A:T:%s:true\n", _symbol);
+
+    // Envia para o fifo
+    //write(_fifo, f_name, strlen(f_name));
+
+
+    // Cria comando
+    //sprintf(f_name, "A:N:%s:false\n", _symbol);
+
+    // Envia para o fifo
+    //write(_fifo, f_name, strlen(f_name));
+
+    // Cria comando
+    //sprintf(f_name, "A:N:%s:true\n", _symbol);
+
+    // Envia para o fifo
+    // write(_fifo, f_name, strlen(f_name));
+
+
+
     // Libera da memoria a variavel do nome
     free(f_name);
 }
@@ -2013,6 +2052,12 @@ void bqt(int _fd, char *_symbol, int _fifo) {
     // Envia para o fifo
     write(_fifo, f_name, strlen(f_name));
 
+    // Cria comando
+    //sprintf(f_name, "A:D:%s:true\n", _symbol);
+
+    // Envia para o fifo
+    //write(_fifo, f_name, strlen(f_name));
+
     // Libera da memoria a variavel do nome
     free(f_name);
 }
@@ -2072,7 +2117,8 @@ int checkuser(int _fd, char *_user, char *_pass) {
                             char *on = PQgetvalue(result, 0, 4);
 
                             if (!strcmp(on, "0")) {
-                                shadowcode = PQgetvalue(result, 0, 0);
+                                strcpy(shadowcode, PQgetvalue(result, 0, 0));
+                                //shadowcode = PQgetvalue(result, 0, 0);
                                 sprintf(_rcheck, "LOGIN:%s:1:%s\r\n", _user, shadowcode);
                                 r = 1;
                                 setonline(1);
@@ -2902,24 +2948,37 @@ void setonline(int status) {
 
         result = PQexec(conn, sql);
 
-        /*
-                if(status==1)
-                    sprintf(sql,"INSERT INTO logins_log(log_cod, user_cod, log_type, log_time,"
-                        "user_ip,user_temp_dir) VALUES(default, %d, 'I', current_timestamp, '192.168.1.1', '%s')",
-                        atoi(shadowcode), dir);
-                else
-                    sprintf(sql,"INSERT INTO logins_log(log_cod, user_cod, log_type, log_time,"
-                        "user_ip,user_temp_dir) VALUES(default, %d, 'O', current_timestamp, '192.168.1.1', '%s')",
-                        atoi(shadowcode), dir);
+        if(result<0){
+            writeln(TERMINAL_LOG,"Error on UpdateStatus","a+");
+        }
 
-                writeln(TERMINAL_LOG,sql,"a+");
+        char *d = malloc(sizeof(char)*10);
 
-                result = PQexec(conn,sql);
-         */
+        gettime("%d/%m-%H:%M",d);
+
+        if (status == 1)
+            sprintf(sql, "INSERT INTO logins_log(log_cod, user_cod, log_type, log_time,"
+                "user_ip,user_temp_dir) VALUES(default, %d, 'I', '%s', '192.168.1.1', '%s')",
+                atoi(shadowcode), d,dir);
+        else
+            sprintf(sql, "INSERT INTO logins_log(log_cod, user_cod, log_type, log_time,"
+                "user_ip,user_temp_dir) VALUES(default, %d, 'O', '%s', '192.168.1.1', '%s')",
+                atoi(shadowcode), d,dir);
+
+        writeln(TERMINAL_LOG, sql, "a+");
+
+        result = PQexec(conn, sql);
+
+        if(result<0){
+            writeln(TERMINAL_LOG,"Error on InsertLog","a+");
+        }
 
         PQclear(result);
 
         PQfinish(conn);
+
+        free(sql);
+        free(d);
     } else {
         if (conn != NULL) {
             PQfinish(conn);
@@ -2927,7 +2986,7 @@ void setonline(int status) {
     }
 }
 
-void changepass(int _fd, char *shadowcode, char *newpass){
+void changepass(int _fd, char *shadowcode, char *newpass) {
     PGconn *conn = NULL;
     conn = PQconnectdb("host=server2.acoesinvest.com.br dbname=intraDb user=postgres password=sabedoria");
 
@@ -2941,6 +3000,12 @@ void changepass(int _fd, char *shadowcode, char *newpass){
         writeln(TERMINAL_LOG, sql, "a+");
 
         result = PQexec(conn, sql);
+
+        if (result > 0) {
+            send(_fd, "CHANGEPASS:1\r\n", strlen("CHANGEPASS:1\r\n"), 0);
+        } else {
+            send(_fd, "CHANGEPASS:0\r\n", strlen("CHANGEPASS:0\r\n"), 0);
+        }
 
         /*
                 if(status==1)
