@@ -76,7 +76,7 @@ int readline(int _fd, char *_t, int _readtimeout) {
 
             // Se estourou o timeout
             if (ready == 0) {
-                _return = 0;
+                _return = -10;
                 break;
             }
 
