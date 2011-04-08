@@ -30,11 +30,12 @@
 #define FIFO_ARQ "/home/donda/ddc/buffer/cmd_crystal"
 #define MAX_BUF_SIZE sizeof(char) * 1000
 #define SYMBOL_SIZE sizeof(char) * 20
-#define USER_CEDRO "difainvest01\r\n"
-#define PASS_CEDRO "5587\r\n"
+#define USER_CEDRO "aiourinhos\r\n"
+//#define USERNAME "L:71cb0980-ea37-44f0-9615-8919d2eefcfa\n"
+#define PASS_CEDRO "123456\r\n"
 
-#define SVR_CRYSTAL_1 "187.84.226.2"
-//#define SVR_CRYSTAL_2 "crystaldiferencial3.cedrofinances.com.br"
+#define SVR_CRYSTAL_1 "crystaldiferencial1.cedrofinances.com.br"
+#define SVR_CRYSTAL_2 "crystaldiferencial3.cedrofinances.com.br"
 /*
 #define SVR_CRYSTAL_3 "crystal505.cedrofinances.com.br"
 #define SVR_CRYSTAL_4 "crystal515.cedrofinances.com.br"
@@ -43,11 +44,29 @@
 #define SVR_CRYSTAL_6 "crystal501.cedrofinances.com.br"
 */
 
-#define MAX_CRYSTAL 1
+#define MAX_CRYSTAL 2
 #define TIME_OUT 35
 
 #define MSG_ERR_CONN "Error on connect to server."
 
+
+struct t_ddclist {
+    int index;
+    char value[256];
+    struct t_ddclist *next;
+};
+
+typedef struct t_ddclist ddclist;
+
+
+ddclist *createDDCList();
+int addDDCList(ddclist *list, char *value);
+ddclist *insertDDCList(ddclist *list, int index, char *value);
+ddclist *deleteDDCList(ddclist *list, int index);
+void displayDDCList(ddclist *list);
+ddclist *_splitcolumns(char *data, unsigned int separator) ;
+void destroyDDCList(ddclist *list);
+ddclist *getDDCList(ddclist *list, int index);
 
 /* Declaração das funcoes globais*/
 int callsymbols(int _fd);
@@ -111,11 +130,11 @@ int main(int argc, char** argv) {
             case 1: writeln(TERMINAL_LOG, SVR_CRYSTAL_1, "a+");
                 s = connecttoserver(SVR_CRYSTAL_1, 81);
                 break;
-/*
+
             case 2: writeln(TERMINAL_LOG, SVR_CRYSTAL_2, "a+");
                 s = connecttoserver(SVR_CRYSTAL_2, 81);
                 break;
-*/
+
 /*
             case 3: writeln(TERMINAL_LOG, SVR_CRYSTAL_3, "a+");
                 s = connecttoserver(SVR_CRYSTAL_3, 81);
@@ -147,10 +166,10 @@ int main(int argc, char** argv) {
 
                 case 1: writeln(TERMINAL_LOG, SVR_CRYSTAL_1, "a+");
                     break;
-/*
+
                 case 2: writeln(TERMINAL_LOG, SVR_CRYSTAL_2, "a+");
                     break;
-*/
+
 /*
                 case 3: writeln(TERMINAL_LOG, SVR_CRYSTAL_3, "a+");
                     break;
@@ -231,7 +250,7 @@ int main(int argc, char** argv) {
         // Lê dados do socket até
         // retornar -1
         while (readline(s, buffer, TIME_OUT) > 0) {
-
+            //writeln(TERMINAL_LOG,buffer,"a+");
             // Verifica se não foi solicitado para se alterar de crystal
             if (crystal_flag == 1) {
 
@@ -249,12 +268,13 @@ int main(int argc, char** argv) {
             // Analisa se é tela de login
             if (islogin(buffer) == 1 && login == 0) {
                 send(s, USER_CEDRO, strlen(USER_CEDRO), 0);
+                //send(s,USERNAME,strlen(USERNAME),0);
             }
             if (islogin(buffer) == 2 && login == 0) {
                 send(s, PASS_CEDRO, strlen(PASS_CEDRO), 0);
             }
             if (islogin(buffer) == 3 && login == 0) {
-                send(s, "cedro_crystal\r\n", strlen("cedro_crystal\r\n"), 0);
+                send(s, "cedro_lite\r\n", strlen("cedro_lite\r\n"), 0);
             }
 
 
@@ -276,12 +296,92 @@ int main(int argc, char** argv) {
             // Gera snapshot, caso seja book ( B ou M )
             //snapshotbk(buffer);
 
+
             if(buffer[0] == 'B'){
                 writeln(bfile,buffer,"a+");
             }
 
+
             // Verifica se contem indices que realmente sao importantes.
             istrade = checktrade(buffer);
+
+/*
+            ddclist *data = _splitcolumns(buffer, (unsigned int) ':');
+
+            char *tick = malloc(sizeof (char) *256);
+
+            if (data->index == 0) {
+
+                if (!strcmp(data->value, "T")) {
+
+
+                    sprintf(tick, "T:%s:%s00:5:%s:8:%s:11:%s:12:%s:13:%s:14:%s!\r\n", getDDCList(data, 1)->value, getDDCList(data, 3)->value, getDDCList(data, 3)->value,
+                            getDDCList(data, 11)->value, getDDCList(data, 8)->value, getDDCList(data, 9)->value,
+                            getDDCList(data, 5)->value, getDDCList(data, 4)->value);
+
+
+
+
+
+
+                } else if (!strcmp(data->value, "N")) {
+
+
+
+                    sprintf(tick, "T:%s:%s00:2:%s:5:%s00!\r\n", getDDCList(data, 1)->value, getDDCList(data, 3)->value,
+                            getDDCList(data, 4)->value, getDDCList(data, 3)->value);
+
+                } else if (!strcmp(data->value, "D")) {
+
+
+
+                    if (!strcmp(getDDCList(data, 2)->value, "A")) {
+                        /* Ativo
+                         * Conmando
+                         * Linha
+                         * Direcao
+                         * Valor
+                         * Qtde
+                         * Corretora
+                         */
+                 //       sprintf(tick, "B:%s:%s:%s:%s:%s:%s:%s:%s!\r\n",
+                 //               getDDCList(data, 1)->value, getDDCList(data, 2)->value, getDDCList(data, 4)->value,
+                 //               getDDCList(data, 3)->value, getDDCList(data, 5)->value, getDDCList(data, 6)->value, getDDCList(data, 7)->value,
+                 //               getDDCList(data, 8)->value);
+                 //   } else if (!strcmp(getDDCList(data, 2)->value, "U")) {
+                        /* Ativo
+                         * Conmando
+                         * Linha
+                         * Direcao
+                         * Valor
+                         * Qtde
+                         * Corretora
+                         */
+                //        sprintf(tick, "B:%s:%s:%s:%s:%s:%s:%s:%s:%s!\r\n",
+                //                getDDCList(data, 1)->value, getDDCList(data, 2)->value, getDDCList(data, 4)->value, getDDCList(data, 4)->value,
+                //                getDDCList(data, 3)->value, getDDCList(data, 5)->value, getDDCList(data, 6)->value, getDDCList(data, 7)->value,
+                //                getDDCList(data, 8)->value);
+                //    } else if (!strcmp(getDDCList(data, 2)->value, "D")) {
+                        /* Ativo
+                         * Conmando
+                         * Tipo
+                         * Direcao
+                         * Posicao
+                         */
+              //          sprintf(tick, "B:%s:%s:%s:%s:%s:%s!\r\n",
+            //                    getDDCList(data, 1)->value, getDDCList(data, 2)->value,
+          //                      getDDCList(data, 3)->value, getDDCList(data, 4)->value, getDDCList(data, 5)->value,
+        //                        getDDCList(data, 6)->value);
+      //              }
+
+    //            }
+
+  //          }
+
+
+//            destroyDDCList(data);
+
+
 
             // Escreve então no buffer o dado lido
             // o modo a+ significa para abrir o arquivo e
@@ -290,17 +390,17 @@ int main(int argc, char** argv) {
             if (istrade == 1) {
                 writeln(bfile, buffer, "a+");
             }
-
+            //snapshot(tick);
             istrade = 0;
-
+            //free(tick);
             // Verifica se é a frase You are connected
             // Chama ativos caso seja.
-/*
+
             if (buffer[0] == 'Y') {
                 callsymbols(s);
                 login = 1;
             }
-*/
+
 
 
             // Verifica se mudou arquivo de buffer
@@ -342,10 +442,10 @@ int main(int argc, char** argv) {
 
             case 1: writeln(TERMINAL_LOG, SVR_CRYSTAL_1, "a+");
                 break;
-/*
+
             case 2: writeln(TERMINAL_LOG, SVR_CRYSTAL_2, "a+");
                 break;
-*/
+
 /*
             case 3: writeln(TERMINAL_LOG, SVR_CRYSTAL_3, "a+");
                 break;
@@ -424,13 +524,13 @@ int callsymbols(int _fd) {
 
             //Monta comando - MBQ
 
-            sprintf(cmd, "%s%s\r\n", "bqt ", line);
+//            sprintf(cmd, "%s%s\r\n", "bqt ", line);
 
             // Realiza chamada
-            send(_fd, cmd, strlen(cmd), 0);
+  //          send(_fd, cmd, strlen(cmd), 0);
 
             // Limpa cmd
-            bzero(cmd, SYMBOL_SIZE + 4);
+    //        bzero(cmd, SYMBOL_SIZE + 4);
 
         }
 
@@ -1146,6 +1246,7 @@ int islogin(char *_m) {
 
     int j;
 
+
     for (j = 0; j <= strlen(_m); j++) {
 
         if (_m[j] == 'U') {
@@ -1181,6 +1282,14 @@ int islogin(char *_m) {
     }
 
     return -1;
+
+
+//    j = -1;
+
+  //  if(_m[0]=='V' && _m[1]==':')
+//        j = 1;
+
+  //  return j;
 
 }
 
@@ -1340,5 +1449,275 @@ void filepiper(int _fd) {
 
     }
 
+
+}
+ddclist *createDDCList() {
+
+    ddclist *newList = NULL;
+
+    newList = (ddclist*) malloc(sizeof (ddclist));
+
+    if (!newList) {
+        return NULL;
+    }
+
+    newList->index = -1;
+    //newList->value = malloc(sizeof (char) *256);
+    newList->next = NULL;
+    if (!newList->value) {
+        return NULL;
+    }
+
+    return newList;
+}
+
+int addDDCList(ddclist *list, char *value) {
+
+    ddclist *addList = NULL;
+
+    addList = createDDCList();
+
+    if (!addList) {
+        return -1;
+    }
+
+    if (list->index == -1) {
+        list->index = 0;
+        strcpy(list->value, value);
+        return 1;
+    }
+
+    ddclist *i, *temp;
+
+    i = list;
+
+    while (i) {
+        if (!i->next) {
+            temp = i;
+        }
+        i = i->next;
+    }
+    addList->index = (temp->index + 1);
+    strcpy(addList->value, value);
+    temp->next = addList;
+    return addList->index;
+}
+
+void displayDDCList(ddclist *list) {
+
+    ddclist *l = list;
+
+    while (l) {
+        printf("Index:%d\nValue:%s\n\n", l->index, l->value);
+        l = l->next;
+    }
+}
+
+// Separa os valores baseado no caracter de separa��o(separator) e popula
+// a lista com os dados separados.
+// Utilize a conversao de caracter para obter o separador desejado.
+// Ex: (unsigned int)':' Coloca como separador o caracter de dois pontos( : )
+
+ddclist *_splitcolumns(char *data, unsigned int separator) {
+
+    ddclist *list = createDDCList();
+
+    // Variavel temporaria que guardar� os dados entre a colunas
+    // 256 = 255 caracteres + 1 caracter de finalizacao de string '\0'
+    char tempdata[256];
+
+    // Posicao de inscrita de caracter na tempdata
+    int position = 0;
+
+    // Contador de varredura dos caracteres
+    int c = 0;
+
+    // Contador das colunas encontradas
+    int count = 0;
+
+    // Ultima Estrutura usada
+    //struct TDDCData *end;
+
+    // Varre os caracteres at� o fim de todos
+    for (c = 0; c < strlen(data); c++) {
+
+        // Verifica se � o separador
+        if ((unsigned int) data[c] == separator) {
+
+            // Finaliza a string de temp data
+            tempdata[position] = '\0';
+
+            // � o separador, coloca os dados na estrutura
+            // Primeiro, se for a primeira coluna encontrada, coloca
+            // os dados na estrutura ddcdata. Caso contrario, cria uma
+            // nova estrutura e coloca na posicao next.
+            if (count == 0) {
+                //list->index = count;
+                //strcpy(list->value, tempdata);
+                //list->next = NULL;
+                // Como � a primeira, a ultima usada � ela mesma
+                //end = list;
+                addDDCList(list, tempdata);
+            } else {
+                // Como nao � o primeiro, cria uma
+                // nova estrutura e popula os dados
+                // o malloc aloca a nova estrutura
+                // na memoria.
+                //struct TDDCData *last;
+                //last = malloc(sizeof (struct TDDCData));
+                // Popula os dados
+                //last->index = count;
+                //strcpy(last->value, tempdata);
+                //last->next = NULL;
+
+                // Coloca na ultima usada, essa proxima estrutura
+                //end->next = last;
+
+                // Atualiza a ultima usada para esta nova criada
+                //end = last;
+                addDDCList(list, tempdata);
+            }
+
+            // Muda contador da coluna
+            count++;
+
+            // Zera tempdata
+            bzero(tempdata, 256);
+
+            // Reinicializa posicao de caracter para tempdata
+            position = 0;
+
+        } else {
+            // Não é o separador, adiciona caracter ao tempdata, soh se for caracter valido
+            if ((unsigned int) data[c] != 10 && (unsigned int) data[c] != 13) {
+                tempdata[position] = data[c];
+                position++;
+            }
+        }
+
+    } // fim do for
+
+    // Acabou o for, ent�o tempos que colocar todos os dados restantes como ultima coluna.
+    //struct TDDCData *last;
+    //last = malloc(sizeof (struct TDDCData));
+    // Popula os dados
+    //last->index = count;
+    //strcpy(last->value, tempdata);
+    //last->next = NULL;
+
+    // Coloca na ultima usada, essa proxima estrutura
+    //end->next = last;
+
+    // Atualiza a ultima usada para esta nova criada
+    //end = NULL;
+
+    addDDCList(list, tempdata);
+
+    return list;
+
+}
+
+ddclist *insertDDCList(ddclist *list, int index, char *value) {
+
+    ddclist *i, *temp, *t;
+    int c = 0;
+    ddclist *insertList = createDDCList();
+    insertList->index = index;
+    strcpy(insertList->value, value);
+
+    i = list;
+    t = list;
+    temp = NULL;
+
+    while (i) {
+        if (i->index == index) {
+            if (temp == NULL) {
+                insertList->next = i;
+                t = insertList;
+                while (t) {
+                    t->index = c;
+                    c++;
+                    t = t->next;
+                }
+                return insertList;
+            } else {
+                temp->next = insertList;
+                insertList->next = i;
+                while (t) {
+                    t->index = c;
+                    c++;
+                    t = t->next;
+                }
+            }
+            return list;
+        }
+        temp = i;
+        i = i->next;
+    }
+}
+
+ddclist *deleteDDCList(ddclist *list, int index) {
+
+    ddclist *i, *temp, *t;
+    int c = 0;
+    i = list;
+    t = list;
+    temp = NULL;
+
+    while (i) {
+        if (i->index == index) {
+            if (temp == NULL) {
+                temp = temp->next;
+                free(i);
+                while (t) {
+                    t->index = c;
+                    c++;
+                    t = t->next;
+                }
+                return temp;
+            } else {
+                temp->next = i->next;
+                free(i);
+                while (t) {
+                    t->index = c;
+                    c++;
+                    t = t->next;
+                }
+            }
+            return list;
+        }
+        temp = i;
+        i = i->next;
+    }
+
+}
+
+void destroyDDCList(ddclist *list) {
+
+    ddclist *temp = list;
+
+    while (temp != NULL) {
+        ddclist *t = temp->next;
+        printf("Limpando %d:%s\r\n", temp->index, temp->value);
+        free(temp->value);
+        free(temp);
+        temp = t;
+    }
+
+}
+
+ddclist *getDDCList(ddclist *list, int index) {
+
+    if (index == 0 && list->index == -1) {
+        return NULL;
+    }
+
+    ddclist *t = list;
+    while (t) {
+        if (t->index == index) {
+            return t;
+        }
+        t = t->next;
+    }
 
 }
