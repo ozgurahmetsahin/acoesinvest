@@ -30,12 +30,12 @@
 #define FIFO_ARQ "/home/donda/ddc/buffer/cmd_crystal"
 #define MAX_BUF_SIZE sizeof(char) * 1000
 #define SYMBOL_SIZE sizeof(char) * 20
-#define USER_CEDRO "aiourinhos\r\n"
+#define USER_CEDRO "tov30\r\n"
 //#define USERNAME "L:71cb0980-ea37-44f0-9615-8919d2eefcfa\n"
 #define PASS_CEDRO "123456\r\n"
 
-#define SVR_CRYSTAL_1 "crystaldiferencial1.cedrofinances.com.br"
-#define SVR_CRYSTAL_2 "crystaldiferencial3.cedrofinances.com.br"
+#define SVR_CRYSTAL_1 "crystal501.cedrofinances.com.br"
+#define SVR_CRYSTAL_2 "crystal503.cedrofinances.com.br"
 /*
 #define SVR_CRYSTAL_3 "crystal505.cedrofinances.com.br"
 #define SVR_CRYSTAL_4 "crystal515.cedrofinances.com.br"
