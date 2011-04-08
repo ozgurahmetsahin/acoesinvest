@@ -32,7 +32,7 @@
 #define SNAP_BK_PATH "/home/donda/ddc/snapshot/books/"
 #define TERMINAL_LOG "/home/donda/ddc/ddcenfoque.log"
 #define SYNCH_BUFF_FILE "/home/donda/ddc/buffer/last.buf"
-#define FIFO_ARQ "/home/donda/ddc/buffer/fifo"
+#define FIFO_ARQ "/home/donda/ddc/buffer/crystal_fifo"
 #define HEADER_LOG "********* Start DDCEnfoque*************"
 #define FOOTER_LOG "********* End DDCEnfoque *************"
 #define DEFAULT_PATH "/home/donda/ddc/"
@@ -402,7 +402,7 @@ int main(int argc, char** argv) {
                             // Mensagem de atualizacao, montamos
                             // o cabecao da mensagem com o ativo
                             // que esta na variavel global.
-                            sprintf(bookcedro, "K:%s:U", cedrobooks);
+                            sprintf(bookcedro, "B:%s:U", cedrobooks);
 
                             // Altera a falg que identifica que tipo de mensagem é
                             book_type = 1;
@@ -412,7 +412,7 @@ int main(int argc, char** argv) {
                             // Mensagem de delecao, montamos
                             // o cabecao da mensagem com o ativo
                             // que esta na variavel global.
-                            sprintf(bookcedro, "K:%s:D", cedrobooks);
+                            sprintf(bookcedro, "B:%s:D", cedrobooks);
 
                             // Altera a flag que identifica que tipo de mensagem é
                             book_type = 2;
@@ -425,11 +425,11 @@ int main(int argc, char** argv) {
 
                             if (tmp->value[0] == 'A') {
                                 // Direcao compra
-                                sprintf(bookcedro, "K:%s:A:%d", cedrobooks, addcountc);
+                                sprintf(bookcedro, "B:%s:A:%d", cedrobooks, addcountc);
                                 addcountc++;
                             } else if (tmp->value[0] == 'V') {
                                 // Direcao venda
-                                sprintf(bookcedro, "K:%s:A:%d", cedrobooks, addcountv);
+                                sprintf(bookcedro, "B:%s:A:%d", cedrobooks, addcountv);
                                 addcountv++;
                             }
 
