@@ -48,7 +48,7 @@ ddclist *insertDDCList(ddclist *list, int index, char *value);
 ddclist *deleteDDCList(ddclist *list, int index);
 ddclist *getDDCList(ddclist *list, int index);
 void displayDDCList(ddclist *list);
-void _splitcolumns(char *data, unsigned int separator, ddclist *list);
+ddclist *_splitcolumns(char *data, unsigned int separator);
 void destroyDDCList(ddclist *list);
 
 void *connectMarketSignal();
@@ -196,7 +196,7 @@ void *connectMarketSignal() {
                 break;
             }
 
-       
+
             if (islogin(buffer) == 1) {
                 setlog("Sending GUID.");
                 send(sockMarketSignal, USERNAME, strlen(USERNAME), 0);
@@ -212,11 +212,93 @@ void *connectMarketSignal() {
             }
 
             for (;;) {
-                if (strlen(exchangeData)<=0) {
+                if (strlen(exchangeData) <= 0) {
                     exchangeCounter++;
                     pthread_mutex_lock(&mutexData);
-                    strcpy(exchangeData,buffer);
-                    pthread_mutex_unlock(&mutexData);
+                    //strcpy(exchangeData,buffer);
+                    ddclist *data = _splitcolumns(buffer, (unsigned int) ':');
+
+                    if (data->index == 0) {
+
+                        if (!strcmp(data->value, "T")) {
+
+                            char *tick = malloc(sizeof (char) *256);
+                            sprintf(tick, "T:%s:%s00:5:%s:8:%s:11:%s:12:%s:13:%s:14:%s!\r\n", getDDCList(data, 1)->value, getDDCList(data, 3)->value, getDDCList(data, 3)->value,
+                                    getDDCList(data, 11)->value, getDDCList(data, 8)->value, getDDCList(data, 9)->value,
+                                    getDDCList(data, 5)->value, getDDCList(data, 4)->value);
+
+                            pthread_mutex_lock(&mutexData);
+                            strcpy(exchangeData, tick);
+                            pthread_mutex_unlock(&mutexData);
+                            free(tick);
+
+                        } else if (!strcmp(data->value, "N")) {
+
+                            char *tick = malloc(sizeof (char) *256);
+
+                            sprintf(tick, "T:%s:%s00:2:%s:5:%s00!\r\n", getDDCList(data, 1)->value, getDDCList(data, 3)->value,
+                                    getDDCList(data, 4)->value, getDDCList(data, 3)->value);
+                            pthread_mutex_lock(&mutexData);
+                            strcpy(exchangeData, tick);
+                            pthread_mutex_unlock(&mutexData);
+                            free(tick);
+
+                        } else if (!strcmp(data->value, "D")) {
+
+                            char *tick = malloc(sizeof (char) *256);
+
+
+                            if (!strcmp(getDDCList(data, 2)->value, "A")) {
+                                /* Ativo
+                                 * Conmando
+                                 * Linha
+                                 * Direcao
+                                 * Valor
+                                 * Qtde
+                                 * Corretora
+                                 */
+                                sprintf(tick, "B:%s:%s:%s:%s:%s:%s:%s:%s!\r\n",
+                                        getDDCList(data, 1)->value, getDDCList(data, 2)->value, getDDCList(data, 4)->value,
+                                        getDDCList(data, 3)->value, getDDCList(data, 5)->value, getDDCList(data, 6)->value, getDDCList(data, 7)->value,
+                                        getDDCList(data, 8)->value);
+                            } else if (!strcmp(getDDCList(data, 2)->value, "U")) {
+                                /* Ativo
+                                 * Conmando
+                                 * Linha
+                                 * Direcao
+                                 * Valor
+                                 * Qtde
+                                 * Corretora
+                                 */
+                                sprintf(tick, "B:%s:%s:%s:%s:%s:%s:%s:%s:%s!\r\n",
+                                        getDDCList(data, 1)->value, getDDCList(data, 2)->value, getDDCList(data, 4)->value, getDDCList(data, 4)->value,
+                                        getDDCList(data, 3)->value, getDDCList(data, 5)->value, getDDCList(data, 6)->value, getDDCList(data, 7)->value,
+                                        getDDCList(data, 8)->value);
+                            } else if (!strcmp(getDDCList(data, 2)->value, "D")) {
+                                /* Ativo
+                                 * Conmando
+                                 * Tipo
+                                 * Direcao
+                                 * Posicao
+                                 */
+                                sprintf(tick, "B:%s:%s:%s:%s:%s:%s!\r\n",
+                                        getDDCList(data, 1)->value, getDDCList(data, 2)->value,
+                                        getDDCList(data, 3)->value, getDDCList(data, 4)->value, getDDCList(data, 5)->value,
+                                        getDDCList(data, 6)->value);
+                            }
+                            pthread_mutex_lock(&mutexData);
+                            strcpy(exchangeData, tick);
+                            pthread_mutex_unlock(&mutexData);
+                            free(tick);
+
+                        }
+
+                    }
+
+
+                    destroyDDCList(data);
+
+//                    pthread_mutex_unlock(&mutexData);
                     trySetExchangeData = 0;
                     break;
                 } else {
@@ -226,7 +308,7 @@ void *connectMarketSignal() {
                         setlog("DELAY DETECTED.");
                     }
                     pthread_mutex_lock(&mutexData);
-                    memset(exchangeData,(int)'\0',1024);
+                    memset(exchangeData, (int) '\0', 1024);
                     pthread_mutex_unlock(&mutexData);
                     trySetExchangeData = 0;
                 }
@@ -322,11 +404,11 @@ void *serverListener() {
     setlog("Clearing all connections.");
     clearConnections();
 
-    int mutexRConn = pthread_mutex_init(&mutexConnections,NULL);
+    int mutexRConn = pthread_mutex_init(&mutexConnections, NULL);
 
-    if(mutexRConn<0){
+    if (mutexRConn < 0) {
         setlog("Error on init mutex connection.");
-        pthread_exit((void *)-1);
+        pthread_exit((void *) - 1);
     }
 
     while (1) {
@@ -348,10 +430,10 @@ void *serverListener() {
 
         get_client((struct sockaddr *) & cli_addr, _ipadd);
 
-        if(addNewConnection(sockcli)<0){
+        if (addNewConnection(sockcli) < 0) {
             setlog("Server full.");
-            send(sockcli,ERR_SERVER_FULL,strlen(ERR_SERVER_FULL),0);
-            send(sockcli,QUIT_MSG,strlen(QUIT_MSG),0);
+            send(sockcli, ERR_SERVER_FULL, strlen(ERR_SERVER_FULL), 0);
+            send(sockcli, QUIT_MSG, strlen(QUIT_MSG), 0);
             close(sockcli);
             continue;
         }
@@ -456,27 +538,27 @@ void *clientListener(void *fd) {
             // Converte ativo para maiuscula
             uppercase(aux2);
 
-/*
-            if (login <= 0) {
-                send(_fd, NOT_AUTH, strlen(NOT_AUTH), 0);
-            } else {
-*/
-                char *cmd_sqt = malloc(40);
-                sprintf(cmd_sqt, "A:T:%s:false\r\n", aux2);
-                setlog(cmd_sqt);
-                send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
-                sprintf(cmd_sqt, "A:T:%s:true\r\n", aux2);
-                setlog(cmd_sqt);
-                send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
+            /*
+                        if (login <= 0) {
+                            send(_fd, NOT_AUTH, strlen(NOT_AUTH), 0);
+                        } else {
+             */
+            char *cmd_sqt = malloc(40);
+            sprintf(cmd_sqt, "A:T:%s:false\r\n", aux2);
+            setlog(cmd_sqt);
+            send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
+            sprintf(cmd_sqt, "A:T:%s:true\r\n", aux2);
+            setlog(cmd_sqt);
+            send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
 
-                sprintf(cmd_sqt, "A:N:%s:false\r\n", aux2);
-                setlog(cmd_sqt);
-                send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
-                sprintf(cmd_sqt, "A:N:%s:true\r\n", aux2);
-                setlog(cmd_sqt);
-                send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
-                free(cmd_sqt);
-          //  }
+            sprintf(cmd_sqt, "A:N:%s:false\r\n", aux2);
+            setlog(cmd_sqt);
+            send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
+            sprintf(cmd_sqt, "A:N:%s:true\r\n", aux2);
+            setlog(cmd_sqt);
+            send(sockMarketSignal, cmd_sqt, strlen(cmd_sqt), 0);
+            free(cmd_sqt);
+            //  }
         } else if (!strcmp(aux1, "BQT")) {
             // Cliente solicitou ativo
             // Converte ativo para maiuscula
@@ -516,7 +598,7 @@ void *clientListener(void *fd) {
             } else {
                 send(_fd, "CHANGEPASS:1\r\n", strlen("CHANGEPASS:1\r\n"), 0);
                 char *cmd_sqt = malloc(40);
-                sprintf(cmd_sqt,"CHANGEPASS:%s:%s",aux2,aux3);
+                sprintf(cmd_sqt, "CHANGEPASS:%s:%s", aux2, aux3);
                 setlog(cmd_sqt);
                 free(cmd_sqt);
             }
@@ -528,10 +610,10 @@ void *clientListener(void *fd) {
             // um login valido retorna 1, caso contrario
             // retorna 0 e mantem usuario bloqueado
             // ao uso.
-            if (login==0)
+            if (login == 0)
                 login = checkuser(_fd, aux2, aux3);
             else
-                send(_fd,ALREADY_CONN,strlen(ALREADY_CONN),0);
+                send(_fd, ALREADY_CONN, strlen(ALREADY_CONN), 0);
 
         } else {
             send(_fd, COMMAND_UNKNOW, strlen(COMMAND_UNKNOW), 0);
@@ -543,7 +625,7 @@ void *clientListener(void *fd) {
 
     close(_fd);
 
-    if(removeConnection(_fd)<0){
+    if (removeConnection(_fd) < 0) {
         setlog("Cant remove a connection.");
     }
 
@@ -562,17 +644,17 @@ void *senderData() {
     while (1) {
         usleep(100);
         pthread_mutex_lock(&mutexData);
-        if(strlen(exchangeData)>0){
-            for(c=0;c<=999;c++){
-                if(connectedClients[c]!=0){
+        if (strlen(exchangeData) > 0) {
+            for (c = 0; c <= 999; c++) {
+                if (connectedClients[c] != 0) {
                     //r = send(connectedClients[c],exchangeData,strlen(exchangeData),MSG_DONTWAIT);
-                    addDDCList(connectedClients[c],exchangeData);
-                    if(r < 0){
+                    addDDCList(connectedClients[c], exchangeData);
+                    if (r < 0) {
                         setlog("Error on sending data.");
                     }
                 }
             }
-            memset((char *)exchangeData,0,1024);
+            memset((char *) exchangeData, 0, 1024);
         }
         pthread_mutex_unlock(&mutexData);
 
@@ -743,68 +825,68 @@ int islogin(char *_m) {
 
     int j;
 
-/*
-    for (j = 0; j <= strlen(_m); j++) {
-        if (_m[j] == 'U') {
+    /*
+        for (j = 0; j <= strlen(_m); j++) {
+            if (_m[j] == 'U') {
 
-            if (_m[j + 7] == 'e') {
+                if (_m[j + 7] == 'e') {
 
-                return 1;
+                    return 1;
 
-            }
+                }
         
 
-        if (_m[j] == 'P') {
+            if (_m[j] == 'P') {
 
-            if (_m[j + 7] == 'd') {
+                if (_m[j + 7] == 'd') {
 
-                return 2;
+                    return 2;
+
+                }
+
+            }
+
+            if (_m[j] == 'C') {
+
+                if (_m[j + 9] == 'g') {
+
+                    return 3;
+
+                }
+
+            }
+
+            if (_m[j] == 'Y') {
+
+                if (_m[j + 4] == 'a') {
+
+                    return 4;
+
+                }
 
             }
 
         }
-
-        if (_m[j] == 'C') {
-
-            if (_m[j + 9] == 'g') {
-
-                return 3;
-
-            }
-
-        }
-
-        if (_m[j] == 'Y') {
-
-            if (_m[j + 4] == 'a') {
-
-                return 4;
-
-            }
-
-        }
-
-    }
-*/
+     */
 
     j = -1;
 
-    if(_m[0]=='V' && _m[1]==':')
+    if (_m[0] == 'V' && _m[1] == ':')
         j = 1;
 
     return j;
 
 }
 
-void clearConnections(){
+void clearConnections() {
     int i;
-    for(i=0;i<=999;i++){
-        if(connectedClients[i]!=0){
+    for (i = 0; i <= 999; i++) {
+        if (connectedClients[i] != 0) {
             //close(connectedClients[i]);
         }
-        connectedClients[i]=0;
+        connectedClients[i] = 0;
     }
-     PGconn *conn = NULL;
+    PGconn *conn = NULL;
     conn = PQconnectdb("host=server2.acoesinvest.com.br dbname=intraDb user=postgres password=sabedoria");
 
     if (PQstatus(conn) == CONNECTION_OK) {
@@ -816,7 +898,7 @@ void clearConnections(){
 
         setlog(sql);
 
-        result = PQexec(conn, sql);        
+        result = PQexec(conn, sql);
 
         PQclear(result);
 
@@ -828,15 +910,15 @@ void clearConnections(){
     }
 }
 
-int addNewConnection(int fd){
+int addNewConnection(int fd) {
 
     int c;
-    int r=-1;
+    int r = -1;
     pthread_mutex_lock(&mutexConnections);
-    for(c=0;c<=999;c++){
-        if(connectedClients[c]==0){
-            r=c;
-            connectedClients[c]=createDDCList();
+    for (c = 0; c <= 999; c++) {
+        if (connectedClients[c] == 0) {
+            r = c;
+            connectedClients[c] = createDDCList();
             break;
         }
     }
@@ -844,24 +926,22 @@ int addNewConnection(int fd){
     return r;
 }
 
-int removeConnection(int fd){
+int removeConnection(int fd) {
     int c;
-    int r=-1;
+    int r = -1;
     pthread_mutex_lock(&mutexConnections);
-/*
-    for(c=0;c<=999;c++){
-        if(connectedClients[c]==fd){
-            r=c;
-            connectedClients[c]=0;
-            break;
+    /*
+        for(c=0;c<=999;c++){
+            if(connectedClients[c]==fd){
+                r=c;
+                connectedClients[c]=0;
+                break;
+            }
         }
-    }
-*/
+     */
     pthread_mutex_unlock(&mutexConnections);
     return r;
 }
-
-
 
 ddclist *createDDCList() {
 
@@ -930,7 +1010,9 @@ void displayDDCList(ddclist *list) {
 // Utilize a conversao de caracter para obter o separador desejado.
 // Ex: (unsigned int)':' Coloca como separador o caracter de dois pontos( : )
 
-void _splitcolumns(char *data, unsigned int separator, ddclist *list) {
+ddclist *_splitcolumns(char *data, unsigned int separator) {
+
+    ddclist *list = createDDCList();
 
     // Variavel temporaria que guardar� os dados entre a colunas
     // 256 = 255 caracteres + 1 caracter de finalizacao de string '\0'
@@ -1023,11 +1105,13 @@ void _splitcolumns(char *data, unsigned int separator, ddclist *list) {
 
     addDDCList(list, tempdata);
 
+    return list;
+
 }
 
 ddclist *insertDDCList(ddclist *list, int index, char *value) {
 
-    ddclist *i, *temp,*t;
+    ddclist *i, *temp, *t;
     int c = 0;
     ddclist *insertList = createDDCList();
     insertList->index = index;
@@ -1042,31 +1126,31 @@ ddclist *insertDDCList(ddclist *list, int index, char *value) {
             if (temp == NULL) {
                 insertList->next = i;
                 t = insertList;
-                while(t){
-                    t->index=c;
+                while (t) {
+                    t->index = c;
                     c++;
-                    t=t->next;
+                    t = t->next;
                 }
                 return insertList;
             } else {
                 temp->next = insertList;
                 insertList->next = i;
-                while(t){
-                    t->index=c;
+                while (t) {
+                    t->index = c;
                     c++;
-                    t=t->next;
+                    t = t->next;
                 }
             }
             return list;
         }
         temp = i;
-        i=i->next;
+        i = i->next;
     }
 }
 
-ddclist *deleteDDCList(ddclist *list, int index){
+ddclist *deleteDDCList(ddclist *list, int index) {
 
-    ddclist *i, *temp,*t;
+    ddclist *i, *temp, *t;
     int c = 0;
     i = list;
     t = list;
@@ -1077,53 +1161,53 @@ ddclist *deleteDDCList(ddclist *list, int index){
             if (temp == NULL) {
                 temp = temp->next;
                 free(i);
-                while(t){
-                    t->index=c;
+                while (t) {
+                    t->index = c;
                     c++;
-                    t=t->next;
+                    t = t->next;
                 }
                 return temp;
             } else {
                 temp->next = i->next;
                 free(i);
-                while(t){
-                    t->index=c;
+                while (t) {
+                    t->index = c;
                     c++;
-                    t=t->next;
+                    t = t->next;
                 }
             }
             return list;
         }
         temp = i;
-        i=i->next;
+        i = i->next;
     }
 
 }
 
-void destroyDDCList(ddclist *list){
+void destroyDDCList(ddclist *list) {
 
     ddclist *temp;
 
-    while(list){
-        temp=list;
+    while (list) {
+        temp = list;
         free(temp);
-        list=list->next;
+        list = list->next;
     }
 
 }
 
-ddclist *getDDCList(ddclist *list, int index){
+ddclist *getDDCList(ddclist *list, int index) {
 
-    if(index==0 && list->index==-1){
+    if (index == 0 && list->index == -1) {
         return NULL;
     }
 
-    ddclist *t=list;
-    while(t){
-        if(t->index==index){
+    ddclist *t = list;
+    while (t) {
+        if (t->index == index) {
             return t;
         }
-        t=t->next;
+        t = t->next;
     }
 
 }
