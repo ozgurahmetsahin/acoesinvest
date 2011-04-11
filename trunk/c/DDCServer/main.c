@@ -72,6 +72,25 @@
 #define EXIT_ERR_WCME 3
 #define EXIT_ERR_GRNDSON 4
 
+
+struct t_ddclist {
+    int index;
+    struct t_ddclist *next;
+    char value[256];
+};
+
+typedef struct t_ddclist ddclist;
+
+
+ddclist *createDDCList();
+int addDDCList(ddclist *list, char *value);
+ddclist *insertDDCList(ddclist *list, int index, char *value);
+ddclist *deleteDDCList(ddclist *list, int index);
+void displayDDCList(ddclist *list);
+void _splitcolumns(char *data, unsigned int separator, ddclist *list);
+void destroyDDCList(ddclist *list);
+ddclist *getDDCList(ddclist *list, int index);
+
 /***** Declaração de metodos publicos *****/
 void sonps(int _fd, pid_t _gson);
 void grandsonps(int __fd);
@@ -95,8 +114,9 @@ void mbq_snapshoot(int __f, char *__s);
 void bqt_snapshoot(int __f, char *__s);
 void chart(int _fd, char *cmd);
 void readchart(int __fd);
-void setonline(int status);
+void setonline(int status, int _fd);
 void changepass(int _fd, char *shadowcode, char *newpass);
+void checklogin(char *s, int _fd);
 
 /****** Variaveis Globais Usadas por filhos e netos *****/
 
@@ -329,7 +349,8 @@ int main() {
             // Processo filho criado
 
             // Obtem a pasta temp para este cliente
-            dir = id_cli();
+            //dir = id_cli();
+            strcpy(dir,id_cli());
 
             // Cria pasta temp para este cliente
             mkdir(dir, S_IRWXU);
@@ -523,7 +544,7 @@ void sonps(int _fd, pid_t _gson) {
     // Abre o arquivo de fifo
     // ATENCAO: O processo pode ficar travado aqui caso DDCEnfoque nao esteja
     // em execucao.
-    fpipe = open(FIFO_ARQ, O_WRONLY);
+    //fpipe = open(FIFO_ARQ, O_WRONLY);
 
     // Inicia loop de escuta do filho
     while (sonrun) {
@@ -569,7 +590,7 @@ void sonps(int _fd, pid_t _gson) {
                 quit = 1;
 
                 if(login==1){
-                    setonline(0);
+                    setonline(0,_fd);
                     writeln(TERMINAL_LOG,"Connection closed sucefully.","a+");
                 }
                     
@@ -649,13 +670,10 @@ void sonps(int _fd, pid_t _gson) {
                 version_app(_fd, aux2);
             } else if (!strcmp(aux1, "CHART")) {
                 chart(_fd, bf_son_recv);
-            } else if (!strcmp(aux1, "SESSION")) {
-                // Cliente solicitou ativo
-                // Converte ativo para maiuscula
-                sprintf(dir, "%s%s/", SQT_TEMP, aux2);
-                send(_fd, dir, strlen(dir), 0);
             } else if (!strcmp(aux1, "CHANGEPASS")) {
                 changepass(_fd, shadowcode, aux3);
+            } else if (!strcmp(aux1, "SESSION")) {
+                checklogin(shadowcode, _fd);
             }
 
             // Limpa variaveis auxiliares
@@ -668,15 +686,17 @@ void sonps(int _fd, pid_t _gson) {
             // Não foi possivel ler mais dados
 
             // Altera flag de loop de escuta
-            sonrun = 0;
+            if (func_return2 != -10) {
+                sonrun = 0;
 
-            if (login == 1) {
-                setonline(0);
-                writeln(TERMINAL_LOG, "Connection close gracefully.", "a+");
+                if (login == 1) {
+                    setonline(0, _fd);
+                    writeln(TERMINAL_LOG, "Connection close gracefully.", "a+");
+                }
+
+                // Manda sinal de kill para processo neto
+                kill(_gson, SIGKILL);
             }
-
-            // Manda sinal de kill para processo neto
-            kill(_gson, SIGKILL);
 
             // Força reinicio do loop
             continue;
@@ -759,34 +779,34 @@ void grandsonps(int __fd) {
             //synch_buf++;
 
             // Analisa se ja tentou o numero maximo
-/*
-            if (synch_buf > MAX_SYNCH_TRY) {
+            /*
+                        if (synch_buf > MAX_SYNCH_TRY) {
 
-                blog("************** Start *****************", "a+");
-                blog("Numero de tentativas excedeu o limite", "a+");
-                blog("Quebrando fluxo do cliente", "a+");
-                blog("************** End *******************", "a+");
+                            blog("************** Start *****************", "a+");
+                            blog("Numero de tentativas excedeu o limite", "a+");
+                            blog("Quebrando fluxo do cliente", "a+");
+                            blog("************** End *******************", "a+");
 
-                // Quebra fluxo
-                break;
-            } else {
-*/
-                blog("************** Start *****************", "a+");
-                blog("Iniciando uma nova tentativa", "a+");
-                blog("************** End *******************", "a+");
+                            // Quebra fluxo
+                            break;
+                        } else {
+             */
+            blog("************** Start *****************", "a+");
+            blog("Iniciando uma nova tentativa", "a+");
+            blog("************** End *******************", "a+");
 
-                // Envia um SYN para manter conexoes ativas
-                send(__fd, MSG_SVR_SYN, strlen(MSG_SVR_SYN), 0);
+            // Envia um SYN para manter conexoes ativas
+            send(__fd, MSG_SVR_SYN, strlen(MSG_SVR_SYN), 0);
 
-                char *servertime;
-                servertime = malloc(14);
-                gettime("W:H:%H:%M:%S", servertime);
-                strcat(servertime, "\r\n");
-                send(__fd, servertime, strlen(servertime), 0);
-                free(servertime);
+            char *servertime;
+            servertime = malloc(14);
+            gettime("W:H:%H:%M:%S", servertime);
+            strcat(servertime, "\r\n");
+            send(__fd, servertime, strlen(servertime), 0);
+            free(servertime);
 
-                // Retorna fluxo ao seu inicio
-                continue;
+            // Retorna fluxo ao seu inicio
+            continue;
             //}
 
 
@@ -814,34 +834,34 @@ void grandsonps(int __fd) {
             //synch_buf++;
 
             // Analisa se ja tentou o numero maximo
-/*
-            if (synch_buf > MAX_SYNCH_TRY) {
+            /*
+                        if (synch_buf > MAX_SYNCH_TRY) {
 
-                blog("************** Start *****************", "a+");
-                blog("Numero de tentativas excedeu o limite", "a+");
-                blog("Quebrando fluxo do cliente", "a+");
-                blog("************** End *******************", "a+");
+                            blog("************** Start *****************", "a+");
+                            blog("Numero de tentativas excedeu o limite", "a+");
+                            blog("Quebrando fluxo do cliente", "a+");
+                            blog("************** End *******************", "a+");
 
-                // Quebra fluxo
-                break;
-            } else {
-*/
-                blog("************** Start *****************", "a+");
-                blog("Iniciando uma nova tentativa", "a+");
-                blog("************** End *******************", "a+");
+                            // Quebra fluxo
+                            break;
+                        } else {
+             */
+            blog("************** Start *****************", "a+");
+            blog("Iniciando uma nova tentativa", "a+");
+            blog("************** End *******************", "a+");
 
-                // Envia SYN para manter conexoes ativas
-                send(__fd, MSG_SVR_SYN, strlen(MSG_SVR_SYN), 0);
+            // Envia SYN para manter conexoes ativas
+            send(__fd, MSG_SVR_SYN, strlen(MSG_SVR_SYN), 0);
 
-                char *servertime;
-                servertime = malloc(14);
-                gettime("W:H:%H:%M:%S", servertime);
-                strcat(servertime, "\r\n");
-                send(__fd, servertime, strlen(servertime), 0);
-                free(servertime);
+            char *servertime;
+            servertime = malloc(14);
+            gettime("W:H:%H:%M:%S", servertime);
+            strcat(servertime, "\r\n");
+            send(__fd, servertime, strlen(servertime), 0);
+            free(servertime);
 
-                // Retorna fluxo ao seu inicio
-                continue;
+            // Retorna fluxo ao seu inicio
+            continue;
             //}
         }
 
@@ -892,6 +912,25 @@ void grandsonps(int __fd) {
 
                     // Quebra linha para analise
                     //sscanf(bfline, "%[^':']:%[^':']:", bfline_aux1, bfline_aux2);
+
+
+                    if(bfline[0]=='E'){
+
+                        if(bfline[28]==dir[24] && bfline[29]==dir[25]
+                                && bfline[30]==dir[26]
+                                && bfline[31]==dir[27]
+                                && bfline[32]==dir[28]
+                                && bfline[33]==dir[29]){
+                            writeln(TERMINAL_LOG,"Match:","a+");
+                            writeln(TERMINAL_LOG,bfline,"a+");
+                            writeln(TERMINAL_LOG,dir,"a+");
+                            send(__fd,"E:6\r\n",strlen("E:6\r\n"),0);
+                        } else {
+                            writeln(TERMINAL_LOG,"Not equal","a+");
+                            writeln(TERMINAL_LOG,bfline,"a+");
+                            writeln(TERMINAL_LOG,dir,"a+");
+                        }
+                    }
 
                     // Analises para Trade ( T: )
                     if (bfline[0] == 'T' || bfline[0] == 'N') {
@@ -1235,7 +1274,7 @@ char *id_cli() {
     strcat(__id, _ftime);
 
     strcat(__id, "/");
-
+    strcat(__id, "\0");
     return __id;
 
 }
@@ -2094,7 +2133,7 @@ int checkuser(int _fd, char *_user, char *_pass) {
     if (PQstatus(conn) == CONNECTION_OK) {
         PGresult *result;
 
-        sprintf(_sql, "SELECT codigo,usuario,senha,tipo,online FROM clientes_login WHERE usuario = '%s' AND senha = '%s'", _user, _pass);
+        sprintf(_sql, "SELECT codigo,usuario,senha,tipo,online,dir_temp FROM clientes_login WHERE usuario = '%s' AND senha = '%s'", _user, _pass);
 
         writeln(TERMINAL_LOG, _sql, "a+");
 
@@ -2113,19 +2152,25 @@ int checkuser(int _fd, char *_user, char *_pass) {
                     if (PQntuples(result) == 1) {
                         char *t = PQgetvalue(result, 0, 3);
                         if (!strcmp(t, "A") || !strcmp(t, "D")) {
-
-                            char *on = PQgetvalue(result, 0, 4);
-
-                            if (!strcmp(on, "0")) {
-                                strcpy(shadowcode, PQgetvalue(result, 0, 0));
-                                //shadowcode = PQgetvalue(result, 0, 0);
-                                sprintf(_rcheck, "LOGIN:%s:1:%s\r\n", _user, shadowcode);
-                                r = 1;
-                                setonline(1);
-                            } else {
-                                sprintf(_rcheck, "LOGIN:%s:0:3\r\n", _user);
-                                r = 0;
-                            }
+                            char *k = malloc(100);
+                            blast(k);
+                            writeln(TERMINAL_LOG, k, "a+");
+                            char *h = malloc(100);
+                            sprintf(h, "E:6:%s", PQgetvalue(result, 0, 5));
+                            writeln(k, h, "a+");
+                            writeln(TERMINAL_LOG, h, "a+");
+                            free(h);
+                            free(k);
+                            //if (!strcmp(on, "0")) {
+                            strcpy(shadowcode, PQgetvalue(result, 0, 0));
+                            //shadowcode = PQgetvalue(result, 0, 0);
+                            sprintf(_rcheck, "LOGIN:%s:1:%s:%s\r\n", _user, shadowcode, dir);
+                            r = 1;
+                            setonline(1, _fd);
+                            //} else {
+                            //   sprintf(_rcheck, "LOGIN:%s:0:3\r\n", _user);
+                            //  r = 0;
+                            // }
 
 
                         } else {
@@ -2180,6 +2225,8 @@ void version_app(int _fd, char *_app) {
         send(_fd, "VERSION:ROUTER:1.6:wwwwww.acoesinvest.com.br/downloads/router/acoesrouter.exe\r\n", strlen("VERSION:ROUTER:1.6:wwwwww.acoesinvest.com.br/downloads/router/acoesrouter.exe\r\n"), 0);
     } else if (!strcmp(_app, "DIFROUTER")) {
         send(_fd, "VERSION:DIFROUTER:1.9:www.acoesinvest.com.br/downloads/router/diferencial/download.php\r\n", strlen("VERSION:DIFROUTER:1.8:www.acoesinvest.com.br/downloads/router/diferencial/dmatrader.exe\r\n"), 0);
+    } else if (!strcmp(_app, "DIFERENCIAL")) {
+        send(_fd, "VERSION:DIFERENCIAL:2.0:dmatrader.diferencial.com.br/index.html\r\n", strlen("VERSION:DIFERENCIAL:2.0:dmatrader.diferencial.com.br/index.html\r\n\r\n"), 0);
     }
 
 }
@@ -2932,7 +2979,7 @@ void readchart(int __fd) {
 
 }
 
-void setonline(int status) {
+void setonline(int status, int _fd) {
 
     PGconn *conn = NULL;
     conn = PQconnectdb("host=server2.acoesinvest.com.br dbname=intraDb user=postgres password=sabedoria");
@@ -2942,35 +2989,38 @@ void setonline(int status) {
 
         char *sql = malloc(MAX_BUF_SIZE);
 
-        sprintf(sql, "UPDATE clientes_login SET online=%d WHERE codigo=%d", status, atoi(shadowcode));
+        if (status == 1)
+            sprintf(sql, "UPDATE clientes_login SET online=%d, dir_temp='%s' WHERE codigo=%d", status, dir, atoi(shadowcode));
+        else
+            sprintf(sql, "UPDATE clientes_login SET online=%d WHERE codigo=%d", status,atoi(shadowcode));
 
         writeln(TERMINAL_LOG, sql, "a+");
 
         result = PQexec(conn, sql);
 
-        if(result<0){
-            writeln(TERMINAL_LOG,"Error on UpdateStatus","a+");
+        if (result < 0) {
+            writeln(TERMINAL_LOG, "Error on UpdateStatus", "a+");
         }
 
-        char *d = malloc(sizeof(char)*10);
+        char *d = malloc(sizeof (char) *10);
 
-        gettime("%d/%m-%H:%M",d);
+        gettime("%d/%m-%H:%M", d);
 
         if (status == 1)
             sprintf(sql, "INSERT INTO logins_log(log_cod, user_cod, log_type, log_time,"
                 "user_ip,user_temp_dir) VALUES(default, %d, 'I', '%s', '192.168.1.1', '%s')",
-                atoi(shadowcode), d,dir);
+                atoi(shadowcode), d, dir);
         else
             sprintf(sql, "INSERT INTO logins_log(log_cod, user_cod, log_type, log_time,"
                 "user_ip,user_temp_dir) VALUES(default, %d, 'O', '%s', '192.168.1.1', '%s')",
-                atoi(shadowcode), d,dir);
+                atoi(shadowcode), d, dir);
 
         writeln(TERMINAL_LOG, sql, "a+");
 
         result = PQexec(conn, sql);
 
-        if(result<0){
-            writeln(TERMINAL_LOG,"Error on InsertLog","a+");
+        if (result < 0) {
+            writeln(TERMINAL_LOG, "Error on InsertLog", "a+");
         }
 
         PQclear(result);
@@ -3030,4 +3080,350 @@ void changepass(int _fd, char *shadowcode, char *newpass) {
             PQfinish(conn);
         }
     }
+}
+
+void checklogin(char *s, int _fd) {
+    int r = 0;
+    char *_rcheck;
+    _rcheck = malloc(MAX_BUF_RECV);
+
+    char *_sql;
+    _sql = malloc(MAX_BUF_RECV);
+    /*
+        // Verifica se foi passado os parametros
+        if ((strlen(_user) > 0) && (strlen(_pass) > 0)) {
+            sprintf(_rcheck, "LOGIN:%s:1\r\n", _user);
+        } else {
+            // Nada foi passado, recusa login
+            sprintf(_rcheck, "LOGIN:%s:0\r\n", _user);
+        }
+
+        send(_fd, _rcheck, strlen(_rcheck), 0);
+
+        free(_rcheck);
+
+        return 1;
+     */
+
+    PGconn *conn = NULL;
+    conn = PQconnectdb("host=187.84.226.2 dbname=intraDb user=postgres password=sabedoria");
+
+    if (PQstatus(conn) == CONNECTION_OK) {
+        PGresult *result;
+
+        sprintf(_sql, "SELECT codigo,usuario,senha,tipo,online,dir_temp FROM clientes_login WHERE codigo = %d", atoi(s));
+
+        writeln(TERMINAL_LOG, _sql, "a+");
+
+        result = PQexec(conn, _sql);
+
+
+        if (!result) {
+            //sprintf(_rcheck, "LOGIN:%s:0:0\r\n", _user);
+        } else {
+            switch (PQresultStatus(result)) {
+                case PGRES_EMPTY_QUERY:
+                    //sprintf(_rcheck, "LOGIN:%s:0:0\r\n", _user);
+                    r = 0;
+                    break;
+                case PGRES_TUPLES_OK:
+                    if (PQntuples(result) == 1) {
+                        char *t = malloc(100);
+                        sprintf(t, "SESSION:%s\r\n", PQgetvalue(result, 0, 5));
+
+                        free(t);
+                    }
+
+                    break;
+            }
+
+            PQclear(result);
+
+            if (conn != NULL)
+                PQfinish(conn);
+
+        }
+
+
+        /*
+                if(r==0){
+                    quit=1;
+                    sonrun=0;
+                    kill(grandson,SIGKILL);
+                }
+         */
+
+
+    } else {
+        PQfinish(conn);
+
+    }
+
+
+}
+
+ddclist *createDDCList() {
+
+    ddclist *newList = NULL;
+
+    newList = malloc(sizeof (ddclist));
+
+    if (!newList) {
+        return NULL;
+    }
+
+    newList->index = -1;
+    //newList->value = malloc(sizeof (char) *256);
+    newList->next = NULL;
+    if (!newList->value) {
+        return NULL;
+    }
+
+    return newList;
+}
+
+int addDDCList(ddclist *list, char *value) {
+
+    ddclist *addList = NULL;
+
+    addList = createDDCList();
+
+    if (!addList) {
+        return -1;
+    }
+
+    if (list->index == -1) {
+        list->index = 0;
+        strcpy(list->value, value);
+        return 1;
+    }
+
+    ddclist *i, *temp;
+
+    i = list;
+
+    while (i) {
+        if (!i->next) {
+            temp = i;
+        }
+        i = i->next;
+    }
+    addList->index = (temp->index + 1);
+    strcpy(addList->value, value);
+    temp->next = addList;
+    return addList->index;
+}
+
+void displayDDCList(ddclist *list) {
+
+    ddclist *l = list;
+
+    while (l) {
+        printf("Index:%d\nValue:%s\n\n", l->index, l->value);
+        l = l->next;
+    }
+}
+
+// Separa os valores baseado no caracter de separa��o(separator) e popula
+// a lista com os dados separados.
+// Utilize a conversao de caracter para obter o separador desejado.
+// Ex: (unsigned int)':' Coloca como separador o caracter de dois pontos( : )
+
+void _splitcolumns(char *data, unsigned int separator, ddclist *list) {
+
+    // Variavel temporaria que guardar� os dados entre a colunas
+    // 256 = 255 caracteres + 1 caracter de finalizacao de string '\0'
+    char tempdata[256];
+
+    // Posicao de inscrita de caracter na tempdata
+    int position = 0;
+
+    // Contador de varredura dos caracteres
+    int c = 0;
+
+    // Contador das colunas encontradas
+    int count = 0;
+
+    // Ultima Estrutura usada
+    //struct TDDCData *end;
+
+    // Varre os caracteres at� o fim de todos
+    for (c = 0; c < strlen(data); c++) {
+
+        // Verifica se � o separador
+        if ((unsigned int) data[c] == separator) {
+
+            // Finaliza a string de temp data
+            tempdata[position] = '\0';
+
+            // � o separador, coloca os dados na estrutura
+            // Primeiro, se for a primeira coluna encontrada, coloca
+            // os dados na estrutura ddcdata. Caso contrario, cria uma
+            // nova estrutura e coloca na posicao next.
+            if (count == 0) {
+                //list->index = count;
+                //strcpy(list->value, tempdata);
+                //list->next = NULL;
+                // Como � a primeira, a ultima usada � ela mesma
+                //end = list;
+                addDDCList(list, tempdata);
+            } else {
+                // Como nao � o primeiro, cria uma
+                // nova estrutura e popula os dados
+                // o malloc aloca a nova estrutura
+                // na memoria.
+                //struct TDDCData *last;
+                //last = malloc(sizeof (struct TDDCData));
+                // Popula os dados
+                //last->index = count;
+                //strcpy(last->value, tempdata);
+                //last->next = NULL;
+
+                // Coloca na ultima usada, essa proxima estrutura
+                //end->next = last;
+
+                // Atualiza a ultima usada para esta nova criada
+                //end = last;
+                addDDCList(list, tempdata);
+            }
+
+            // Muda contador da coluna
+            count++;
+
+            // Zera tempdata
+            bzero(tempdata, 256);
+
+            // Reinicializa posicao de caracter para tempdata
+            position = 0;
+
+        } else {
+            // Não é o separador, adiciona caracter ao tempdata, soh se for caracter valido
+            if ((unsigned int) data[c] != 10 && (unsigned int) data[c] != 13) {
+                tempdata[position] = data[c];
+                position++;
+            }
+        }
+
+    } // fim do for
+
+    // Acabou o for, ent�o tempos que colocar todos os dados restantes como ultima coluna.
+    //struct TDDCData *last;
+    //last = malloc(sizeof (struct TDDCData));
+    // Popula os dados
+    //last->index = count;
+    //strcpy(last->value, tempdata);
+    //last->next = NULL;
+
+    // Coloca na ultima usada, essa proxima estrutura
+    //end->next = last;
+
+    // Atualiza a ultima usada para esta nova criada
+    //end = NULL;
+
+    addDDCList(list, tempdata);
+
+}
+
+ddclist *insertDDCList(ddclist *list, int index, char *value) {
+
+    ddclist *i, *temp, *t;
+    int c = 0;
+    ddclist *insertList = createDDCList();
+    insertList->index = index;
+    strcpy(insertList->value, value);
+
+    i = list;
+    t = list;
+    temp = NULL;
+
+    while (i) {
+        if (i->index == index) {
+            if (temp == NULL) {
+                insertList->next = i;
+                t = insertList;
+                while (t) {
+                    t->index = c;
+                    c++;
+                    t = t->next;
+                }
+                return insertList;
+            } else {
+                temp->next = insertList;
+                insertList->next = i;
+                while (t) {
+                    t->index = c;
+                    c++;
+                    t = t->next;
+                }
+            }
+            return list;
+        }
+        temp = i;
+        i = i->next;
+    }
+}
+
+ddclist *deleteDDCList(ddclist *list, int index) {
+
+    ddclist *i, *temp, *t;
+    int c = 0;
+    i = list;
+    t = list;
+    temp = NULL;
+
+    while (i) {
+        if (i->index == index) {
+            if (temp == NULL) {
+                temp = temp->next;
+                free(i);
+                while (t) {
+                    t->index = c;
+                    c++;
+                    t = t->next;
+                }
+                return temp;
+            } else {
+                temp->next = i->next;
+                free(i);
+                while (t) {
+                    t->index = c;
+                    c++;
+                    t = t->next;
+                }
+            }
+            return list;
+        }
+        temp = i;
+        i = i->next;
+    }
+
+}
+
+void destroyDDCList(ddclist *list) {
+
+    ddclist *p = list;
+
+    while (p != NULL) {
+        ddclist *tmp = p->next;
+        free(p);
+        p = tmp;
+
+    }
+
+}
+
+ddclist *getDDCList(ddclist *list, int index) {
+
+    if (index == 0 && list->index == -1) {
+        return NULL;
+    }
+
+    ddclist *t = list;
+    while (t) {
+        if (t->index == index) {
+            return t;
+        }
+        t = t->next;
+    }
+
 }
