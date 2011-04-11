@@ -32,7 +32,7 @@
 #define SYMBOL_SIZE sizeof(char) * 20
 #define USER_CEDRO "tov30\r\n"
 //#define USERNAME "L:71cb0980-ea37-44f0-9615-8919d2eefcfa\n"
-#define PASS_CEDRO "123456\r\n"
+#define PASS_CEDRO "654321\r\n"
 
 #define SVR_CRYSTAL_1 "crystal501.cedrofinances.com.br"
 #define SVR_CRYSTAL_2 "crystal503.cedrofinances.com.br"
