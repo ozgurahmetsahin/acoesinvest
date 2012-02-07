@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="pmiyuvlu0yg_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:DMA3:UThrdFixRead.TThrdFixReader">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="280,260,168,180" />
+      <property name="location_set_by_user" value="True" />
+      <property name="bounds_setted_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UThrdFixRead.TThrdFixReader.MsgFix" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UThrdFixRead.TThrdFixReader.ProcessMsgFix()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UThrdFixRead.TThrdFixReader.Execute()" />
+      <reference referencedUin="delphi:l_gnt:src:DMA3:UThrdFixRead.TThrdFixReader:DMAConnection.TConnectionReader">
+        <property name="sourceAnchor" value="364,260" />
+        <property name="targetAnchor" value="364,200" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="delphi:e_field:src:DMA3:UThrdFixRead.TThrdFixReader.FConnCenter" />
+      <reference referencedUin="delphi:e_property:src:DMA3:UThrdFixRead.TThrdFixReader.ConnCenter" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:UThrdFixRead.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:DMAConnection.TConnectionReader">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="260,40,220,160" />
+      <property name="location_set_by_user" value="True" />
+      <property name="bounds_setted_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnectionReader.FConn" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnectionReader.Create(DMAConnection.TConnection)" />
+    </reference>
+  </view>
+</nodeSet>

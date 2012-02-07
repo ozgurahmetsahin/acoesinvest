@@ -1,0 +1,165 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{277D9E9E-661C-4E47-A50C-114954A8C176}</ProjectGuid>
+			<MainSource>DMA3.dpr</MainSource>
+			<ProjectVersion>12.3</ProjectVersion>
+			<Base>True</Base>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<Platform>Win32</Platform>
+			<AppType>Application</AppType>
+			<FrameworkType>VCL</FrameworkType>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UsePackage>vclx;vcl;VclSmp;rtl;vclimg;vcldb;dbrtl;vclactnband;xmlrtl;dsnap;vclib;ibxpress;adortl;IndyCore;IndySystem;IndyProtocols;vclie;webdsnap;inet;inetdbbde;inetdbxpress;dbexpress;DbxCommonDriver;DataSnapIndy10ServerTransport;DataSnapProviderClient;DbxClientDriver;DataSnapClient;dbxcds;inetdb;bdertl;DataSnapServer;DBXInterBaseDriver;DBXMySQLDriver;DBXFirebirdDriver;DBXSybaseASEDriver;DBXSybaseASADriver;DBXOracleDriver;DBXMSSQLDriver;DBXInformixDriver;DBXDb2Driver;DMABrokerFix;JclDeveloperTools;Jcl;JclVcl;JclContainers;JvCore;JvSystem;JvStdCtrls;JvAppFrm;JvBands;JvDB;JvDlgs;JvBDE;JvControls;JvCmp;JvCrypt;JvCustom;JvDocking;JvDotNetCtrls;JvGlobus;JvHMI;JvJans;JvManagedThreads;JvMM;JvNet;JvPageComps;JvPascalInterpreter;JvPluginSystem;JvPrintPreview;JvRuntimeDesign;JvTimeFramework;JvWizards;JvXPCtrls;PkgRouterLibrary;SheetInstall;Rave90VCL;svnui;svn;TeeUI;TeeDB;Tee;vcldbx;vcltouch;dsnapcon;intrawebdb_110_150;Intraweb_110_150;websnap;soaprtl;vclribbon;AzureCloud</DCC_UsePackage>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_DcuOutput>.\Project\Debug\Win32</DCC_DcuOutput>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_ExeOutput>.\$(Config)\$(Platform)</DCC_ExeOutput>
+			<DCC_E>false</DCC_E>
+			<DCC_N>false</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_F>false</DCC_F>
+			<DCC_K>false</DCC_K>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_DcuOutput>.\Units</DCC_DcuOutput>
+			<DCC_ExeOutput>.\Bin</DCC_ExeOutput>
+			<DCC_Description>DMA Trader</DCC_Description>
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="DMA3.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="Units\UFrmLogin.pas">
+				<Form>frmLogin</Form>
+			</DCCReference>
+			<DCCReference Include="Units\UFrmMainBar.pas">
+				<Form>frmMainBar</Form>
+			</DCCReference>
+			<DCCReference Include="Units\UFrmSheetDiffusion.pas">
+				<Form>frmSheetDiffusion</Form>
+			</DCCReference>
+			<DCCReference Include="Units\UThrdFixRead.pas"/>
+			<DCCReference Include="Units\UFrmConfirmSendOrder.pas">
+				<Form>frmConfirmOrderBeforeSend</Form>
+			</DCCReference>
+			<DCCReference Include="Units\UFrmDefault.pas">
+				<Form>FrmDefault</Form>
+			</DCCReference>
+			<DCCReference Include="Units\UFrmSendOrders.pas">
+				<Form>frmSendOrders</Form>
+			</DCCReference>
+			<DCCReference Include="Units\UConnectionCenter.pas">
+				<Form>ConnectionCenter</Form>
+			</DCCReference>
+			<DCCReference Include="Units\DMAConnection.pas"/>
+			<None Include="ModelSupport_DMA3\default.txaPackage"/>
+			<None Include="ModelSupport_DMA3\default.txvpck"/>
+			<None Include="ModelSupport_DMA3\DMA3\default.txvpck"/>
+			<None Include="ModelSupport_DMA3\DMAConnection\default.txvpck"/>
+			<None Include="ModelSupport_DMA3\UFrmBook\default.txvpck"/>
+			<None Include="ModelSupport_DMA3\DMA3\default.txaPackage"/>
+			<None Include="ModelSupport_DMA3\DMAConnection\default.txaPackage"/>
+			<None Include="ModelSupport_DMA3\UFrmBook\default.txaPackage"/>
+			<None Include="ModelSupport_DMA3\UFrmLogin\default.txvpck"/>
+			<None Include="ModelSupport_DMA3\UFrmLogin\default.txaPackage"/>
+			<None Include="ModelSupport_DMA3\UFrmMainBar\default.txvpck"/>
+			<None Include="ModelSupport_DMA3\UFrmMainBar\default.txaPackage"/>
+			<None Include="ModelSupport_DMA3\UThrdFixRead\default.txvpck"/>
+			<None Include="ModelSupport_DMA3\UThrdFixRead\default.txaPackage"/>
+			<None Include="ModelSupport_DMA3\UFrmSendOrders\default.txaPackage"/>
+			<None Include="ModelSupport_DMA3\UFrmSendOrders\default.txvpck"/>
+			<None Include="ModelSupport_DMA3\UConnectionCenter\default.txaPackage"/>
+			<None Include="ModelSupport_DMA3\UFrmSheetDiffusion\default.txvpck"/>
+			<None Include="ModelSupport_DMA3\UFrmConfirmSendOrder\default.txvpck"/>
+			<None Include="ModelSupport_DMA3\UFrmDefault\default.txvpck"/>
+			<None Include="ModelSupport_DMA3\UConnectionCenter\default.txvpck"/>
+			<None Include="ModelSupport_DMA3\UFrmConfirmSendOrder\default.txaPackage"/>
+			<None Include="ModelSupport_DMA3\UFrmDefault\default.txaPackage"/>
+			<None Include="ModelSupport_DMA3\UFrmSheetDiffusion\default.txaPackage"/>
+			<None Include="ModelSupport_DMA3\Class Diagram.txvcls"/>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')" Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
+						<VersionInfo Name="MajorVer">3</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">11</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1046</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">Diferencial Corretora</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">DMA Trader</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">3.0.0.11</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright">2011-2012</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName">DMA Trader</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">3.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Source>
+						<Source Name="MainSource">DMA3.dpr</Source>
+					</Source>
+					<Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dcloffice2k150.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dclofficexp150.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+				<Platforms>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+				<ModelSupport>True</ModelSupport>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
