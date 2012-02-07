@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="le1chb79ruk_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:DMA3:DMAConnection.TConnectionListener">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="20,60,133,160" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnectionListener.FConn" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnectionListener.FRun" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnectionListener.Execute()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnectionListener.Create(DMAConnection.TConnection)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnectionListener.Kill()" />
+      <reference referencedUin="delphi:l_ast:src:DMA3:DMAConnection.TConnectionListener.FConn">
+        <property name="sourceAnchor" value="153,140" />
+        <property name="targetAnchor" value="380,140" />
+        <property name="bendpoints" value="" />
+      </reference>
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:DMAConnection.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.@unitclass.SplitColumns(System.string,Classes.TStrings,System.string)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:DMAConnection.TReadType">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="240,20,81,98" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TReadType.rtAnsi" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TReadType.rtDirect" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TReadType.rtFix" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:DMAConnection.TLog">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="220,160,126,98" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TLog.GetLastLog()" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:DMAConnection.TConnectionData">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="660,40,167,235" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnectionData.FStoreData" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnectionData.FMutex" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnectionData.FCount" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnectionData.LockMutex()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnectionData.UnlockMutex()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnectionData.Create()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnectionData.Destroy()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnectionData.AddData(System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnectionData.GetData()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnectionData.Next()" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:DMAConnection.TConnection">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="380,40,182,417" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FSocket" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FConnected" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FData" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FListener" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FLog" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FLogLevel" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FReadType" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.AddLog(System.string,DMAConnection.TLogLevel)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.Create()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.Destroy()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.Connect(System.string,System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.Disconnect()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.ReadBuffer()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.ReadBuffer(System.Char)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.ReadBufferFix()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.WriteCmd(System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.WriteDirect(System.Byte[])" />
+      <reference referencedUin="delphi:e_property:src:DMA3:DMAConnection.TConnection.Connected" />
+      <reference referencedUin="delphi:e_property:src:DMA3:DMAConnection.TConnection.Data" />
+      <reference referencedUin="delphi:e_property:src:DMA3:DMAConnection.TConnection.Log" />
+      <reference referencedUin="delphi:e_property:src:DMA3:DMAConnection.TConnection.LogLevel" />
+      <reference referencedUin="delphi:e_property:src:DMA3:DMAConnection.TConnection.ReadType" />
+      <reference referencedUin="delphi:l_ast:src:DMA3:DMAConnection.TConnection.FData">
+        <property name="sourceAnchor" value="562,157" />
+        <property name="targetAnchor" value="660,157" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="delphi:l_ast:src:DMA3:DMAConnection.TConnection.FListener">
+        <property name="sourceAnchor" value="380,132" />
+        <property name="targetAnchor" value="153,132" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="delphi:l_ast:src:DMA3:DMAConnection.TConnection.FLog">
+        <property name="sourceAnchor" value="380,209" />
+        <property name="targetAnchor" value="346,209" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="delphi:l_ast:src:DMA3:DMAConnection.TConnection.FLogLevel">
+        <property name="sourceAnchor" value="380,361" />
+        <property name="targetAnchor" value="301,361" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="delphi:l_ast:src:DMA3:DMAConnection.TConnection.FReadType">
+        <property name="sourceAnchor" value="380,79" />
+        <property name="targetAnchor" value="321,79" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="delphi:l_ast:src:DMA3:DMAConnection.TConnection.Data">
+        <property name="sourceAnchor" value="562,149" />
+        <property name="targetAnchor" value="660,149" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="delphi:l_ast:src:DMA3:DMAConnection.TConnection.Log">
+        <property name="sourceAnchor" value="380,201" />
+        <property name="targetAnchor" value="346,201" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="delphi:l_ast:src:DMA3:DMAConnection.TConnection.LogLevel">
+        <property name="sourceAnchor" value="380,353" />
+        <property name="targetAnchor" value="301,353" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="delphi:l_ast:src:DMA3:DMAConnection.TConnection.ReadType">
+        <property name="sourceAnchor" value="380,71" />
+        <property name="targetAnchor" value="321,71" />
+        <property name="bendpoints" value="" />
+      </reference>
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:DMAConnection.TLogLevel">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="220,320,81,83" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TLogLevel.lgOnlyErrors" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TLogLevel.lgAll" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:DMAConnection.TConnectionReader">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="640,360,129,115" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnectionReader.FConn" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnectionReader.Create(DMAConnection.TConnection)" />
+      <reference referencedUin="delphi:l_ast:src:DMA3:DMAConnection.TConnectionReader.FConn">
+        <property name="sourceAnchor" value="640,408" />
+        <property name="targetAnchor" value="562,408" />
+        <property name="bendpoints" value="" />
+      </reference>
+    </reference>
+  </view>
+</nodeSet>

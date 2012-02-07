@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="2u0uxrhd81s_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Panel1" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Label1" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Shape1" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Label2" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.lblClientAccount" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.lblClientName" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Label5" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.lblSymbol" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Label7" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.lblQuantity" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Label9" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.lblPrice" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Label11" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.lblValidity" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Label13" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.lblInformations" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Shape2" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Shape3" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Button1" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Button2" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.Label15" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.lblOrderDirection" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmConfirmSendOrder.TfrmConfirmOrderBeforeSend.ConfirmOrder(System.string,System.string,System.string,System.string,System.string,URouterLibrary.TDirectionOrderFix,URouterLibrary.TValidityOrderFix,System.TDate,System.string)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:UFrmConfirmSendOrder.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:l_ast:src:DMA3:UFrmConfirmSendOrder.@unitclass.frmConfirmOrderBeforeSend" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmConfirmSendOrder.@unitclass.frmConfirmOrderBeforeSend" />
+    </reference>
+  </view>
+</nodeSet>

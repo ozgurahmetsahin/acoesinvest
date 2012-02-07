@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="zxsllz3ag5nwf0agf_v">
+    <property name="$metaclass" value="Class Diagram" />
+    <property name="$name" value="Class Diagram" />
+    <reference referencedUin="delphi:e_class:src:DMA3:UConnectionCenter.TConnectionCenter">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="500,20,242,385" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UConnectionCenter.TConnectionCenter.FixLibrary" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UConnectionCenter.TConnectionCenter.tmrCheckConnFixStatus" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.FixLibraryLogout(System.TObject,URouterLibrary.TMsgType,System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.FixLibraryLogon(System.TObject,URouterLibrary.TMsgType,System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.tmrCheckConnFixStatusTimer(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.FixLibraryTestRequest(System.TObject,System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.FixLibraryHeartBeat(System.TObject,System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.FixLibraryUserListReport(System.TObject,System.string)" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UConnectionCenter.TConnectionCenter.ConnFix" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.StartFix(System.string,System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.LogonFix(System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.LogoutFix(System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.SendMsgTest()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.HeartBeat()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.WarningConnFixStatus(System.Boolean)" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UConnectionCenter.TConnectionCenter.ConsultClientName" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.DisconnectFix()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.IsConnectedFix()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.SendCmdFix(System.string)" />
+      <reference referencedUin="delphi:l_ast:src:DMA3:UConnectionCenter.TConnectionCenter.ConnFix">
+        <property name="sourceAnchor" value="742,212" />
+        <property name="targetAnchor" value="800,212" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.ConnectFix(System.string,System.Integer)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:UFrmSendOrders.TfrmSendOrders">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="60,220,178,897" />
+      <property name="location_set_by_user" value="True" />
+      <property name="bounds_setted_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.Panel3" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.Label1" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtClientAccount" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtSymbol" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.cbValidity" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtClientName" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.dtUntilDate" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.btnSendOrder" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.btnOptions" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.GroupBox1" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.Label2" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.Label3" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.Label4" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.Label5" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.Label6" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.Label7" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.Label8" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.Label9" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.rdDirectionSell" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.rdDirectionBuy" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.popOptions" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.popOptClearAfterSend" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.popOptCloseAfterSend" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.N1" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.popOptChangeColor" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.N2" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.popOptAdvanceSendOrder" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.popOptConfirmBeforeSend" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtQuantity" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.Label10" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtPrice" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.Label11" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.cdlgChangeColor" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.rdDirectionSellClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.rdDirectionBuyClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.FormKeyDown(System.TObject,ref@System.Word,TShiftState)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.btnSendOrderClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.btnOptionsClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.cbValidityChange(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtQuantityKeyPress(System.TObject,ref@System.Char)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtQuantityMouseActivate(System.TObject,Controls.TMouseButton,TShiftState,System.Integer,System.Integer,System.Integer,ref@Controls.TMouseActivate)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtQuantityDblClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtQuantityKeyDown(System.TObject,ref@System.Word,TShiftState)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtQuantityClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtPriceKeyPress(System.TObject,ref@System.Char)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtPriceClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtPriceDblClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtPriceKeyDown(System.TObject,ref@System.Word,TShiftState)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtPriceMouseActivate(System.TObject,Controls.TMouseButton,TShiftState,System.Integer,System.Integer,System.Integer,ref@Controls.TMouseActivate)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.popOptChangeColorClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.edtClientAccountExit(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.FOrderDirection" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.FQuantity" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSendOrders.TfrmSendOrders.FPrice" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.SetOrderDirection(URouterLibrary.TDirectionOrderFix)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.SelectOrderDirection()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.SendOrder()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.ClearData()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.AddToQuantity(System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.MultiplyQuantity(System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.SubtractQuantity(System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.AddToPrice(System.Double)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.SubtractPrice(System.Double)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.MultiplyPrice(System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.FormatQuantity(System.Char)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.FormatPrice(System.Char)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.AjustPrice()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.ChangeColor()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmSendOrders.TfrmSendOrders.ConsultClientName()" />
+      <reference referencedUin="delphi:e_property:src:DMA3:UFrmSendOrders.TfrmSendOrders.OrderDirection" />
+      <reference referencedUin="delphi:l_gnt:src:DMA3:UFrmSendOrders.TfrmSendOrders:UFrmDefault.TFrmDefault">
+        <property name="sourceAnchor" value="179,220" />
+        <property name="targetAnchor" value="179,135" />
+        <property name="bendpoints" value="" />
+      </reference>
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:DMAConnection.TConnection">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="800,20,184,417" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FSocket" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FConnected" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FData" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FListener" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FLog" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FLogLevel" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnection.FReadType" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.AddLog(System.string,DMAConnection.TLogLevel)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.Create()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.Destroy()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.Connect(System.string,System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.Disconnect()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.ReadBuffer()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.ReadBuffer(System.Char)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.ReadBufferFix()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.WriteCmd(System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnection.WriteDirect(System.Byte[])" />
+      <reference referencedUin="delphi:e_property:src:DMA3:DMAConnection.TConnection.Connected" />
+      <reference referencedUin="delphi:e_property:src:DMA3:DMAConnection.TConnection.Data" />
+      <reference referencedUin="delphi:e_property:src:DMA3:DMAConnection.TConnection.Log" />
+      <reference referencedUin="delphi:e_property:src:DMA3:DMAConnection.TConnection.LogLevel" />
+      <reference referencedUin="delphi:e_property:src:DMA3:DMAConnection.TConnection.ReadType" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:UFrmLogin.TfrmLogin">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="280,240,188,165" />
+      <property name="location_set_by_user" value="True" />
+      <property name="bounds_setted_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmLogin.TfrmLogin.imgLogin" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmLogin.TfrmLogin.edtUserDiffusion" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmLogin.TfrmLogin.edtPassDiffusion" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmLogin.TfrmLogin.edtUserBroker" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmLogin.TfrmLogin.edtPassBroker" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmLogin.TfrmLogin.chbSave" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmLogin.TfrmLogin.btnEnter" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmLogin.TfrmLogin.btnClear" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmLogin.TfrmLogin.btnExit" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmLogin.TfrmLogin.btnClearClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmLogin.TfrmLogin.btnExitClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UFrmLogin.TfrmLogin.btnEnterClick(System.TObject)" />
+      <reference referencedUin="delphi:l_gnt:src:DMA3:UFrmLogin.TfrmLogin:UFrmDefault.TFrmDefault">
+        <property name="sourceAnchor" value="298,240" />
+        <property name="targetAnchor" value="298,135" />
+        <property name="bendpoints" value="" />
+      </reference>
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:UFrmDefault.TFrmDefault">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="120,20,197,115" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmDefault.TFrmDefault.FConnCenter" />
+      <reference referencedUin="delphi:e_property:src:DMA3:UFrmDefault.TFrmDefault.ConnCenter" />
+      <reference referencedUin="delphi:l_ast:src:DMA3:UFrmDefault.TFrmDefault.FConnCenter">
+        <property name="sourceAnchor" value="317,77" />
+        <property name="targetAnchor" value="500,77" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="delphi:l_ast:src:DMA3:UFrmDefault.TFrmDefault.ConnCenter">
+        <property name="sourceAnchor" value="317,69" />
+        <property name="targetAnchor" value="500,69" />
+        <property name="bendpoints" value="" />
+      </reference>
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:UThrdFixRead.TThrdFixReader">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="440,500,200,148" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UThrdFixRead.TThrdFixReader.MsgFix" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UThrdFixRead.TThrdFixReader.FConnCenter" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UThrdFixRead.TThrdFixReader.ProcessMsgFix()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UThrdFixRead.TThrdFixReader.Execute()" />
+      <reference referencedUin="delphi:e_property:src:DMA3:UThrdFixRead.TThrdFixReader.ConnCenter" />
+      <reference referencedUin="delphi:l_ast:src:DMA3:UThrdFixRead.TThrdFixReader.FConnCenter">
+        <property name="sourceAnchor" value="570,500" />
+        <property name="targetAnchor" value="570,405" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="delphi:l_ast:src:DMA3:UThrdFixRead.TThrdFixReader.ConnCenter">
+        <property name="sourceAnchor" value="562,500" />
+        <property name="targetAnchor" value="562,405" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="delphi:l_gnt:src:DMA3:UThrdFixRead.TThrdFixReader:DMAConnection.TConnectionReader">
+        <property name="sourceAnchor" value="640,577" />
+        <property name="targetAnchor" value="740,577" />
+        <property name="bendpoints" value="" />
+      </reference>
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:DMAConnection.TConnectionReader">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="740,520,226,115" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DMA3:DMAConnection.TConnectionReader.FConn" />
+      <reference referencedUin="delphi:e_method:src:DMA3:DMAConnection.TConnectionReader.Create(DMAConnection.TConnection)" />
+      <reference referencedUin="delphi:l_ast:src:DMA3:DMAConnection.TConnectionReader.FConn">
+        <property name="sourceAnchor" value="883,520" />
+        <property name="targetAnchor" value="883,437" />
+        <property name="bendpoints" value="" />
+      </reference>
+    </reference>
+  </view>
+</nodeSet>

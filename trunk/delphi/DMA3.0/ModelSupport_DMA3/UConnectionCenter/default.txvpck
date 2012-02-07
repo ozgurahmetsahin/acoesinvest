@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="wwzkophgw7f_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:DMA3:UConnectionCenter.TConnectionCenter">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,200,385" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UConnectionCenter.TConnectionCenter.FixLibrary" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UConnectionCenter.TConnectionCenter.tmrCheckConnFixStatus" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.FixLibraryLogout(System.TObject,URouterLibrary.TMsgType,System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.FixLibraryLogon(System.TObject,URouterLibrary.TMsgType,System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.tmrCheckConnFixStatusTimer(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.FixLibraryTestRequest(System.TObject,System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.FixLibraryHeartBeat(System.TObject,System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.FixLibraryUserListReport(System.TObject,System.string)" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UConnectionCenter.TConnectionCenter.ConnFix" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.StartFix(System.string,System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.LogonFix(System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.LogoutFix(System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.SendMsgTest()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.HeartBeat()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.WarningConnFixStatus(System.Boolean)" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UConnectionCenter.TConnectionCenter.ConsultClientName" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.ConnectFix(System.string,System.Integer,System.string,System.string)" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.DisconnectFix()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.IsConnectedFix()" />
+      <reference referencedUin="delphi:e_method:src:DMA3:UConnectionCenter.TConnectionCenter.SendCmdFix(System.string)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:UConnectionCenter.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UConnectionCenter.@unitclass.ConnectionCenter" />
+      <reference referencedUin="delphi:l_ast:src:DMA3:UConnectionCenter.@unitclass.ConnectionCenter" />
+    </reference>
+  </view>
+</nodeSet>

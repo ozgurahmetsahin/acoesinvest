@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="oflou0oh02j_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:DMA3:UFrmSheetDiffusion.TfrmSheetDiffusion">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSheetDiffusion.TfrmSheetDiffusion.lblActive" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSheetDiffusion.TfrmSheetDiffusion.edtActive" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSheetDiffusion.TfrmSheetDiffusion.btnOk" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSheetDiffusion.TfrmSheetDiffusion.btnDelete" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSheetDiffusion.TfrmSheetDiffusion.panTop" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSheetDiffusion.TfrmSheetDiffusion.chbVisible" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSheetDiffusion.TfrmSheetDiffusion.lblVisible" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSheetDiffusion.TfrmSheetDiffusion.btnClear" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSheetDiffusion.TfrmSheetDiffusion.grdDiffusion" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:UFrmSheetDiffusion.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:l_ast:src:DMA3:UFrmSheetDiffusion.@unitclass.frmSheetDiffusion" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmSheetDiffusion.@unitclass.frmSheetDiffusion" />
+    </reference>
+  </view>
+</nodeSet>

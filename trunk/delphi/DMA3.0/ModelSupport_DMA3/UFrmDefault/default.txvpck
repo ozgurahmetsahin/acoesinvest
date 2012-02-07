@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="gmurg66bimi_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:DMA3:UFrmDefault.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:l_ast:src:DMA3:UFrmDefault.@unitclass.FrmDefault" />
+      <reference referencedUin="delphi:e_field:src:DMA3:UFrmDefault.@unitclass.FrmDefault" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DMA3:UFrmDefault.TFrmDefault">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>
