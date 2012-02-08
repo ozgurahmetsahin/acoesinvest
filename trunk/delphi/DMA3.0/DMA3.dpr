@@ -10,7 +10,8 @@ uses
   UFrmDefault in 'Units\UFrmDefault.pas' {FrmDefault},
   UFrmSendOrders in 'Units\UFrmSendOrders.pas' {frmSendOrders},
   UConnectionCenter in 'Units\UConnectionCenter.pas' {ConnectionCenter},
-  DMAConnection in 'Units\DMAConnection.pas';
+  DMAConnection in 'Units\DMAConnection.pas',
+  UFrmConsultOrders in 'Units\UFrmConsultOrders.pas' {FrmConsultOrders3};
 
 {$R *.res}
 
@@ -18,5 +19,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmLogin, frmLogin);
+  Application.CreateForm(TFrmConsultOrders3, FrmConsultOrders3);
   Application.Run;
 end.
