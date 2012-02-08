@@ -179,6 +179,7 @@ end;
 
 procedure TConnectionCenter.SendCmdFix(Cmd: String);
 begin
+  // Envia apenas se estiver conectado
   if Assigned(ConnFix) then
     if ConnFix.Connected then
     ConnFix.WriteCmd(Cmd);
